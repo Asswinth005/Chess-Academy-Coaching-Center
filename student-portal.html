@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth" data-theme="knight-noir">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Portal | Chess Academy & Coaching Center</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="alternate icon" href="assets/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+    <!-- Tailwind CSS with Local & CDN Fallback -->
+    <script src="tailwind.js"></script>
+    <script>
+        if (typeof tailwind === 'undefined') {
+            document.write('<script src="https://cdn.tailwindcss.com"><\/script>');
+        }
+    </script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'gift-slate': 'rgba(var(--color-rgb-primary), <alpha-value>)',
+                        'gift-slate-light': 'rgba(var(--color-rgb-light), <alpha-value>)',
+                        'gift-slate-dark': 'rgba(var(--color-rgb-dark), <alpha-value>)',
+                        'gift-slate-bright': 'rgba(var(--color-rgb-bright), <alpha-value>)',
+                        'gift-accent': 'rgba(var(--color-rgb-accent), <alpha-value>)',
+                        'bg-warm': 'var(--color-bg-warm)',
+                        'neutral-dark': 'var(--color-text-dark)',
+                        'neutral-light': '#E8E2D9',
+                        'dark-bg': '#0C0F12',
+                        'dark-card': '#141A1F',
+                        'dark-surface': '#1C242B',
+                    },
+                    fontFamily: {
+                        'sans': ['Plus Jakarta Sans', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+                        'serif': ['Cormorant Garamond', 'serif'],
+                        'display': ['Outfit', 'Plus Jakarta Sans', 'sans-serif'],
+                        'premium': ['Outfit', 'Plus Jakarta Sans', 'sans-serif'],
+                        'alt': ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'fade-in': 'fadeIn 0.3s ease-out',
+                        'pulse-glow': 'pulseGlow 3s infinite',
+                        'float-slow': 'floatSlow 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        slideUp: { '0%': { transform: 'translateY(30px)', opacity: '0' }, '100%': { transform: 'translateY(0)', opacity: '1' } },
+                        fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+                        pulseGlow: { '0%, 100%': { opacity: '0.6' }, '50%': { opacity: '1' } },
+                        floatSlow: { '0%,100%': { transform: 'translateY(0px)' }, '50%': { transform: 'translateY(-8px)' } },
+                    }
+                }
+            }
+        };
+    </script>
+    <script>
+        if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark');
+        if (localStorage.getItem('dir') === 'rtl') { document.documentElement.dir = 'rtl'; document.documentElement.lang = 'ar'; }
+    </script>
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root,
+        [data-theme="knight-noir"],
+        [data-theme="classic-wood"] {
+            --color-primary: #1E3A5F;
+            --color-primary-light: #3B5F8A;
+            --color-primary-dark: #0F2440;
+            --color-primary-bright: #5B8FC9;
+            --color-accent: #C9A44C;
+            --color-bg-warm: #F7F5F0;
+            --color-text-dark: #0C1926;
+            --color-rgb-primary: 30, 58, 95;
+            --color-rgb-light: 59, 95, 138;
+            --color-rgb-dark: 15, 36, 64;
+            --color-rgb-bright: 91, 143, 201;
+            --color-rgb-accent: 201, 164, 76;
+        }
+
+        [data-theme="emerald-board"] {
+            --color-primary: #1B4D3E;
+            --color-primary-light: #2D7A5F;
+            --color-primary-dark: #0E2E24;
+            --color-primary-bright: #5CB88A;
+            --color-accent: #D4AF37;
+            --color-bg-warm: #F0F7F3;
+            --color-text-dark: #0A1F18;
+            --color-rgb-primary: 27, 77, 62;
+            --color-rgb-light: 45, 122, 95;
+            --color-rgb-dark: 14, 46, 36;
+            --color-rgb-bright: 92, 184, 138;
+            --color-rgb-accent: 212, 175, 55;
+        }
+
+        [data-theme="crimson-gambit"] {
+            --color-primary: #8B1A2B;
+            --color-primary-light: #B83045;
+            --color-primary-dark: #5C0E1B;
+            --color-primary-bright: #E05A70;
+            --color-accent: #C9A44C;
+            --color-bg-warm: #FDF5F5;
+            --color-text-dark: #2B0A0F;
+            --color-rgb-primary: 139, 26, 43;
+            --color-rgb-light: 184, 48, 69;
+            --color-rgb-dark: 92, 14, 27;
+            --color-rgb-bright: 224, 90, 112;
+            --color-rgb-accent: 201, 164, 76;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--color-bg-warm);
+            color: var(--color-text-dark);
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+        .dark body { background-color: #0C0F12; color: #E3E8ED; }
+        h1,h2,h3,h4,h5,h6 {
+            font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+        .board-gradient-text {
+            background: linear-gradient(135deg, var(--color-primary-bright) 0%, var(--color-primary) 50%, var(--color-primary-dark) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .dark .text-gift-slate { color: var(--color-primary-bright) !important; }
+        .dark .border-gift-slate { border-color: var(--color-primary-bright) !important; }
+        .dark .bg-gift-slate { background-color: var(--color-primary-bright) !important; }
+        body::-webkit-scrollbar { display: none; }
+        body { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            left: 0; top: 0; height: 100vh;
+            width: 280px;
+            background: #FFFFFF;
+            border-right: 1px solid rgba(var(--color-rgb-primary), 0.12);
+            transition: transform 0.3s ease;
+            z-index: 100;
+            overflow-y: auto;
+        }
+        .dark .sidebar { background: #0C0F12; border-right-color: rgba(var(--color-rgb-bright), 0.15); }
+        @media (max-width: 768px) { .sidebar { transform: translateX(-100%); } .sidebar.open { transform: translateX(0); } }
+        .sidebar-overlay { position: fixed; top:0;left:0;right:0;bottom:0; background: rgba(0,0,0,0.5); z-index:99; display:none; }
+        .sidebar-overlay.open { display:block; }
+
+        .sidebar-item {
+            display: flex; align-items: center; gap: 0.75rem;
+            padding: 0.85rem 1.5rem; margin: 0.25rem 0.75rem;
+            border-radius: 12px; color: var(--color-text-dark);
+            transition: all 0.2s; cursor: pointer;
+            font-weight: 500; font-size: 0.92rem;
+        }
+        .dark .sidebar-item { color: #E3E8ED; }
+        .sidebar-item:hover { background: rgba(var(--color-rgb-primary), 0.08); color: var(--color-primary); }
+        .dark .sidebar-item:hover { background: rgba(var(--color-rgb-bright), 0.12); color: var(--color-primary-bright); }
+        .sidebar-item.active { background: var(--color-primary); color: #FFFFFF; }
+        .dark .sidebar-item.active { background: var(--color-primary-bright); color: #0C0F12; }
+        .sidebar-item i { width: 24px; font-size: 1.1rem; }
+
+        .main-content { margin-left: 280px; padding: 1.5rem; min-height: 100vh; }
+        @media (max-width: 768px) { .main-content { margin-left: 0; padding-top: 70px; } }
+        @media (max-width: 640px) { .main-content { padding: 4.5rem 0.75rem 1.5rem; } }
+
+        .mobile-header {
+            display: none; position: fixed; top:0;left:0;right:0;
+            background: #FFFFFF; padding: 0.75rem 1rem;
+            border-bottom: 1px solid rgba(var(--color-rgb-primary), 0.12);
+            z-index: 50; align-items: center; justify-content: space-between;
+        }
+        .dark .mobile-header { background: #0C0F12; border-bottom-color: rgba(var(--color-rgb-bright), 0.15); }
+        @media (max-width: 768px) { .mobile-header { display: flex; } }
+
+        .toggle-btn {
+            width: 36px; height: 36px; border-radius: 10px;
+            background: rgba(var(--color-rgb-primary), 0.08);
+            color: var(--color-text-dark); display: inline-flex;
+            align-items: center; justify-content: center; cursor: pointer;
+            transition: all 0.2s; border: none;
+        }
+        .dark .toggle-btn { background: rgba(var(--color-rgb-bright), 0.12); color: #E3E8ED; }
+        .toggle-btn:hover { background: var(--color-primary); color: #FFFFFF; }
+        .dark .toggle-btn:hover { background: var(--color-primary-bright); color: #0C0F12; }
+
+        .card-design {
+            background: #FFFFFF; border-radius: 28px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(var(--color-rgb-primary), 0.12);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+        }
+        .dark .card-design { background: #141A1F; border-color: rgba(var(--color-rgb-bright), 0.15); }
+        .card-design:hover { border-color: var(--color-primary); }
+
+        .btn-primary-design {
+            background: var(--color-primary); color: #FFFFFF;
+            font-weight: 700; border-radius: 60px; transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(var(--color-rgb-primary), 0.3);
+            white-space: nowrap; border: none; cursor: pointer;
+        }
+        .btn-primary-design:hover { background: var(--color-primary-dark); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(var(--color-rgb-primary), 0.4); color: #FFFFFF; }
+        .dark .btn-primary-design { background: var(--color-primary-bright); color: #0C0F12; }
+        .dark .btn-primary-design:hover { background: var(--color-primary); color: #FFFFFF; }
+
+        .btn-outline-design {
+            border: 1.5px solid var(--color-primary); color: var(--color-primary);
+            background: transparent; border-radius: 60px; font-weight: 600;
+            transition: all 0.3s; white-space: nowrap; cursor: pointer;
+        }
+        .btn-outline-design:hover { background: var(--color-primary); color: #FFFFFF; transform: translateY(-2px); }
+        .dark .btn-outline-design { border-color: var(--color-primary-bright); color: var(--color-primary-bright); }
+        .dark .btn-outline-design:hover { background: var(--color-primary-bright); color: #0C0F12; }
+
+        .stat-card {
+            background: #FFFFFF; border-radius: 20px; padding: 1.2rem;
+            border: 1px solid rgba(var(--color-rgb-primary), 0.12);
+            transition: all 0.3s;
+            display: flex; flex-direction: column; justify-content: space-between; height: 100%;
+        }
+        .dark .stat-card { background: #141A1F; border-color: rgba(var(--color-rgb-bright), 0.15); }
+        .stat-card:hover { transform: translateY(-3px); border-color: var(--color-primary); }
+
+        .status-badge {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 0.25rem 0.75rem; border-radius: 40px; font-size: 0.7rem;
+            font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase;
+            white-space: nowrap; flex-shrink: 0; line-height: 1.2;
+        }
+        .status-active { background: #E8F5E9; color: #1B5E20; }
+        .status-confirmed { background: #E8F5E9; color: #1B5E20; }
+        .status-pending { background: #FFF3E0; color: #E65100; }
+        .status-completed { background: #E3F2FD; color: #0D47A1; }
+        .status-registered { background: #F3E5F5; color: #6A1B9A; }
+        .status-waitlist { background: #FFEBEE; color: #B71C1C; }
+        .dark .status-active { background: #1B5E20; color: #A5D6A7; }
+        .dark .status-confirmed { background: #1B5E20; color: #A5D6A7; }
+        .dark .status-pending { background: #E65100; color: #FFCC80; }
+        .dark .status-completed { background: #0D47A1; color: #90CAF9; }
+        .dark .status-registered { background: #4A148C; color: #CE93D8; }
+        .dark .status-waitlist { background: #B71C1C; color: #FFCDD2; }
+
+        .form-input {
+            width: 100%; padding: 0.75rem 1rem;
+            border-radius: 16px; border: 1.5px solid rgba(var(--color-rgb-primary), 0.2);
+            background: #FFFFFF; transition: all 0.3s;
+            color: var(--color-text-dark); font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .dark .form-input { background: #0C0F12; border-color: rgba(var(--color-rgb-bright), 0.2); color: #E3E8ED; }
+        .form-input:focus { outline: none; border-color: var(--color-primary); box-shadow: 0 0 0 4px rgba(var(--color-rgb-primary), 0.15); }
+        .form-label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 0.4rem; color: var(--color-text-dark); }
+        .dark .form-label { color: #E3E8ED; }
+
+        input[type="date"], input[type="time"] { color-scheme: light; }
+        input[type="date"]::-webkit-calendar-picker-indicator,
+        input[type="time"]::-webkit-calendar-picker-indicator { cursor: pointer; opacity: 0.85; transition: opacity 0.2s ease; }
+        input[type="date"]::-webkit-calendar-picker-indicator:hover,
+        input[type="time"]::-webkit-calendar-picker-indicator:hover { opacity: 1; }
+        .dark input[type="date"], .dark input[type="time"] { color-scheme: dark !important; }
+        .dark input[type="date"]::-webkit-calendar-picker-indicator,
+        .dark input[type="time"]::-webkit-calendar-picker-indicator { filter: none !important; opacity: 1 !important; }
+
+        .progress-bar { height: 8px; background: rgba(var(--color-rgb-primary), 0.12); border-radius: 10px; overflow: hidden; }
+        .dark .progress-bar { background: rgba(var(--color-rgb-bright), 0.15); }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light)); border-radius: 10px; transition: width 0.6s ease; }
+        .dark .progress-fill { background: linear-gradient(90deg, var(--color-primary-bright), var(--color-primary)); }
+
+        .receipt-item { padding: 0.75rem 0; border-bottom: 1px solid rgba(var(--color-rgb-primary), 0.08); }
+        .dark .receipt-item { border-bottom-color: rgba(var(--color-rgb-bright), 0.1); }
+
+        .page-content.hidden { display: none; }
+
+        /* Session thumbnails */
+        .session-thumb {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            aspect-ratio: 3/4;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+        .session-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .session-thumb:hover img { transform: scale(1.08); }
+        .session-thumb.selected { border-color: var(--color-primary); box-shadow: 0 0 0 4px rgba(var(--color-rgb-primary), 0.2); }
+        .session-thumb .check-badge {
+            position: absolute; top: 8px; right: 8px;
+            width: 26px; height: 26px; border-radius: 50%;
+            background: var(--color-primary); color: white;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 12px; opacity: 0; transition: all 0.3s;
+        }
+        .session-thumb.selected .check-badge { opacity: 1; }
+        .session-thumb .session-label {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+            color: white; padding: 1.5rem 0.75rem 0.6rem;
+            font-size: 0.75rem; font-weight: 600;
+        }
+
+        /* RTL support */
+        [dir="rtl"] .sidebar { left: auto; right: 0; border-right: none; border-left: 1px solid rgba(var(--color-rgb-primary), 0.12); }
+        [dir="rtl"] .main-content { margin-left: 0; margin-right: 280px; }
+        [dir="rtl"] .sidebar-item i { margin-right: 0; margin-left: 0.75rem; }
+        @media (max-width: 768px) {
+            [dir="rtl"] .sidebar { transform: translateX(100%); }
+            [dir="rtl"] .sidebar.open { transform: translateX(0); }
+            [dir="rtl"] .main-content { margin-right: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Mobile Header -->
+    <div class="mobile-header">
+        <div class="flex items-center gap-3">
+            <button id="menuToggle" class="toggle-btn"><i class="fas fa-bars"></i></button>
+            <a href="index.html" class="flex items-center gap-2 group shrink-0" dir="ltr">
+                <div class="w-8 h-8 bg-gradient-to-br from-gift-slate-light to-gift-slate rounded-xl flex items-center justify-center">
+                    <i class="fas fa-chess-knight text-white dark:text-dark-bg text-sm"></i>
+                </div>
+                <span class="text-lg font-serif font-bold text-neutral-dark dark:text-white tracking-wide">Chess <span class="board-gradient-text">Academy</span></span>
+            </a>
+        </div>
+        <div class="flex gap-2">
+            <button id="theme-toggle-mobile" class="toggle-btn"><i class="fas fa-moon dark:hidden"></i><i class="fas fa-sun hidden dark:inline"></i></button>
+            <button id="rtl-toggle-mobile" class="toggle-btn"><i class="fas fa-exchange-alt"></i></button>
+        </div>
+    </div>
+
+    <div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="p-5 border-b border-[rgba(var(--color-rgb-primary),0.12)] dark:border-[rgba(var(--color-rgb-bright),0.15)]">
+            <a href="index.html" class="flex items-center gap-3 group" dir="ltr">
+                <div class="w-10 h-10 bg-gradient-to-br from-gift-slate-light to-gift-slate rounded-xl flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-chess-knight text-white dark:text-dark-bg text-lg"></i>
+                </div>
+                <div>
+                    <span class="text-xl font-serif font-bold text-neutral-dark dark:text-white tracking-wide">Chess <span class="board-gradient-text">Academy</span></span>
+                    <p class="text-[10px] uppercase tracking-widest text-neutral-dark/60 dark:text-gray-400 font-sans mt-0.5">Student Portal</p>
+                </div>
+            </a>
+        </div>
+        <nav class="py-4">
+            <div class="sidebar-item active" data-page="dashboard"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></div>
+            <div class="sidebar-item" data-page="batches"><i class="fas fa-layer-group"></i><span>My Batches</span></div>
+            <div class="sidebar-item" data-page="schedule"><i class="fas fa-calendar-alt"></i><span>Class Schedule</span></div>
+            <div class="sidebar-item" data-page="tournaments"><i class="fas fa-trophy"></i><span>Tournaments</span></div>
+            <div class="sidebar-item" data-page="progress"><i class="fas fa-chart-line"></i><span>My Progress</span></div>
+            <div class="sidebar-item" data-page="resources"><i class="fas fa-book-open"></i><span>Study Resources</span></div>
+            <div class="sidebar-item" data-page="payments"><i class="fas fa-credit-card"></i><span>Payments</span></div>
+            <div class="sidebar-item" data-page="documents"><i class="fas fa-file-invoice"></i><span>Certificates</span></div>
+        </nav>
+        <div class="absolute bottom-0 left-0 right-0 p-4 border-t border-[rgba(var(--color-rgb-primary),0.12)] dark:border-[rgba(var(--color-rgb-bright),0.15)]">
+            <a href="login.html" class="flex items-center justify-center gap-2 w-full p-2.5 rounded-xl bg-[rgba(var(--color-rgb-primary),0.08)] hover:bg-gift-slate transition font-semibold text-sm text-neutral-dark dark:text-gray-200 hover:text-white">
+                <i class="fas fa-sign-out-alt"></i><span>Sign Out</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="card-design p-4 md:p-6 flex justify-between items-center flex-wrap gap-3 mb-6">
+            <div>
+                <h1 class="text-2xl font-serif font-bold" id="page-title">Dashboard</h1>
+                <p class="text-sm text-neutral-dark/60 dark:text-gray-400" id="page-subtitle">Welcome back, Arjun</p>
+            </div>
+            <div class="hidden lg:flex items-center gap-4">
+                <button id="theme-toggle" class="toggle-btn"><i class="fas fa-moon dark:hidden"></i><i class="fas fa-sun hidden dark:inline"></i></button>
+                <button id="rtl-toggle" class="toggle-btn"><i class="fas fa-exchange-alt"></i></button>
+                <div class="flex items-center gap-3 border-l border-[rgba(var(--color-rgb-primary),0.12)] dark:border-[rgba(var(--color-rgb-bright),0.15)] pl-4">
+                    <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-gift-slate shadow-sm shrink-0">
+                        <img src="assets/images/photo-1500648767791-00dcc994a43e.jpg" alt="Arjun Mehta" class="w-full h-full object-cover" style="object-position: center 20%;">
+                    </div>
+                    <div class="text-left hidden lg:block">
+                        <p class="text-sm font-bold text-neutral-dark dark:text-white leading-tight">Arjun Mehta</p>
+                        <p class="text-[10px] text-neutral-dark/60 dark:text-gray-400 uppercase tracking-wider">Intermediate · FIDE 1540</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== DASHBOARD ========== -->
+        <div id="page-dashboard" class="page-content">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6 items-stretch">
+                <div class="stat-card">
+                    <div class="flex items-center justify-between gap-3 mb-3 min-h-[40px]">
+                        <p class="text-xs text-neutral-dark/60 dark:text-gray-400 font-medium">Active Batches</p>
+                        <div class="w-10 h-10 bg-[rgba(var(--color-rgb-primary),0.08)] dark:bg-[rgba(var(--color-rgb-bright),0.12)] rounded-full flex items-center justify-center shrink-0"><i class="fas fa-layer-group text-gift-slate dark:text-gift-slate-bright text-base"></i></div>
+                    </div>
+                    <div class="mt-auto">
+                        <p class="text-2xl font-bold text-neutral-dark dark:text-white font-serif leading-tight">2</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="flex items-center justify-between gap-3 mb-3 min-h-[40px]">
+                        <p class="text-xs text-neutral-dark/60 dark:text-gray-400 font-medium">Next Class</p>
+                        <div class="w-10 h-10 bg-[rgba(var(--color-rgb-primary),0.08)] dark:bg-[rgba(var(--color-rgb-bright),0.12)] rounded-full flex items-center justify-center shrink-0"><i class="fas fa-calendar-alt text-gift-slate dark:text-gift-slate-bright text-base"></i></div>
+                    </div>
+                    <div class="mt-auto">
+                        <p class="text-2xl font-bold text-neutral-dark dark:text-white font-serif leading-tight">Tomorrow</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="flex items-center justify-between gap-3 mb-3 min-h-[40px]">
+                        <p class="text-xs text-neutral-dark/60 dark:text-gray-400 font-medium">Tournaments</p>
+                        <div class="w-10 h-10 bg-[rgba(var(--color-rgb-primary),0.08)] dark:bg-[rgba(var(--color-rgb-bright),0.12)] rounded-full flex items-center justify-center shrink-0"><i class="fas fa-trophy text-gift-slate dark:text-gift-slate-bright text-base"></i></div>
+                    </div>
+                    <div class="mt-auto">
+                        <p class="text-2xl font-bold text-neutral-dark dark:text-white font-serif leading-tight">1</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="flex items-center justify-between gap-3 mb-3 min-h-[40px]">
+                        <p class="text-xs text-neutral-dark/60 dark:text-gray-400 font-medium">Current Rating</p>
+                        <div class="w-10 h-10 bg-[rgba(var(--color-rgb-primary),0.08)] dark:bg-[rgba(var(--color-rgb-bright),0.12)] rounded-full flex items-center justify-center shrink-0"><i class="fas fa-chess-king text-gift-slate dark:text-gift-slate-bright text-base"></i></div>
+                    </div>
+                    <div class="mt-auto">
+                        <p class="text-2xl font-bold text-neutral-dark dark:text-white font-serif leading-tight">1540</p>
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div class="card-design p-4 sm:p-6">
+                    <h3 class="font-serif font-bold text-xl mb-4">Upcoming Classes</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between gap-3 pb-3 border-b border-[rgba(var(--color-rgb-primary),0.08)] dark:border-[rgba(var(--color-rgb-bright),0.1)]">
+                            <div class="flex items-start gap-3 min-w-0 flex-1">
+                                <i class="fas fa-chess-board text-gift-slate mt-1 shrink-0"></i>
+                                <div class="min-w-0 flex-1">
+                                    <p class="text-sm font-semibold truncate">Intermediate Tactics & Calculation</p>
+                                    <p class="text-xs text-neutral-dark/60 dark:text-gray-400 truncate">Tomorrow · 6:00 PM · Coach FM Rivera</p>
+                                </div>
+                            </div>
+                            <span class="status-badge status-confirmed text-xs">Confirmed</span>
+                        </div>
+                        <div class="flex items-center justify-between gap-3 pb-3 border-b border-[rgba(var(--color-rgb-primary),0.08)] dark:border-[rgba(var(--color-rgb-bright),0.1)]">
+                            <div class="flex items-start gap-3 min-w-0 flex-1">
+                                <i class="fas fa-chess-queen text-gift-slate mt-1 shrink-0"></i>
+                                <div class="min-w-0 flex-1">
+                                    <p class="text-sm font-semibold truncate">Positional Play Workshop</p>
+                                    <p class="text-xs text-neutral-dark/60 dark:text-gray-400 truncate">Thu · 6:00 PM · Coach IM Chen</p>
+                                </div>
+                            </div>
+                            <span class="status-badge status-confirmed text-xs">Confirmed</span>
+                        </div>
+                        <div class="flex items-center justify-between gap-3">
+                            <div class="flex items-start gap-3 min-w-0 flex-1">
+                                <i class="fas fa-chess-pawn text-gift-slate mt-1 shrink-0"></i>
+                                <div class="min-w-0 flex-1">
+                                    <p class="text-sm font-semibold truncate">Endgame Technique Lab</p>
+                                    <p class="text-xs text-neutral-dark/60 dark:text-gray-400 truncate">Sat · 10:00 AM · Coach GM Volkov</p>
+                                </div>
+                            </div>
+                            <span class="status-badge status-pending text-xs">Reminder</span>
+                        </div>
+                    </div>
+                    <button data-nav="schedule" class="btn-outline-design w-full mt-4 py-2 text-sm">View Full Schedule</button>
+                </div>
+                <div class="card-design p-4 sm:p-6">
+                    <h3 class="font-serif font-bold text-xl mb-4">Quick Actions</h3>
+                    <div class="space-y-3">
+                        <button data-nav="batches" class="w-full text-left px-4 py-3 bg-[rgba(var(--color-rgb-primary),0.08)] dark:bg-[rgba(var(--color-rgb-bright),0.1)] text-neutral-dark dark:text-white rounded-xl hover:bg-[rgba(var(--color-rgb-primary),0.2)] transition flex items-center gap-3">
+                            <i class="fas fa-layer-group text-gift-slate"></i><span>Enroll in New Batch</span>
+                        </button>
+                        <button data-nav="tournaments" class="w-full text-left px-4 py-3 bg-[rgba(var(--color-rgb-primary),0.08)] dark:bg-[rgba(var(--color-rgb-bright),0.1)] text-neutral-dark dark:text-white rounded-xl hover:bg-[rgba(var(--color-rgb-primary),0.2)] transition flex items-center gap-3">
+                            <i class="fas fa-trophy text-gift-slate"></i><span>Register for Tournament</span>
+                        </button>
+                        <button data-nav="resources" class="w-full text-left px-4 py-3 bg-[rgba(var(--color-rgb-primary),0.08)] dark:bg-[rgba(var(--color-rgb-bright),0.1)] text-neutral-dark dark:text-white rounded-xl hover:bg-[rgba(var(--color-rgb-primary),0.2)] transition flex items-center gap-3">
+                            <i class="fas fa-book-open text-gift-slate"></i><span>Study Resources</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== MY BATCHES ========== -->
+        <div id="page-batches" class="page-content hidden">
+            <div class="card-design p-4 sm:p-6">
+                <h3 class="font-serif font-bold text-2xl mb-4">My Batches</h3>
+                <p class="text-sm text-neutral-dark/60 dark:text-gray-400 mb-6">Your enrolled training batches and their current progress.</p>
+                <div class="space-y-4">
+                    <div class="p-4 sm:p-5 bg-[rgba(var(--color-rgb-primary),0.04)] dark:bg-[rgba(var(--color-rgb-bright),0.05)] rounded-2xl border border-[rgba(var(--color-rgb-primary),0.08)]">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3 sm:gap-4">
+                            <div class="min-w-0 flex-1">
+                                <p class="font-bold text-base sm:text-lg font-serif">Intermediate Program — Batch B</p>
+                                <p class="text-xs sm:text-sm text-neutral-dark/60 dark:text-gray-400">3 sessions/week · Coach FM Marcus Rivera</p>
+                                <div class="flex items-center gap-3 mt-2">
+                                    <span class="status-badge status-active">Active</span>
+                                    <span class="text-xs text-neutral-dark/60 dark:text-gray-400">Started Jan 15, 2026</span>
+                                </div>
+                            </div>
+                            <div class="flex gap-2 w-full sm:w-auto pt-1 sm:pt-0 shrink-0">
+                                <button class="btn-outline-design text-xs px-4 py-1.5 flex-1 sm:flex-none text-center"><i class="fas fa-info-circle mr-1"></i>Details</button>
+                                <button class="btn-primary-design text-xs px-4 py-1.5 flex-1 sm:flex-none text-center"><i class="fas fa-video mr-1"></i>Join Class</button>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <div class="grid grid-cols-4 text-[10px] sm:text-xs text-neutral-dark/60 dark:text-gray-400 mb-1.5 font-medium">
+                                <span class="text-left truncate">Enrolled</span>
+                                <span class="text-center truncate">Midway</span>
+                                <span class="text-center truncate">Advanced</span>
+                                <span class="text-right truncate">Complete</span>
+                            </div>
+                            <div class="progress-bar"><div class="progress-fill" style="width:50%"></div></div>
+                            <p class="text-xs text-neutral-dark/60 dark:text-gray-400 mt-2">18 of 36 sessions completed · Est. completion Jun 2026</p>
+                        </div>
+                    </div>
+                    <div class="p-4 sm:p-5 bg-[rgba(var(--color-rgb-primary),0.04)] dark:bg-[rgba(var(--color-rgb-bright),0.05)] rounded-2xl border border-[rgba(var(--color-rgb-primary),0.08)]">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3 sm:gap-4">
+                            <div class="min-w-0 flex-1">
+                                <p class="font-bold text-base sm:text-lg font-serif">Weekend Tournament Prep</p>
+                                <p class="text-xs sm:text-sm text-neutral-dark/60 dark:text-gray-400">2 sessions/week · Coach GM Alexei Volkov</p>
+                                <div class="flex items-center gap-3 mt-2">
+                                    <span class="status-badge status-active">Active</span>
+                                    <span class="text-xs text-neutral-dark/60 dark:text-gray-400">Started Mar 01, 2026</span>
+                                </div>
+                            </div>
+                            <div class="flex gap-2 w-full sm:w-auto pt-1 sm:pt-0 shrink-0">
+                                <button class="btn-outline-design text-xs px-4 py-1.5 flex-1 sm:flex-none text-center"><i class="fas fa-info-circle mr-1"></i>Details</button>
+                                <button class="btn-primary-design text-xs px-4 py-1.5 flex-1 sm:flex-none text-center"><i class="fas fa-video mr-1"></i>Join Class</button>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <div class="grid grid-cols-4 text-[10px] sm:text-xs text-neutral-dark/60 dark:text-gray-400 mb-1.5 font-medium">
+                                <span class="text-left truncate">Enrolled</span>
+                                <span class="text-center truncate">Midway</span>
+                                <span class="text-center truncate">Advanced</span>
+                                <span class="text-right truncate">Complete</span>
+                            </div>
+                            <div class="progress-bar"><div class="progress-fill" style="width:35%"></div></div>
+                            <p class="text-xs text-neutral-dark/60 dark:text-gray-400 mt-2">7 of 20 sessions completed · Est. completion Aug 2026</p>
+                        </div>
+                    </div>
+                    <div class="p-4 sm:p-5 bg-[rgba(var(--color-rgb-primary),0.04)] dark:bg-[rgba(var(--color-rgb-bright),0.05)] rounded-2xl border border-[rgba(var(--color-rgb-primary),0.08)]">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3 sm:gap-4">
+                            <div class="min-w-0 flex-1">
+                                <p class="font-bold text-base sm:text-lg font-serif">Opening Repertoire Lab</p>
+                                <p class="text-xs sm:text-sm text-neutral-dark/60 dark:text-gray-400">1 session/week · Coach IM Sarah Chen</p>
+                                <div class="flex items-center gap-3 mt-2">
+                                    <span class="status-badge status-completed">Completed</span>
+                                    <span class="text-xs text-neutral-dark/60 dark:text-gray-400">Dec 2025 — Feb 2026</span>
+                                </div>
+                            </div>
+                            <div class="flex gap-2 w-full sm:w-auto pt-1 sm:pt-0 shrink-0">
+                                <button class="btn-outline-design text-xs px-4 py-1.5 flex-1 sm:flex-none text-center"><i class="fas fa-certificate mr-1"></i>Certificate</button>
+                                <button class="btn-primary-design text-xs px-4 py-1.5 flex-1 sm:flex-none text-center"><i class="fas fa-redo mr-1"></i>Re-enroll</button>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <div class="grid grid-cols-4 text-[10px] sm:text-xs text-neutral-dark/60 dark:text-gray-400 mb-1.5 font-medium">
+                                <span class="text-left truncate">Enrolled</span>
+                                <span class="text-center truncate">Midway</span>
+                                <span class="text-center truncate">Advanced</span>
+                                <span class="text-right truncate">Complete</span>
+                            </div>
+                            <div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== CLASS SCHEDULE ========== -->
+        <div id="page-schedule" class="page-content hidden">
+            <div class="card-design p-4 sm:p-6">
+                <h3 class="font-serif font-bold text-2xl mb-4">Class Schedule</h3>
+                <p class="text-sm text-neutral-dark/60 dark:text-gray-400 mb-6">Your weekly training calendar across all enrolled batches.</p>
+
+                <!-- Week selector -->
+                <div class="flex flex-wrap gap-2 mb-6">
+                    <button class="btn-primary-design text-xs px-4 py-2">This Week</button>
+                    <button class="btn-outline-design text-xs px-4 py-2">Next Week</button>
+                    <button class="btn-outline-design text-xs px-4 py-2">Full Month</button>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- Monday -->
+                    <div class="p-4 rounded-2xl border border-[rgba(var(--color-rgb-primary),0.12)] dark:border-[rgba(var(--color-rgb-bright),0.15)]">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-10 h-10 rounded-xl bg-[rgba(var(--color-rgb-primary),0.1)] dark:bg-[rgba(var(--color-rgb-bright),0.15)] flex items-center justify-center text-gift-slate dark:text-gift-slate-bright font-bold text-sm">Mon</div>
+                            <p class="font-bold text-sm">April 14, 2026</p>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-between gap-3 p-3 rounded-xl bg-[rgba(var(--color-rgb-primary),0.04)] dark:bg-[rgba(var(--color-rgb-bright),0.05)]">
+                            <div class="flex items-start gap-3 min-w-0 flex-1">
+                                <i class="fas fa-chess-queen text-gift-slate mt-1 shrink-0"></i>
+                                <div class="min-w-0">
+                                    <p class="text-sm font-semibold">Positional Play Workshop</p>
+                                    <p class="text-xs text-neutral-dark/60 dark:text-gray-400">6:00 PM – 8:00 PM · Coach IM Sarah Chen · Room A</p>
+                                </div>
+                            </div>
+                            <span class="status-badge status-confirmed text-xs">Confirmed</span>
+                        </div>
+                    </div>
+
+                    <!-- Tuesday -->
+                    <div class="p-4 rounded-2xl border border-[rgba(var(--color-rgb-primary),0.12)] dark:border-[rgba(var(--color-rgb-bright),0.15)]">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-10 h-10 rounded-xl bg-[rgba(var(--color-rgb-primary),0.1)] dark:bg-[rgba(var(--color-rgb-bright),0.15)] flex items-center justify-center text-gift-slate dark:text-gift-slate-bright font-bold text-sm">Tue</div>
+                            <p class="font-bold text-sm">April 15, 2026</p>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-between gap-3 p-3 rounded-xl bg-[rgba(var(--color-rgb-primary),0.04)] dark:bg-[rgba(var(--color-rgb-bright),0.05)]">
+                            <div class="flex items-start gap-3 min-w-0 flex-1">
+                                <i class="fas fa-chess-board text-gift-slate mt-1 shrink-0"></i>
+                                <div class="min-w-0">
+                                    <p class="text-sm font-semibold">Intermediate Tactics & Calculation</p>
+                                    <p class="text-xs text-neutral-dark/60 dark:text-gray-400">6:00 PM – 8:00 PM · Coach FM Marcus Rivera · Room B</p>
+                                </div>
+                            </div>
+                            <span class="status-badge status-confirmed text-xs">Confirmed</span>
+                        </div>
+                    </div>
+
+                    <!-- Thursday -->
+                    <div class="p-4 rounded-2xl border border-[rgba(var(--color-rgb-primary),0.12)] dark:border-[rgba(var(--color-rgb-bright),0.15)]">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-10 h-10 rounded-xl bg-[rgba(var(--color-rgb-primary),0.1)] dark:bg-[rgba(var(--color-rgb-bright),0.15)] flex items-center justify-center text-gift-slate dark:text-gift-slate-bright font-bold text-sm">Thu</div>
+                            <p class="font-bold text-sm">April 17, 2026</p>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-between gap-3 p-3 rounded-xl bg-[rgba(var(--color-rgb-primary),0.04)] dark:bg-[rgba(var(--color-rgb-bright),0.05)]">
+                            <div class="flex items-start gap-3 min-w-0 flex-1">
+                                <i class="fas fa-chess-queen text-gift-slate mt-1 shrink-0"></i>
+                                <div class="min-w-0">
+                                    <p class="text-sm font-semibold">Positional Play Workshop</p>
+                                    <p class="text-xs text-neutral-dark/60 dark:text-gray-400">6:00 PM – 8:00 PM · Coach IM Sarah Chen · Room A</p>
+                                </div>
+                            </div>
+                            <span class="status-badge status-confirmed text-xs">Confirmed</span>
+                        </div>
+                    </div>
+
+                    <!-- Saturday -->
+                    <div class="p-4 rounded-2xl border border-[rgba(var(--color-rgb-primary),0.12)] dark:border-[rgba(var(--color-rgb-bright),0.15)]">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-10 h-10 rounded-xl bg-[rgba(var(--color-rgb-primary),0.1)] dark:bg-[rgba(var(--color-rgb-bright),0.15)] flex items-center justify-center text-gift-slate dark:text-gift-slate-bright font-bold text-sm">Sat</div>
+                            <p class="font-bold text-sm">April 19, 2026</p>
+                        </div>
+                        <div class="flex flex-wrap items-center justify-between gap-3 p-3 rounded-xl bg-[rgba(var(--color-rgb-primary),0.04)] dark:bg-[rgba(var(--color-rgb-bright),0.05)]">
+                            <div class="flex items-start gap-3 min-w-0 flex-1">
+                                <i class="fas fa-chess-pawn text-gift-slate mt-1 shrink-0"></i>
+                                <div class="min-w-0">
+                                    <p class="text-sm font-semibold">Endgame Technique Lab</p>
+                                    <p class="text-xs text-neutral-dark/60 dark:text-gray-400">10:00 AM – 12:00 PM · Coach GM Alexei Volkov · Grand Hall</p>
+                                </div>
+                            </div>
+                            <span class="status-badge status-pending text-xs">Reminder</span>
+                        </div>
+                    </div>
+
+                    <!-- Sunday - Rest day -->
+                    <div class="p-4 rounded-2xl border border-dashed border-[rgba(var(--color-rgb-primary),0.2)] dark:border-[rgba(var(--color-rgb-bright),0.2)]">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-10 h-10 rounded-xl bg-[rgba(var(--color-rgb-primary),0.05)] dark:bg-[rgba(var(--color-rgb-bright),0.08)] flex items-center justify-center text-gift-slate dark:text-gift-slate-bright font-bold text-sm">Sun</div>
+                            <p class="font-bold text-sm opacity-60">April 20, 2026</p>
+                        </div>
+                        <p class="text-sm text-neutral-dark/60 dark:text-gray-400 italic">Rest day — no classes scheduled. Great day for practice puzzles!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== TOURNAMENTS ========== -->
+        <div id="page-tournaments" class="page-content hidden">
+            <div class="card-design p-4 sm:p-6 mb-6">
+                <h3 class="font-serif font-bold text-2xl mb-4">My Tournament Registrations</h3>
+                <p class="text-sm text-neutral-dark/60 dark:text-gray-400 mb-6">Events you're registered for, on the waitlist for, or have completed.</p>
+                <div class="space-y-4">
+                    <div class="p-4 sm:p-5 bg-[rgba(var(--color-rgb-primary),0.04)] dark:bg-[rgba(var(--color-rgb-bright),0.05)] rounded-2xl border border-[rgba(var(--color-rgb-primary),0.08)]">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3 sm:gap-4">
+                            <div class="min-w-0 flex-1">
+                                <p class="font-bold text-base sm:text-lg font-serif">Junior Spring Championship</p>
+                                <p class="text-xs sm:text-sm text-neutral-dark/60 dark:text-gray-400">Under 14 · 7 Rounds Swiss · Mar 28, 2026</p>
+                                <div class="flex items-center gap-3 mt-2">
+                                    <span class="status-badge status-registered">Registered</span>
+                                    <span class="text-xs text-neutral-dark/60 dark:text-gray-400">Academy Training Wing</span>
+                                </div>
+                            </div>
+                            <div class="flex gap-2 w-full sm:w-auto pt-1 sm:pt-0 shrink-0">
+                                <button class="btn-outline-design text-xs px-4 py-1.5 flex-1 sm:flex-none text-center"><i class="fas fa-list mr-1"></i>Pairings</button>
+                                <button class="btn-primary-design text-xs px-4 py-1.5 flex-1 sm:flex-none text-center"><i class="fas fa-eye mr-1"></i>Details</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 sm:p-5 bg-[rgba(var(--color-rgb-primary),0.04)] dark:bg-[rgba(var(--color-rgb-bright),0.05)] rounded-2xl border border-[rgba(var(--color-rgb-primary),0.08)]">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3 sm:gap-4">
+                            <div class="min-w-0 flex-1">
+                                <p class="font-bold text-base sm:text-lg font-serif">Monthly Club Rapid</p>
+                                <p class="text-xs sm:text-sm text-neutral-dark/60 dark:text-gray-400">6 Rounds · 15+10 Rapid · Apr 12, 2026</p>
+                                <div class="flex items-center gap-3 mt-2">
+                                    <span class="status-badge status-confirmed">Confirmed</span>
+                                    <span class="text-xs text-neutral-dark/60 dark:text-gray-400">Academy Main Hall</span>
+                                </div>
+                            </div>
+                            <div class="flex gap-2 w-full sm:w-auto pt-1 sm:pt-0 shrink-0">
+                                <button class="btn-outline-design text-xs px-4 py-1.5 flex-1 sm:flex-none text-center"><i class="fas fa-times mr-1"></i>Withdraw</button>
+                                <button class="btn-primary-design text-xs px-4 py-1.5 flex-1 sm:flex-none text-center"><i class="fas fa-eye mr-1"></i>Details</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 sm:p-5 bg-[rgba(var(--color-rgb-primary),0.04)] dark:bg-[rgba(var(--color-rgb-bright),0.05)] rounded-2xl border border-[rgba(var(--color-rgb-primary),0.08)]">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3 sm:gap-4">
+                            <div class="min-w-0 flex-1">
+                                <p class="font-bold text-base sm:text-lg font-serif">Friday Night Blitz</p>
+                                <p class="text-xs sm:text-sm text-neutral-dark/60 dark:text-gray-400">9 Rounds · 3+2 Blitz · Apr 4, 2026</p>
+                                <div class="flex items-center gap-3 mt-2">
+                                    <span class="status-badge status-completed">Completed</span>
+                                    <span class="text-xs text-neutral-dark/60 dark:text-gray-400">Final: 5.5 / 9 · Top 15</span>
+                                </div>
+                            </div>
+                            <div class="flex gap-2 w-full sm:w-auto pt-1 sm:pt-0 shrink-0">
+                                <button class="btn-outline-design text-xs px-4 py-1.5 flex-1 sm:flex-none text-center"><i class="fas fa-chart-bar mr-1"></i>Results</button>
+                                <button class="btn-primary-design text-xs px-4 py-1.5 flex-1 sm:flex-none text-center"><i class="fas fa-eye mr-1"></i>Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Available tournaments -->
+            <div class="card-design p-4 sm:p-6">
+                <h3 class="font-serif font-bold text-2xl mb-4">Available Tournaments</h3>
+                <p class="text-sm text-neutral-dark/60 dark:text-gray-400 mb-6">Upcoming events open for registration.</p>
+                <div class="space-y-4">
+                    <div class="p-4 sm:p-5 rounded-2xl border border-[rgba(var(--color-rgb-primary),0.15)] dark:border-[rgba(var(--color-rgb-bright),0.15)]">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3 sm:gap-4">
+                            <div class="flex items-start gap-3 sm:gap-4 min-w-0 flex-1">
+                                <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-gift-slate to-gift-slate-dark flex flex-col items-center justify-center text-white shrink-0">
+                                    <span class="text-base sm:text-lg font-bold leading-none font-serif">09</span>
+                                    <span class="text-[9px] uppercase tracking-widest opacity-90">May</span>
+                                </div>
+                                <div class="min-w-0 flex-1">
+                                    <p class="font-bold text-base sm:text-lg font-serif">Kids Beginner Cup</p>
+                                    <p class="text-xs sm:text-sm text-neutral-dark/60 dark:text-gray-400">Under 10 · 5 Rounds Swiss · Academy Training Wing</p>
+                                    <div class="flex items-center gap-3 mt-2">
+                                        <span class="status-badge status-pending">Open</span>
+                                        <span class="text-xs text-neutral-dark/60 dark:text-gray-400">14 / 40 registered</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn-primary-design text-xs px-4 py-2 w-full sm:w-auto text-center shrink-0">
+                                <i class="fas fa-plus-circle mr-1"></i>Register
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-4 sm:p-5 rounded-2xl border border-[rgba(var(--color-rgb-primary),0.15)] dark:border-[rgba(var(--color-rgb-bright),0.15)]">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3 sm:gap-4">
+                            <div class="flex items-start gap-3 sm:gap-4 min-w-0 flex-1">
+                                <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-gift-slate to-gift-slate-dark flex flex-col items-center justify-center text-white shrink-0">
+                                    <span class="text-base sm:text-lg font-bold leading-none font-serif">26</span>
+                                    <span class="text-[9px] uppercase tracking-widest opacity-90">Apr</span>
+                                </div>
+                                <div class="min-w-0 flex-1">
+                                    <p class="font-bold text-base sm:text-lg font-serif">Regional FIDE Open</p>
+                                    <p class="text-xs sm:text-sm text-neutral-dark/60 dark:text-gray-400">7 Rounds Classical · FIDE Rated · City Convention Center</p>
+                                    <div class="flex items-center gap-3 mt-2">
+                                        <span class="status-badge status-waitlist">Waitlist</span>
+                                        <span class="text-xs text-neutral-dark/60 dark:text-gray-400">120 / 120 registered</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn-outline-design text-xs px-4 py-2 w-full sm:w-auto text-center shrink-0">
+                                <i class="fas fa-clock mr-1"></i> Waitlist
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== MY PROGRESS ========== -->
+        <div id="page-progress" class="page-content hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+                <div class="card-design p-4 sm:p-6">
+                    <p class="text-xs text-neutral-dark/60 dark:text-gray-400 mb-1">Current Rating</p>
+                    <p class="text-4xl font-bold font-serif board-gradient-text mb-2">1540</p>
+                    <div class="flex items-center gap-2 text-sm">
+                        <span class="text-green-600 dark:text-green-400 font-bold"><i class="fas fa-arrow-up text-xs"></i> +45</span>
+                        <span class="text-neutral-dark/60 dark:text-gray-400 text-xs">since Jan 2026</span>
+                    </div>
+                </div>
+                <div class="card-design p-4 sm:p-6">
+                    <p class="text-xs text-neutral-dark/60 dark:text-gray-400 mb-1">Puzzles Solved</p>
+                    <p class="text-4xl font-bold font-serif board-gradient-text mb-2">847</p>
+                    <div class="flex items-center gap-2 text-sm">
+                        <span class="text-green-600 dark:text-green-400 font-bold"><i class="fas fa-arrow-up text-xs"></i> +124</span>
+                        <span class="text-neutral-dark/60 dark:text-gray-400 text-xs">this month</span>
+                    </div>
+                </div>
+                <div class="card-design p-4 sm:p-6">
+                    <p class="text-xs text-neutral-dark/60 dark:text-gray-400 mb-1">Games Analyzed</p>
+                    <p class="text-4xl font-bold font-serif board-gradient-text mb-2">62</p>
+                    <div class="flex items-center gap-2 text-sm">
+                        <span class="text-green-600 dark:text-green-400 font-bold"><i class="fas fa-arrow-up text-xs"></i> +8</span>
+                        <span class="text-neutral-dark/60 dark:text-gray-400 text-xs">this month</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-design p-4 sm:p-6 mb-6">
+                <h3 class="font-serif font-bold text-xl mb-4">Skill Breakdown</h3>
+                <div class="space-y-4">
+                    <div>
+                        <div class="flex justify-between text-sm mb-1.5">
+                            <span class="font-semibold">Tactics & Calculation</span>
+                            <span class="text-gift-slate dark:text-gift-slate-bright font-bold">78%</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width:78%"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-sm mb-1.5">
+                            <span class="font-semibold">Positional Understanding</span>
+                            <span class="text-gift-slate dark:text-gift-slate-bright font-bold">65%</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width:65%"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-sm mb-1.5">
+                            <span class="font-semibold">Endgame Technique</span>
+                            <span class="text-gift-slate dark:text-gift-slate-bright font-bold">52%</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width:52%"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-sm mb-1.5">
+                            <span class="font-semibold">Opening Repertoire</span>
+                            <span class="text-gift-slate dark:text-gift-slate-bright font-bold">71%</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width:71%"></div></div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-sm mb-1.5">
+                            <span class="font-semibold">Mental Resilience</span>
+                            <span class="text-gift-slate dark:text-gift-slate-bright font-bold">60%</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width:60%"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-design p-4 sm:p-6">
+                <h3 class="font-serif font-bold text-xl mb-4">Coach Feedback</h3>
+                <div class="p-4 rounded-2xl bg-[rgba(var(--color-rgb-primary),0.04)] dark:bg-[rgba(var(--color-rgb-bright),0.05)] border-l-4 border-gift-slate">
+                    <p class="text-sm leading-relaxed mb-3">"Arjun has shown excellent progress in tactical awareness this quarter. His calculation depth has improved significantly. Focus area for next month: endgame conversions and time management in longer games."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-full bg-gift-slate/20 dark:bg-gift-slate-bright/20 flex items-center justify-center text-gift-slate dark:text-gift-slate-bright font-bold text-xs font-serif">MR</div>
+                        <div>
+                            <p class="text-xs font-bold">FM Marcus Rivera</p>
+                            <p class="text-[10px] text-neutral-dark/60 dark:text-gray-400">Head of Junior Development · April 2026</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== STUDY RESOURCES ========== -->
+        <div id="page-resources" class="page-content hidden">
+            <div class="card-design p-4 sm:p-6">
+                <h3 class="font-serif font-bold text-2xl mb-4">Study Resources</h3>
+                <p class="text-sm text-neutral-dark/60 dark:text-gray-400 mb-6">Curated materials, puzzle sets, and lesson notes from your coaches.</p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="p-5 rounded-2xl border border-[rgba(var(--color-rgb-primary),0.15)] dark:border-[rgba(var(--color-rgb-bright),0.15)] hover:border-gift-slate transition cursor-pointer">
+                        <div class="w-12 h-12 rounded-xl bg-[rgba(var(--color-rgb-primary),0.1)] dark:bg-[rgba(var(--color-rgb-bright),0.15)] flex items-center justify-center text-gift-slate dark:text-gift-slate-bright text-xl mb-4">
+                            <i class="fas fa-puzzle-piece"></i>
+                        </div>
+                        <h4 class="font-bold mb-1">Weekly Puzzle Set</h4>
+                        <p class="text-xs text-neutral-dark/60 dark:text-gray-400 mb-3">20 tactical puzzles · Intermediate level</p>
+                        <span class="text-xs font-bold text-gift-slate dark:text-gift-slate-bright"><i class="fas fa-download mr-1"></i>Download PDF</span>
+                    </div>
+                    <div class="p-5 rounded-2xl border border-[rgba(var(--color-rgb-primary),0.15)] dark:border-[rgba(var(--color-rgb-bright),0.15)] hover:border-gift-slate transition cursor-pointer">
+                        <div class="w-12 h-12 rounded-xl bg-[rgba(var(--color-rgb-primary),0.1)] dark:bg-[rgba(var(--color-rgb-bright),0.15)] flex items-center justify-center text-gift-slate dark:text-gift-slate-bright text-xl mb-4">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h4 class="font-bold mb-1">Opening Repertoire Notes</h4>
+                        <p class="text-xs text-neutral-dark/60 dark:text-gray-400 mb-3">Italian Game & Sicilian Defense lines</p>
+                        <span class="text-xs font-bold text-gift-slate dark:text-gift-slate-bright"><i class="fas fa-file-alt mr-1"></i>View Notes</span>
+                    </div>
+                    <div class="p-5 rounded-2xl border border-[rgba(var(--color-rgb-primary),0.15)] dark:border-[rgba(var(--color-rgb-bright),0.15)] hover:border-gift-slate transition cursor-pointer">
+                        <div class="w-12 h-12 rounded-xl bg-[rgba(var(--color-rgb-primary),0.1)] dark:bg-[rgba(var(--color-rgb-bright),0.15)] flex items-center justify-center text-gift-slate dark:text-gift-slate-bright text-xl mb-4">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h4 class="font-bold mb-1">Recorded Lecture</h4>
+                        <p class="text-xs text-neutral-dark/60 dark:text-gray-400 mb-3">Endgame Essentials · Coach GM Volkov</p>
+                        <span class="text-xs font-bold text-gift-slate dark:text-gift-slate-bright"><i class="fas fa-play mr-1"></i>Watch Now</span>
+                    </div>
+                    <div class="p-5 rounded-2xl border border-[rgba(var(--color-rgb-primary),0.15)] dark:border-[rgba(var(--color-rgb-bright),0.15)] hover:border-gift-slate transition cursor-pointer">
+                        <div class="w-12 h-12 rounded-xl bg-[rgba(var(--color-rgb-primary),0.1)] dark:bg-[rgba(var(--color-rgb-bright),0.15)] flex items-center justify-center text-gift-slate dark:text-gift-slate-bright text-xl mb-4">
+                            <i class="fas fa-chess-board"></i>
+                        </div>
+                        <h4 class="font-bold mb-1">Game Database</h4>
+                        <p class="text-xs text-neutral-dark/60 dark:text-gray-400 mb-3">Your analyzed games with coach notes</p>
+                        <span class="text-xs font-bold text-gift-slate dark:text-gift-slate-bright"><i class="fas fa-external-link-alt mr-1"></i>Open Portal</span>
+                    </div>
+                    <div class="p-5 rounded-2xl border border-[rgba(var(--color-rgb-primary),0.15)] dark:border-[rgba(var(--color-rgb-bright),0.15)] hover:border-gift-slate transition cursor-pointer">
+                        <div class="w-12 h-12 rounded-xl bg-[rgba(var(--color-rgb-primary),0.1)] dark:bg-[rgba(var(--color-rgb-bright),0.15)] flex items-center justify-center text-gift-slate dark:text-gift-slate-bright text-xl mb-4">
+                            <i class="fas fa-scroll"></i>
+                        </div>
+                        <h4 class="font-bold mb-1">Tournament Prep Guide</h4>
+                        <p class="text-xs text-neutral-dark/60 dark:text-gray-400 mb-3">Checklist & mental preparation</p>
+                        <span class="text-xs font-bold text-gift-slate dark:text-gift-slate-bright"><i class="fas fa-download mr-1"></i>Download</span>
+                    </div>
+                    <div class="p-5 rounded-2xl border border-dashed border-[rgba(var(--color-rgb-primary),0.25)] dark:border-[rgba(var(--color-rgb-bright),0.25)] hover:border-gift-slate transition cursor-pointer text-center flex flex-col items-center justify-center">
+                        <i class="fas fa-plus-circle text-2xl text-gift-slate dark:text-gift-slate-bright mb-2"></i>
+                        <p class="text-sm font-bold">Request Custom Resource</p>
+                        <p class="text-xs text-neutral-dark/60 dark:text-gray-400 mt-1">Ask your coach for specific material</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== PAYMENTS ========== -->
+        <div id="page-payments" class="page-content hidden">
+            <div class="card-design p-4 sm:p-6 mb-6">
+                <h3 class="font-serif font-bold text-2xl mb-4">Payment Summary</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+                    <div class="p-4 rounded-2xl bg-[rgba(var(--color-rgb-primary),0.06)] dark:bg-[rgba(var(--color-rgb-bright),0.08)] border border-[rgba(var(--color-rgb-primary),0.1)]">
+                        <p class="text-xs text-neutral-dark/60 dark:text-gray-400 mb-1">Total Program</p>
+                        <p class="text-2xl font-bold font-serif text-neutral-dark dark:text-white">$1,200</p>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-[rgba(var(--color-rgb-primary),0.06)] dark:bg-[rgba(var(--color-rgb-bright),0.08)] border border-[rgba(var(--color-rgb-primary),0.1)]">
+                        <p class="text-xs text-neutral-dark/60 dark:text-gray-400 mb-1">Paid to Date</p>
+                        <p class="text-2xl font-bold font-serif text-green-600 dark:text-green-400">$600</p>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-[rgba(var(--color-rgb-primary),0.06)] dark:bg-[rgba(var(--color-rgb-bright),0.08)] border border-[rgba(var(--color-rgb-primary),0.1)]">
+                        <p class="text-xs text-neutral-dark/60 dark:text-gray-400 mb-1">Balance Due</p>
+                        <p class="text-2xl font-bold font-serif text-gift-slate">$600</p>
+                    </div>
+                </div>
+                <div class="progress-bar mb-2"><div class="progress-fill" style="width:50%"></div></div>
+                <p class="text-xs text-neutral-dark/60 dark:text-gray-400 text-right">50% complete · Next payment due May 30, 2026</p>
+            </div>
+
+            <div class="card-design p-4 sm:p-6">
+                <h3 class="font-serif font-bold text-2xl mb-4">Installment Schedule</h3>
+                <div class="space-y-3">
+                    <div class="receipt-item flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 sm:p-2 rounded-xl sm:rounded-none bg-[rgba(var(--color-rgb-primary),0.02)] sm:bg-transparent">
+                        <div class="flex items-center gap-3 min-w-0 flex-1">
+                            <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/40 flex items-center justify-center shrink-0">
+                                <i class="fas fa-check text-green-600 dark:text-green-400 text-sm"></i>
+                            </div>
+                            <div class="min-w-0 flex-1">
+                                <p class="font-bold text-sm sm:text-base leading-tight">Deposit · Installment 1 of 3</p>
+                                <p class="text-xs sm:text-sm text-neutral-dark/60 dark:text-gray-400 mt-0.5">Paid Jan 15, 2026 · Visa •••• 4242</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between sm:justify-end gap-3 pl-13 sm:pl-0 pt-1 sm:pt-0 border-t sm:border-t-0 border-[rgba(var(--color-rgb-primary),0.06)] dark:border-[rgba(var(--color-rgb-bright),0.08)]">
+                            <span class="font-bold text-base sm:text-base">$400.00</span>
+                            <span class="status-badge status-completed text-xs">Paid</span>
+                        </div>
+                    </div>
+                    <div class="receipt-item flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 sm:p-2 rounded-xl sm:rounded-none bg-[rgba(var(--color-rgb-primary),0.02)] sm:bg-transparent">
+                        <div class="flex items-center gap-3 min-w-0 flex-1">
+                            <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/40 flex items-center justify-center shrink-0">
+                                <i class="fas fa-check text-green-600 dark:text-green-400 text-sm"></i>
+                            </div>
+                            <div class="min-w-0 flex-1">
+                                <p class="font-bold text-sm sm:text-base leading-tight">Mid-Payment · Installment 2 of 3</p>
+                                <p class="text-xs sm:text-sm text-neutral-dark/60 dark:text-gray-400 mt-0.5">Paid Mar 15, 2026 · Visa •••• 4242</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between sm:justify-end gap-3 pl-13 sm:pl-0 pt-1 sm:pt-0 border-t sm:border-t-0 border-[rgba(var(--color-rgb-primary),0.06)] dark:border-[rgba(var(--color-rgb-bright),0.08)]">
+                            <span class="font-bold text-base sm:text-base">$200.00</span>
+                            <span class="status-badge status-completed text-xs">Paid</span>
+                        </div>
+                    </div>
+                    <div class="receipt-item flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 sm:p-2 rounded-xl sm:rounded-none bg-[rgba(var(--color-rgb-primary),0.02)] sm:bg-transparent border-b-0">
+                        <div class="flex items-center gap-3 min-w-0 flex-1">
+                            <div class="w-10 h-10 rounded-full bg-orange-100 dark:bg-orange-900/40 flex items-center justify-center shrink-0">
+                                <i class="fas fa-clock text-orange-600 dark:text-orange-400 text-sm"></i>
+                            </div>
+                            <div class="min-w-0 flex-1">
+                                <p class="font-bold text-sm sm:text-base leading-tight">Final Balance · Installment 3 of 3</p>
+                                <p class="text-xs sm:text-sm text-neutral-dark/60 dark:text-gray-400 mt-0.5">Due May 30, 2026 · Auto-pay enabled</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between sm:justify-end gap-3 pl-13 sm:pl-0 pt-1 sm:pt-0 border-t sm:border-t-0 border-[rgba(var(--color-rgb-primary),0.06)] dark:border-[rgba(var(--color-rgb-bright),0.08)]">
+                            <span class="font-bold text-base sm:text-base">$600.00</span>
+                            <span class="status-badge status-pending text-xs">Upcoming</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn-primary-design w-full mt-6 py-3 text-sm font-bold inline-flex items-center justify-center gap-2">
+                    <i class="fas fa-credit-card"></i> Make a Payment
+                </button>
+            </div>
+        </div>
+
+        <!-- ========== DOCUMENTS / CERTIFICATES ========== -->
+        <div id="page-documents" class="page-content hidden">
+            <div class="card-design p-4 sm:p-6">
+                <h3 class="font-serif font-bold text-2xl mb-4">Certificates & Documents</h3>
+                <p class="text-sm text-neutral-dark/60 dark:text-gray-400 mb-6">Download your course certificates, enrollment documents, and payment invoices.</p>
+                <div class="space-y-2">
+                    <div class="receipt-item flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 sm:p-2 rounded-xl sm:rounded-none bg-[rgba(var(--color-rgb-primary),0.02)] sm:bg-transparent">
+                        <div class="min-w-0 flex-1"><p class="font-bold">Opening Repertoire Lab — Certificate</p><p class="text-xs sm:text-sm text-neutral-dark/60 dark:text-gray-400">Completed Feb 2026 · Coach IM Sarah Chen</p></div>
+                        <div class="flex items-center justify-between sm:justify-end gap-3 w-full sm:w-auto pt-1 sm:pt-0">
+                            <span class="status-badge status-completed text-xs">Available</span>
+                            <button class="text-gift-slate hover:text-gift-slate-dark"><i class="fas fa-download"></i></button>
+                        </div>
+                    </div>
+                    <div class="receipt-item flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 sm:p-2 rounded-xl sm:rounded-none bg-[rgba(var(--color-rgb-primary),0.02)] sm:bg-transparent">
+                        <div class="min-w-0 flex-1"><p class="font-bold">Enrollment Agreement · Intermediate Program</p><p class="text-xs sm:text-sm text-neutral-dark/60 dark:text-gray-400">Signed Jan 10, 2026</p></div>
+                        <div class="flex items-center justify-between sm:justify-end gap-3 w-full sm:w-auto pt-1 sm:pt-0">
+                            <span class="status-badge status-completed text-xs">Signed</span>
+                            <button class="text-gift-slate hover:text-gift-slate-dark"><i class="fas fa-download"></i></button>
+                        </div>
+                    </div>
+                    <div class="receipt-item flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 sm:p-2 rounded-xl sm:rounded-none bg-[rgba(var(--color-rgb-primary),0.02)] sm:bg-transparent">
+                        <div class="min-w-0 flex-1"><p class="font-bold">Payment Receipt · Installment 2</p><p class="text-xs sm:text-sm text-neutral-dark/60 dark:text-gray-400">Paid Mar 15, 2026 · $200.00</p></div>
+                        <div class="flex items-center justify-between sm:justify-end gap-3 w-full sm:w-auto pt-1 sm:pt-0">
+                            <span class="status-badge status-completed text-xs">Available</span>
+                            <button class="text-gift-slate hover:text-gift-slate-dark"><i class="fas fa-download"></i></button>
+                        </div>
+                    </div>
+                    <div class="receipt-item flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 sm:p-2 rounded-xl sm:rounded-none bg-[rgba(var(--color-rgb-primary),0.02)] sm:bg-transparent">
+                        <div class="min-w-0 flex-1"><p class="font-bold">Tournament Participation Certificate</p><p class="text-xs sm:text-sm text-neutral-dark/60 dark:text-gray-400">Friday Night Blitz · Apr 4, 2026</p></div>
+                        <div class="flex items-center justify-between sm:justify-end gap-3 w-full sm:w-auto pt-1 sm:pt-0">
+                            <span class="status-badge status-pending text-xs">Processing</span>
+                            <button class="text-gift-slate hover:text-gift-slate-dark disabled:opacity-40"><i class="fas fa-download"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // ===== RTL Toggle =====
+            const rtlToggle = document.getElementById('rtl-toggle');
+            const rtlToggleMobile = document.getElementById('rtl-toggle-mobile');
+            function setRTL(isRTL) {
+                document.documentElement.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
+                localStorage.setItem('dir', isRTL ? 'rtl' : 'ltr');
+            }
+            const savedDir = localStorage.getItem('dir');
+            setRTL(savedDir === 'rtl');
+            if (rtlToggle) rtlToggle.addEventListener('click', () => setRTL(document.documentElement.getAttribute('dir') !== 'rtl'));
+            if (rtlToggleMobile) rtlToggleMobile.addEventListener('click', () => setRTL(document.documentElement.getAttribute('dir') !== 'rtl'));
+
+            // ===== Theme Toggle =====
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+            function setTheme(isDark) {
+                if (isDark) document.documentElement.classList.add('dark');
+                else document.documentElement.classList.remove('dark');
+                [themeToggle, themeToggleMobile].forEach(btn => {
+                    if (btn) {
+                        let moon = btn.querySelector('.fa-moon'), sun = btn.querySelector('.fa-sun');
+                        if (isDark) { moon?.classList.add('hidden'); sun?.classList.remove('hidden'); }
+                        else { moon?.classList.remove('hidden'); sun?.classList.add('hidden'); }
+                    }
+                });
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            }
+            const savedTheme = localStorage.getItem('theme');
+            setTheme(savedTheme === 'dark');
+            if (themeToggle) themeToggle.addEventListener('click', () => setTheme(!document.documentElement.classList.contains('dark')));
+            if (themeToggleMobile) themeToggleMobile.addEventListener('click', () => setTheme(!document.documentElement.classList.contains('dark')));
+
+            // ===== Mobile Sidebar =====
+            const menuToggle = document.getElementById('menuToggle');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            function closeSidebar() { sidebar.classList.remove('open'); overlay.classList.remove('open'); }
+            function openSidebar() { sidebar.classList.add('open'); overlay.classList.add('open'); }
+            if (menuToggle) menuToggle.addEventListener('click', (e) => { e.stopPropagation(); sidebar.classList.contains('open') ? closeSidebar() : openSidebar(); });
+            if (overlay) overlay.addEventListener('click', closeSidebar);
+            window.addEventListener('resize', () => { if (window.innerWidth > 768 && sidebar.classList.contains('open')) closeSidebar(); });
+
+            // ===== Page Navigation =====
+            const sidebarItems = document.querySelectorAll('.sidebar-item');
+            const pages = document.querySelectorAll('.page-content');
+            const pageTitle = document.getElementById('page-title');
+            const pageSubtitle = document.getElementById('page-subtitle');
+            const titles = {
+                dashboard: { title: 'Dashboard', subtitle: 'Welcome back, Arjun' },
+                batches: { title: 'My Batches', subtitle: 'Your enrolled training programs' },
+                schedule: { title: 'Class Schedule', subtitle: 'Your weekly training calendar' },
+                tournaments: { title: 'Tournaments', subtitle: 'Registrations & upcoming events' },
+                progress: { title: 'My Progress', subtitle: 'Rating, skills, and coach feedback' },
+                resources: { title: 'Study Resources', subtitle: 'Puzzle sets, notes, and lectures' },
+                payments: { title: 'Payments & Installments', subtitle: 'Track your payment schedule' },
+                documents: { title: 'Certificates & Documents', subtitle: 'Download your records' }
+            };
+            function navigateTo(page) {
+                sidebarItems.forEach(i => i.classList.remove('active'));
+                document.querySelector(`.sidebar-item[data-page="${page}"]`)?.classList.add('active');
+                pages.forEach(p => p.classList.add('hidden'));
+                document.getElementById(`page-${page}`)?.classList.remove('hidden');
+                if (titles[page]) { pageTitle.textContent = titles[page].title; pageSubtitle.textContent = titles[page].subtitle; }
+                closeSidebar();
+            }
+            sidebarItems.forEach(item => { item.addEventListener('click', () => { navigateTo(item.getAttribute('data-page')); }); });
+            document.querySelectorAll('[data-nav]').forEach(btn => { btn.addEventListener('click', () => { navigateTo(btn.getAttribute('data-nav')); }); });
+
+            // Show dashboard by default
+            navigateTo('dashboard');
+        });
+    </script>
+</body>
+</html>

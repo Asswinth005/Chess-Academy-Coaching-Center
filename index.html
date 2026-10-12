@@ -1,0 +1,2081 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth" data-theme="knight-noir">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Academy & Coaching Center | Master the Board</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="alternate icon" href="assets/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+    <meta name="description"
+        content="Elite chess coaching, tactical programs by skill level, tournaments, and student portal. Train with grandmaster-level coaches.">
+    <!-- Tailwind CSS with Local & CDN Fallback -->
+    <script src="tailwind.js"></script>
+    <script>
+        if (typeof tailwind === 'undefined') {
+            document.write('<script src="https://cdn.tailwindcss.com"><\/script>');
+        }
+    </script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'gift-slate': 'rgba(var(--color-rgb-primary), <alpha-value>)',
+                        'gift-slate-light': 'rgba(var(--color-rgb-light), <alpha-value>)',
+                        'gift-slate-dark': 'rgba(var(--color-rgb-dark), <alpha-value>)',
+                        'gift-slate-bright': 'rgba(var(--color-rgb-bright), <alpha-value>)',
+                        'gift-accent': 'rgba(var(--color-rgb-accent), <alpha-value>)',
+                        'bg-warm': 'var(--color-bg-warm)',
+                        'neutral-dark': 'var(--color-text-dark)',
+                        'neutral-light': '#E8E2D9',
+                        'dark-bg': '#0C0F12',
+                        'dark-card': '#141A1F',
+                        'dark-surface': '#1C242B',
+                    },
+                    fontFamily: {
+                        'sans': ['Plus Jakarta Sans', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+                        'serif': ['Cormorant Garamond', 'serif'],
+                        'display': ['Outfit', 'Plus Jakarta Sans', 'sans-serif'],
+                        'premium': ['Outfit', 'Plus Jakarta Sans', 'sans-serif'],
+                        'alt': ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'fade-in': 'fadeIn 0.3s ease-out',
+                        'pulse-glow': 'pulseGlow 3s infinite',
+                    },
+                    keyframes: {
+                        slideUp: {
+                            '0%': { transform: 'translateY(30px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { opacity: '0.6' },
+                            '50%': { opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <script>
+        // Prevent theme flash on reload
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+        }
+        if (localStorage.getItem('dir') === 'rtl') {
+            document.documentElement.dir = 'rtl';
+            document.documentElement.lang = 'ar';
+        }
+    </script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
+        rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chess Academy Stylesheet (Self-Contained) -->
+    <style>
+        :root,
+        [data-theme="knight-noir"],
+        [data-theme="classic-wood"] {
+            --color-primary: #1E3A5F;
+            --color-primary-light: #3B5F8A;
+            --color-primary-dark: #0F2440;
+            --color-primary-bright: #5B8FC9;
+            --color-accent: #C9A44C;
+            --color-bg-warm: #F7F5F0;
+            --color-text-dark: #0C1926;
+            --color-rgb-primary: 30, 58, 95;
+            --color-rgb-light: 59, 95, 138;
+            --color-rgb-dark: 15, 36, 64;
+            --color-rgb-bright: 91, 143, 201;
+            --color-rgb-accent: 201, 164, 76;
+        }
+
+        [data-theme="emerald-board"] {
+            --color-primary: #1B4D3E;
+            --color-primary-light: #2D7A5F;
+            --color-primary-dark: #0E2E24;
+            --color-primary-bright: #5CB88A;
+            --color-accent: #D4AF37;
+            --color-bg-warm: #F0F7F3;
+            --color-text-dark: #0A1F18;
+            --color-rgb-primary: 27, 77, 62;
+            --color-rgb-light: 45, 122, 95;
+            --color-rgb-dark: 14, 46, 36;
+            --color-rgb-bright: 92, 184, 138;
+            --color-rgb-accent: 212, 175, 55;
+        }
+
+        [data-theme="crimson-gambit"] {
+            --color-primary: #8B1A2B;
+            --color-primary-light: #B83045;
+            --color-primary-dark: #5C0E1B;
+            --color-primary-bright: #E05A70;
+            --color-accent: #C9A44C;
+            --color-bg-warm: #FDF5F5;
+            --color-text-dark: #2B0A0F;
+            --color-rgb-primary: 139, 26, 43;
+            --color-rgb-light: 184, 48, 69;
+            --color-rgb-dark: 92, 14, 27;
+            --color-rgb-bright: 224, 90, 112;
+            --color-rgb-accent: 201, 164, 76;
+        }
+
+        /* Base styles */
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--color-bg-warm);
+            color: var(--color-text-dark);
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+
+        .dark body {
+            background-color: #0C0F12;
+            color: #E3E8ED;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .board-gradient-text,
+        .chess-gradient-text {
+            background: linear-gradient(135deg, var(--color-primary-bright) 0%, var(--color-primary) 50%, var(--color-primary-dark) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Luxury Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--color-bg-warm);
+        }
+
+        .dark ::-webkit-scrollbar-track {
+            background: #0C0F12;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(var(--color-rgb-primary), 0.35);
+            border-radius: 9999px;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--color-primary);
+        }
+
+        .dark ::-webkit-scrollbar-thumb {
+            background: rgba(var(--color-rgb-bright), 0.35);
+        }
+
+        .dark ::-webkit-scrollbar-thumb:hover {
+            background: var(--color-primary-bright);
+        }
+
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: rgba(var(--color-rgb-primary), 0.4) transparent;
+        }
+
+        /* Dark mode overrides */
+        .dark .text-gift-slate {
+            color: var(--color-primary-bright) !important;
+        }
+
+        .dark .bg-gift-slate {
+            background-color: var(--color-primary-bright) !important;
+        }
+
+        .dark .border-gift-slate {
+            border-color: var(--color-primary-bright) !important;
+        }
+
+        .cta-chess-banner {
+            background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 50%, var(--color-primary-dark) 100%) !important;
+        }
+
+        .dark .cta-chess-banner {
+            background: linear-gradient(135deg, #0C0F12 0%, #141A1F 50%, #0C0F12 100%) !important;
+        }
+
+        .dark .service-icon {
+            background: rgba(var(--color-rgb-bright), 0.12) !important;
+            color: var(--color-primary-bright) !important;
+            border: 1px solid rgba(var(--color-rgb-bright), 0.25);
+        }
+
+        .dark .badge {
+            background: rgba(12, 15, 18, 0.85) !important;
+            color: #FFFFFF !important;
+            border: 1px solid rgba(255, 255, 255, 0.35) !important;
+        }
+
+        .dark .dropdown-item:hover {
+            color: var(--color-primary-bright) !important;
+        }
+
+        .dark .auth-btn.login:hover {
+            border-color: transparent !important;
+            color: #0C0F12 !important;
+        }
+
+        .dark .nav-item:hover {
+            color: var(--color-primary-bright) !important;
+        }
+
+        .dark .nav-item::after {
+            background: var(--color-primary-bright) !important;
+        }
+
+        .dark .dropdown-item i {
+            color: var(--color-primary-bright) !important;
+        }
+
+        .dark .premium-line {
+            background: linear-gradient(90deg, var(--color-primary-bright), rgba(var(--color-rgb-bright), 0.1));
+        }
+
+        /* Premium Navigation */
+        .nav-item {
+            position: relative;
+            padding: 0.5rem 0;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 0.02em;
+            color: var(--color-text-dark);
+            transition: color 0.3s ease;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .dark .nav-item {
+            color: #E3E8ED;
+        }
+
+        .nav-item:hover {
+            color: var(--color-primary);
+        }
+
+        .dark .nav-item:hover {
+            color: var(--color-primary-bright);
+        }
+
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light));
+            transition: width 0.3s ease;
+        }
+
+        .dark .nav-item::after {
+            background: linear-gradient(90deg, var(--color-primary-bright), var(--color-primary-light));
+        }
+
+        [dir="rtl"] .nav-item::after {
+            left: auto;
+            right: 0;
+        }
+
+        .nav-item:hover::after,
+        .nav-item.active::after {
+            width: 100%;
+        }
+
+        .nav-item.active {
+            color: var(--color-primary) !important;
+            font-weight: 700;
+        }
+
+        .dark .nav-item.active {
+            color: var(--color-primary-bright) !important;
+        }
+
+        .mobile-menu-item.active {
+            color: var(--color-primary) !important;
+            font-weight: 700;
+        }
+
+        .dark .mobile-menu-item.active {
+            color: var(--color-primary-bright) !important;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 230px;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 16px;
+            padding: 0.85rem 0;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.18);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(12px);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 1000;
+            border: 1px solid rgba(var(--color-rgb-primary), 0.2);
+            backdrop-filter: blur(12px);
+        }
+
+        .dark .dropdown-menu {
+            background: rgba(20, 26, 31, 0.98);
+            border-color: rgba(var(--color-rgb-bright), 0.25);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: -12px;
+            left: 0;
+            right: 0;
+            height: 12px;
+        }
+
+        [dir="rtl"] .dropdown-menu {
+            left: auto;
+            right: 0;
+        }
+
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 0.8rem 1.6rem;
+            color: var(--color-text-dark);
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .dark .dropdown-item {
+            color: #E3E8ED;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(var(--color-rgb-primary), 0.1);
+            color: var(--color-primary);
+            padding-left: 1.85rem;
+        }
+
+        .dark .dropdown-item:hover {
+            background: rgba(var(--color-rgb-bright), 0.15);
+            color: var(--color-primary-bright);
+        }
+
+        [dir="rtl"] .dropdown-item:hover {
+            padding-left: 1.6rem;
+            padding-right: 1.85rem;
+        }
+
+        .dropdown-item i {
+            margin-right: 0.85rem;
+            width: 20px;
+            text-align: center;
+            color: var(--color-primary);
+        }
+
+        [dir="rtl"] .dropdown-item i {
+            margin-right: 0;
+            margin-left: 0.85rem;
+        }
+
+        .dark .dropdown-item i {
+            color: var(--color-primary-bright);
+        }
+
+        [dir="rtl"] .desktop-toggle-group {
+            margin-left: 0;
+            margin-right: 1.25rem;
+        }
+
+        .auth-btn {
+            padding: 0.6rem 1.75rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.88rem;
+            letter-spacing: 0.04em;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            white-space: nowrap;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            text-transform: uppercase;
+        }
+
+        .auth-btn.login {
+            background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+            color: #ffffff !important;
+            box-shadow: 0 4px 15px rgba(var(--color-rgb-primary), 0.35);
+            border: none;
+        }
+
+        .dark .auth-btn.login {
+            background: linear-gradient(135deg, var(--color-primary-bright) 0%, var(--color-primary) 100%);
+            color: #0C0F12 !important;
+            box-shadow: 0 4px 15px rgba(var(--color-rgb-bright), 0.3);
+            border: none;
+        }
+
+        .auth-btn.login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(var(--color-rgb-primary), 0.45);
+            color: #ffffff !important;
+        }
+
+        .dark .auth-btn.login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(var(--color-rgb-bright), 0.45);
+            color: #0C0F12 !important;
+        }
+
+        .auth-btn.signup {
+            background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(var(--color-rgb-primary), 0.3);
+        }
+
+        .dark .auth-btn.signup {
+            background: linear-gradient(135deg, var(--color-primary-bright) 0%, var(--color-primary) 100%);
+            color: #0C0F12;
+        }
+
+        .auth-btn.signup:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(var(--color-rgb-primary), 0.4);
+        }
+
+        .dark .auth-btn.signup:hover {
+            box-shadow: 0 10px 25px -5px rgba(var(--color-rgb-bright), 0.4);
+        }
+
+        .toggle-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(var(--color-rgb-primary), 0.12);
+            color: var(--color-primary);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(var(--color-rgb-primary), 0.2);
+            cursor: pointer;
+        }
+
+        .dark .toggle-btn {
+            background: rgba(var(--color-rgb-bright), 0.12);
+            color: var(--color-primary-bright);
+            border-color: rgba(var(--color-rgb-bright), 0.25);
+        }
+
+        .toggle-btn:hover {
+            background: var(--color-primary);
+            color: white;
+            transform: scale(1.08);
+        }
+
+        .dark .toggle-btn:hover {
+            background: var(--color-primary-bright);
+            color: #0C0F12;
+            transform: scale(1.08);
+        }
+
+        .toggle-btn.active {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .dark .toggle-btn.active {
+            background: var(--color-primary-bright);
+            color: #0C0F12;
+        }
+
+        @media (max-width: 1279px) {
+            .desktop-toggle-group {
+                display: none !important;
+            }
+        }
+
+        .mobile-menu {
+            background: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+
+        .mobile-menu:not(.open) {
+            border: none !important;
+            border-width: 0 !important;
+            margin-top: 0 !important;
+            padding: 0 !important;
+            box-shadow: none !important;
+            pointer-events: none !important;
+        }
+
+        .dark .mobile-menu {
+            background: #0C0F12;
+            border-color: rgba(var(--color-rgb-bright), 0.2);
+        }
+
+        .mobile-menu.open {
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+
+        .mobile-menu-item {
+            display: block;
+            padding: 1.1rem 1.75rem;
+            font-weight: 600;
+            color: var(--color-text-dark);
+            border-bottom: 1px solid rgba(var(--color-rgb-primary), 0.1);
+            transition: all 0.2s ease;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            font-size: 0.9rem;
+        }
+
+        .dark .mobile-menu-item {
+            color: #E3E8ED;
+            border-bottom-color: rgba(var(--color-rgb-bright), 0.15);
+        }
+
+        .mobile-menu-item:hover {
+            background-color: rgba(var(--color-rgb-primary), 0.06);
+            color: var(--color-primary);
+        }
+
+        .dark .mobile-menu-item:hover {
+            background-color: rgba(var(--color-rgb-bright), 0.12);
+            color: var(--color-primary-bright);
+        }
+
+        .mobile-dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: rgba(var(--color-rgb-primary), 0.04);
+        }
+
+        .dark .mobile-dropdown-content {
+            background: rgba(20, 26, 31, 0.8);
+        }
+
+        .mobile-dropdown-content.show {
+            max-height: 300px;
+        }
+
+        .mobile-dropdown-item {
+            display: block;
+            padding: 0.85rem 2.75rem;
+            font-size: 0.92rem;
+            color: var(--color-text-dark);
+            transition: all 0.2s ease;
+            border-bottom: 1px solid rgba(var(--color-rgb-primary), 0.08);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .dark .mobile-dropdown-item {
+            color: #C0C8D0;
+            border-bottom-color: rgba(var(--color-rgb-bright), 0.1);
+        }
+
+        .mobile-dropdown-item:hover {
+            color: var(--color-primary);
+            background-color: rgba(var(--color-rgb-primary), 0.1);
+        }
+
+        .dark .mobile-dropdown-item:hover {
+            background-color: rgba(var(--color-rgb-bright), 0.15);
+            color: var(--color-primary-bright);
+        }
+
+        .mobile-auth-btn {
+            display: inline-block;
+            padding: 0.85rem 1.75rem;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            text-align: center;
+            margin: 0.25rem;
+            border: 1px solid transparent;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .mobile-auth-btn.login {
+            background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+            color: #ffffff !important;
+            box-shadow: 0 4px 15px rgba(var(--color-rgb-primary), 0.3);
+            border: none;
+        }
+
+        .dark .mobile-auth-btn.login {
+            background: linear-gradient(135deg, var(--color-primary-bright) 0%, var(--color-primary) 100%);
+            color: #0C0F12 !important;
+            border: none;
+        }
+
+        .mobile-auth-btn.login:hover {
+            opacity: 0.95;
+            transform: translateY(-1px);
+        }
+
+        .dark .mobile-auth-btn.login:hover {
+            opacity: 0.95;
+            transform: translateY(-1px);
+            color: #0C0F12 !important;
+        }
+
+        .mobile-auth-btn.signup {
+            background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+            color: white;
+        }
+
+        .dark .mobile-auth-btn.signup {
+            background: linear-gradient(135deg, var(--color-primary-bright) 0%, var(--color-primary) 100%);
+            color: #0C0F12;
+        }
+
+        .mobile-auth-btn.signup:hover {
+            opacity: 0.95;
+        }
+
+        .desktop-nav-container {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        /* Chess Academy Specific Components */
+        .hero-image {
+            border-radius: 28px;
+            box-shadow: 0 30px 60px -15px rgba(var(--color-rgb-primary), 0.3);
+            border: 1px solid rgba(var(--color-rgb-primary), 0.2);
+        }
+
+        .dark .hero-image {
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8);
+            border-color: rgba(var(--color-rgb-bright), 0.25);
+        }
+
+        .service-icon {
+            width: 84px;
+            height: 84px;
+            background: rgba(var(--color-rgb-primary), 0.12);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+            font-size: 2.2rem;
+            color: var(--color-primary);
+            border: 1px solid rgba(var(--color-rgb-primary), 0.25);
+            box-shadow: 0 10px 20px -5px rgba(var(--color-rgb-primary), 0.15);
+        }
+
+        .dark .service-icon {
+            background: rgba(var(--color-rgb-bright), 0.12);
+            color: var(--color-primary-bright);
+            border-color: rgba(var(--color-rgb-bright), 0.3);
+        }
+
+        .gift-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px -10px rgba(var(--color-rgb-primary), 0.12);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 1px solid rgba(var(--color-rgb-primary), 0.18);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .dark .gift-card {
+            background: #141A1F;
+            border-color: rgba(var(--color-rgb-bright), 0.2);
+            box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        .gift-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 50px -15px rgba(var(--color-rgb-primary), 0.3);
+            border-color: rgba(var(--color-rgb-primary), 0.4);
+        }
+
+        .dark .gift-card:hover {
+            border-color: rgba(var(--color-rgb-bright), 0.5);
+            box-shadow: 0 30px 50px -15px rgba(0, 0, 0, 0.8);
+        }
+
+        .badge {
+            background: rgba(12, 15, 18, 0.75) !important;
+            color: #FFFFFF !important;
+            padding: 0.35rem 1.1rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.82rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            border: 1px solid rgba(255, 255, 255, 0.3) !important;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .dark .badge {
+            background: rgba(12, 15, 18, 0.85) !important;
+            color: #FFFFFF !important;
+            border: 1px solid rgba(255, 255, 255, 0.35) !important;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+        }
+
+        footer {
+            background: white;
+            color: var(--color-text-dark);
+            border-top: 1px solid rgba(var(--color-rgb-primary), 0.18);
+        }
+
+        .dark footer {
+            background: #0C0F12;
+            color: #E3E8ED;
+            border-color: rgba(var(--color-rgb-bright), 0.2);
+        }
+
+        footer a:hover {
+            color: var(--color-primary);
+        }
+
+        .dark footer a:hover {
+            color: var(--color-primary-bright);
+        }
+
+        .social-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(var(--color-rgb-primary), 0.1);
+            color: var(--color-primary);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            border: 1px solid rgba(var(--color-rgb-primary), 0.2);
+        }
+
+        .dark .social-icon {
+            background: rgba(var(--color-rgb-bright), 0.12);
+            color: var(--color-primary-bright);
+            border-color: rgba(var(--color-rgb-bright), 0.25);
+        }
+
+        .social-icon:hover {
+            background: var(--color-primary);
+            color: white;
+            transform: translateY(-3px) scale(1.05);
+        }
+
+        .dark .social-icon:hover {
+            background: var(--color-primary-bright);
+            color: #0C0F12;
+        }
+
+        .btn-gift {
+            background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+            color: white;
+            padding: 0.9rem 2.25rem;
+            border-radius: 50px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+            font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+            box-shadow: 0 10px 25px -5px rgba(var(--color-rgb-primary), 0.35);
+        }
+
+        .dark .btn-gift {
+            background: linear-gradient(135deg, var(--color-primary-bright) 0%, var(--color-primary) 100%);
+            color: #0C0F12;
+            box-shadow: 0 10px 25px -5px rgba(var(--color-rgb-bright), 0.35);
+        }
+
+        .btn-gift:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 35px -8px rgba(var(--color-rgb-primary), 0.5);
+        }
+
+        .dark .btn-gift:hover {
+            box-shadow: 0 18px 35px -8px rgba(var(--color-rgb-bright), 0.5);
+        }
+
+        .premium-line {
+            width: 90px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light), transparent);
+            margin: 24px 0;
+            border-radius: 2px;
+        }
+
+        .dark .premium-line {
+            background: linear-gradient(90deg, var(--color-primary-bright), var(--color-primary-light), transparent);
+        }
+
+        .client-logo {
+            filter: grayscale(1) opacity(0.5);
+            transition: all 0.3s ease;
+            max-height: 55px;
+        }
+
+        .client-logo:hover {
+            filter: grayscale(0) opacity(1);
+            transform: scale(1.05);
+        }
+
+        .dark .client-logo {
+            filter: grayscale(1) brightness(1.8) opacity(0.6);
+        }
+
+        .dark .client-logo:hover {
+            filter: grayscale(0) brightness(1) opacity(1);
+        }
+
+        /* Horizontal scroll utilities */
+        .scrollbar-thin::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .scrollbar-thin::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .scrollbar-thin::-webkit-scrollbar-thumb {
+            background: rgba(var(--color-rgb-primary), 0.4);
+            border-radius: 10px;
+        }
+
+        .dark .scrollbar-thin::-webkit-scrollbar-thumb {
+            background: rgba(var(--color-rgb-bright), 0.4);
+        }
+
+        /* High-End Agency Design Components */
+        .double-bezel-outer {
+            position: relative;
+            border-radius: 2rem;
+            padding: 0.375rem;
+            background: linear-gradient(180deg, rgba(var(--color-rgb-primary), 0.25) 0%, rgba(var(--color-rgb-primary), 0.05) 100%);
+            border: 1px solid rgba(var(--color-rgb-primary), 0.2);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.08);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .dark .double-bezel-outer {
+            background: linear-gradient(180deg, rgba(var(--color-rgb-bright), 0.2) 0%, rgba(255, 255, 255, 0.02) 100%);
+            border-color: rgba(var(--color-rgb-bright), 0.2);
+            box-shadow: 0 25px 50px -15px rgba(0, 0, 0, 0.7);
+        }
+
+        .double-bezel-outer:hover {
+            transform: translateY(-6px);
+            border-color: rgba(var(--color-rgb-primary), 0.45);
+            box-shadow: 0 30px 60px -15px rgba(var(--color-rgb-primary), 0.25);
+        }
+
+        .dark .double-bezel-outer:hover {
+            border-color: rgba(var(--color-rgb-bright), 0.45);
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.9);
+        }
+
+        .double-bezel-inner {
+            border-radius: calc(2rem - 0.375rem);
+            background: #FFFFFF;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8);
+        }
+
+        .dark .double-bezel-inner {
+            background: #141A1F;
+            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.08);
+        }
+
+        /* Button-in-Button Architecture */
+        .btn-nested {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.85rem;
+            padding: 0.65rem 0.75rem 0.65rem 1.75rem;
+            border-radius: 9999px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+            color: #FFFFFF !important;
+            box-shadow: 0 10px 25px -5px rgba(var(--color-rgb-primary), 0.35);
+        }
+
+        .dark .btn-nested {
+            background: linear-gradient(135deg, var(--color-primary-bright) 0%, var(--color-primary) 100%);
+            color: #0C0F12 !important;
+            box-shadow: 0 10px 25px -5px rgba(var(--color-rgb-bright), 0.3);
+        }
+
+        .btn-nested .icon-circle {
+            width: 2.25rem;
+            height: 2.25rem;
+            border-radius: 9999px;
+            background: rgba(255, 255, 255, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .dark .btn-nested .icon-circle {
+            background: rgba(12, 15, 18, 0.25);
+        }
+
+        .btn-nested:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 18px 35px -8px rgba(var(--color-rgb-primary), 0.5);
+        }
+
+        .dark .btn-nested:hover {
+            box-shadow: 0 18px 35px -8px rgba(var(--color-rgb-bright), 0.45);
+        }
+
+        .btn-nested:hover .icon-circle {
+            transform: translateX(3px) rotate(45deg);
+        }
+
+        .btn-nested:active {
+            transform: scale(0.98);
+        }
+
+        /* Frosted Pill Button */
+        .btn-frosted {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            padding: 0.85rem 1.75rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 0.88rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            border: 1px solid rgba(var(--color-rgb-primary), 0.3);
+            color: var(--color-text-dark);
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .dark .btn-frosted {
+            border-color: rgba(var(--color-rgb-bright), 0.3);
+            color: #E3E8ED;
+            background: rgba(25, 30, 35, 0.6);
+        }
+
+        .btn-frosted:hover {
+            background: rgba(var(--color-rgb-primary), 0.12);
+            border-color: var(--color-primary);
+            transform: translateY(-2px);
+        }
+
+        .dark .btn-frosted:hover {
+            background: rgba(var(--color-rgb-bright), 0.15);
+            border-color: var(--color-primary-bright);
+        }
+
+        @keyframes shimmerPulse {
+            0%, 100% { opacity: 0.85; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.02); }
+        }
+
+        .eyebrow-pill {
+            animation: shimmerPulse 4s ease-in-out infinite;
+        }
+
+        /* Chess Board Pattern Accent */
+        .chess-pattern {
+            background-image: 
+                linear-gradient(45deg, rgba(var(--color-rgb-primary), 0.03) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(var(--color-rgb-primary), 0.03) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, rgba(var(--color-rgb-primary), 0.03) 75%),
+                linear-gradient(-45deg, transparent 75%, rgba(var(--color-rgb-primary), 0.03) 75%);
+            background-size: 40px 40px;
+            background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+        }
+
+        .dark .chess-pattern {
+            background-image: 
+                linear-gradient(45deg, rgba(var(--color-rgb-bright), 0.04) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(var(--color-rgb-bright), 0.04) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, rgba(var(--color-rgb-bright), 0.04) 75%),
+                linear-gradient(-45deg, transparent 75%, rgba(var(--color-rgb-bright), 0.04) 75%);
+        }
+
+        /* Coach Title Badges and Meet the Masters Components */
+        .coach-title-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.3rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.65rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        .title-gm {
+            background: linear-gradient(135deg, #C9A44C, #9A7B2E);
+            color: #FFFFFF;
+            box-shadow: 0 4px 12px rgba(201, 164, 76, 0.4);
+        }
+        .title-im {
+            background: linear-gradient(135deg, #B83045, #8B1A2B);
+            color: #FFFFFF;
+            box-shadow: 0 4px 12px rgba(184, 48, 69, 0.4);
+        }
+        .title-fm {
+            background: linear-gradient(135deg, #3B5F8A, #1E3A5F);
+            color: #FFFFFF;
+            box-shadow: 0 4px 12px rgba(59, 95, 138, 0.4);
+        }
+        .title-wim {
+            background: linear-gradient(135deg, #5CB88A, #2D7A5F);
+            color: #FFFFFF;
+            box-shadow: 0 4px 12px rgba(92, 184, 138, 0.4);
+        }
+        .coach-quote {
+            position: relative;
+            padding-left: 1.75rem;
+        }
+        .coach-quote::before {
+            content: '\201C';
+            position: absolute;
+            left: 0;
+            top: -0.5rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            line-height: 1;
+            color: rgba(var(--color-rgb-primary), 0.3);
+        }
+        .dark .coach-quote::before {
+            color: rgba(var(--color-rgb-bright), 0.3);
+        }
+        [dir="rtl"] .coach-quote {
+            padding-left: 0;
+            padding-right: 1.75rem;
+        }
+        [dir="rtl"] .coach-quote::before {
+            left: auto;
+            right: 0;
+        }
+        .coach-dossier-card {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .coach-dossier-card:hover {
+            transform: translateY(-4px);
+        }
+    </style>
+</head>
+
+<body class="bg-bg-warm dark:bg-dark-bg text-neutral-dark dark:text-gray-200 transition-colors duration-400">
+
+    <!-- ========== FLOATING ISLAND HEADER ========== -->
+    <header class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 pt-3 sm:pt-4 transition-all duration-300 pointer-events-none">
+        <nav
+            class="max-w-7xl mx-auto pointer-events-auto bg-white/85 dark:bg-[#141A1F]/90 backdrop-blur-xl rounded-full px-5 sm:px-7 py-2.5 sm:py-3 border border-gift-slate/25 dark:border-gift-slate-bright/25 shadow-[0_20px_45px_-15px_rgba(0,0,0,0.1)] dark:shadow-[0_20px_45px_-15px_rgba(0,0,0,0.7)] flex items-center justify-between transition-colors duration-400">
+            <!-- Brand Logo -->
+            <a href="index.html" class="flex items-center gap-3 group shrink-0" dir="ltr">
+                <div class="w-10 h-10 bg-gradient-to-br from-gift-slate-light to-gift-slate rounded-2xl flex items-center justify-center flex-shrink-0 shadow-md group-hover:rotate-6 transition duration-300">
+                    <i class="fas fa-chess-knight text-white dark:text-dark-bg text-lg"></i>
+                </div>
+                <div>
+                    <span class="text-lg md:text-2xl font-serif font-bold tracking-wide text-neutral-dark dark:text-white">
+                        Chess <span class="board-gradient-text">Academy</span>
+                    </span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden xl:flex items-center">
+                <div class="desktop-nav-container">
+                    <div class="flex items-center gap-4 xl:gap-6">
+                        <!-- Home Dropdown -->
+                        <div class="dropdown">
+                            <button class="nav-item active flex items-center gap-1.5"
+                                style="color: var(--color-primary); font-weight: 700;">
+                                Home <i class="fas fa-chevron-down text-[9px] opacity-70"></i>
+                            </button>
+                            <div class="dropdown-menu">
+                                <a href="index.html" class="dropdown-item"
+                                    style="background: rgba(var(--color-rgb-primary),0.12); color: var(--color-primary); border-left: 3px solid var(--color-primary); font-weight: 700;">
+                                    Home 1
+                                </a>
+                                <a href="home2.html" class="dropdown-item">Home 2</a>
+                            </div>
+                        </div>
+                        <a href="about.html" class="nav-item">About</a>
+                        <a href="programs.html" class="nav-item">Programs</a>
+                        <a href="coaches.html" class="nav-item">Coaches</a>
+                        <a href="tournaments.html" class="nav-item">Tournaments</a>
+                        <a href="contact.html" class="nav-item">Contact</a>
+                        <div class="dropdown">
+                            <button class="nav-item flex items-center gap-1.5">
+                                Portal <i class="fas fa-chevron-down text-[9px] opacity-70"></i>
+                            </button>
+                            <div class="dropdown-menu">
+                                <a href="student-portal.html" class="dropdown-item">Student Dashboard</a>
+                                <a href="admin.html" class="dropdown-item">Academy Admin</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3 ml-2">
+                        <a href="login.html" class="btn-nested !py-2 !px-4 !text-xs group">
+                            <span>Student Login</span>
+                            <span class="icon-circle !w-6 !h-6">
+                                <i class="fas fa-arrow-right text-[10px]"></i>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2 ml-4 desktop-toggle-group">
+                    <button id="theme-toggle" class="toggle-btn !w-9 !h-9" title="Toggle Dark/Light Mode">
+                        <i class="fas fa-moon text-sm"></i>
+                        <i class="fas fa-sun text-sm hidden"></i>
+                    </button>
+                    <button id="rtl-toggle" class="toggle-btn !w-9 !h-9 font-serif font-bold text-xs" title="Toggle RTL/LTR">⇄</button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobile-toggle"
+                class="xl:hidden text-neutral-dark dark:text-gray-300 p-2 focus:outline-none hover:text-gift-slate transition-colors"
+                aria-label="Toggle Navigation Menu">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </nav>
+
+        <!-- Mobile Menu Floating Card -->
+        <div id="mobile-menu" class="mobile-menu xl:hidden max-w-7xl mx-auto mt-2 rounded-3xl border border-gift-slate/20 dark:border-gift-slate-bright/25 shadow-2xl overflow-hidden pointer-events-auto">
+            <div class="mobile-dropdown">
+                <button class="mobile-dropdown-btn flex items-center justify-between w-full mobile-menu-item active"
+                    style="color: var(--color-primary); font-weight: 700;">
+                    <span>Home</span> <i class="fas fa-chevron-down text-xs"></i>
+                </button>
+                <div class="mobile-dropdown-content">
+                    <a href="index.html" class="mobile-dropdown-item"
+                        style="background: rgba(var(--color-rgb-primary),0.1); color: var(--color-primary); border-left: 3px solid var(--color-primary); font-weight: 700;">Home 1 </a>
+                    <a href="home2.html" class="mobile-dropdown-item">Home 2 </a>
+                </div>
+            </div>
+            <a href="about.html" class="mobile-menu-item">About</a>
+            <a href="programs.html" class="mobile-menu-item">Programs</a>
+            <a href="coaches.html" class="mobile-menu-item">Coaches</a>
+            <a href="tournaments.html" class="mobile-menu-item">Tournaments</a>
+            <a href="contact.html" class="mobile-menu-item">Contact</a>
+            <div class="mobile-dropdown">
+                <button class="mobile-dropdown-btn flex items-center justify-between w-full mobile-menu-item">
+                    <span>Portals</span> <i class="fas fa-chevron-down text-xs"></i>
+                </button>
+                <div class="mobile-dropdown-content">
+                    <a href="student-portal.html" class="mobile-dropdown-item">Student Dashboard</a>
+                    <a href="admin.html" class="mobile-dropdown-item">Academy Admin</a>
+                </div>
+            </div>
+            <div class="p-5 flex flex-col gap-3">
+                <a href="login.html" class="btn-nested justify-center !py-3 w-full text-center">
+                    <span>Student Login</span>
+                    <span class="icon-circle !w-7 !h-7"><i class="fas fa-arrow-right text-xs"></i></span>
+                </a>
+            </div>
+            <div class="flex justify-center gap-3 p-4 border-t border-gray-100 dark:border-gray-800">
+                <button id="theme-toggle-mobile" class="toggle-btn"><i class="fas fa-moon"></i><i class="fas fa-sun hidden"></i></button>
+                <button id="rtl-toggle-mobile" class="toggle-btn">⇄</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========== SECTION 1: HERO – STRATEGIC EDITORIAL SHOWCASE ========== -->
+    <section
+        class="min-h-[auto] lg:min-h-[92vh] flex items-center pt-28 pb-12 sm:pt-32 sm:pb-14 lg:pt-32 lg:pb-14 bg-bg-warm dark:bg-dark-bg overflow-hidden transition-colors duration-400 relative chess-pattern">
+        <!-- Ambient Radial Glows -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-gradient-to-br from-gift-slate/15 via-gift-slate-bright/10 to-transparent rounded-full blur-3xl pointer-events-none -z-0"></div>
+        <div class="absolute -top-24 right-0 w-96 h-96 bg-gift-slate/10 dark:bg-gift-slate-bright/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="container mx-auto px-6 relative z-10 w-full">
+            <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 xl:gap-16 items-center">
+                <!-- Left Editorial Copy (7 cols) -->
+                <div class="lg:col-span-7 animate-slide-up text-center lg:text-left">
+                    <div
+                        class="eyebrow-pill inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-gift-slate/10 dark:bg-gift-slate-bright/10 border border-gift-slate/25 dark:border-gift-slate-bright/25 mb-6 backdrop-blur-md">
+                        <i class="fas fa-crown text-gift-slate dark:text-gift-slate-bright text-xs"></i>
+                        <span
+                            class="text-[11px] font-bold font-sans dark:text-gift-slate-bright tracking-[0.22em] uppercase">FIDE CERTIFIED COACHES • ALL AGES & LEVELS</span>
+                    </div>
+
+                    <h1
+                        class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif font-bold text-neutral-dark dark:text-white leading-[1.08] tracking-tight mb-6">
+                        Master the Board. <br class="hidden sm:inline">
+                        <span class="board-gradient-text italic font-serif">Command the Game.</span>
+                    </h1>
+
+                    <div class="premium-line mx-auto lg:mx-0 !my-5"></div>
+
+                    <p
+                        class="text-base sm:text-lg lg:text-xl text-neutral-dark/85 dark:text-gray-300 max-w-xl mx-auto lg:mx-0 mb-8 font-sans font-light leading-relaxed">
+                        Elite chess coaching for beginners through tournament masters. Structured programs by skill level, FIDE-rated tournaments, and personalized training portals.
+                    </p>
+
+                    <!-- Nested Button Architecture -->
+                    <div class="flex flex-wrap gap-4 mb-10 justify-center lg:justify-start items-center">
+                        <a href="contact.html" class="btn-nested group">
+                            <span>Book Trial Lesson</span>
+                            <span class="icon-circle">
+                                <i class="fas fa-arrow-right text-xs"></i>
+                            </span>
+                        </a>
+                        <a href="programs.html" class="btn-frosted group">
+                            <i class="fas fa-chess-board text-gift-slate dark:text-gift-slate-bright group-hover:scale-110 transition-transform"></i>
+                            <span>Explore Programs</span>
+                        </a>
+                    </div>
+
+                    <!-- Trust Pillars Micro-Bar -->
+                    <div
+                        class="flex items-center justify-center lg:justify-start gap-6 sm:gap-8 text-xs sm:text-sm font-medium text-neutral-dark/80 dark:text-gray-400 font-sans flex-wrap border-t border-gift-slate/15 dark:border-gift-slate-bright/15 pt-6">
+                        <span class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-gift-slate dark:text-gift-slate-bright text-xs"></i>
+                            1200+ Students Coached
+                        </span>
+                        <span class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-gift-slate dark:text-gift-slate-bright text-xs"></i>
+                            40+ FIDE Rated Players
+                        </span>
+                        <span class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-gift-slate dark:text-gift-slate-bright text-xs"></i>
+                            Tournament Travel Support
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Right Double-Bezel Showcase Frame (5 cols) -->
+                <div class="lg:col-span-5 flex justify-center items-center">
+                    <div class="relative w-full max-w-[310px] sm:max-w-[340px] lg:max-w-[360px] xl:max-w-[380px]">
+                        <!-- Double-Bezel Outer Shell -->
+                        <div
+                            class="p-2 sm:p-2 rounded-[2.25rem] bg-gradient-to-b from-gift-slate/35 via-gift-slate/15 to-transparent border border-gift-slate/30 dark:border-gift-slate-bright/35 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.25)] dark:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.85)] relative">
+                            <!-- Inner Core Container -->
+                            <div class="rounded-[calc(2.25rem-0.5rem)] overflow-hidden relative shadow-inner aspect-[4/5] max-h-[460px] lg:max-h-[490px] bg-gray-100 dark:bg-dark-card">
+                                <img src="assets/images/photo-1529699211952-734e80c4d42b.jpg" alt="Chess Coach Teaching Strategy"
+                                    class="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-700 ease-out">
+
+                                <!-- Editorial Overlay Vignette -->
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 pointer-events-none"></div>
+
+                                <!-- Floating Top Accolade Pill -->
+                                <div
+                                    class="absolute top-3 left-3 right-3 flex justify-between items-center z-20">
+                                    <span
+                                        class="bg-white/90 dark:bg-dark-card/90 backdrop-blur-md px-2.5 py-1 rounded-full text-[9px] font-bold font-sans tracking-widest text-neutral-dark dark:text-white uppercase flex items-center gap-1 border border-gift-slate/25 shadow-lg">
+                                        <i class="fas fa-trophy text-gift-accent text-[10px]"></i> NATIONAL CHAMPIONS
+                                    </span>
+                                    <span
+                                        class="bg-white/80 dark:bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-full text-[9px] font-bold font-sans text-neutral-dark dark:text-gray-200">
+                                        EST. 2012
+                                    </span>
+                                </div>
+
+                                <!-- Floating Bottom Glass Card -->
+                                <div
+                                    class="absolute bottom-3 left-3 right-3 bg-white/95 dark:bg-dark-card/95 backdrop-blur-xl p-3 sm:p-3.5 rounded-xl sm:rounded-2xl shadow-2xl border border-gift-slate/25 dark:border-gift-slate-bright/30 z-20 flex items-center justify-between">
+                                    <div class="flex items-center gap-2.5">
+                                        <div class="w-8 h-8 rounded-full bg-gift-slate/20 dark:bg-gift-slate-bright/20 flex items-center justify-center text-gift-slate dark:text-gift-slate-bright font-serif font-bold text-base">
+                                            ♞
+                                        </div>
+                                        <div>
+                                            <div class="text-[11px] font-bold font-sans text-neutral-dark dark:text-white uppercase tracking-wider">GM-Level Coaching</div>
+                                            <div class="text-[10px] text-neutral-dark/70 dark:text-gray-400 font-sans">1-on-1 & small group sessions</div>
+                                        </div>
+                                    </div>
+                                    <span class="text-[11px] font-bold text-gift-slate dark:text-gift-slate-bright uppercase tracking-wider">4.9 ★</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SECTION 2: MEET THE MASTERS ========== -->
+    <section class="py-16 sm:py-24 bg-white dark:bg-dark-card transition-colors duration-400 border-y border-neutral-light/50 dark:border-gray-800/60">
+        <div class="container mx-auto px-6">
+            <!-- Section Header -->
+            <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+                <span class="text-gift-slate dark:text-gift-slate-bright font-bold text-xs tracking-[0.25em] font-sans uppercase block mb-3">
+                    MEET THE MASTERS • FIDE CERTIFIED
+                </span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-neutral-dark dark:text-white leading-tight mb-4">
+                    Learn from <span class="board-gradient-text italic font-serif">Grandmaster Minds</span>
+                </h2>
+                <p class="text-base opacity-80 font-sans font-light leading-relaxed">
+                    Our certified instructors bring international tournament experience, structured methodology, and personalized mentorship to every lesson.
+                </p>
+            </div>
+
+            <!-- Coaches Grid: Simple 4-Card Layout -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+                <!-- Coach 1: GM Alexei Volkov -->
+                <div class="group bg-bg-warm/60 dark:bg-dark-bg/60 rounded-2xl border border-gift-slate/15 dark:border-gray-800 p-5 hover:border-gift-slate/40 dark:hover:border-gift-slate-bright/40 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-60 rounded-xl overflow-hidden mb-5 bg-gray-100 dark:bg-gray-800">
+                            <img src="assets/images/photo-1560250097-0b93528c311a.jpg"
+                                alt="GM Alexei Volkov"
+                                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute top-3 left-3">
+                                <span class="coach-title-badge title-gm">
+                                    <i class="fas fa-crown"></i> GM
+                                </span>
+                            </div>
+                            <div class="absolute top-3 right-3 bg-black/60 backdrop-blur-md text-white text-[11px] font-sans font-semibold px-2.5 py-1 rounded-full">
+                                2680 Elo
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-serif font-bold text-neutral-dark dark:text-white mb-1">
+                            GM Alexei Volkov
+                        </h3>
+                        <p class="text-xs font-semibold text-gift-slate dark:text-gift-slate-bright mb-3">
+                            Head Coach · Openings & Endgames
+                        </p>
+                        <p class="text-xs opacity-75 font-sans leading-relaxed">
+                            Former World Junior Champion with 15+ years coaching national champions and elite tournament players.
+                        </p>
+                    </div>
+
+                    <div class="pt-4 mt-5 border-t border-gift-slate/10 dark:border-gray-800 flex items-center justify-between gap-2">
+                        <span class="text-[11px] opacity-70 font-semibold text-neutral-dark/80 dark:text-gray-300">12 Nat'l Champions</span>
+                        <a href="coaches.html#volkov"
+                            class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider text-gift-slate dark:text-gift-slate-bright bg-gift-slate/10 dark:bg-gift-slate-bright/10 hover:bg-gift-slate hover:text-white dark:hover:bg-gift-slate-bright dark:hover:text-[#0C0F12] border border-gift-slate/20 dark:border-gift-slate-bright/20 transition-all duration-300 no-underline hover:no-underline group/btn">
+                            <span>Profile</span>
+                            <span class="inline-block transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5">↗</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Coach 2: IM Sarah Chen -->
+                <div class="group bg-bg-warm/60 dark:bg-dark-bg/60 rounded-2xl border border-gift-slate/15 dark:border-gray-800 p-5 hover:border-gift-slate/40 dark:hover:border-gift-slate-bright/40 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-60 rounded-xl overflow-hidden mb-5 bg-gray-100 dark:bg-gray-800">
+                            <img src="assets/images/photo-1573496359142-b8d87734a5a2.jpg"
+                                alt="IM Sarah Chen"
+                                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute top-3 left-3">
+                                <span class="coach-title-badge title-im">
+                                    <i class="fas fa-medal"></i> IM
+                                </span>
+                            </div>
+                            <div class="absolute top-3 right-3 bg-black/60 backdrop-blur-md text-white text-[11px] font-sans font-semibold px-2.5 py-1 rounded-full">
+                                2450 Elo
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-serif font-bold text-neutral-dark dark:text-white mb-1">
+                            IM Sarah Chen
+                        </h3>
+                        <p class="text-xs font-semibold text-gift-slate dark:text-gift-slate-bright mb-3">
+                            Senior Coach · Positional Play
+                        </p>
+                        <p class="text-xs opacity-75 font-sans leading-relaxed">
+                            Women's National Champion specializing in pawn structures, prophylaxis, and middlegame strategy.
+                        </p>
+                    </div>
+
+                    <div class="pt-4 mt-5 border-t border-gift-slate/10 dark:border-gray-800 flex items-center justify-between gap-2">
+                        <span class="text-[11px] opacity-70 font-semibold text-neutral-dark/80 dark:text-gray-300">8 State Champions</span>
+                        <a href="coaches.html#chen"
+                            class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider text-gift-slate dark:text-gift-slate-bright bg-gift-slate/10 dark:bg-gift-slate-bright/10 hover:bg-gift-slate hover:text-white dark:hover:bg-gift-slate-bright dark:hover:text-[#0C0F12] border border-gift-slate/20 dark:border-gift-slate-bright/20 transition-all duration-300 no-underline hover:no-underline group/btn">
+                            <span>Profile</span>
+                            <span class="inline-block transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5">↗</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Coach 3: FM Marcus Rivera -->
+                <div class="group bg-bg-warm/60 dark:bg-dark-bg/60 rounded-2xl border border-gift-slate/15 dark:border-gray-800 p-5 hover:border-gift-slate/40 dark:hover:border-gift-slate-bright/40 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-60 rounded-xl overflow-hidden mb-5 bg-gray-100 dark:bg-gray-800">
+                            <img src="assets/images/photo-1472099645785-5658abf4ff4e.jpg"
+                                alt="FM Marcus Rivera"
+                                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute top-3 left-3">
+                                <span class="coach-title-badge title-fm">
+                                    <i class="fas fa-star"></i> FM
+                                </span>
+                            </div>
+                            <div class="absolute top-3 right-3 bg-black/60 backdrop-blur-md text-white text-[11px] font-sans font-semibold px-2.5 py-1 rounded-full">
+                                2320 Elo
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-serif font-bold text-neutral-dark dark:text-white mb-1">
+                            FM Marcus Rivera
+                        </h3>
+                        <p class="text-xs font-semibold text-gift-slate dark:text-gift-slate-bright mb-3">
+                            Junior Lead · Tactics & Calculation
+                        </p>
+                        <p class="text-xs opacity-75 font-sans leading-relaxed">
+                            Renowned junior coach focused on sharp calculation, rapid improvement, and building tactical confidence.
+                        </p>
+                    </div>
+
+                    <div class="pt-4 mt-5 border-t border-gift-slate/10 dark:border-gray-800 flex items-center justify-between gap-2">
+                        <span class="text-[11px] opacity-70 font-semibold text-neutral-dark/80 dark:text-gray-300">200+ Students</span>
+                        <a href="coaches.html#rivera"
+                            class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider text-gift-slate dark:text-gift-slate-bright bg-gift-slate/10 dark:bg-gift-slate-bright/10 hover:bg-gift-slate hover:text-white dark:hover:bg-gift-slate-bright dark:hover:text-[#0C0F12] border border-gift-slate/20 dark:border-gift-slate-bright/20 transition-all duration-300 no-underline hover:no-underline group/btn">
+                            <span>Profile</span>
+                            <span class="inline-block transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5">↗</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Coach 4: WIM Elena Petrova -->
+                <div class="group bg-bg-warm/60 dark:bg-dark-bg/60 rounded-2xl border border-gift-slate/15 dark:border-gray-800 p-5 hover:border-gift-slate/40 dark:hover:border-gift-slate-bright/40 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-60 rounded-xl overflow-hidden mb-5 bg-gray-100 dark:bg-gray-800">
+                            <img src="assets/images/photo-1580489944761-15a19d654956.jpg"
+                                alt="WIM Elena Petrova"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                style="object-position: center 35%;">
+                            <div class="absolute top-3 left-3">
+                                <span class="coach-title-badge title-wim">
+                                    <i class="fas fa-chess-queen"></i> WIM
+                                </span>
+                            </div>
+                            <div class="absolute top-3 right-3 bg-black/60 backdrop-blur-md text-white text-[11px] font-sans font-semibold px-2.5 py-1 rounded-full">
+                                2280 Elo
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-serif font-bold text-neutral-dark dark:text-white mb-1">
+                            WIM Elena Petrova
+                        </h3>
+                        <p class="text-xs font-semibold text-gift-slate dark:text-gift-slate-bright mb-3">
+                            Coach · Attacking & Initiative
+                        </p>
+                        <p class="text-xs opacity-75 font-sans leading-relaxed">
+                            International competitor and attack specialist teaching fearless piece play, sacrifices, and king attacks.
+                        </p>
+                    </div>
+
+                    <div class="pt-4 mt-5 border-t border-gift-slate/10 dark:border-gray-800 flex items-center justify-between gap-2">
+                        <span class="text-[11px] opacity-70 font-semibold text-neutral-dark/80 dark:text-gray-300">5 Medalists</span>
+                        <a href="coaches.html#petrova"
+                            class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider text-gift-slate dark:text-gift-slate-bright bg-gift-slate/10 dark:bg-gift-slate-bright/10 hover:bg-gift-slate hover:text-white dark:hover:bg-gift-slate-bright dark:hover:text-[#0C0F12] border border-gift-slate/20 dark:border-gift-slate-bright/20 transition-all duration-300 no-underline hover:no-underline group/btn">
+                            <span>Profile</span>
+                            <span class="inline-block transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5">↗</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Simple Centered Action -->
+            <div class="text-center mt-12 sm:mt-14">
+                <a href="coaches.html" class="btn-frosted group inline-flex no-underline hover:no-underline">
+                    <i class="fas fa-users text-gift-slate dark:text-gift-slate-bright"></i>
+                    <span>View All Coaches</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SECTION 3: ASYMMETRICAL BENTO – PROGRAMS BY SKILL LEVEL ========== -->
+    <section class="py-16 sm:py-24 lg:py-28 bg-bg-warm dark:bg-dark-bg transition-colors duration-400">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-wrap justify-between items-end mb-12 sm:mb-16">
+                <div>
+                    <span
+                        class="text-gift-slate dark:text-gift-slate-bright font-bold text-xs tracking-[0.25em] font-sans uppercase">STRUCTURED PATHWAYS • ALL LEVELS</span>
+                    <h2
+                        class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-neutral-dark dark:text-white mt-3">
+                        Programs for Every <span class="board-gradient-text italic font-serif">Skill Level</span>
+                    </h2>
+                </div>
+                <a href="programs.html"
+                    class="hidden md:inline-flex items-center gap-2 text-gift-slate dark:text-gift-slate-bright font-bold text-xs uppercase tracking-widest no-underline hover:opacity-85 group">
+                    <span>Compare All Programs</span>
+                    <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
+
+            <!-- Asymmetrical Bento Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 max-w-7xl mx-auto items-stretch">
+                <!-- Bento Item 1: Large Featured Card (lg:col-span-7) – Advanced Program -->
+                <a href="programs.html#advanced"
+                    class="lg:col-span-7 double-bezel-outer group block overflow-hidden">
+                    <div class="double-bezel-inner h-full flex flex-col">
+                        <div class="relative h-80 sm:h-[420px] lg:h-[480px] xl:h-[500px] overflow-hidden">
+                            <img src="assets/images/photo-1580541832626-2a7131ee809f.jpg" alt="Advanced Tournament Training"
+                                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
+                            <div class="absolute top-4 left-4 flex items-center gap-2">
+                                <span class="badge text-[10px] font-sans">✦ Elite Track</span>
+                                <span class="bg-white/20 backdrop-blur-md text-white text-[10px] font-sans px-3 py-1 rounded-full uppercase tracking-widest font-semibold border border-white/20">FIDE Rated</span>
+                            </div>
+                            <div class="absolute bottom-6 left-6 right-6 text-white">
+                                <span class="text-xs uppercase tracking-widest font-bold text-amber-300 font-sans block mb-1 drop-shadow-sm">Advanced Tournament Program</span>
+                                <h3 class="text-2xl sm:text-3xl font-serif font-bold leading-tight">Master Level: 2000+ ELO</h3>
+                            </div>
+                        </div>
+                        <div class="p-6 bg-white dark:bg-[#141A1F] flex-1 flex flex-col justify-between">
+                            <div>
+                                <p class="text-sm opacity-85 leading-relaxed font-sans mb-4">
+                                    Intensive preparation for FIDE-rated tournaments. Deep opening preparation, complex endgame theory, and psychological conditioning for competitive play.
+                                </p>
+                                <!-- Editorial Spec Grid -->
+                                <div class="grid grid-cols-3 gap-2.5 pt-1 pb-4 text-[11px] font-sans border-t border-gift-slate/10 dark:border-gray-800">
+                                    <div class="bg-bg-warm/80 dark:bg-dark-bg/60 p-2.5 rounded-xl text-center border border-gift-slate/15">
+                                        <span class="block text-gift-slate dark:text-gift-slate-bright font-bold">4x Weekly</span>
+                                        <span class="text-[9px] opacity-70 uppercase tracking-wider">Sessions</span>
+                                    </div>
+                                    <div class="bg-bg-warm/80 dark:bg-dark-bg/60 p-2.5 rounded-xl text-center border border-gift-slate/15">
+                                        <span class="block text-gift-slate dark:text-gift-slate-bright font-bold">GM Led</span>
+                                        <span class="text-[9px] opacity-70 uppercase tracking-wider">Instruction</span>
+                                    </div>
+                                    <div class="bg-bg-warm/80 dark:bg-dark-bg/60 p-2.5 rounded-xl text-center border border-gift-slate/15">
+                                        <span class="block text-gift-slate dark:text-gift-slate-bright font-bold">Tournament</span>
+                                        <span class="text-[9px] opacity-70 uppercase tracking-wider">Travel Support</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between text-xs font-bold text-gift-slate dark:text-gift-slate-bright border-t border-gift-slate/15 dark:border-gray-800 pt-4 mt-auto">
+                                <span class="flex items-center gap-1.5"><i class="fas fa-clock"></i> 3-hour sessions</span>
+                                <span class="uppercase tracking-wider flex items-center gap-1 group-hover:translate-x-1 transition-transform">View Program ↗</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Bento Item 2 & 3: Stacked Cards (lg:col-span-5) -->
+                <div class="lg:col-span-5 flex flex-col gap-8">
+                    <!-- Bento Item 2: Intermediate Program -->
+                    <a href="programs.html#intermediate" class="double-bezel-outer group block flex-1">
+                        <div class="double-bezel-inner h-full flex flex-col justify-between">
+                            <div class="relative h-60 sm:h-64 overflow-hidden">
+                                <img src="assets/images/photo-1528819622765-d6bcf132f793.jpg" alt="Intermediate Chess Training"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                                    style="object-position: center 33%;">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+                                <div class="absolute top-3 left-3">
+                                    <span class="badge text-[10px] font-sans">Club Player</span>
+                                </div>
+                                <div class="absolute bottom-4 left-4 text-white">
+                                    <h3 class="text-xl font-serif font-bold">Intermediate: 1200–2000</h3>
+                                </div>
+                            </div>
+                            <div class="p-5 bg-white dark:bg-[#141A1F] flex flex-col justify-between flex-1">
+                                <p class="text-xs opacity-80 font-sans leading-relaxed mb-3">
+                                    Tactical patterns, opening principles, middlegame planning, and introduction to tournament play.
+                                </p>
+                                <div class="flex items-center justify-between text-xs font-bold text-gift-slate dark:text-gift-slate-bright border-t border-gift-slate/15 dark:border-gray-800 pt-3 mt-auto">
+                                    <span class="flex items-center gap-1.5"><i class="fas fa-clock"></i> 2x Weekly</span>
+                                    <span>View Program ↗</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Bento Item 3: Beginner Program -->
+                    <a href="programs.html#beginner" class="double-bezel-outer group block flex-1">
+                        <div class="double-bezel-inner h-full flex flex-col justify-between">
+                            <div class="relative h-60 sm:h-64 overflow-hidden">
+                                <img src="assets/images/photo-1611195974226-a6a9be9dd763.jpg" alt="Beginner Chess Class"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                                    style="object-position: center 15%;">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+                                <div class="absolute top-3 left-3">
+                                    <span class="badge text-[10px] font-sans">Foundations</span>
+                                </div>
+                                <div class="absolute bottom-4 left-4 text-white">
+                                    <h3 class="text-xl font-serif font-bold">Beginner: Under 1200</h3>
+                                </div>
+                            </div>
+                            <div class="p-5 bg-white dark:bg-[#141A1F] flex flex-col justify-between flex-1">
+                                <p class="text-xs opacity-80 font-sans leading-relaxed mb-3">
+                                    Rules, piece coordination, basic tactics, checkmate patterns, and building confidence at the board.
+                                </p>
+                                <div class="flex items-center justify-between text-xs font-bold text-gift-slate dark:text-gift-slate-bright border-t border-gift-slate/15 dark:border-gray-800 pt-3 mt-auto">
+                                    <span class="flex items-center gap-1.5"><i class="fas fa-clock"></i> 2x Weekly</span>
+                                    <span>View Program ↗</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="text-center mt-12 md:hidden">
+                <a href="programs.html" class="btn-nested justify-center w-full">
+                    <span>Compare All Programs</span>
+                    <span class="icon-circle"><i class="fas fa-arrow-right text-xs"></i></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SECTION 4: THE 4 ACADEMY PILLARS ========== -->
+    <section class="py-16 sm:py-24 lg:py-28 bg-white dark:bg-dark-card transition-colors duration-400 border-y border-neutral-light/50 dark:border-gray-800/60 relative overflow-hidden">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-gradient-to-r from-gift-slate/10 via-gift-slate-bright/10 to-transparent rounded-full blur-3xl pointer-events-none -z-0"></div>
+
+        <div class="container mx-auto px-4 sm:px-6 relative z-10">
+            <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+                <span class="eyebrow-pill inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gift-slate/10 dark:bg-gift-slate-bright/10 border border-gift-slate/25 dark:border-gift-slate-bright/25 mb-4 backdrop-blur-md">
+                    <i class="fas fa-chess-king text-gift-slate dark:text-gift-slate-bright text-xs"></i>
+                    <span class="text-[10px] sm:text-[11px] font-bold font-sans tracking-[0.25em] uppercase text-gift-slate dark:text-gift-slate-bright">THE ACADEMY STANDARD</span>
+                </span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-neutral-dark dark:text-white mt-1 leading-tight">
+                    Built for <span class="board-gradient-text italic font-serif">Strategic Excellence</span>
+                </h2>
+                <div class="premium-line mx-auto !my-4"></div>
+                <p class="text-xs sm:text-sm md:text-base opacity-80 font-sans font-light max-w-xl mx-auto leading-relaxed px-2">
+                    Four unyielding commitments distinguishing our academy from ordinary chess clubs.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 sm:gap-6 lg:gap-7 max-w-7xl mx-auto">
+                <!-- Pillar 01: FIDE Certified Coaches -->
+                <div class="double-bezel-outer group hover:-translate-y-1.5 transition-transform duration-500">
+                    <div class="double-bezel-inner p-5 sm:p-6 lg:p-7 flex flex-col justify-between h-full bg-white dark:bg-[#141A1F] relative">
+                        <div class="absolute top-4 right-5 sm:top-5 sm:right-6 font-serif text-3xl sm:text-4xl font-bold text-gift-slate/25 dark:text-gift-slate-bright/25 select-none pointer-events-none tracking-tight leading-none">
+                            01
+                        </div>
+                        <div>
+                            <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-gift-slate/20 to-gift-slate/5 dark:from-gift-slate-bright/20 dark:to-transparent text-gift-slate dark:text-gift-slate-bright flex items-center justify-center text-lg sm:text-xl mb-5 border border-gift-slate/25 shadow-sm group-hover:scale-105 group-hover:bg-gift-slate group-hover:text-white transition-all duration-300">
+                                <i class="fas fa-certificate"></i>
+                            </div>
+                            <span class="text-[9px] sm:text-[10px] uppercase font-bold tracking-widest text-gift-slate dark:text-gift-slate-bright block mb-1">Credentials</span>
+                            <h3 class="text-lg sm:text-xl font-serif font-bold mb-2.5 text-neutral-dark dark:text-white leading-snug">FIDE Certified Coaches</h3>
+                            <p class="text-xs opacity-80 leading-relaxed font-sans mb-5">
+                                Every instructor holds FIDE titles (GM, IM, FM, WIM) and has verified tournament experience.
+                            </p>
+                        </div>
+                        <ul class="border-t border-gift-slate/15 dark:border-gray-800 pt-4 space-y-2 text-[11px] font-sans opacity-85 font-medium">
+                            <li class="flex items-center gap-2"><i class="fas fa-check-circle text-gift-slate dark:text-gift-slate-bright text-xs"></i> <span>Verified Title Holders</span></li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check-circle text-gift-slate dark:text-gift-slate-bright text-xs"></i> <span>Background Checked</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Pillar 02: Skill-Level Programs -->
+                <div class="double-bezel-outer group hover:-translate-y-1.5 transition-transform duration-500">
+                    <div class="double-bezel-inner p-5 sm:p-6 lg:p-7 flex flex-col justify-between h-full bg-white dark:bg-[#141A1F] relative">
+                        <div class="absolute top-4 right-5 sm:top-5 sm:right-6 font-serif text-3xl sm:text-4xl font-bold text-gift-slate/25 dark:text-gift-slate-bright/25 select-none pointer-events-none tracking-tight leading-none">
+                            02
+                        </div>
+                        <div>
+                            <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-gift-slate/20 to-gift-slate/5 dark:from-gift-slate-bright/20 dark:to-transparent text-gift-slate dark:text-gift-slate-bright flex items-center justify-center text-lg sm:text-xl mb-5 border border-gift-slate/25 shadow-sm group-hover:scale-105 group-hover:bg-gift-slate group-hover:text-white transition-all duration-300">
+                                <i class="fas fa-layer-group"></i>
+                            </div>
+                            <span class="text-[9px] sm:text-[10px] uppercase font-bold tracking-widest text-gift-slate dark:text-gift-slate-bright block mb-1">Curriculum</span>
+                            <h3 class="text-lg sm:text-xl font-serif font-bold mb-2.5 text-neutral-dark dark:text-white leading-snug">Skill-Level Programs</h3>
+                            <p class="text-xs opacity-80 leading-relaxed font-sans mb-5">
+                                Beginner, Intermediate, and Advanced tracks ensure every student learns at the right pace.
+                            </p>
+                        </div>
+                        <ul class="border-t border-gift-slate/15 dark:border-gray-800 pt-4 space-y-2 text-[11px] font-sans opacity-85 font-medium">
+                            <li class="flex items-center gap-2"><i class="fas fa-check-circle text-gift-slate dark:text-gift-slate-bright text-xs"></i> <span>Structured Curriculum</span></li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check-circle text-gift-slate dark:text-gift-slate-bright text-xs"></i> <span>Progress Tracking</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Pillar 03: Tournament Access -->
+                <div class="double-bezel-outer group hover:-translate-y-1.5 transition-transform duration-500">
+                    <div class="double-bezel-inner p-5 sm:p-6 lg:p-7 flex flex-col justify-between h-full bg-white dark:bg-[#141A1F] relative">
+                        <div class="absolute top-4 right-5 sm:top-5 sm:right-6 font-serif text-3xl sm:text-4xl font-bold text-gift-slate/25 dark:text-gift-slate-bright/25 select-none pointer-events-none tracking-tight leading-none">
+                            03
+                        </div>
+                        <div>
+                            <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-gift-slate/20 to-gift-slate/5 dark:from-gift-slate-bright/20 dark:to-transparent text-gift-slate dark:text-gift-slate-bright flex items-center justify-center text-lg sm:text-xl mb-5 border border-gift-slate/25 shadow-sm group-hover:scale-105 group-hover:bg-gift-slate group-hover:text-white transition-all duration-300">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <span class="text-[9px] sm:text-[10px] uppercase font-bold tracking-widest text-gift-slate dark:text-gift-slate-bright block mb-1">Competition</span>
+                            <h3 class="text-lg sm:text-xl font-serif font-bold mb-2.5 text-neutral-dark dark:text-white leading-snug">Tournament Access</h3>
+                            <p class="text-xs opacity-80 leading-relaxed font-sans mb-5">
+                                Monthly in-house tournaments, FIDE-rated events, and travel support for national competitions.
+                            </p>
+                        </div>
+                        <ul class="border-t border-gift-slate/15 dark:border-gray-800 pt-4 space-y-2 text-[11px] font-sans opacity-85 font-medium">
+                            <li class="flex items-center gap-2"><i class="fas fa-check-circle text-gift-slate dark:text-gift-slate-bright text-xs"></i> <span>Monthly Tournaments</span></li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check-circle text-gift-slate dark:text-gift-slate-bright text-xs"></i> <span>FIDE Rated Events</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Pillar 04: Student Portal -->
+                <div class="double-bezel-outer group hover:-translate-y-1.5 transition-transform duration-500">
+                    <div class="double-bezel-inner p-5 sm:p-6 lg:p-7 flex flex-col justify-between h-full bg-white dark:bg-[#141A1F] relative">
+                        <div class="absolute top-4 right-5 sm:top-5 sm:right-6 font-serif text-3xl sm:text-4xl font-bold text-gift-slate/25 dark:text-gift-slate-bright/25 select-none pointer-events-none tracking-tight leading-none">
+                            04
+                        </div>
+                        <div>
+                            <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-gift-slate/20 to-gift-slate/5 dark:from-gift-slate-bright/20 dark:to-transparent text-gift-slate dark:text-gift-slate-bright flex items-center justify-center text-lg sm:text-xl mb-5 border border-gift-slate/25 shadow-sm group-hover:scale-105 group-hover:bg-gift-slate group-hover:text-white transition-all duration-300">
+                                <i class="fas fa-laptop"></i>
+                            </div>
+                            <span class="text-[9px] sm:text-[10px] uppercase font-bold tracking-widest text-gift-slate dark:text-gift-slate-bright block mb-1">Digital Learning</span>
+                            <h3 class="text-lg sm:text-xl font-serif font-bold mb-2.5 text-neutral-dark dark:text-white leading-snug">Student Portal</h3>
+                            <p class="text-xs opacity-80 leading-relaxed font-sans mb-5">
+                                Access lesson notes, puzzle assignments, game analysis, and progress reports anytime.
+                            </p>
+                        </div>
+                        <ul class="border-t border-gift-slate/15 dark:border-gray-800 pt-4 space-y-2 text-[11px] font-sans opacity-85 font-medium">
+                            <li class="flex items-center gap-2"><i class="fas fa-check-circle text-gift-slate dark:text-gift-slate-bright text-xs"></i> <span>24/7 Access</span></li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check-circle text-gift-slate dark:text-gift-slate-bright text-xs"></i> <span>Progress Analytics</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SECTION 5: TESTIMONIAL & CONTACT CHANNELS ========== -->
+    <section class="py-16 sm:py-24 lg:py-28 bg-bg-warm dark:bg-dark-bg transition-colors duration-400">
+        <div class="container mx-auto px-6">
+            <!-- Pull Quote Box -->
+            <div class="max-w-4xl mx-auto text-center mb-16 sm:mb-20">
+                <div class="flex justify-center text-gift-accent text-sm gap-1 mb-4">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <blockquote
+                    class="text-2xl sm:text-3xl lg:text-4xl font-serif font-medium italic text-neutral-dark dark:text-white leading-relaxed mb-8">
+                    “My son went from beginner to state champion in 18 months. The coaches at Chess Academy didn't just teach him moves — they taught him how to think. The tournament travel support made all the difference.”
+                </blockquote>
+                <div class="flex items-center justify-center gap-4">
+                    <div
+                        class="w-14 h-14 rounded-full overflow-hidden border-2 border-gift-slate/30 dark:border-gift-slate-bright/40 shadow-md shrink-0">
+                        <img src="assets/images/photo-1544005313-94ddf0286df2.jpg" alt="Parent Testimonial"
+                            class="w-full h-full object-cover" style="object-position: center 20%;">
+                    </div>
+                    <div class="text-left">
+                        <div class="font-serif font-bold text-lg text-neutral-dark dark:text-white">Priya M.</div>
+                        <div class="text-xs opacity-75 font-sans">Parent of State Champion</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Channels -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                <div class="double-bezel-outer">
+                    <div class="double-bezel-inner p-6 text-center">
+                        <div class="service-icon mx-auto !w-14 !h-14 !text-xl mb-3"><i class="fas fa-phone"></i></div>
+                        <h3 class="font-serif font-bold text-lg mb-1">Academy Front Desk</h3>
+                        <p class="text-xs opacity-80 mb-3 font-sans">Mon–Sat, 9AM–8PM EST</p>
+                        <a href="tel:+18005550199" class="text-gift-slate dark:text-gift-slate-bright font-bold text-base hover:underline">+1 (800) 555-0199</a>
+                    </div>
+                </div>
+                <div class="double-bezel-outer">
+                    <div class="double-bezel-inner p-6 text-center">
+                        <div class="service-icon mx-auto !w-14 !h-14 !text-xl mb-3"><i class="fas fa-envelope"></i></div>
+                        <h3 class="font-serif font-bold text-lg mb-1">Program Inquiries</h3>
+                        <p class="text-xs opacity-80 mb-3 font-sans">Coach response within 4 hrs</p>
+                        <a href="mailto:hello@chessacademy.com" class="text-gift-slate dark:text-gift-slate-bright font-bold text-base hover:underline break-all">hello@chessacademy.com</a>
+                    </div>
+                </div>
+                <div class="double-bezel-outer sm:col-span-2 lg:col-span-1">
+                    <div class="double-bezel-inner p-6 text-center">
+                        <div class="service-icon mx-auto !w-14 !h-14 !text-xl mb-3"><i class="fab fa-whatsapp"></i></div>
+                        <h3 class="font-serif font-bold text-lg mb-1">WhatsApp Support</h3>
+                        <p class="text-xs opacity-80 mb-3 font-sans">Instant messaging & scheduling</p>
+                        <a href="https://wa.me/18005550199" target="_blank" class="text-gift-slate dark:text-gift-slate-bright font-bold text-base hover:underline">+1 800 555-0199</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SECTION 6: CTA + LOGIN PORTAL ========== -->
+    <section id="radiant-cta"
+        class="cta-chess-banner py-20 sm:py-24 text-white transition-colors duration-400 relative overflow-hidden border-b border-gift-slate/20">
+        <div
+            class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gift-slate-light/25 via-transparent to-transparent pointer-events-none">
+        </div>
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-10 max-w-6xl mx-auto">
+                <div class="lg:w-2/3 text-center lg:text-left">
+                    <span class="text-white/80 font-bold text-xs tracking-[0.25em] font-sans uppercase">PRIVATE LESSONS & STUDENT PORTAL</span>
+                    <h2 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold mb-4 mt-3">Ready to Make Your Move?</h2>
+                    <p class="text-lg sm:text-xl opacity-90 max-w-2xl mx-auto lg:mx-0 font-sans font-light leading-relaxed">Book a trial lesson with a FIDE-certified coach or log in to your student portal to access assignments and progress.</p>
+                </div>
+                <div class="lg:w-1/3 flex flex-col sm:flex-row lg:flex-col justify-center items-center lg:items-stretch gap-4 w-full lg:w-auto">
+                    <a href="login.html"
+                        class="w-full sm:w-auto bg-white text-neutral-dark dark:bg-gift-slate-bright dark:text-dark-bg px-8 py-4 rounded-full font-bold text-xs font-sans uppercase tracking-widest hover:shadow-2xl transition duration-300 flex items-center justify-center gap-2">
+                        <i class="fas fa-sign-in-alt"></i> Student Login
+                    </a>
+                    <a href="contact.html"
+                        class="w-full sm:w-auto border-2 border-white/60 dark:border-gift-slate-bright/60 text-white dark:text-gift-slate-bright px-8 py-4 rounded-full font-bold text-xs font-sans uppercase tracking-widest hover:bg-white/10 dark:hover:bg-gift-slate-bright/10 transition duration-300 flex items-center justify-center gap-2">
+                        <i class="fas fa-calendar-check"></i> Book Trial Lesson
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="py-20 bg-white dark:bg-[#0C0F12] transition-colors duration-400">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <div class="text-center md:text-start">
+                    <!-- Brand Lockup in Footer -->
+                    <a href="index.html" class="flex items-center justify-center md:justify-start gap-3 mb-5 group shrink-0" dir="ltr">
+                        <div class="w-10 h-10 bg-gradient-to-br from-gift-slate-light to-gift-slate rounded-2xl flex items-center justify-center flex-shrink-0 shadow-md group-hover:rotate-6 transition duration-300">
+                            <i class="fas fa-chess-knight text-white dark:text-dark-bg text-lg"></i>
+                        </div>
+                        <div>
+                            <span class="text-lg md:text-2xl font-serif font-bold tracking-wide text-neutral-dark dark:text-white">
+                                Chess <span class="board-gradient-text">Academy</span>
+                            </span>
+                        </div>
+                    </a>
+                    <p class="text-sm text-neutral-dark/90 dark:text-gray-300 mb-6 leading-relaxed font-sans">Elite chess coaching, structured programs, and tournament support for players of all levels. Master the board with FIDE-certified coaches.</p>
+                    <div class="flex justify-center md:justify-start gap-4">
+                        <a href="#" class="social-icon text-sm" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon text-sm" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-icon text-sm" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+                <div class="text-center md:text-start">
+                    <h3 class="text-neutral-dark dark:text-white text-lg font-serif font-bold mb-6">Quick Navigation</h3>
+                    <ul class="space-y-3.5 text-sm font-sans font-medium text-neutral-dark/90 dark:text-gray-300">
+                        <li><a href="index.html" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">Home</a></li>
+                        <li><a href="about.html" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">About Us</a></li>
+                        <li><a href="programs.html" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">Programs</a></li>
+                        <li><a href="coaches.html" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">Coaches</a></li>
+                        <li><a href="tournaments.html" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">Tournaments</a></li>
+                        <li><a href="contact.html" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">Contact & Booking</a></li>
+                    </ul>
+                </div>
+                <div class="text-center md:text-start">
+                    <h3 class="text-neutral-dark dark:text-white text-lg font-serif font-bold mb-6">Programs</h3>
+                    <ul class="space-y-3.5 text-sm font-sans font-medium text-neutral-dark/90 dark:text-gray-300">
+                        <li><a href="programs.html#beginner" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">Beginner (Under 1200)</a></li>
+                        <li><a href="programs.html#intermediate" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">Intermediate (1200–2000)</a></li>
+                        <li><a href="programs.html#advanced" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">Advanced (2000+)</a></li>
+                        <li><a href="tournaments.html" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">Tournament Training</a></li>
+                        <li><a href="programs.html#private" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">Private Lessons</a></li>
+                    </ul>
+                </div>
+                <div class="text-center md:text-start">
+                    <h3 class="text-neutral-dark dark:text-white text-lg font-serif font-bold mb-6">Academy Location</h3>
+                    <ul class="space-y-3 text-sm mb-6 font-sans font-medium text-neutral-dark/90 dark:text-gray-300">
+                        <li class="flex items-center justify-center md:justify-start gap-3">
+                            <i class="fas fa-map-marker-alt text-gift-slate dark:text-gift-slate-bright w-4"></i>
+                            <span dir="ltr">42 Strategy Lane, NYC 10001</span>
+                        </li>
+                        <li class="flex items-center justify-center md:justify-start gap-3">
+                            <i class="fas fa-phone text-gift-slate dark:text-gift-slate-bright w-4"></i>
+                            <span dir="ltr">+1 (800) 555-0199</span>
+                        </li>
+                        <li class="flex items-center justify-center md:justify-start gap-3">
+                            <i class="fas fa-envelope text-gift-slate dark:text-gift-slate-bright w-4"></i>
+                            <span dir="ltr">hello@chessacademy.com</span>
+                        </li>
+                        <li class="flex items-center justify-center md:justify-start gap-3">
+                            <i class="fas fa-clock text-gift-slate dark:text-gift-slate-bright w-4"></i>
+                            <span dir="ltr">Mon-Sat: 9AM - 8PM EST</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gift-slate/15 dark:border-gift-slate-bright/15 mt-14 pt-8 text-center">
+                <p class="text-sm font-medium font-sans text-neutral-dark dark:text-gray-200" dir="ltr">© 2026 Chess Academy & Coaching Center. All rights reserved.</p>
+                <p class="text-sm sm:text-base font-serif italic font-bold tracking-widest text-gift-slate dark:text-gift-slate-bright mt-2.5">Strategy • Discipline • Mastery</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Default Theme Initialization
+            document.documentElement.setAttribute('data-theme', 'knight-noir');
+
+            // Dark / Light Theme Toggle Logic
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeIcon = themeToggle?.querySelector('.fa-moon');
+            const themeIconSun = themeToggle?.querySelector('.fa-sun');
+            const mobileThemeToggle = document.getElementById('theme-toggle-mobile');
+            const mobileThemeIcon = mobileThemeToggle?.querySelector('.fa-moon');
+            const mobileThemeIconSun = mobileThemeToggle?.querySelector('.fa-sun');
+
+            function setTheme(isDark) {
+                if (isDark) {
+                    document.documentElement.classList.add('dark');
+                    if (themeIcon) themeIcon.classList.add('hidden');
+                    if (themeIconSun) themeIconSun.classList.remove('hidden');
+                    if (themeToggle) themeToggle.classList.add('active');
+                    if (mobileThemeIcon) mobileThemeIcon.classList.add('hidden');
+                    if (mobileThemeIconSun) mobileThemeIconSun.classList.remove('hidden');
+                    if (mobileThemeToggle) mobileThemeToggle.classList.add('active');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    if (themeIcon) themeIcon.classList.remove('hidden');
+                    if (themeIconSun) themeIconSun.classList.add('hidden');
+                    if (themeToggle) themeToggle.classList.remove('active');
+                    if (mobileThemeIcon) mobileThemeIcon.classList.remove('hidden');
+                    if (mobileThemeIconSun) mobileThemeIconSun.classList.add('hidden');
+                    if (mobileThemeToggle) mobileThemeToggle.classList.remove('active');
+                    localStorage.setItem('theme', 'light');
+                }
+            }
+
+            function toggleTheme() {
+                setTheme(!document.documentElement.classList.contains('dark'));
+            }
+
+            if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
+            if (mobileThemeToggle) mobileThemeToggle.addEventListener('click', toggleTheme);
+
+            setTheme(localStorage.getItem('theme') === 'dark');
+
+            // RTL / LTR Direction Toggle Logic
+            const rtlToggle = document.getElementById('rtl-toggle');
+            const mobileRtlToggle = document.getElementById('rtl-toggle-mobile');
+
+            function toggleRTL() {
+                if (document.documentElement.dir === 'rtl') {
+                    document.documentElement.dir = 'ltr';
+                    document.documentElement.lang = 'en';
+                    if (rtlToggle) { rtlToggle.textContent = '⇄'; rtlToggle.classList.remove('active'); }
+                    if (mobileRtlToggle) { mobileRtlToggle.textContent = '⇄'; mobileRtlToggle.classList.remove('active'); }
+                    localStorage.setItem('dir', 'ltr');
+                } else {
+                    document.documentElement.dir = 'rtl';
+                    document.documentElement.lang = 'ar';
+                    if (rtlToggle) { rtlToggle.textContent = '⇄'; rtlToggle.classList.add('active'); }
+                    if (mobileRtlToggle) { mobileRtlToggle.textContent = '⇄'; mobileRtlToggle.classList.add('active'); }
+                    localStorage.setItem('dir', 'rtl');
+                }
+            }
+
+            if (rtlToggle) rtlToggle.addEventListener('click', toggleRTL);
+            if (mobileRtlToggle) mobileRtlToggle.addEventListener('click', toggleRTL);
+
+            if (localStorage.getItem('dir') === 'rtl') {
+                document.documentElement.dir = 'rtl';
+                document.documentElement.lang = 'ar';
+                if (rtlToggle) { rtlToggle.textContent = '⇄'; rtlToggle.classList.add('active'); }
+                if (mobileRtlToggle) { mobileRtlToggle.textContent = '⇄'; mobileRtlToggle.classList.add('active'); }
+            }
+
+            // Mobile Menu Toggle Logic
+            const mobileToggle = document.getElementById('mobile-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileToggleIcon = document.querySelector('#mobile-toggle i');
+
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', () => {
+                    const isOpening = !mobileMenu.classList.contains('open');
+                    if (isOpening) {
+                        mobileMenu.classList.add('open');
+                        mobileToggleIcon.classList.remove('fa-bars');
+                        mobileToggleIcon.classList.add('fa-times');
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        mobileMenu.classList.remove('open');
+                        mobileToggleIcon.classList.remove('fa-times');
+                        mobileToggleIcon.classList.add('fa-bars');
+                        document.body.style.overflow = '';
+                        document.querySelectorAll('.mobile-dropdown-content').forEach(c => c.classList.remove('show'));
+                    }
+                });
+            }
+
+            document.querySelectorAll('.mobile-dropdown-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const dropdown = e.target.closest('.mobile-dropdown');
+                    const content = dropdown.querySelector('.mobile-dropdown-content');
+                    const icon = dropdown.querySelector('.fa-chevron-down');
+                    const isOpening = !content.classList.contains('show');
+                    content.classList.toggle('show');
+                    icon.style.transform = content.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
+                    if (isOpening) {
+                        document.querySelectorAll('.mobile-dropdown-content').forEach(other => {
+                            if (other !== content) {
+                                other.classList.remove('show');
+                                const otherIcon = other.parentElement.querySelector('.fa-chevron-down');
+                                if (otherIcon) otherIcon.style.transform = 'rotate(0deg)';
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

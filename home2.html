@@ -1,0 +1,1731 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth" data-theme="knight-noir">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Academy · Home 2 | Strategic Depth</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="alternate icon" href="assets/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+    <meta name="description" content="Elite chess coaching, tactical programs, and tournament training. Alternate home design.">
+    <!-- Tailwind CSS with Local & CDN Fallback -->
+    <script src="tailwind.js"></script>
+    <script>
+        if (typeof tailwind === 'undefined') {
+            document.write('<script src="https://cdn.tailwindcss.com"><\/script>');
+        }
+    </script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'gift-slate': 'rgba(var(--color-rgb-primary), <alpha-value>)',
+                        'gift-slate-light': 'rgba(var(--color-rgb-light), <alpha-value>)',
+                        'gift-slate-dark': 'rgba(var(--color-rgb-dark), <alpha-value>)',
+                        'gift-slate-bright': 'rgba(var(--color-rgb-bright), <alpha-value>)',
+                        'gift-accent': 'rgba(var(--color-rgb-accent), <alpha-value>)',
+                        'bg-warm': 'var(--color-bg-warm)',
+                        'neutral-dark': 'var(--color-text-dark)',
+                        'neutral-light': '#E8E2D9',
+                        'dark-bg': '#0C0F12',
+                        'dark-card': '#141A1F',
+                        'dark-surface': '#1C242B',
+                    },
+                    fontFamily: {
+                        'sans': ['Plus Jakarta Sans', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+                        'serif': ['Cormorant Garamond', 'serif'],
+                        'display': ['Outfit', 'Plus Jakarta Sans', 'sans-serif'],
+                        'premium': ['Outfit', 'Plus Jakarta Sans', 'sans-serif'],
+                        'alt': ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'fade-in': 'fadeIn 0.3s ease-out',
+                        'pulse-glow': 'pulseGlow 3s infinite',
+                    },
+                    keyframes: {
+                        slideUp: {
+                            '0%': { transform: 'translateY(30px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { opacity: '0.6' },
+                            '50%': { opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <script>
+        // Prevent theme flash on reload
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+        }
+        if (localStorage.getItem('dir') === 'rtl') {
+            document.documentElement.dir = 'rtl';
+            document.documentElement.lang = 'ar';
+        }
+    </script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
+        rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chess Academy Stylesheet (Self-Contained) -->
+    <style>
+        :root,
+        [data-theme="knight-noir"],
+        [data-theme="classic-wood"] {
+            --color-primary: #1E3A5F;
+            --color-primary-light: #3B5F8A;
+            --color-primary-dark: #0F2440;
+            --color-primary-bright: #5B8FC9;
+            --color-accent: #C9A44C;
+            --color-bg-warm: #F7F5F0;
+            --color-text-dark: #0C1926;
+            --color-rgb-primary: 30, 58, 95;
+            --color-rgb-light: 59, 95, 138;
+            --color-rgb-dark: 15, 36, 64;
+            --color-rgb-bright: 91, 143, 201;
+            --color-rgb-accent: 201, 164, 76;
+        }
+
+        [data-theme="emerald-board"] {
+            --color-primary: #1B4D3E;
+            --color-primary-light: #2D7A5F;
+            --color-primary-dark: #0E2E24;
+            --color-primary-bright: #5CB88A;
+            --color-accent: #D4AF37;
+            --color-bg-warm: #F0F7F3;
+            --color-text-dark: #0A1F18;
+            --color-rgb-primary: 27, 77, 62;
+            --color-rgb-light: 45, 122, 95;
+            --color-rgb-dark: 14, 46, 36;
+            --color-rgb-bright: 92, 184, 138;
+            --color-rgb-accent: 212, 175, 55;
+        }
+
+        [data-theme="crimson-gambit"] {
+            --color-primary: #8B1A2B;
+            --color-primary-light: #B83045;
+            --color-primary-dark: #5C0E1B;
+            --color-primary-bright: #E05A70;
+            --color-accent: #C9A44C;
+            --color-bg-warm: #FDF5F5;
+            --color-text-dark: #2B0A0F;
+            --color-rgb-primary: 139, 26, 43;
+            --color-rgb-light: 184, 48, 69;
+            --color-rgb-dark: 92, 14, 27;
+            --color-rgb-bright: 224, 90, 112;
+            --color-rgb-accent: 201, 164, 76;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--color-bg-warm);
+            color: var(--color-text-dark);
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+
+        .dark body {
+            background-color: #0C0F12;
+            color: #E3E8ED;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .board-gradient-text,
+        .chess-gradient-text {
+            background: linear-gradient(135deg, var(--color-primary-bright) 0%, var(--color-primary) 50%, var(--color-primary-dark) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Luxury Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--color-bg-warm);
+        }
+
+        .dark ::-webkit-scrollbar-track {
+            background: #0C0F12;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(var(--color-rgb-primary), 0.35);
+            border-radius: 9999px;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--color-primary);
+        }
+
+        .dark ::-webkit-scrollbar-thumb {
+            background: rgba(var(--color-rgb-bright), 0.35);
+        }
+
+        .dark ::-webkit-scrollbar-thumb:hover {
+            background: var(--color-primary-bright);
+        }
+
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: rgba(var(--color-rgb-primary), 0.4) transparent;
+        }
+
+        /* Dark mode overrides */
+        .dark .text-gift-slate {
+            color: var(--color-primary-bright) !important;
+        }
+
+        .dark .bg-gift-slate {
+            background-color: var(--color-primary-bright) !important;
+        }
+
+        .dark .border-gift-slate {
+            border-color: var(--color-primary-bright) !important;
+        }
+
+        .cta-chess-banner {
+            background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 50%, var(--color-primary-dark) 100%) !important;
+        }
+
+        .dark .cta-chess-banner {
+            background: linear-gradient(135deg, #0C0F12 0%, #141A1F 50%, #0C0F12 100%) !important;
+        }
+
+        .dark .service-icon {
+            background: rgba(var(--color-rgb-bright), 0.12) !important;
+            color: var(--color-primary-bright) !important;
+            border: 1px solid rgba(var(--color-rgb-bright), 0.25);
+        }
+
+        .dark .badge {
+            background: rgba(12, 15, 18, 0.85) !important;
+            color: #FFFFFF !important;
+            border: 1px solid rgba(255, 255, 255, 0.35) !important;
+        }
+
+        .dark .dropdown-item:hover {
+            color: var(--color-primary-bright) !important;
+        }
+
+        .dark .auth-btn.login:hover {
+            border-color: transparent !important;
+            color: #0C0F12 !important;
+        }
+
+        .dark .nav-item:hover {
+            color: var(--color-primary-bright) !important;
+        }
+
+        .dark .nav-item::after {
+            background: var(--color-primary-bright) !important;
+        }
+
+        .dark .dropdown-item i {
+            color: var(--color-primary-bright) !important;
+        }
+
+        .dark .premium-line {
+            background: linear-gradient(90deg, var(--color-primary-bright), rgba(var(--color-rgb-bright), 0.1));
+        }
+
+        /* Premium Navigation */
+        .nav-item {
+            position: relative;
+            padding: 0.5rem 0;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 0.02em;
+            color: var(--color-text-dark);
+            transition: color 0.3s ease;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .dark .nav-item {
+            color: #E3E8ED;
+        }
+
+        .nav-item:hover {
+            color: var(--color-primary);
+        }
+
+        .dark .nav-item:hover {
+            color: var(--color-primary-bright);
+        }
+
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light));
+            transition: width 0.3s ease;
+        }
+
+        .dark .nav-item::after {
+            background: linear-gradient(90deg, var(--color-primary-bright), var(--color-primary-light));
+        }
+
+        [dir="rtl"] .nav-item::after {
+            left: auto;
+            right: 0;
+        }
+
+        .nav-item:hover::after,
+        .nav-item.active::after {
+            width: 100%;
+        }
+
+        .nav-item.active {
+            color: var(--color-primary) !important;
+            font-weight: 700;
+        }
+
+        .dark .nav-item.active {
+            color: var(--color-primary-bright) !important;
+        }
+
+        .mobile-menu-item.active {
+            color: var(--color-primary) !important;
+            font-weight: 700;
+        }
+
+        .dark .mobile-menu-item.active {
+            color: var(--color-primary-bright) !important;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 230px;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 16px;
+            padding: 0.85rem 0;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.18);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(12px);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 1000;
+            border: 1px solid rgba(var(--color-rgb-primary), 0.2);
+            backdrop-filter: blur(12px);
+        }
+
+        .dark .dropdown-menu {
+            background: rgba(20, 26, 31, 0.98);
+            border-color: rgba(var(--color-rgb-bright), 0.25);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: -12px;
+            left: 0;
+            right: 0;
+            height: 12px;
+        }
+
+        [dir="rtl"] .dropdown-menu {
+            left: auto;
+            right: 0;
+        }
+
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 0.8rem 1.6rem;
+            color: var(--color-text-dark);
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .dark .dropdown-item {
+            color: #E3E8ED;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(var(--color-rgb-primary), 0.1);
+            color: var(--color-primary);
+            padding-left: 1.85rem;
+        }
+
+        .dark .dropdown-item:hover {
+            background: rgba(var(--color-rgb-bright), 0.15);
+            color: var(--color-primary-bright);
+        }
+
+        [dir="rtl"] .dropdown-item:hover {
+            padding-left: 1.6rem;
+            padding-right: 1.85rem;
+        }
+
+        .dropdown-item i {
+            margin-right: 0.85rem;
+            width: 20px;
+            text-align: center;
+            color: var(--color-primary);
+        }
+
+        [dir="rtl"] .dropdown-item i {
+            margin-right: 0;
+            margin-left: 0.85rem;
+        }
+
+        .dark .dropdown-item i {
+            color: var(--color-primary-bright);
+        }
+
+        [dir="rtl"] .desktop-toggle-group {
+            margin-left: 0;
+            margin-right: 1.25rem;
+        }
+
+        .auth-btn {
+            padding: 0.6rem 1.75rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.88rem;
+            letter-spacing: 0.04em;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            white-space: nowrap;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            text-transform: uppercase;
+        }
+
+        .auth-btn.login {
+            background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+            color: #ffffff !important;
+            box-shadow: 0 4px 15px rgba(var(--color-rgb-primary), 0.35);
+            border: none;
+        }
+
+        .dark .auth-btn.login {
+            background: linear-gradient(135deg, var(--color-primary-bright) 0%, var(--color-primary) 100%);
+            color: #0C0F12 !important;
+            box-shadow: 0 4px 15px rgba(var(--color-rgb-bright), 0.3);
+            border: none;
+        }
+
+        .auth-btn.login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(var(--color-rgb-primary), 0.45);
+            color: #ffffff !important;
+        }
+
+        .dark .auth-btn.login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(var(--color-rgb-bright), 0.45);
+            color: #0C0F12 !important;
+        }
+
+        .auth-btn.signup {
+            background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(var(--color-rgb-primary), 0.3);
+        }
+
+        .dark .auth-btn.signup {
+            background: linear-gradient(135deg, var(--color-primary-bright) 0%, var(--color-primary) 100%);
+            color: #0C0F12;
+        }
+
+        .auth-btn.signup:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(var(--color-rgb-primary), 0.4);
+        }
+
+        .dark .auth-btn.signup:hover {
+            box-shadow: 0 10px 25px -5px rgba(var(--color-rgb-bright), 0.4);
+        }
+
+        .toggle-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(var(--color-rgb-primary), 0.12);
+            color: var(--color-primary);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(var(--color-rgb-primary), 0.2);
+            cursor: pointer;
+        }
+
+        .dark .toggle-btn {
+            background: rgba(var(--color-rgb-bright), 0.12);
+            color: var(--color-primary-bright);
+            border-color: rgba(var(--color-rgb-bright), 0.25);
+        }
+
+        .toggle-btn:hover {
+            background: var(--color-primary);
+            color: white;
+            transform: scale(1.08);
+        }
+
+        .dark .toggle-btn:hover {
+            background: var(--color-primary-bright);
+            color: #0C0F12;
+            transform: scale(1.08);
+        }
+
+        .toggle-btn.active {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .dark .toggle-btn.active {
+            background: var(--color-primary-bright);
+            color: #0C0F12;
+        }
+
+        @media (max-width: 1279px) {
+            .desktop-toggle-group {
+                display: none !important;
+            }
+        }
+
+        .mobile-menu {
+            background: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+
+        .mobile-menu:not(.open) {
+            border: none !important;
+            border-width: 0 !important;
+            margin-top: 0 !important;
+            padding: 0 !important;
+            box-shadow: none !important;
+            pointer-events: none !important;
+        }
+
+        .dark .mobile-menu {
+            background: #0C0F12;
+            border-color: rgba(var(--color-rgb-bright), 0.2);
+        }
+
+        .mobile-menu.open {
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+
+        .mobile-menu-item {
+            display: block;
+            padding: 1.1rem 1.75rem;
+            font-weight: 600;
+            color: var(--color-text-dark);
+            border-bottom: 1px solid rgba(var(--color-rgb-primary), 0.1);
+            transition: all 0.2s ease;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            font-size: 0.9rem;
+        }
+
+        .dark .mobile-menu-item {
+            color: #E3E8ED;
+            border-bottom-color: rgba(var(--color-rgb-bright), 0.15);
+        }
+
+        .mobile-menu-item:hover {
+            background-color: rgba(var(--color-rgb-primary), 0.06);
+            color: var(--color-primary);
+        }
+
+        .dark .mobile-menu-item:hover {
+            background-color: rgba(var(--color-rgb-bright), 0.12);
+            color: var(--color-primary-bright);
+        }
+
+        .mobile-dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: rgba(var(--color-rgb-primary), 0.04);
+        }
+
+        .dark .mobile-dropdown-content {
+            background: rgba(20, 26, 31, 0.8);
+        }
+
+        .mobile-dropdown-content.show {
+            max-height: 300px;
+        }
+
+        .mobile-dropdown-item {
+            display: block;
+            padding: 0.85rem 2.75rem;
+            font-size: 0.92rem;
+            color: var(--color-text-dark);
+            transition: all 0.2s ease;
+            border-bottom: 1px solid rgba(var(--color-rgb-primary), 0.08);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .dark .mobile-dropdown-item {
+            color: #C0C8D0;
+            border-bottom-color: rgba(var(--color-rgb-bright), 0.1);
+        }
+
+        .mobile-dropdown-item:hover {
+            color: var(--color-primary);
+            background-color: rgba(var(--color-rgb-primary), 0.1);
+        }
+
+        .dark .mobile-dropdown-item:hover {
+            background-color: rgba(var(--color-rgb-bright), 0.15);
+            color: var(--color-primary-bright);
+        }
+
+        .mobile-auth-btn {
+            display: inline-block;
+            padding: 0.85rem 1.75rem;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            text-align: center;
+            margin: 0.25rem;
+            border: 1px solid transparent;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .mobile-auth-btn.login {
+            background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+            color: #ffffff !important;
+            box-shadow: 0 4px 15px rgba(var(--color-rgb-primary), 0.3);
+            border: none;
+        }
+
+        .dark .mobile-auth-btn.login {
+            background: linear-gradient(135deg, var(--color-primary-bright) 0%, var(--color-primary) 100%);
+            color: #0C0F12 !important;
+            border: none;
+        }
+
+        .mobile-auth-btn.login:hover {
+            opacity: 0.95;
+            transform: translateY(-1px);
+        }
+
+        .dark .mobile-auth-btn.login:hover {
+            opacity: 0.95;
+            transform: translateY(-1px);
+            color: #0C0F12 !important;
+        }
+
+        .mobile-auth-btn.signup {
+            background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+            color: white;
+        }
+
+        .dark .mobile-auth-btn.signup {
+            background: linear-gradient(135deg, var(--color-primary-bright) 0%, var(--color-primary) 100%);
+            color: #0C0F12;
+        }
+
+        .mobile-auth-btn.signup:hover {
+            opacity: 0.95;
+        }
+
+        .desktop-nav-container {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        /* Chess Academy Specific Components */
+        .hero-image {
+            border-radius: 28px;
+            box-shadow: 0 30px 60px -15px rgba(var(--color-rgb-primary), 0.3);
+            border: 1px solid rgba(var(--color-rgb-primary), 0.2);
+        }
+
+        .dark .hero-image {
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8);
+            border-color: rgba(var(--color-rgb-bright), 0.25);
+        }
+
+        .service-icon {
+            width: 84px;
+            height: 84px;
+            background: rgba(var(--color-rgb-primary), 0.12);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+            font-size: 2.2rem;
+            color: var(--color-primary);
+            border: 1px solid rgba(var(--color-rgb-primary), 0.25);
+            box-shadow: 0 10px 20px -5px rgba(var(--color-rgb-primary), 0.15);
+        }
+
+        .dark .service-icon {
+            background: rgba(var(--color-rgb-bright), 0.12);
+            color: var(--color-primary-bright);
+            border-color: rgba(var(--color-rgb-bright), 0.3);
+        }
+
+        .gift-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px -10px rgba(var(--color-rgb-primary), 0.12);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 1px solid rgba(var(--color-rgb-primary), 0.18);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .dark .gift-card {
+            background: #141A1F;
+            border-color: rgba(var(--color-rgb-bright), 0.2);
+            box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        .gift-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 50px -15px rgba(var(--color-rgb-primary), 0.3);
+            border-color: rgba(var(--color-rgb-primary), 0.4);
+        }
+
+        .dark .gift-card:hover {
+            border-color: rgba(var(--color-rgb-bright), 0.5);
+            box-shadow: 0 30px 50px -15px rgba(0, 0, 0, 0.8);
+        }
+
+        .badge {
+            background: rgba(12, 15, 18, 0.75) !important;
+            color: #FFFFFF !important;
+            padding: 0.35rem 1.1rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.82rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            border: 1px solid rgba(255, 255, 255, 0.3) !important;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .dark .badge {
+            background: rgba(12, 15, 18, 0.85) !important;
+            color: #FFFFFF !important;
+            border: 1px solid rgba(255, 255, 255, 0.35) !important;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+        }
+
+        footer {
+            background: white;
+            color: var(--color-text-dark);
+            border-top: 1px solid rgba(var(--color-rgb-primary), 0.18);
+        }
+
+        .dark footer {
+            background: #0C0F12;
+            color: #E3E8ED;
+            border-color: rgba(var(--color-rgb-bright), 0.2);
+        }
+
+        footer a:hover {
+            color: var(--color-primary);
+        }
+
+        .dark footer a:hover {
+            color: var(--color-primary-bright);
+        }
+
+        .social-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(var(--color-rgb-primary), 0.1);
+            color: var(--color-primary);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            border: 1px solid rgba(var(--color-rgb-primary), 0.2);
+        }
+
+        .dark .social-icon {
+            background: rgba(var(--color-rgb-bright), 0.12);
+            color: var(--color-primary-bright);
+            border-color: rgba(var(--color-rgb-bright), 0.25);
+        }
+
+        .social-icon:hover {
+            background: var(--color-primary);
+            color: white;
+            transform: translateY(-3px) scale(1.05);
+        }
+
+        .dark .social-icon:hover {
+            background: var(--color-primary-bright);
+            color: #0C0F12;
+        }
+
+        .btn-gift {
+            background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+            color: white;
+            padding: 0.9rem 2.25rem;
+            border-radius: 50px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+            font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+            box-shadow: 0 10px 25px -5px rgba(var(--color-rgb-primary), 0.35);
+        }
+
+        .dark .btn-gift {
+            background: linear-gradient(135deg, var(--color-primary-bright) 0%, var(--color-primary) 100%);
+            color: #0C0F12;
+            box-shadow: 0 10px 25px -5px rgba(var(--color-rgb-bright), 0.35);
+        }
+
+        .btn-gift:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 35px -8px rgba(var(--color-rgb-primary), 0.5);
+        }
+
+        .dark .btn-gift:hover {
+            box-shadow: 0 18px 35px -8px rgba(var(--color-rgb-bright), 0.5);
+        }
+
+        .premium-line {
+            width: 90px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light), transparent);
+            margin: 24px 0;
+            border-radius: 2px;
+        }
+
+        .dark .premium-line {
+            background: linear-gradient(90deg, var(--color-primary-bright), var(--color-primary-light), transparent);
+        }
+
+        .client-logo {
+            filter: grayscale(1) opacity(0.5);
+            transition: all 0.3s ease;
+            max-height: 55px;
+        }
+
+        .client-logo:hover {
+            filter: grayscale(0) opacity(1);
+            transform: scale(1.05);
+        }
+
+        .dark .client-logo {
+            filter: grayscale(1) brightness(1.8) opacity(0.6);
+        }
+
+        .dark .client-logo:hover {
+            filter: grayscale(0) brightness(1) opacity(1);
+        }
+
+        /* Horizontal scroll utilities */
+        .scrollbar-thin::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .scrollbar-thin::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .scrollbar-thin::-webkit-scrollbar-thumb {
+            background: rgba(var(--color-rgb-primary), 0.4);
+            border-radius: 10px;
+        }
+
+        .dark .scrollbar-thin::-webkit-scrollbar-thumb {
+            background: rgba(var(--color-rgb-bright), 0.4);
+        }
+
+        /* High-End Agency Design Components */
+        .double-bezel-outer {
+            position: relative;
+            border-radius: 2rem;
+            padding: 0.375rem;
+            background: linear-gradient(180deg, rgba(var(--color-rgb-primary), 0.25) 0%, rgba(var(--color-rgb-primary), 0.05) 100%);
+            border: 1px solid rgba(var(--color-rgb-primary), 0.2);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.08);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .dark .double-bezel-outer {
+            background: linear-gradient(180deg, rgba(var(--color-rgb-bright), 0.2) 0%, rgba(255, 255, 255, 0.02) 100%);
+            border-color: rgba(var(--color-rgb-bright), 0.2);
+            box-shadow: 0 25px 50px -15px rgba(0, 0, 0, 0.7);
+        }
+
+        .double-bezel-outer:hover {
+            transform: translateY(-6px);
+            border-color: rgba(var(--color-rgb-primary), 0.45);
+            box-shadow: 0 30px 60px -15px rgba(var(--color-rgb-primary), 0.25);
+        }
+
+        .dark .double-bezel-outer:hover {
+            border-color: rgba(var(--color-rgb-bright), 0.45);
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.9);
+        }
+
+        .double-bezel-inner {
+            border-radius: calc(2rem - 0.375rem);
+            background: #FFFFFF;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8);
+        }
+
+        .dark .double-bezel-inner {
+            background: #141A1F;
+            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.08);
+        }
+
+        /* Button-in-Button Architecture */
+        .btn-nested {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.85rem;
+            padding: 0.65rem 0.75rem 0.65rem 1.75rem;
+            border-radius: 9999px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+            color: #FFFFFF !important;
+            box-shadow: 0 10px 25px -5px rgba(var(--color-rgb-primary), 0.35);
+        }
+
+        .dark .btn-nested {
+            background: linear-gradient(135deg, var(--color-primary-bright) 0%, var(--color-primary) 100%);
+            color: #0C0F12 !important;
+            box-shadow: 0 10px 25px -5px rgba(var(--color-rgb-bright), 0.3);
+        }
+
+        .btn-nested .icon-circle {
+            width: 2.25rem;
+            height: 2.25rem;
+            border-radius: 9999px;
+            background: rgba(255, 255, 255, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .dark .btn-nested .icon-circle {
+            background: rgba(12, 15, 18, 0.25);
+        }
+
+        .btn-nested:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 18px 35px -8px rgba(var(--color-rgb-primary), 0.5);
+        }
+
+        .dark .btn-nested:hover {
+            box-shadow: 0 18px 35px -8px rgba(var(--color-rgb-bright), 0.45);
+        }
+
+        .btn-nested:hover .icon-circle {
+            transform: translateX(3px) rotate(45deg);
+        }
+
+        .btn-nested:active {
+            transform: scale(0.98);
+        }
+
+        /* Frosted Pill Button */
+        .btn-frosted {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            padding: 0.85rem 1.75rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 0.88rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            border: 1px solid rgba(var(--color-rgb-primary), 0.3);
+            color: var(--color-text-dark);
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .dark .btn-frosted {
+            border-color: rgba(var(--color-rgb-bright), 0.3);
+            color: #E3E8ED;
+            background: rgba(25, 30, 35, 0.6);
+        }
+
+        .btn-frosted:hover {
+            background: rgba(var(--color-rgb-primary), 0.12);
+            border-color: var(--color-primary);
+            transform: translateY(-2px);
+        }
+
+        .dark .btn-frosted:hover {
+            background: rgba(var(--color-rgb-bright), 0.15);
+            border-color: var(--color-primary-bright);
+        }
+
+        @keyframes shimmerPulse {
+            0%, 100% { opacity: 0.85; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.02); }
+        }
+
+        .eyebrow-pill {
+            animation: shimmerPulse 4s ease-in-out infinite;
+        }
+
+        /* Chess Board Pattern Accent */
+        .chess-pattern {
+            background-image: 
+                linear-gradient(45deg, rgba(var(--color-rgb-primary), 0.03) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(var(--color-rgb-primary), 0.03) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, rgba(var(--color-rgb-primary), 0.03) 75%),
+                linear-gradient(-45deg, transparent 75%, rgba(var(--color-rgb-primary), 0.03) 75%);
+            background-size: 40px 40px;
+            background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+        }
+
+        .dark .chess-pattern {
+            background-image: 
+                linear-gradient(45deg, rgba(var(--color-rgb-bright), 0.04) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(var(--color-rgb-bright), 0.04) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, rgba(var(--color-rgb-bright), 0.04) 75%),
+                linear-gradient(-45deg, transparent 75%, rgba(var(--color-rgb-bright), 0.04) 75%);
+        }
+
+        /* --- Home2 Unique Styles --- */
+        .timeline-step {
+            position: relative;
+        }
+        .timeline-dot {
+            width: 2.5rem; height: 2.5rem; border-radius: 50%;
+            background: white; border: 2px solid var(--color-primary);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--color-primary); font-weight: 800; font-size: 0.9rem;
+            box-shadow: 0 10px 20px -8px rgba(var(--color-rgb-primary), 0.3);
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+        .dark .timeline-dot {
+            background: #141A1F; border-color: var(--color-primary-bright);
+            color: var(--color-primary-bright); box-shadow: 0 10px 20px -8px rgba(var(--color-rgb-bright), 0.3);
+        }
+        .timeline-step:hover .timeline-dot {
+            background: var(--color-primary); color: white; transform: scale(1.1);
+            border-color: var(--color-primary);
+        }
+        .dark .timeline-step:hover .timeline-dot {
+            background: var(--color-primary-bright); color: #0C0F12; border-color: var(--color-primary-bright);
+        }
+        .testimonial-card {
+            background: linear-gradient(145deg, rgba(var(--color-rgb-primary), 0.03), transparent);
+            border-radius: 2rem;
+            border: 1px solid rgba(var(--color-rgb-primary), 0.15);
+            transition: all 0.4s ease;
+        }
+        .dark .testimonial-card {
+            background: linear-gradient(145deg, rgba(var(--color-rgb-bright), 0.05), transparent);
+            border-color: rgba(var(--color-rgb-bright), 0.15);
+        }
+        .testimonial-card:hover {
+            border-color: rgba(var(--color-rgb-primary), 0.35);
+            transform: translateY(-4px);
+        }
+        .dark .testimonial-card:hover {
+            border-color: rgba(var(--color-rgb-bright), 0.35);
+        }
+        .stat-number {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 900;
+            font-size: 3rem;
+            line-height: 1;
+            background: linear-gradient(135deg, var(--color-primary-bright), var(--color-primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .dark .stat-number {
+            background: linear-gradient(135deg, var(--color-primary-bright), var(--color-primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .home2-feature-card {
+            background: white; border-radius: 2rem; padding: 2rem 1.75rem;
+            border: 1px solid rgba(var(--color-rgb-primary), 0.12);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative; overflow: hidden;
+        }
+        .dark .home2-feature-card {
+            background: #141A1F; border-color: rgba(var(--color-rgb-bright), 0.15);
+        }
+        .home2-feature-card::after {
+            content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 4px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-primary-bright));
+            transform: scaleX(0); transform-origin: left; transition: transform 0.5s ease;
+        }
+        [dir="rtl"] .home2-feature-card::after { transform-origin: right; }
+        .home2-feature-card:hover::after { transform: scaleX(1); }
+        .home2-feature-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 30px 50px -20px rgba(var(--color-rgb-primary), 0.25);
+        }
+        .dark .home2-feature-card:hover {
+            box-shadow: 0 30px 50px -20px rgba(var(--color-rgb-bright), 0.25);
+        }
+    </style>
+</head>
+
+<body class="bg-bg-warm dark:bg-dark-bg text-neutral-dark dark:text-gray-200 transition-colors duration-400">
+
+    <!-- ========== FLOATING ISLAND HEADER (exact copy) ========== -->
+    <header class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 pt-3 sm:pt-4 transition-all duration-300 pointer-events-none">
+        <nav
+            class="max-w-7xl mx-auto pointer-events-auto bg-white/85 dark:bg-[#141A1F]/90 backdrop-blur-xl rounded-full px-5 sm:px-7 py-2.5 sm:py-3 border border-gift-slate/25 dark:border-gift-slate-bright/25 shadow-[0_20px_45px_-15px_rgba(0,0,0,0.1)] dark:shadow-[0_20px_45px_-15px_rgba(0,0,0,0.7)] flex items-center justify-between transition-colors duration-400">
+            <!-- Brand Logo -->
+            <a href="index.html" class="flex items-center gap-3 group shrink-0" dir="ltr">
+                <div class="w-10 h-10 bg-gradient-to-br from-gift-slate-light to-gift-slate rounded-2xl flex items-center justify-center flex-shrink-0 shadow-md group-hover:rotate-6 transition duration-300">
+                    <i class="fas fa-chess-knight text-white dark:text-dark-bg text-lg"></i>
+                </div>
+                <div>
+                    <span class="text-lg md:text-2xl font-serif font-bold tracking-wide text-neutral-dark dark:text-white">
+                        Chess <span class="board-gradient-text">Academy</span>
+                    </span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden xl:flex items-center">
+                <div class="desktop-nav-container">
+                    <div class="flex items-center gap-4 xl:gap-6">
+                        <!-- Home Dropdown -->
+                        <div class="dropdown">
+                            <button class="nav-item active flex items-center gap-1.5"
+                                style="color: var(--color-primary); font-weight: 700;">
+                                Home <i class="fas fa-chevron-down text-[9px] opacity-70"></i>
+                            </button>
+                            <div class="dropdown-menu">
+                                <a href="index.html" class="dropdown-item">Home 1</a>
+                                <a href="home2.html" class="dropdown-item"
+                                    style="background: rgba(var(--color-rgb-primary),0.12); color: var(--color-primary); border-left: 3px solid var(--color-primary); font-weight: 700;">
+                                    Home 2
+                                </a>
+                            </div>
+                        </div>
+                        <a href="about.html" class="nav-item">About</a>
+                        <a href="programs.html" class="nav-item">Programs</a>
+                        <a href="coaches.html" class="nav-item">Coaches</a>
+                        <a href="tournaments.html" class="nav-item">Tournaments</a>
+                        <a href="contact.html" class="nav-item">Contact</a>
+                        <div class="dropdown">
+                            <button class="nav-item flex items-center gap-1.5">
+                                Portal <i class="fas fa-chevron-down text-[9px] opacity-70"></i>
+                            </button>
+                            <div class="dropdown-menu">
+                                <a href="student-portal.html" class="dropdown-item">Student Dashboard</a>
+                                <a href="admin.html" class="dropdown-item">Academy Admin</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3 ml-2">
+                        <a href="login.html" class="btn-nested !py-2 !px-4 !text-xs group">
+                            <span>Student Login</span>
+                            <span class="icon-circle !w-6 !h-6">
+                                <i class="fas fa-arrow-right text-[10px]"></i>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2 ml-4 desktop-toggle-group">
+                    <button id="theme-toggle" class="toggle-btn !w-9 !h-9" title="Toggle Dark/Light Mode">
+                        <i class="fas fa-moon text-sm"></i>
+                        <i class="fas fa-sun text-sm hidden"></i>
+                    </button>
+                    <button id="rtl-toggle" class="toggle-btn !w-9 !h-9 font-serif font-bold text-xs" title="Toggle RTL/LTR">⇄</button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobile-toggle"
+                class="xl:hidden text-neutral-dark dark:text-gray-300 p-2 focus:outline-none hover:text-gift-slate transition-colors"
+                aria-label="Toggle Navigation Menu">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </nav>
+
+        <!-- Mobile Menu Floating Card -->
+        <div id="mobile-menu" class="mobile-menu xl:hidden max-w-7xl mx-auto mt-2 rounded-3xl border border-gift-slate/20 dark:border-gift-slate-bright/25 shadow-2xl overflow-hidden pointer-events-auto">
+            <div class="mobile-dropdown">
+                <button class="mobile-dropdown-btn flex items-center justify-between w-full mobile-menu-item active"
+                    style="color: var(--color-primary); font-weight: 700;">
+                    <span>Home</span> <i class="fas fa-chevron-down text-xs"></i>
+                </button>
+                <div class="mobile-dropdown-content">
+                    <a href="index.html" class="mobile-dropdown-item">Home 1 </a>
+                    <a href="home2.html" class="mobile-dropdown-item"
+                        style="background: rgba(var(--color-rgb-primary),0.1); color: var(--color-primary); border-left: 3px solid var(--color-primary); font-weight: 700;">Home 2 </a>
+                </div>
+            </div>
+            <a href="about.html" class="mobile-menu-item">About</a>
+            <a href="programs.html" class="mobile-menu-item">Programs</a>
+            <a href="coaches.html" class="mobile-menu-item">Coaches</a>
+            <a href="tournaments.html" class="mobile-menu-item">Tournaments</a>
+            <a href="contact.html" class="mobile-menu-item">Contact</a>
+            <div class="mobile-dropdown">
+                <button class="mobile-dropdown-btn flex items-center justify-between w-full mobile-menu-item">
+                    <span>Portals</span> <i class="fas fa-chevron-down text-xs"></i>
+                </button>
+                <div class="mobile-dropdown-content">
+                    <a href="student-portal.html" class="mobile-dropdown-item">Student Dashboard</a>
+                    <a href="admin.html" class="mobile-dropdown-item">Academy Admin</a>
+                </div>
+            </div>
+            <div class="p-5 flex flex-col gap-3">
+                <a href="login.html" class="btn-nested justify-center !py-3 w-full text-center">
+                    <span>Student Login</span>
+                    <span class="icon-circle !w-7 !h-7"><i class="fas fa-arrow-right text-xs"></i></span>
+                </a>
+            </div>
+            <div class="flex justify-center gap-3 p-4 border-t border-gray-100 dark:border-gray-800">
+                <button id="theme-toggle-mobile" class="toggle-btn"><i class="fas fa-moon"></i><i class="fas fa-sun hidden"></i></button>
+                <button id="rtl-toggle-mobile" class="toggle-btn">⇄</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========== HOME2 HERO — SPLIT VERTICAL / MINIMAL ASYMMETRY ========== -->
+    <section class="relative min-h-[85vh] flex items-center pt-32 pb-16 sm:pt-36 sm:pb-20 lg:pt-40 lg:pb-24 bg-bg-warm dark:bg-dark-bg chess-pattern overflow-hidden transition-colors duration-400">
+        <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-gift-slate/5 via-transparent to-gift-slate-bright/5 dark:from-gift-slate-bright/5 dark:to-transparent pointer-events-none"></div>
+
+        <div class="container mx-auto px-4 sm:px-6 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-10 lg:gap-20 items-center">
+                <!-- Left column - big typography -->
+                <div class="animate-slide-up">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="w-12 h-[2px] bg-gift-slate dark:bg-gift-slate-bright"></span>
+                        <span class="text-[11px] font-bold tracking-[0.3em] uppercase text-gift-slate dark:text-gift-slate-bright">The Grandmaster Path</span>
+                    </div>
+                    <h1 class="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-serif font-bold text-neutral-dark dark:text-white leading-[1] sm:leading-[0.95] tracking-tight mb-6">
+                        Think<br>
+                        <span class="board-gradient-text italic font-serif">Deeper.</span><br>
+                        Play Better.
+                    </h1>
+                    <p class="text-base sm:text-lg text-neutral-dark/80 dark:text-gray-300 max-w-lg mb-8 font-sans font-light leading-relaxed">
+                        We don't just teach openings and endings. We build complete players — strategic, resilient, and fearless at the board. From first move to master level.
+                    </p>
+                    <div class="flex flex-wrap gap-4 sm:gap-5 items-center">
+                        <a href="programs.html" class="btn-nested group">
+                            <span>Find Your Program</span>
+                            <span class="icon-circle"><i class="fas fa-arrow-right text-xs"></i></span>
+                        </a>
+                        <a href="coaches.html" class="btn-frosted">
+                            <i class="fas fa-user-tie"></i>
+                            <span>Meet Coaches</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right column - abstract chess piece visual -->
+                <div class="relative flex justify-center lg:justify-end mt-8 lg:mt-0">
+                    <div class="relative w-full max-w-[340px] sm:max-w-[420px] h-[370px] sm:h-auto sm:aspect-square flex items-center justify-center">
+                        <!-- big knight silhouette -->
+                        <div class="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
+                            <i class="fas fa-chess-knight text-[15rem] sm:text-[22rem] lg:text-[26rem] text-gift-slate/10 dark:text-gift-slate-bright/10 select-none"></i>
+                        </div>
+
+                        <!-- Card 1: Positional Mastery -->
+                        <div class="absolute top-2 left-0 sm:top-4 sm:left-2 lg:top-6 lg:left-4 bg-white/95 dark:bg-dark-card/95 backdrop-blur-xl rounded-2xl p-3.5 sm:p-5 shadow-xl border border-gift-slate/20 dark:border-gift-slate-bright/20 w-[180px] sm:w-56 hover:-translate-y-1 transition-transform duration-300">
+                            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gift-slate/10 dark:bg-gift-slate-bright/10 flex items-center justify-center text-gift-slate dark:text-gift-slate-bright text-base sm:text-lg mb-2 sm:mb-3">
+                                <i class="fas fa-chess-queen"></i>
+                            </div>
+                            <div class="text-xs sm:text-base font-bold font-serif text-neutral-dark dark:text-white leading-snug">Positional Mastery</div>
+                            <div class="text-[11px] sm:text-xs opacity-75 font-sans mt-0.5 sm:mt-1">Pawn structures & space advantage</div>
+                        </div>
+
+                        <!-- Card 2: Tournament Ready -->
+                        <div class="absolute bottom-2 right-0 sm:bottom-4 sm:right-2 lg:bottom-6 lg:right-4 bg-white/95 dark:bg-dark-card/95 backdrop-blur-xl rounded-2xl p-3.5 sm:p-5 shadow-xl border border-gift-slate/20 dark:border-gift-slate-bright/20 w-[180px] sm:w-56 hover:-translate-y-1 transition-transform duration-300">
+                            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gift-slate/10 dark:bg-gift-slate-bright/10 flex items-center justify-center text-gift-slate dark:text-gift-slate-bright text-base sm:text-lg mb-2 sm:mb-3">
+                                <i class="fas fa-chess-board"></i>
+                            </div>
+                            <div class="text-xs sm:text-base font-bold font-serif text-neutral-dark dark:text-white leading-snug">Tournament Ready</div>
+                            <div class="text-[11px] sm:text-xs opacity-75 font-sans mt-0.5 sm:mt-1">FIDE-rated event preparation</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SECTION 2: TIMELINE / ROADMAP (unique) ========== -->
+    <section class="py-16 sm:py-24 lg:py-28 bg-white dark:bg-dark-card border-y border-neutral-light/50 dark:border-gray-800/60 transition-colors duration-400">
+        <div class="container mx-auto px-6">
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <span class="text-gift-slate dark:text-gift-slate-bright font-bold text-xs tracking-[0.25em] uppercase">Your Chess Journey</span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-neutral-dark dark:text-white mt-3">From Pawn to <span class="board-gradient-text italic font-serif">King</span></h2>
+                <div class="premium-line mx-auto !my-4"></div>
+                <p class="text-base opacity-80 font-sans font-light">Every student follows a structured path — no guesswork, just progress.</p>
+            </div>
+
+            <!-- Vertical timeline with 4 steps -->
+            <div class="max-w-3xl mx-auto">
+                <!-- Step 1 -->
+                <div class="timeline-step flex gap-6 pb-12 relative">
+                    <div class="timeline-dot">01</div>
+                    <div class="flex-1 pt-1">
+                        <h3 class="text-xl sm:text-2xl font-serif font-bold text-neutral-dark dark:text-white mb-2">Foundation & Rules</h3>
+                        <p class="text-sm opacity-80 font-sans leading-relaxed max-w-xl">Master piece movement, basic checkmates, and opening principles. Build unshakeable board vision and tactical awareness.</p>
+                        <div class="flex flex-wrap gap-2 mt-3">
+                            <span class="text-[11px] font-semibold bg-gift-slate/10 dark:bg-gift-slate-bright/10 text-gift-slate dark:text-gift-slate-bright px-3 py-1 rounded-full border border-gift-slate/20">Tactics</span>
+                            <span class="text-[11px] font-semibold bg-gift-slate/10 dark:bg-gift-slate-bright/10 text-gift-slate dark:text-gift-slate-bright px-3 py-1 rounded-full border border-gift-slate/20">Checkmate Patterns</span>
+                            <span class="text-[11px] font-semibold bg-gift-slate/10 dark:bg-gift-slate-bright/10 text-gift-slate dark:text-gift-slate-bright px-3 py-1 rounded-full border border-gift-slate/20">Opening Principles</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Step 2 -->
+                <div class="timeline-step flex gap-6 pb-12 relative">
+                    <div class="timeline-dot">02</div>
+                    <div class="flex-1 pt-1">
+                        <h3 class="text-xl sm:text-2xl font-serif font-bold text-neutral-dark dark:text-white mb-2">Intermediate Strategy</h3>
+                        <p class="text-sm opacity-80 font-sans leading-relaxed max-w-xl">Deepen your understanding of pawn structures, piece coordination, and middlegame plans. Start competing in local tournaments.</p>
+                        <div class="flex flex-wrap gap-2 mt-3">
+                            <span class="text-[11px] font-semibold bg-gift-slate/10 dark:bg-gift-slate-bright/10 text-gift-slate dark:text-gift-slate-bright px-3 py-1 rounded-full border border-gift-slate/20">Positional Play</span>
+                            <span class="text-[11px] font-semibold bg-gift-slate/10 dark:bg-gift-slate-bright/10 text-gift-slate dark:text-gift-slate-bright px-3 py-1 rounded-full border border-gift-slate/20">Endgame Technique</span>
+                            <span class="text-[11px] font-semibold bg-gift-slate/10 dark:bg-gift-slate-bright/10 text-gift-slate dark:text-gift-slate-bright px-3 py-1 rounded-full border border-gift-slate/20">Time Management</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Step 3 -->
+                <div class="timeline-step flex gap-6 pb-12 relative">
+                    <div class="timeline-dot">03</div>
+                    <div class="flex-1 pt-1">
+                        <h3 class="text-xl sm:text-2xl font-serif font-bold text-neutral-dark dark:text-white mb-2">Advanced Tournament Play</h3>
+                        <p class="text-sm opacity-80 font-sans leading-relaxed max-w-xl">Intensive opening preparation, complex calculation training, and psychological conditioning. Compete in FIDE-rated events.</p>
+                        <div class="flex flex-wrap gap-2 mt-3">
+                            <span class="text-[11px] font-semibold bg-gift-slate/10 dark:bg-gift-slate-bright/10 text-gift-slate dark:text-gift-slate-bright px-3 py-1 rounded-full border border-gift-slate/20">Deep Openings</span>
+                            <span class="text-[11px] font-semibold bg-gift-slate/10 dark:bg-gift-slate-bright/10 text-gift-slate dark:text-gift-slate-bright px-3 py-1 rounded-full border border-gift-slate/20">Calculation</span>
+                            <span class="text-[11px] font-semibold bg-gift-slate/10 dark:bg-gift-slate-bright/10 text-gift-slate dark:text-gift-slate-bright px-3 py-1 rounded-full border border-gift-slate/20">Mental Resilience</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Step 4 -->
+                <div class="timeline-step flex gap-6 relative">
+                    <div class="timeline-dot">04</div>
+                    <div class="flex-1 pt-1">
+                        <h3 class="text-xl sm:text-2xl font-serif font-bold text-neutral-dark dark:text-white mb-2">Mastery & Mentorship</h3>
+                        <p class="text-sm opacity-80 font-sans leading-relaxed max-w-xl">Refine your unique style, analyze your own games like a Grandmaster, and give back by mentoring younger players.</p>
+                        <div class="flex flex-wrap gap-2 mt-3">
+                            <span class="text-[11px] font-semibold bg-gift-slate/10 dark:bg-gift-slate-bright/10 text-gift-slate dark:text-gift-slate-bright px-3 py-1 rounded-full border border-gift-slate/20">Game Analysis</span>
+                            <span class="text-[11px] font-semibold bg-gift-slate/10 dark:bg-gift-slate-bright/10 text-gift-slate dark:text-gift-slate-bright px-3 py-1 rounded-full border border-gift-slate/20">Personal Style</span>
+                            <span class="text-[11px] font-semibold bg-gift-slate/10 dark:bg-gift-slate-bright/10 text-gift-slate dark:text-gift-slate-bright px-3 py-1 rounded-full border border-gift-slate/20">Mentorship</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="programs.html" class="btn-frosted inline-flex">
+                    <i class="fas fa-map-signs"></i>
+                    <span>See Detailed Curriculum</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SECTION 3: 4 PILLARS (home2 alternative feature cards) ========== -->
+    <section class="py-16 sm:py-24 lg:py-28 bg-bg-warm dark:bg-dark-bg transition-colors duration-400 relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-14">
+                <span class="text-gift-slate dark:text-gift-slate-bright font-bold text-xs tracking-[0.25em] uppercase">Why Chess Academy</span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-neutral-dark dark:text-white mt-3">The <span class="board-gradient-text italic font-serif">Academy Advantage</span></h2>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+                <!-- feature 1 -->
+                <div class="home2-feature-card group">
+                    <div class="w-14 h-14 rounded-2xl bg-gift-slate/10 dark:bg-gift-slate-bright/10 flex items-center justify-center text-2xl text-gift-slate dark:text-gift-slate-bright mb-5 border border-gift-slate/20 dark:border-gift-slate-bright/20 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-chess-king"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold text-neutral-dark dark:text-white mb-2">Elite Coaching</h3>
+                    <p class="text-sm opacity-80 font-sans leading-relaxed">Learn from Grandmasters and International Masters with decades of competitive and teaching experience.</p>
+                </div>
+                <!-- feature 2 -->
+                <div class="home2-feature-card group">
+                    <div class="w-14 h-14 rounded-2xl bg-gift-slate/10 dark:bg-gift-slate-bright/10 flex items-center justify-center text-2xl text-gift-slate dark:text-gift-slate-bright mb-5 border border-gift-slate/20 dark:border-gift-slate-bright/20 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold text-neutral-dark dark:text-white mb-2">Progress Tracking</h3>
+                    <p class="text-sm opacity-80 font-sans leading-relaxed">Detailed game analysis, personalized improvement plans, and regular rating assessments to measure growth.</p>
+                </div>
+                <!-- feature 3 -->
+                <div class="home2-feature-card group">
+                    <div class="w-14 h-14 rounded-2xl bg-gift-slate/10 dark:bg-gift-slate-bright/10 flex items-center justify-center text-2xl text-gift-slate dark:text-gift-slate-bright mb-5 border border-gift-slate/20 dark:border-gift-slate-bright/20 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold text-neutral-dark dark:text-white mb-2">Community & Events</h3>
+                    <p class="text-sm opacity-80 font-sans leading-relaxed">Weekly club nights, simultaneous exhibitions, and a vibrant community of chess enthusiasts of all ages.</p>
+                </div>
+                <!-- feature 4 -->
+                <div class="home2-feature-card group">
+                    <div class="w-14 h-14 rounded-2xl bg-gift-slate/10 dark:bg-gift-slate-bright/10 flex items-center justify-center text-2xl text-gift-slate dark:text-gift-slate-bright mb-5 border border-gift-slate/20 dark:border-gift-slate-bright/20 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold text-neutral-dark dark:text-white mb-2">Global Network</h3>
+                    <p class="text-sm opacity-80 font-sans leading-relaxed">Access to international tournaments, online training platforms, and connections with chess academies worldwide.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SECTION 4: TESTIMONIALS GRID (unique layout) ========== -->
+    <section class="py-16 sm:py-24 lg:py-28 bg-white dark:bg-dark-card border-y border-neutral-light/50 dark:border-gray-800/60 transition-colors duration-400">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-14">
+                <span class="text-gift-slate dark:text-gift-slate-bright font-bold text-xs tracking-[0.25em] uppercase">Student Voices</span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-neutral-dark dark:text-white mt-3">Stories from the <span class="board-gradient-text italic font-serif">Board</span></h2>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card p-7 flex flex-col">
+                    <div class="flex gap-1 text-gift-accent text-sm mb-5">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-sm leading-relaxed opacity-85 font-sans mb-6 flex-1">"The coaches here don't just teach moves — they teach you how to think. My rating went from 1100 to 1750 in one year. The structured pathway made all the difference."</p>
+                    <div class="flex items-center gap-3 pt-5 border-t border-gift-slate/15 dark:border-gray-800">
+                        <div class="w-11 h-11 rounded-full overflow-hidden border-2 border-gift-slate/20 dark:border-gift-slate-bright/30 shrink-0 shadow-sm">
+                            <img src="assets/images/photo-1539571696357-5a69c17a67c6.jpg" alt="James D." class="w-full h-full object-cover" style="object-position: center top;" loading="lazy">
+                        </div>
+                        <div>
+                            <div class="font-serif font-bold text-sm text-neutral-dark dark:text-white">James D.</div>
+                            <div class="text-xs opacity-70 font-sans">Advanced Program Student</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card p-7 flex flex-col">
+                    <div class="flex gap-1 text-gift-accent text-sm mb-5">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-sm leading-relaxed opacity-85 font-sans mb-6 flex-1">"My daughter joined at age 7 with zero knowledge. Now she's competing in national tournaments and absolutely loves the game. The coaches are patient and brilliant."</p>
+                    <div class="flex items-center gap-3 pt-5 border-t border-gift-slate/15 dark:border-gray-800">
+                        <div class="w-11 h-11 rounded-full overflow-hidden border-2 border-gift-slate/20 dark:border-gift-slate-bright/30 shrink-0 shadow-sm">
+                            <img src="assets/images/photo-1567532939604-b6b5b0db2604.jpg" alt="Maria K." class="w-full h-full object-cover" style="object-position: center 25%;" loading="lazy">
+                        </div>
+                        <div>
+                            <div class="font-serif font-bold text-sm text-neutral-dark dark:text-white">Maria K.</div>
+                            <div class="text-xs opacity-70 font-sans">Parent of Junior Champion</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card p-7 flex flex-col">
+                    <div class="flex gap-1 text-gift-accent text-sm mb-5">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="text-sm leading-relaxed opacity-85 font-sans mb-6 flex-1">"The tournament travel support and pre-game preparation are unmatched. I felt completely ready for my first FIDE-rated event thanks to the academy."</p>
+                    <div class="flex items-center gap-3 pt-5 border-t border-gift-slate/15 dark:border-gray-800">
+                        <div class="w-11 h-11 rounded-full overflow-hidden border-2 border-gift-slate/20 dark:border-gift-slate-bright/30 shrink-0 shadow-sm">
+                            <img src="assets/images/photo-1506794778202-cad84cf45f1d.jpg" alt="Arjun R." class="w-full h-full object-cover" style="object-position: center top;" loading="lazy">
+                        </div>
+                        <div>
+                            <div class="font-serif font-bold text-sm text-neutral-dark dark:text-white">Arjun R.</div>
+                            <div class="text-xs opacity-70 font-sans">FIDE Rated Player</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SECTION 5: CTA (similar but new copy) ========== -->
+    <section class="cta-chess-banner py-20 sm:py-24 text-white relative overflow-hidden border-b border-gift-slate/20">
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gift-slate-light/25 via-transparent to-transparent pointer-events-none"></div>
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <span class="text-white/80 font-bold text-xs tracking-[0.25em] uppercase">Your Next Move</span>
+            <h2 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold mb-6 mt-3">Ready to Elevate Your Game?</h2>
+            <p class="text-lg sm:text-xl opacity-90 max-w-2xl mx-auto font-sans font-light leading-relaxed mb-10">Join a community of passionate players and start your structured journey toward mastery. Your first trial lesson is on us.</p>
+            <div class="flex flex-wrap justify-center gap-5">
+                <a href="contact.html" class="bg-white text-neutral-dark dark:bg-gift-slate-bright dark:text-dark-bg px-8 py-4 rounded-full font-bold text-xs font-sans uppercase tracking-widest hover:shadow-2xl transition duration-300 flex items-center justify-center gap-2">
+                    <i class="fas fa-calendar-check"></i> Book Free Trial
+                </a>
+                <a href="programs.html" class="border-2 border-white/60 dark:border-gift-slate-bright/60 text-white dark:text-gift-slate-bright px-8 py-4 rounded-full font-bold text-xs font-sans uppercase tracking-widest hover:bg-white/10 dark:hover:bg-gift-slate-bright/10 transition duration-300 flex items-center justify-center gap-2">
+                    <i class="fas fa-chess-board"></i> Explore Programs
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER (exact copy) ========== -->
+    <footer class="py-20 bg-white dark:bg-[#0C0F12] transition-colors duration-400">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <div class="text-center md:text-start">
+                    <!-- Brand Lockup in Footer -->
+                    <a href="index.html" class="flex items-center justify-center md:justify-start gap-3 mb-5 group shrink-0" dir="ltr">
+                        <div class="w-10 h-10 bg-gradient-to-br from-gift-slate-light to-gift-slate rounded-2xl flex items-center justify-center flex-shrink-0 shadow-md group-hover:rotate-6 transition duration-300">
+                            <i class="fas fa-chess-knight text-white dark:text-dark-bg text-lg"></i>
+                        </div>
+                        <div>
+                            <span class="text-lg md:text-2xl font-serif font-bold tracking-wide text-neutral-dark dark:text-white">
+                                Chess <span class="board-gradient-text">Academy</span>
+                            </span>
+                        </div>
+                    </a>
+                    <p class="text-sm text-neutral-dark/90 dark:text-gray-300 mb-6 leading-relaxed font-sans">Elite chess coaching, structured programs, and tournament support for players of all levels. Master the board with FIDE-certified coaches.</p>
+                    <div class="flex justify-center md:justify-start gap-4">
+                        <a href="#" class="social-icon text-sm" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon text-sm" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-icon text-sm" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+                <div class="text-center md:text-start">
+                    <h3 class="text-neutral-dark dark:text-white text-lg font-serif font-bold mb-6">Quick Navigation</h3>
+                    <ul class="space-y-3.5 text-sm font-sans font-medium text-neutral-dark/90 dark:text-gray-300">
+                        <li><a href="index.html" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">Home</a></li>
+                        <li><a href="about.html" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">About Us</a></li>
+                        <li><a href="programs.html" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">Programs</a></li>
+                        <li><a href="coaches.html" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">Coaches</a></li>
+                        <li><a href="tournaments.html" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">Tournaments</a></li>
+                        <li><a href="contact.html" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">Contact & Booking</a></li>
+                    </ul>
+                </div>
+                <div class="text-center md:text-start">
+                    <h3 class="text-neutral-dark dark:text-white text-lg font-serif font-bold mb-6">Programs</h3>
+                    <ul class="space-y-3.5 text-sm font-sans font-medium text-neutral-dark/90 dark:text-gray-300">
+                        <li><a href="programs.html#beginner" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">Beginner (Under 1200)</a></li>
+                        <li><a href="programs.html#intermediate" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">Intermediate (1200–2000)</a></li>
+                        <li><a href="programs.html#advanced" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">Advanced (2000+)</a></li>
+                        <li><a href="tournaments.html" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">Tournament Training</a></li>
+                        <li><a href="programs.html#private" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">Private Lessons</a></li>
+                    </ul>
+                </div>
+                <div class="text-center md:text-start">
+                    <h3 class="text-neutral-dark dark:text-white text-lg font-serif font-bold mb-6">Academy Location</h3>
+                    <ul class="space-y-3 text-sm mb-6 font-sans font-medium text-neutral-dark/90 dark:text-gray-300">
+                        <li class="flex items-center justify-center md:justify-start gap-3">
+                            <i class="fas fa-map-marker-alt text-gift-slate dark:text-gift-slate-bright w-4"></i>
+                            <span dir="ltr">42 Strategy Lane, NYC 10001</span>
+                        </li>
+                        <li class="flex items-center justify-center md:justify-start gap-3">
+                            <i class="fas fa-phone text-gift-slate dark:text-gift-slate-bright w-4"></i>
+                            <span dir="ltr">+1 (800) 555-0199</span>
+                        </li>
+                        <li class="flex items-center justify-center md:justify-start gap-3">
+                            <i class="fas fa-envelope text-gift-slate dark:text-gift-slate-bright w-4"></i>
+                            <span dir="ltr">hello@chessacademy.com</span>
+                        </li>
+                        <li class="flex items-center justify-center md:justify-start gap-3">
+                            <i class="fas fa-clock text-gift-slate dark:text-gift-slate-bright w-4"></i>
+                            <span dir="ltr">Mon-Sat: 9AM - 8PM EST</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gift-slate/15 dark:border-gift-slate-bright/15 mt-14 pt-8 text-center">
+                <p class="text-sm font-medium font-sans text-neutral-dark dark:text-gray-200" dir="ltr">© 2026 Chess Academy & Coaching Center. All rights reserved.</p>
+                <p class="text-sm sm:text-base font-serif italic font-bold tracking-widest text-gift-slate dark:text-gift-slate-bright mt-2.5">Strategy • Discipline • Mastery</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript (exact copy) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Default Theme Initialization
+            document.documentElement.setAttribute('data-theme', 'knight-noir');
+
+            // Dark / Light Theme Toggle Logic
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeIcon = themeToggle?.querySelector('.fa-moon');
+            const themeIconSun = themeToggle?.querySelector('.fa-sun');
+            const mobileThemeToggle = document.getElementById('theme-toggle-mobile');
+            const mobileThemeIcon = mobileThemeToggle?.querySelector('.fa-moon');
+            const mobileThemeIconSun = mobileThemeToggle?.querySelector('.fa-sun');
+
+            function setTheme(isDark) {
+                if (isDark) {
+                    document.documentElement.classList.add('dark');
+                    if (themeIcon) themeIcon.classList.add('hidden');
+                    if (themeIconSun) themeIconSun.classList.remove('hidden');
+                    if (themeToggle) themeToggle.classList.add('active');
+                    if (mobileThemeIcon) mobileThemeIcon.classList.add('hidden');
+                    if (mobileThemeIconSun) mobileThemeIconSun.classList.remove('hidden');
+                    if (mobileThemeToggle) mobileThemeToggle.classList.add('active');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    if (themeIcon) themeIcon.classList.remove('hidden');
+                    if (themeIconSun) themeIconSun.classList.add('hidden');
+                    if (themeToggle) themeToggle.classList.remove('active');
+                    if (mobileThemeIcon) mobileThemeIcon.classList.remove('hidden');
+                    if (mobileThemeIconSun) mobileThemeIconSun.classList.add('hidden');
+                    if (mobileThemeToggle) mobileThemeToggle.classList.remove('active');
+                    localStorage.setItem('theme', 'light');
+                }
+            }
+
+            function toggleTheme() {
+                setTheme(!document.documentElement.classList.contains('dark'));
+            }
+
+            if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
+            if (mobileThemeToggle) mobileThemeToggle.addEventListener('click', toggleTheme);
+
+            setTheme(localStorage.getItem('theme') === 'dark');
+
+            // RTL / LTR Direction Toggle Logic
+            const rtlToggle = document.getElementById('rtl-toggle');
+            const mobileRtlToggle = document.getElementById('rtl-toggle-mobile');
+
+            function toggleRTL() {
+                if (document.documentElement.dir === 'rtl') {
+                    document.documentElement.dir = 'ltr';
+                    document.documentElement.lang = 'en';
+                    if (rtlToggle) { rtlToggle.textContent = '⇄'; rtlToggle.classList.remove('active'); }
+                    if (mobileRtlToggle) { mobileRtlToggle.textContent = '⇄'; mobileRtlToggle.classList.remove('active'); }
+                    localStorage.setItem('dir', 'ltr');
+                } else {
+                    document.documentElement.dir = 'rtl';
+                    document.documentElement.lang = 'ar';
+                    if (rtlToggle) { rtlToggle.textContent = '⇄'; rtlToggle.classList.add('active'); }
+                    if (mobileRtlToggle) { mobileRtlToggle.textContent = '⇄'; mobileRtlToggle.classList.add('active'); }
+                    localStorage.setItem('dir', 'rtl');
+                }
+            }
+
+            if (rtlToggle) rtlToggle.addEventListener('click', toggleRTL);
+            if (mobileRtlToggle) mobileRtlToggle.addEventListener('click', toggleRTL);
+
+            if (localStorage.getItem('dir') === 'rtl') {
+                document.documentElement.dir = 'rtl';
+                document.documentElement.lang = 'ar';
+                if (rtlToggle) { rtlToggle.textContent = '⇄'; rtlToggle.classList.add('active'); }
+                if (mobileRtlToggle) { mobileRtlToggle.textContent = '⇄'; mobileRtlToggle.classList.add('active'); }
+            }
+
+            // Mobile Menu Toggle Logic
+            const mobileToggle = document.getElementById('mobile-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileToggleIcon = document.querySelector('#mobile-toggle i');
+
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', () => {
+                    const isOpening = !mobileMenu.classList.contains('open');
+                    if (isOpening) {
+                        mobileMenu.classList.add('open');
+                        mobileToggleIcon.classList.remove('fa-bars');
+                        mobileToggleIcon.classList.add('fa-times');
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        mobileMenu.classList.remove('open');
+                        mobileToggleIcon.classList.remove('fa-times');
+                        mobileToggleIcon.classList.add('fa-bars');
+                        document.body.style.overflow = '';
+                        document.querySelectorAll('.mobile-dropdown-content').forEach(c => c.classList.remove('show'));
+                    }
+                });
+            }
+
+            document.querySelectorAll('.mobile-dropdown-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const dropdown = e.target.closest('.mobile-dropdown');
+                    const content = dropdown.querySelector('.mobile-dropdown-content');
+                    const icon = dropdown.querySelector('.fa-chevron-down');
+                    const isOpening = !content.classList.contains('show');
+                    content.classList.toggle('show');
+                    icon.style.transform = content.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
+                    if (isOpening) {
+                        document.querySelectorAll('.mobile-dropdown-content').forEach(other => {
+                            if (other !== content) {
+                                other.classList.remove('show');
+                                const otherIcon = other.parentElement.querySelector('.fa-chevron-down');
+                                if (otherIcon) otherIcon.style.transform = 'rotate(0deg)';
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

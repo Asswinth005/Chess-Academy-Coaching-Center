@@ -1,0 +1,1780 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth" data-theme="knight-noir">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact & Booking · Chess Academy & Coaching Center</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="alternate icon" href="assets/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+    <meta name="description" content="Book a trial lesson, contact our coaches, or visit the Chess Academy. We respond within 4 hours.">
+    <!-- Tailwind CSS with Local & CDN Fallback -->
+    <script src="tailwind.js"></script>
+    <script>
+        if (typeof tailwind === 'undefined') {
+            document.write('<script src="https://cdn.tailwindcss.com"><\/script>');
+        }
+    </script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'gift-slate': 'rgba(var(--color-rgb-primary), <alpha-value>)',
+                        'gift-slate-light': 'rgba(var(--color-rgb-light), <alpha-value>)',
+                        'gift-slate-dark': 'rgba(var(--color-rgb-dark), <alpha-value>)',
+                        'gift-slate-bright': 'rgba(var(--color-rgb-bright), <alpha-value>)',
+                        'gift-accent': 'rgba(var(--color-rgb-accent), <alpha-value>)',
+                        'bg-warm': 'var(--color-bg-warm)',
+                        'neutral-dark': 'var(--color-text-dark)',
+                        'neutral-light': '#E8E2D9',
+                        'dark-bg': '#0C0F12',
+                        'dark-card': '#141A1F',
+                        'dark-surface': '#1C242B',
+                    },
+                    fontFamily: {
+                        'sans': ['Plus Jakarta Sans', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+                        'serif': ['Cormorant Garamond', 'serif'],
+                        'display': ['Outfit', 'Plus Jakarta Sans', 'sans-serif'],
+                        'premium': ['Outfit', 'Plus Jakarta Sans', 'sans-serif'],
+                        'alt': ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'fade-in': 'fadeIn 0.3s ease-out',
+                        'pulse-glow': 'pulseGlow 3s infinite',
+                    },
+                    keyframes: {
+                        slideUp: {
+                            '0%': { transform: 'translateY(30px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { opacity: '0.6' },
+                            '50%': { opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <script>
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+        }
+        if (localStorage.getItem('dir') === 'rtl') {
+            document.documentElement.dir = 'rtl';
+            document.documentElement.lang = 'ar';
+        }
+    </script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
+        rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chess Academy Stylesheet (Self-Contained) -->
+    <style>
+        :root,
+        [data-theme="knight-noir"],
+        [data-theme="classic-wood"] {
+            --color-primary: #1E3A5F;
+            --color-primary-light: #3B5F8A;
+            --color-primary-dark: #0F2440;
+            --color-primary-bright: #5B8FC9;
+            --color-accent: #C9A44C;
+            --color-bg-warm: #F7F5F0;
+            --color-text-dark: #0C1926;
+            --color-rgb-primary: 30, 58, 95;
+            --color-rgb-light: 59, 95, 138;
+            --color-rgb-dark: 15, 36, 64;
+            --color-rgb-bright: 91, 143, 201;
+            --color-rgb-accent: 201, 164, 76;
+        }
+
+        [data-theme="emerald-board"] {
+            --color-primary: #1B4D3E;
+            --color-primary-light: #2D7A5F;
+            --color-primary-dark: #0E2E24;
+            --color-primary-bright: #5CB88A;
+            --color-accent: #D4AF37;
+            --color-bg-warm: #F0F7F3;
+            --color-text-dark: #0A1F18;
+            --color-rgb-primary: 27, 77, 62;
+            --color-rgb-light: 45, 122, 95;
+            --color-rgb-dark: 14, 46, 36;
+            --color-rgb-bright: 92, 184, 138;
+            --color-rgb-accent: 212, 175, 55;
+        }
+
+        [data-theme="crimson-gambit"] {
+            --color-primary: #8B1A2B;
+            --color-primary-light: #B83045;
+            --color-primary-dark: #5C0E1B;
+            --color-primary-bright: #E05A70;
+            --color-accent: #C9A44C;
+            --color-bg-warm: #FDF5F5;
+            --color-text-dark: #2B0A0F;
+            --color-rgb-primary: 139, 26, 43;
+            --color-rgb-light: 184, 48, 69;
+            --color-rgb-dark: 92, 14, 27;
+            --color-rgb-bright: 224, 90, 112;
+            --color-rgb-accent: 201, 164, 76;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--color-bg-warm);
+            color: var(--color-text-dark);
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+
+        .dark body {
+            background-color: #0C0F12;
+            color: #E3E8ED;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .board-gradient-text,
+        .chess-gradient-text {
+            background: linear-gradient(135deg, var(--color-primary-bright) 0%, var(--color-primary) 50%, var(--color-primary-dark) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: var(--color-bg-warm); }
+        .dark ::-webkit-scrollbar-track { background: #0C0F12; }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(var(--color-rgb-primary), 0.35);
+            border-radius: 9999px;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+        }
+        ::-webkit-scrollbar-thumb:hover { background: var(--color-primary); }
+        .dark ::-webkit-scrollbar-thumb { background: rgba(var(--color-rgb-bright), 0.35); }
+        .dark ::-webkit-scrollbar-thumb:hover { background: var(--color-primary-bright); }
+        * { scrollbar-width: thin; scrollbar-color: rgba(var(--color-rgb-primary), 0.4) transparent; }
+
+        .dark .text-gift-slate { color: var(--color-primary-bright) !important; }
+        .dark .bg-gift-slate { background-color: var(--color-primary-bright) !important; }
+        .dark .border-gift-slate { border-color: var(--color-primary-bright) !important; }
+
+        .cta-chess-banner {
+            background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 50%, var(--color-primary-dark) 100%) !important;
+        }
+        .dark .cta-chess-banner {
+            background: linear-gradient(135deg, #0C0F12 0%, #141A1F 50%, #0C0F12 100%) !important;
+        }
+        .dark .service-icon {
+            background: rgba(var(--color-rgb-bright), 0.12) !important;
+            color: var(--color-primary-bright) !important;
+            border: 1px solid rgba(var(--color-rgb-bright), 0.25);
+        }
+        .dark .badge {
+            background: rgba(12, 15, 18, 0.85) !important;
+            color: #FFFFFF !important;
+            border: 1px solid rgba(255, 255, 255, 0.35) !important;
+        }
+        .dark .dropdown-item:hover { color: var(--color-primary-bright) !important; }
+        .dark .auth-btn.login:hover { border-color: transparent !important; color: #0C0F12 !important; }
+        .dark .nav-item:hover { color: var(--color-primary-bright) !important; }
+        .dark .nav-item::after { background: var(--color-primary-bright) !important; }
+        .dark .dropdown-item i { color: var(--color-primary-bright) !important; }
+        .dark .premium-line { background: linear-gradient(90deg, var(--color-primary-bright), rgba(var(--color-rgb-bright), 0.1)); }
+
+        /* Premium Navigation */
+        .nav-item {
+            position: relative;
+            padding: 0.5rem 0;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 0.02em;
+            color: var(--color-text-dark);
+            transition: color 0.3s ease;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+        .dark .nav-item { color: #E3E8ED; }
+        .nav-item:hover { color: var(--color-primary); }
+        .dark .nav-item:hover { color: var(--color-primary-bright); }
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light));
+            transition: width 0.3s ease;
+        }
+        .dark .nav-item::after {
+            background: linear-gradient(90deg, var(--color-primary-bright), var(--color-primary-light));
+        }
+        [dir="rtl"] .nav-item::after { left: auto; right: 0; }
+        .nav-item:hover::after, .nav-item.active::after { width: 100%; }
+        .nav-item.active { color: var(--color-primary) !important; font-weight: 700; }
+        .dark .nav-item.active { color: var(--color-primary-bright) !important; }
+
+        .mobile-menu-item.active { color: var(--color-primary) !important; font-weight: 700; }
+        .dark .mobile-menu-item.active { color: var(--color-primary-bright) !important; }
+
+        .dropdown { position: relative; }
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 230px;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 16px;
+            padding: 0.85rem 0;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.18);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(12px);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 1000;
+            border: 1px solid rgba(var(--color-rgb-primary), 0.2);
+            backdrop-filter: blur(12px);
+        }
+        .dark .dropdown-menu {
+            background: rgba(20, 26, 31, 0.98);
+            border-color: rgba(var(--color-rgb-bright), 0.25);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+        }
+        .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: -12px;
+            left: 0;
+            right: 0;
+            height: 12px;
+        }
+        [dir="rtl"] .dropdown-menu { left: auto; right: 0; }
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 0.8rem 1.6rem;
+            color: var(--color-text-dark);
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .dark .dropdown-item { color: #E3E8ED; }
+        .dropdown-item:hover {
+            background: rgba(var(--color-rgb-primary), 0.1);
+            color: var(--color-primary);
+            padding-left: 1.85rem;
+        }
+        .dark .dropdown-item:hover {
+            background: rgba(var(--color-rgb-bright), 0.15);
+            color: var(--color-primary-bright);
+        }
+        [dir="rtl"] .dropdown-item:hover { padding-left: 1.6rem; padding-right: 1.85rem; }
+        .dropdown-item i {
+            margin-right: 0.85rem;
+            width: 20px;
+            text-align: center;
+            color: var(--color-primary);
+        }
+        [dir="rtl"] .dropdown-item i { margin-right: 0; margin-left: 0.85rem; }
+        .dark .dropdown-item i { color: var(--color-primary-bright); }
+        [dir="rtl"] .desktop-toggle-group { margin-left: 0; margin-right: 1.25rem; }
+
+        .auth-btn {
+            padding: 0.6rem 1.75rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.88rem;
+            letter-spacing: 0.04em;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            white-space: nowrap;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            text-transform: uppercase;
+        }
+        .auth-btn.login {
+            background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+            color: #ffffff !important;
+            box-shadow: 0 4px 15px rgba(var(--color-rgb-primary), 0.35);
+            border: none;
+        }
+        .dark .auth-btn.login {
+            background: linear-gradient(135deg, var(--color-primary-bright) 0%, var(--color-primary) 100%);
+            color: #0C0F12 !important;
+            box-shadow: 0 4px 15px rgba(var(--color-rgb-bright), 0.3);
+            border: none;
+        }
+        .auth-btn.login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(var(--color-rgb-primary), 0.45);
+            color: #ffffff !important;
+        }
+        .dark .auth-btn.login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(var(--color-rgb-bright), 0.45);
+            color: #0C0F12 !important;
+        }
+
+        .toggle-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(var(--color-rgb-primary), 0.12);
+            color: var(--color-primary);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(var(--color-rgb-primary), 0.2);
+            cursor: pointer;
+        }
+        .dark .toggle-btn {
+            background: rgba(var(--color-rgb-bright), 0.12);
+            color: var(--color-primary-bright);
+            border-color: rgba(var(--color-rgb-bright), 0.25);
+        }
+        .toggle-btn:hover {
+            background: var(--color-primary);
+            color: white;
+            transform: scale(1.08);
+        }
+        .dark .toggle-btn:hover {
+            background: var(--color-primary-bright);
+            color: #0C0F12;
+            transform: scale(1.08);
+        }
+        .toggle-btn.active { background: var(--color-primary); color: white; }
+        .dark .toggle-btn.active { background: var(--color-primary-bright); color: #0C0F12; }
+
+        @media (max-width: 1279px) { .desktop-toggle-group { display: none !important; } }
+
+        .mobile-menu {
+            background: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+        .mobile-menu:not(.open) {
+            border: none !important;
+            border-width: 0 !important;
+            margin-top: 0 !important;
+            padding: 0 !important;
+            box-shadow: none !important;
+            pointer-events: none !important;
+        }
+        .dark .mobile-menu {
+            background: #0C0F12;
+            border-color: rgba(var(--color-rgb-bright), 0.2);
+        }
+        .mobile-menu.open { max-height: 85vh; overflow-y: auto; }
+
+        .mobile-menu-item {
+            display: block;
+            padding: 1.1rem 1.75rem;
+            font-weight: 600;
+            color: var(--color-text-dark);
+            border-bottom: 1px solid rgba(var(--color-rgb-primary), 0.1);
+            transition: all 0.2s ease;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            font-size: 0.9rem;
+        }
+        .dark .mobile-menu-item {
+            color: #E3E8ED;
+            border-bottom-color: rgba(var(--color-rgb-bright), 0.15);
+        }
+        .mobile-menu-item:hover {
+            background-color: rgba(var(--color-rgb-primary), 0.06);
+            color: var(--color-primary);
+        }
+        .dark .mobile-menu-item:hover {
+            background-color: rgba(var(--color-rgb-bright), 0.12);
+            color: var(--color-primary-bright);
+        }
+
+        .mobile-dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: rgba(var(--color-rgb-primary), 0.04);
+        }
+        .dark .mobile-dropdown-content { background: rgba(20, 26, 31, 0.8); }
+        .mobile-dropdown-content.show { max-height: 300px; }
+        .mobile-dropdown-item {
+            display: block;
+            padding: 0.85rem 2.75rem;
+            font-size: 0.92rem;
+            color: var(--color-text-dark);
+            transition: all 0.2s ease;
+            border-bottom: 1px solid rgba(var(--color-rgb-primary), 0.08);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .dark .mobile-dropdown-item {
+            color: #C0C8D0;
+            border-bottom-color: rgba(var(--color-rgb-bright), 0.1);
+        }
+        .mobile-dropdown-item:hover {
+            color: var(--color-primary);
+            background-color: rgba(var(--color-rgb-primary), 0.1);
+        }
+        .dark .mobile-dropdown-item:hover {
+            background-color: rgba(var(--color-rgb-bright), 0.15);
+            color: var(--color-primary-bright);
+        }
+
+        .mobile-auth-btn {
+            display: inline-block;
+            padding: 0.85rem 1.75rem;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            text-align: center;
+            margin: 0.25rem;
+            border: 1px solid transparent;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .mobile-auth-btn.login {
+            background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+            color: #ffffff !important;
+            box-shadow: 0 4px 15px rgba(var(--color-rgb-primary), 0.3);
+            border: none;
+        }
+        .dark .mobile-auth-btn.login {
+            background: linear-gradient(135deg, var(--color-primary-bright) 0%, var(--color-primary) 100%);
+            color: #0C0F12 !important;
+            border: none;
+        }
+        .mobile-auth-btn.login:hover { opacity: 0.95; transform: translateY(-1px); }
+        .dark .mobile-auth-btn.login:hover {
+            opacity: 0.95;
+            transform: translateY(-1px);
+            color: #0C0F12 !important;
+        }
+
+        .desktop-nav-container { display: flex; align-items: center; gap: 2rem; }
+
+        .service-icon {
+            width: 84px;
+            height: 84px;
+            background: rgba(var(--color-rgb-primary), 0.12);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+            font-size: 2.2rem;
+            color: var(--color-primary);
+            border: 1px solid rgba(var(--color-rgb-primary), 0.25);
+            box-shadow: 0 10px 20px -5px rgba(var(--color-rgb-primary), 0.15);
+        }
+        .dark .service-icon {
+            background: rgba(var(--color-rgb-bright), 0.12);
+            color: var(--color-primary-bright);
+            border-color: rgba(var(--color-rgb-bright), 0.3);
+        }
+
+        .badge {
+            background: rgba(12, 15, 18, 0.75) !important;
+            color: #FFFFFF !important;
+            padding: 0.35rem 1.1rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.82rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            border: 1px solid rgba(255, 255, 255, 0.3) !important;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        .dark .badge {
+            background: rgba(12, 15, 18, 0.85) !important;
+            color: #FFFFFF !important;
+            border: 1px solid rgba(255, 255, 255, 0.35) !important;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+        }
+
+        footer {
+            background: white;
+            color: var(--color-text-dark);
+            border-top: 1px solid rgba(var(--color-rgb-primary), 0.18);
+        }
+        .dark footer {
+            background: #0C0F12;
+            color: #E3E8ED;
+            border-color: rgba(var(--color-rgb-bright), 0.2);
+        }
+        footer a:hover { color: var(--color-primary); }
+        .dark footer a:hover { color: var(--color-primary-bright); }
+
+        .social-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(var(--color-rgb-primary), 0.1);
+            color: var(--color-primary);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            border: 1px solid rgba(var(--color-rgb-primary), 0.2);
+        }
+        .dark .social-icon {
+            background: rgba(var(--color-rgb-bright), 0.12);
+            color: var(--color-primary-bright);
+            border-color: rgba(var(--color-rgb-bright), 0.25);
+        }
+        .social-icon:hover {
+            background: var(--color-primary);
+            color: white;
+            transform: translateY(-3px) scale(1.05);
+        }
+        .dark .social-icon:hover {
+            background: var(--color-primary-bright);
+            color: #0C0F12;
+        }
+
+        .premium-line {
+            width: 90px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light), transparent);
+            margin: 24px 0;
+            border-radius: 2px;
+        }
+        .dark .premium-line {
+            background: linear-gradient(90deg, var(--color-primary-bright), var(--color-primary-light), transparent);
+        }
+
+        .double-bezel-outer {
+            position: relative;
+            border-radius: 2rem;
+            padding: 0.375rem;
+            background: linear-gradient(180deg, rgba(var(--color-rgb-primary), 0.25) 0%, rgba(var(--color-rgb-primary), 0.05) 100%);
+            border: 1px solid rgba(var(--color-rgb-primary), 0.2);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.08);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .dark .double-bezel-outer {
+            background: linear-gradient(180deg, rgba(var(--color-rgb-bright), 0.2) 0%, rgba(255, 255, 255, 0.02) 100%);
+            border-color: rgba(var(--color-rgb-bright), 0.2);
+            box-shadow: 0 25px 50px -15px rgba(0, 0, 0, 0.7);
+        }
+        .double-bezel-outer:hover {
+            transform: translateY(-6px);
+            border-color: rgba(var(--color-rgb-primary), 0.45);
+            box-shadow: 0 30px 60px -15px rgba(var(--color-rgb-primary), 0.25);
+        }
+        .dark .double-bezel-outer:hover {
+            border-color: rgba(var(--color-rgb-bright), 0.45);
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.9);
+        }
+        .double-bezel-inner {
+            border-radius: calc(2rem - 0.375rem);
+            background: #FFFFFF;
+            height: 100%;
+            flex: 1 1 0%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8);
+        }
+        .dark .double-bezel-inner {
+            background: #141A1F;
+            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.08);
+        }
+
+        .btn-nested {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.85rem;
+            padding: 0.65rem 0.75rem 0.65rem 1.75rem;
+            border-radius: 9999px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+            color: #FFFFFF !important;
+            box-shadow: 0 10px 25px -5px rgba(var(--color-rgb-primary), 0.35);
+            border: none;
+            cursor: pointer;
+        }
+        .dark .btn-nested {
+            background: linear-gradient(135deg, var(--color-primary-bright) 0%, var(--color-primary) 100%);
+            color: #0C0F12 !important;
+            box-shadow: 0 10px 25px -5px rgba(var(--color-rgb-bright), 0.3);
+        }
+        .btn-nested .icon-circle {
+            width: 2.25rem;
+            height: 2.25rem;
+            border-radius: 9999px;
+            background: rgba(255, 255, 255, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .dark .btn-nested .icon-circle {
+            background: rgba(12, 15, 18, 0.25);
+        }
+        .btn-nested:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 18px 35px -8px rgba(var(--color-rgb-primary), 0.5);
+        }
+        .dark .btn-nested:hover {
+            box-shadow: 0 18px 35px -8px rgba(var(--color-rgb-bright), 0.45);
+        }
+        .btn-nested:hover .icon-circle {
+            transform: translateX(3px) rotate(45deg);
+        }
+        .btn-nested:active {
+            transform: scale(0.98);
+        }
+
+        .btn-frosted {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            padding: 0.85rem 1.75rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 0.88rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            border: 1px solid rgba(var(--color-rgb-primary), 0.3);
+            color: var(--color-text-dark);
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .dark .btn-frosted {
+            border-color: rgba(var(--color-rgb-bright), 0.3);
+            color: #E3E8ED;
+            background: rgba(25, 30, 35, 0.6);
+        }
+        .btn-frosted:hover {
+            background: rgba(var(--color-rgb-primary), 0.12);
+            border-color: var(--color-primary);
+            transform: translateY(-2px);
+        }
+        .dark .btn-frosted:hover {
+            background: rgba(var(--color-rgb-bright), 0.15);
+            border-color: var(--color-primary-bright);
+        }
+
+        @keyframes shimmerPulse {
+            0%, 100% { opacity: 0.85; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.02); }
+        }
+        .eyebrow-pill {
+            animation: shimmerPulse 4s ease-in-out infinite;
+        }
+
+        .chess-pattern {
+            background-image: 
+                linear-gradient(45deg, rgba(var(--color-rgb-primary), 0.03) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(var(--color-rgb-primary), 0.03) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, rgba(var(--color-rgb-primary), 0.03) 75%),
+                linear-gradient(-45deg, transparent 75%, rgba(var(--color-rgb-primary), 0.03) 75%);
+            background-size: 40px 40px;
+            background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+        }
+        .dark .chess-pattern {
+            background-image: 
+                linear-gradient(45deg, rgba(var(--color-rgb-bright), 0.04) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(var(--color-rgb-bright), 0.04) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, rgba(var(--color-rgb-bright), 0.04) 75%),
+                linear-gradient(-45deg, transparent 75%, rgba(var(--color-rgb-bright), 0.04) 75%);
+        }
+
+        /* --- Contact page unique components --- */
+        .form-field {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+        .form-field label {
+            display: block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-primary);
+            margin-bottom: 0.6rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .dark .form-field label {
+            color: var(--color-primary-bright);
+        }
+        .form-field input,
+        .form-field select,
+        .form-field textarea {
+            width: 100%;
+            padding: 0.85rem 1.15rem;
+            border-radius: 1rem;
+            border: 1px solid rgba(var(--color-rgb-primary), 0.2);
+            background: rgba(255, 255, 255, 0.7);
+            color: var(--color-text-dark);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+        .dark .form-field input,
+        .dark .form-field select,
+        .dark .form-field textarea {
+            background: rgba(20, 26, 31, 0.7);
+            border-color: rgba(var(--color-rgb-bright), 0.25);
+            color: #E3E8ED;
+        }
+        .form-field input:focus,
+        .form-field select:focus,
+        .form-field textarea:focus {
+            border-color: var(--color-primary);
+            background: #FFFFFF;
+            box-shadow: 0 0 0 4px rgba(var(--color-rgb-primary), 0.1);
+        }
+        .dark .form-field input:focus,
+        .dark .form-field select:focus,
+        .dark .form-field textarea:focus {
+            border-color: var(--color-primary-bright);
+            background: #141A1F;
+            box-shadow: 0 0 0 4px rgba(var(--color-rgb-bright), 0.15);
+        }
+        .form-field input::placeholder,
+        .form-field textarea::placeholder {
+            color: rgba(var(--color-rgb-primary), 0.45);
+        }
+        .dark .form-field input::placeholder,
+        .dark .form-field textarea::placeholder {
+            color: rgba(227, 232, 237, 0.4);
+        }
+        .form-field textarea {
+            resize: vertical;
+            min-height: 130px;
+        }
+        .contact-channel {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.25rem;
+            padding: 1.5rem;
+            border-radius: 1.5rem;
+            border: 1px solid rgba(var(--color-rgb-primary), 0.15);
+            background: white;
+            transition: all 0.4s ease;
+        }
+        .dark .contact-channel {
+            background: #141A1F;
+            border-color: rgba(var(--color-rgb-bright), 0.15);
+        }
+        .contact-channel:hover {
+            transform: translateX(6px);
+            border-color: rgba(var(--color-rgb-primary), 0.4);
+            box-shadow: 0 20px 40px -15px rgba(var(--color-rgb-primary), 0.2);
+        }
+        .dark .contact-channel:hover {
+            border-color: rgba(var(--color-rgb-bright), 0.45);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+        }
+        [dir="rtl"] .contact-channel:hover {
+            transform: translateX(-6px);
+        }
+        .channel-icon {
+            width: 3.25rem;
+            height: 3.25rem;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+            background: rgba(var(--color-rgb-primary), 0.1);
+            color: var(--color-primary);
+            border: 1px solid rgba(var(--color-rgb-primary), 0.2);
+            transition: all 0.3s ease;
+        }
+        .dark .channel-icon {
+            background: rgba(var(--color-rgb-bright), 0.12);
+            color: var(--color-primary-bright);
+            border-color: rgba(var(--color-rgb-bright), 0.25);
+        }
+        .contact-channel:hover .channel-icon {
+            background: var(--color-primary);
+            color: white;
+            transform: scale(1.08) rotate(-4deg);
+        }
+        .dark .contact-channel:hover .channel-icon {
+            background: var(--color-primary-bright);
+            color: #0C0F12;
+        }
+        .map-frame {
+            position: relative;
+            border-radius: 2rem;
+            overflow: hidden;
+            height: 100%;
+            min-height: 480px;
+            border: 1px solid rgba(var(--color-rgb-primary), 0.2);
+            box-shadow: 0 30px 60px -20px rgba(var(--color-rgb-primary), 0.25);
+        }
+        .dark .map-frame {
+            border-color: rgba(var(--color-rgb-bright), 0.25);
+            box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.8);
+        }
+        .map-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(0.3) contrast(1.05);
+            transition: filter 0.5s ease, transform 0.8s ease;
+        }
+        .map-frame:hover img {
+            filter: grayscale(0) contrast(1.1);
+            transform: scale(1.04);
+        }
+        .map-overlay-card {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 1.5rem;
+            right: 1.5rem;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(16px);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            border: 1px solid rgba(var(--color-rgb-primary), 0.2);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.25);
+        }
+        .dark .map-overlay-card {
+            background: rgba(20, 26, 31, 0.95);
+            border-color: rgba(var(--color-rgb-bright), 0.25);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+        }
+        .hours-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.55rem 0;
+            font-size: 0.8rem;
+            border-bottom: 1px dashed rgba(var(--color-rgb-primary), 0.12);
+        }
+        .dark .hours-row {
+            border-bottom-color: rgba(var(--color-rgb-bright), 0.12);
+        }
+        .hours-row:last-child {
+            border-bottom: none;
+        }
+        .hours-row .day {
+            font-weight: 600;
+            opacity: 0.85;
+        }
+        .hours-row .time {
+            font-weight: 700;
+            color: var(--color-primary);
+            font-family: 'Outfit', sans-serif;
+        }
+        .dark .hours-row .time {
+            color: var(--color-primary-bright);
+        }
+        .hours-row.closed .time {
+            color: #B83045;
+            opacity: 0.8;
+        }
+        .dark .hours-row.closed .time {
+            color: #F08CA0;
+        }
+        .subject-chip {
+            padding: 0.5rem 1.1rem;
+            border-radius: 9999px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            border: 1px solid rgba(var(--color-rgb-primary), 0.25);
+            color: var(--color-text-dark);
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        .dark .subject-chip {
+            border-color: rgba(var(--color-rgb-bright), 0.3);
+            color: #E3E8ED;
+        }
+        .subject-chip:hover {
+            background: rgba(var(--color-rgb-primary), 0.1);
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+        }
+        .dark .subject-chip:hover {
+            background: rgba(var(--color-rgb-bright), 0.12);
+            border-color: var(--color-primary-bright);
+            color: var(--color-primary-bright);
+        }
+        .subject-chip.active {
+            background: var(--color-primary);
+            color: white;
+            border-color: var(--color-primary);
+        }
+        .dark .subject-chip.active {
+            background: var(--color-primary-bright);
+            color: #0C0F12;
+            border-color: var(--color-primary-bright);
+        }
+        .faq-item {
+            border: 1px solid rgba(var(--color-rgb-primary), 0.15);
+            border-radius: 1.5rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        .dark .faq-item {
+            background: #141A1F;
+            border-color: rgba(var(--color-rgb-bright), 0.15);
+        }
+        .faq-item:hover {
+            border-color: rgba(var(--color-rgb-primary), 0.35);
+        }
+        .dark .faq-item:hover {
+            border-color: rgba(var(--color-rgb-bright), 0.35);
+        }
+        .faq-question {
+            padding: 1.15rem 1.5rem;
+            font-weight: 700;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--color-text-dark);
+            gap: 1rem;
+        }
+        .dark .faq-question {
+            color: #E3E8ED;
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            padding: 0 1.5rem;
+        }
+        .faq-answer.open {
+            max-height: 400px;
+            padding: 0 1.5rem 1.35rem;
+        }
+        .faq-answer p {
+            font-size: 0.83rem;
+            line-height: 1.7;
+            opacity: 0.8;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .faq-item.open .faq-question i {
+            transform: rotate(180deg);
+        }
+        .faq-question i {
+            transition: transform 0.3s ease;
+            color: var(--color-primary);
+            flex-shrink: 0;
+        }
+        .dark .faq-question i {
+            color: var(--color-primary-bright);
+        }
+        .response-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.3rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.65rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: rgba(92, 184, 138, 0.15);
+            color: #2D7A5F;
+            border: 1px solid rgba(92, 184, 138, 0.35);
+        }
+        .dark .response-badge {
+            background: rgba(92, 184, 138, 0.2);
+            color: #7DDBAE;
+            border-color: rgba(92, 184, 138, 0.45);
+        }
+    </style>
+</head>
+
+<body class="bg-bg-warm dark:bg-dark-bg text-neutral-dark dark:text-gray-200 transition-colors duration-400">
+
+    <!-- ========== FLOATING ISLAND HEADER (exact copy) ========== -->
+    <header class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 pt-3 sm:pt-4 transition-all duration-300 pointer-events-none">
+        <nav
+            class="max-w-7xl mx-auto pointer-events-auto bg-white/85 dark:bg-[#141A1F]/90 backdrop-blur-xl rounded-full px-5 sm:px-7 py-2.5 sm:py-3 border border-gift-slate/25 dark:border-gift-slate-bright/25 shadow-[0_20px_45px_-15px_rgba(0,0,0,0.1)] dark:shadow-[0_20px_45px_-15px_rgba(0,0,0,0.7)] flex items-center justify-between transition-colors duration-400">
+            <!-- Brand Logo -->
+            <a href="index.html" class="flex items-center gap-3 group shrink-0" dir="ltr">
+                <div class="w-10 h-10 bg-gradient-to-br from-gift-slate-light to-gift-slate rounded-2xl flex items-center justify-center flex-shrink-0 shadow-md group-hover:rotate-6 transition duration-300">
+                    <i class="fas fa-chess-knight text-white dark:text-dark-bg text-lg"></i>
+                </div>
+                <div>
+                    <span class="text-lg md:text-2xl font-serif font-bold tracking-wide text-neutral-dark dark:text-white">
+                        Chess <span class="board-gradient-text">Academy</span>
+                    </span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden xl:flex items-center">
+                <div class="desktop-nav-container">
+                    <div class="flex items-center gap-4 xl:gap-6">
+                        <!-- Home Dropdown -->
+                        <div class="dropdown">
+                            <button class="nav-item flex items-center gap-1.5">
+                                Home <i class="fas fa-chevron-down text-[9px] opacity-70"></i>
+                            </button>
+                            <div class="dropdown-menu">
+                                <a href="index.html" class="dropdown-item">Home 1</a>
+                                <a href="home2.html" class="dropdown-item">Home 2</a>
+                            </div>
+                        </div>
+                        <a href="about.html" class="nav-item">About</a>
+                        <a href="programs.html" class="nav-item">Programs</a>
+                        <a href="coaches.html" class="nav-item">Coaches</a>
+                        <a href="tournaments.html" class="nav-item">Tournaments</a>
+                        <a href="contact.html" class="nav-item active"
+                            style="color: var(--color-primary); font-weight: 700;">Contact</a>
+                        <div class="dropdown">
+                            <button class="nav-item flex items-center gap-1.5">
+                                Portal <i class="fas fa-chevron-down text-[9px] opacity-70"></i>
+                            </button>
+                            <div class="dropdown-menu">
+                                <a href="student-portal.html" class="dropdown-item">Student Dashboard</a>
+                                <a href="admin.html" class="dropdown-item">Academy Admin</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3 ml-2">
+                        <a href="login.html" class="btn-nested !py-2 !px-4 !text-xs group">
+                            <span>Student Login</span>
+                            <span class="icon-circle !w-6 !h-6">
+                                <i class="fas fa-arrow-right text-[10px]"></i>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2 ml-4 desktop-toggle-group">
+                    <button id="theme-toggle" class="toggle-btn !w-9 !h-9" title="Toggle Dark/Light Mode">
+                        <i class="fas fa-moon text-sm"></i>
+                        <i class="fas fa-sun text-sm hidden"></i>
+                    </button>
+                    <button id="rtl-toggle" class="toggle-btn !w-9 !h-9 font-serif font-bold text-xs" title="Toggle RTL/LTR">⇄</button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobile-toggle"
+                class="xl:hidden text-neutral-dark dark:text-gray-300 p-2 focus:outline-none hover:text-gift-slate transition-colors"
+                aria-label="Toggle Navigation Menu">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </nav>
+
+        <!-- Mobile Menu Floating Card -->
+        <div id="mobile-menu" class="mobile-menu xl:hidden max-w-7xl mx-auto mt-2 rounded-3xl border border-gift-slate/20 dark:border-gift-slate-bright/25 shadow-2xl overflow-hidden pointer-events-auto">
+            <div class="mobile-dropdown">
+                <button class="mobile-dropdown-btn flex items-center justify-between w-full mobile-menu-item active"
+                    style="color: var(--color-primary); font-weight: 700;">
+                    <span>Home</span> <i class="fas fa-chevron-down text-xs"></i>
+                </button>
+                <div class="mobile-dropdown-content">
+                    <a href="index.html" class="mobile-dropdown-item">Home 1 </a>
+                    <a href="home2.html" class="mobile-dropdown-item">Home 2 </a>
+                </div>
+            </div>
+            <a href="about.html" class="mobile-menu-item">About</a>
+            <a href="programs.html" class="mobile-menu-item">Programs</a>
+            <a href="coaches.html" class="mobile-menu-item">Coaches</a>
+            <a href="tournaments.html" class="mobile-menu-item">Tournaments</a>
+            <a href="contact.html" class="mobile-menu-item active"
+                style="color: var(--color-primary); font-weight: 700;">Contact</a>
+            <div class="mobile-dropdown">
+                <button class="mobile-dropdown-btn flex items-center justify-between w-full mobile-menu-item">
+                    <span>Portals</span> <i class="fas fa-chevron-down text-xs"></i>
+                </button>
+                <div class="mobile-dropdown-content">
+                    <a href="student-portal.html" class="mobile-dropdown-item">Student Dashboard</a>
+                    <a href="admin.html" class="mobile-dropdown-item">Academy Admin</a>
+                </div>
+            </div>
+            <div class="p-5 flex flex-col gap-3">
+                <a href="login.html" class="btn-nested justify-center !py-3 w-full text-center">
+                    <span>Student Login</span>
+                    <span class="icon-circle !w-7 !h-7"><i class="fas fa-arrow-right text-xs"></i></span>
+                </a>
+            </div>
+            <div class="flex justify-center gap-3 p-4 border-t border-gray-100 dark:border-gray-800">
+                <button id="theme-toggle-mobile" class="toggle-btn"><i class="fas fa-moon"></i><i class="fas fa-sun hidden"></i></button>
+                <button id="rtl-toggle-mobile" class="toggle-btn">⇄</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========== CONTACT HERO — EDITORIAL ========== -->
+    <section class="relative pt-32 pb-14 sm:pt-36 sm:pb-16 lg:pt-40 lg:pb-20 bg-bg-warm dark:bg-dark-bg chess-pattern overflow-hidden transition-colors duration-400">
+        <div class="absolute -top-20 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-gradient-to-b from-gift-slate/10 via-gift-slate-bright/5 to-transparent rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="eyebrow-pill inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-gift-slate/10 dark:bg-gift-slate-bright/10 border border-gift-slate/25 dark:border-gift-slate-bright/25 mb-6 backdrop-blur-md">
+                    <i class="fas fa-comments text-gift-slate dark:text-gift-slate-bright text-xs"></i>
+                    <span class="text-[11px] font-bold font-sans dark:text-gift-slate-bright tracking-[0.22em] uppercase">We Reply Within 4 Hours</span>
+                </div>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif font-bold text-neutral-dark dark:text-white leading-[1.08] tracking-tight mb-6">
+                    Let's Talk <br class="hidden sm:inline">
+                    <span class="board-gradient-text italic font-serif">Chess.</span>
+                </h1>
+                <div class="premium-line mx-auto !my-6"></div>
+                <p class="text-base sm:text-lg lg:text-xl text-neutral-dark/85 dark:text-gray-300 max-w-2xl mx-auto mb-8 font-sans font-light leading-relaxed">
+                    Book a trial lesson, ask about programs, or just come say hello. Our team is ready to help you find the right path.
+                </p>
+                <div class="flex flex-wrap justify-center gap-3">
+                    <span class="response-badge"><i class="fas fa-bolt"></i> Avg. Response: 2.5 hrs</span>
+                    <span class="response-badge"><i class="fas fa-clock"></i> Mon–Sat · 9AM–8PM EST</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CONTACT FORM + MAP SPLIT PANEL ========== -->
+    <section class="py-14 sm:py-20 bg-white dark:bg-dark-card border-y border-neutral-light/50 dark:border-gray-800/60 transition-colors duration-400">
+        <div class="container mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-10 lg:gap-14 max-w-7xl mx-auto items-start">
+
+                <!-- LEFT: Contact Form -->
+                <div class="double-bezel-outer">
+                    <div class="double-bezel-inner p-7 sm:p-9">
+                        <div class="mb-7">
+                            <span class="text-gift-slate dark:text-gift-slate-bright font-bold text-xs tracking-[0.25em] uppercase">Send a Message</span>
+                            <h2 class="text-3xl sm:text-4xl font-serif font-bold text-neutral-dark dark:text-white mt-3 mb-3">Book a Trial Lesson</h2>
+                            <p class="text-sm opacity-80 font-sans leading-relaxed">Fill out the form and a coach will get back to you within 4 hours with available times and next steps.</p>
+                        </div>
+
+                        <!-- Subject chips -->
+                        <div class="mb-6">
+                            <label class="block text-[11px] font-bold uppercase tracking-[0.12em] text-gift-slate dark:text-gift-slate-bright mb-3 font-sans">What's this about?</label>
+                            <div class="flex flex-wrap gap-2">
+                                <button class="subject-chip active" data-subject="Trial Lesson">Trial Lesson</button>
+                                <button class="subject-chip" data-subject="Program Inquiry">Program Inquiry</button>
+                                <button class="subject-chip" data-subject="Private Coaching">Private Coaching</button>
+                                <button class="subject-chip" data-subject="Tournament">Tournament</button>
+                                <button class="subject-chip" data-subject="Other">Other</button>
+                            </div>
+                        </div>
+
+                        <form id="contact-form" onsubmit="event.preventDefault(); alert('Thank you! Your message has been sent. A coach will reply within 4 hours.');">
+                            <div class="grid sm:grid-cols-2 gap-x-5">
+                                <div class="form-field">
+                                    <label for="name">Full Name *</label>
+                                    <input type="text" id="name" name="name" placeholder="e.g. Sarah Johnson" required>
+                                </div>
+                                <div class="form-field">
+                                    <label for="email">Email Address *</label>
+                                    <input type="email" id="email" name="email" placeholder="sarah@example.com" required>
+                                </div>
+                            </div>
+
+                            <div class="grid sm:grid-cols-2 gap-x-5">
+                                <div class="form-field">
+                                    <label for="phone">Phone (Optional)</label>
+                                    <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000">
+                                </div>
+                                <div class="form-field">
+                                    <label for="level">Current Level</label>
+                                    <select id="level" name="level">
+                                        <option value="">Select your level</option>
+                                        <option value="beginner">Beginner (Under 1200)</option>
+                                        <option value="intermediate">Intermediate (1200–2000)</option>
+                                        <option value="advanced">Advanced (2000+)</option>
+                                        <option value="unsure">Not sure</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="message">Your Message *</label>
+                                <textarea id="message" name="message" placeholder="Tell us about your goals, experience, and preferred schedule..." required></textarea>
+                            </div>
+
+                            <div class="flex flex-wrap items-center gap-4 mt-2">
+                                <button type="submit" class="btn-nested group">
+                                    <span>Send Message</span>
+                                    <span class="icon-circle"><i class="fas fa-paper-plane text-xs"></i></span>
+                                </button>
+                                <span class="text-[11px] opacity-60 font-sans flex items-center gap-1.5">
+                                    <i class="fas fa-lock text-gift-slate dark:text-gift-slate-bright"></i>
+                                    Your information is secure
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- RIGHT: Map + Hours -->
+                <div class="space-y-6">
+                    <!-- Map frame -->
+                    <div class="map-frame">
+                        <img src="assets/images/photo-1524661135-423995f22d0b.jpg" alt="Academy Location Map" style="object-position: center 40%;">
+                        <div class="absolute top-5 left-5 z-20">
+                            <span class="badge text-[10px] font-sans"><i class="fas fa-map-pin text-gift-accent mr-1"></i> NYC · Chelsea District</span>
+                        </div>
+                        <div class="map-overlay-card">
+                            <div class="flex items-start gap-4">
+                                <div class="channel-icon !w-12 !h-12 !text-lg">
+                                    <i class="fas fa-chess-knight"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="font-serif font-bold text-lg text-neutral-dark dark:text-white">Chess Academy HQ</h3>
+                                    <p class="text-xs opacity-75 font-sans mt-1 mb-3">42 Strategy Lane, New York, NY 10001</p>
+                                    <a href="https://maps.google.com" target="_blank" class="text-[11px] font-bold uppercase tracking-wider text-gift-slate dark:text-gift-slate-bright hover:underline inline-flex items-center gap-1.5">
+                                        Get Directions <i class="fas fa-arrow-right text-[9px]"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hours card -->
+                    <div class="double-bezel-outer">
+                        <div class="double-bezel-inner p-6">
+                            <div class="flex items-center gap-3 mb-5">
+                                <div class="channel-icon !w-11 !h-11 !text-base"><i class="fas fa-clock"></i></div>
+                                <div>
+                                    <h3 class="font-serif font-bold text-lg text-neutral-dark dark:text-white">Opening Hours</h3>
+                                    <p class="text-[11px] opacity-70 font-sans">Eastern Standard Time (EST)</p>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="hours-row"><span class="day">Monday – Friday</span><span class="time">9:00 AM – 8:00 PM</span></div>
+                                <div class="hours-row"><span class="day">Saturday</span><span class="time">10:00 AM – 6:00 PM</span></div>
+                                <div class="hours-row closed"><span class="day">Sunday</span><span class="time">Closed</span></div>
+                                <div class="hours-row"><span class="day">Tournament Days</span><span class="time">Extended Hours</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CONTACT CHANNELS ========== -->
+    <section class="py-16 sm:py-24 lg:py-28 bg-bg-warm dark:bg-dark-bg transition-colors duration-400">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-14">
+                <span class="text-gift-slate dark:text-gift-slate-bright font-bold text-xs tracking-[0.25em] uppercase">Direct Lines</span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-neutral-dark dark:text-white mt-3">Reach Us <span class="board-gradient-text italic font-serif">Directly</span></h2>
+                <div class="premium-line mx-auto !my-4"></div>
+                <p class="text-base opacity-80 font-sans font-light">Prefer to skip the form? Use any of these channels to get in touch.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+
+                <!-- Channel 1: Phone -->
+                <div class="contact-channel flex-col sm:flex-col items-center sm:items-start text-center sm:text-left">
+                    <div class="channel-icon mx-auto sm:mx-0"><i class="fas fa-phone"></i></div>
+                    <div>
+                        <h3 class="font-serif font-bold text-lg text-neutral-dark dark:text-white mb-1">Call Front Desk</h3>
+                        <p class="text-xs opacity-70 font-sans mb-3 leading-relaxed">Mon–Sat, 9AM–8PM EST</p>
+                        <a href="tel:+18005550199" class="text-sm font-bold text-gift-slate dark:text-gift-slate-bright hover:underline" dir="ltr">+1 (800) 555-0199</a>
+                    </div>
+                </div>
+
+                <!-- Channel 2: Email -->
+                <div class="contact-channel flex-col sm:flex-col items-center sm:items-start text-center sm:text-left">
+                    <div class="channel-icon mx-auto sm:mx-0"><i class="fas fa-envelope"></i></div>
+                    <div>
+                        <h3 class="font-serif font-bold text-lg text-neutral-dark dark:text-white mb-1">Program Inquiries</h3>
+                        <p class="text-xs opacity-70 font-sans mb-3 leading-relaxed">Coach response within 4 hrs</p>
+                        <a href="mailto:hello@chessacademy.com" class="text-sm font-bold text-gift-slate dark:text-gift-slate-bright hover:underline break-all" dir="ltr">hlo@chessacademy.com</a>
+                    </div>
+                </div>
+
+                <!-- Channel 3: WhatsApp -->
+                <div class="contact-channel flex-col sm:flex-col items-center sm:items-start text-center sm:text-left">
+                    <div class="channel-icon mx-auto sm:mx-0"><i class="fab fa-whatsapp"></i></div>
+                    <div>
+                        <h3 class="font-serif font-bold text-lg text-neutral-dark dark:text-white mb-1">WhatsApp Support</h3>
+                        <p class="text-xs opacity-70 font-sans mb-3 leading-relaxed">Instant scheduling & queries</p>
+                        <a href="https://wa.me/18005550199" target="_blank" class="text-sm font-bold text-gift-slate dark:text-gift-slate-bright hover:underline" dir="ltr">+1 800 555-0199</a>
+                    </div>
+                </div>
+
+                <!-- Channel 4: Visit -->
+                <div class="contact-channel flex-col sm:flex-col items-center sm:items-start text-center sm:text-left">
+                    <div class="channel-icon mx-auto sm:mx-0"><i class="fas fa-map-marked-alt"></i></div>
+                    <div>
+                        <h3 class="font-serif font-bold text-lg text-neutral-dark dark:text-white mb-1">Visit the Academy</h3>
+                        <p class="text-xs opacity-70 font-sans mb-3 leading-relaxed">Walk-ins welcome for tours</p>
+                        <a href="https://maps.google.com" target="_blank" class="text-sm font-bold text-gift-slate dark:text-gift-slate-bright hover:underline">42 Strategy Lane, NYC</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== BOOK A COACH — SCHEDULER PREVIEW ========== -->
+    <section class="py-16 sm:py-24 lg:py-28 bg-white dark:bg-dark-card border-y border-neutral-light/50 dark:border-gray-800/60 transition-colors duration-400">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-14">
+                <span class="text-gift-slate dark:text-gift-slate-bright font-bold text-xs tracking-[0.25em] uppercase">Direct Coach Booking</span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-neutral-dark dark:text-white mt-3">Book a <span class="board-gradient-text italic font-serif">Coach</span></h2>
+                <div class="premium-line mx-auto !my-4"></div>
+                <p class="text-base opacity-80 font-sans font-light">Select a coach below to see their availability, or reach out and we'll match you with the perfect fit.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto items-stretch">
+
+                <!-- Coach slot 1 -->
+                <div class="double-bezel-outer group h-full flex flex-col">
+                    <div class="double-bezel-inner overflow-hidden h-full flex flex-col flex-1">
+                        <div class="relative h-56 shrink-0 overflow-hidden bg-gray-100 dark:bg-gray-800">
+                            <img src="assets/images/photo-1560250097-0b93528c311a.jpg" alt="GM Alexei Volkov" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" style="object-position: center 20%;">
+                            <div class="absolute top-3 left-3">
+                                <span class="badge text-[10px] font-sans">★ GM</span>
+                            </div>
+                        </div>
+                        <div class="p-5 flex-1 flex flex-col justify-between">
+                            <div class="flex-1 flex flex-col">
+                                <h3 class="font-serif font-bold text-base text-neutral-dark dark:text-white leading-snug">GM Alexei Volkov</h3>
+                                <p class="text-[11px] opacity-70 font-sans mb-3 mt-0.5 min-h-[1.25rem] flex items-center">Openings & Endgames</p>
+                                <div class="flex items-center justify-between text-[11px] mb-4 mt-auto">
+                                    <span class="flex items-center gap-1.5 opacity-80"><i class="fas fa-star text-gift-accent"></i> 4.9</span>
+                                    <span class="font-bold text-gift-slate dark:text-gift-slate-bright">$120/hr</span>
+                                </div>
+                            </div>
+                            <a href="#contact-form" class="btn-frosted justify-center w-full !text-[11px] !py-2.5 mt-auto">
+                                <i class="fas fa-calendar-check"></i>
+                                <span>Check Availability</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coach slot 2 -->
+                <div class="double-bezel-outer group h-full flex flex-col">
+                    <div class="double-bezel-inner overflow-hidden h-full flex flex-col flex-1">
+                        <div class="relative h-56 shrink-0 overflow-hidden bg-gray-100 dark:bg-gray-800">
+                            <img src="assets/images/photo-1573496359142-b8d87734a5a2.jpg" alt="IM Sarah Chen" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" style="object-position: center 20%;">
+                            <div class="absolute top-3 left-3">
+                                <span class="badge text-[10px] font-sans">♛ IM</span>
+                            </div>
+                        </div>
+                        <div class="p-5 flex-1 flex flex-col justify-between">
+                            <div class="flex-1 flex flex-col">
+                                <h3 class="font-serif font-bold text-base text-neutral-dark dark:text-white leading-snug">IM Sarah Chen</h3>
+                                <p class="text-[11px] opacity-70 font-sans mb-3 mt-0.5 min-h-[1.25rem] flex items-center">Positional Play</p>
+                                <div class="flex items-center justify-between text-[11px] mb-4 mt-auto">
+                                    <span class="flex items-center gap-1.5 opacity-80"><i class="fas fa-star text-gift-accent"></i> 4.9</span>
+                                    <span class="font-bold text-gift-slate dark:text-gift-slate-bright">$90/hr</span>
+                                </div>
+                            </div>
+                            <a href="#contact-form" class="btn-frosted justify-center w-full !text-[11px] !py-2.5 mt-auto">
+                                <i class="fas fa-calendar-check"></i>
+                                <span>Check Availability</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coach slot 3 -->
+                <div class="double-bezel-outer group h-full flex flex-col">
+                    <div class="double-bezel-inner overflow-hidden h-full flex flex-col flex-1">
+                        <div class="relative h-56 shrink-0 overflow-hidden bg-gray-100 dark:bg-gray-800">
+                            <img src="assets/images/photo-1472099645785-5658abf4ff4e.jpg" alt="FM Marcus Rivera" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" style="object-position: center 20%;">
+                            <div class="absolute top-3 left-3">
+                                <span class="badge text-[10px] font-sans">☆ FM</span>
+                            </div>
+                        </div>
+                        <div class="p-5 flex-1 flex flex-col justify-between">
+                            <div class="flex-1 flex flex-col">
+                                <h3 class="font-serif font-bold text-base text-neutral-dark dark:text-white leading-snug">FM Marcus Rivera</h3>
+                                <p class="text-[11px] opacity-70 font-sans mb-3 mt-0.5 min-h-[1.25rem] flex items-center">Tactics & Beginners</p>
+                                <div class="flex items-center justify-between text-[11px] mb-4 mt-auto">
+                                    <span class="flex items-center gap-1.5 opacity-80"><i class="fas fa-star text-gift-accent"></i> 4.8</span>
+                                    <span class="font-bold text-gift-slate dark:text-gift-slate-bright">$75/hr</span>
+                                </div>
+                            </div>
+                            <a href="#contact-form" class="btn-frosted justify-center w-full !text-[11px] !py-2.5 mt-auto">
+                                <i class="fas fa-calendar-check"></i>
+                                <span>Check Availability</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coach slot 4 -->
+                <div class="double-bezel-outer group h-full flex flex-col">
+                    <div class="double-bezel-inner overflow-hidden h-full flex flex-col flex-1">
+                        <div class="relative h-56 shrink-0 overflow-hidden bg-gray-100 dark:bg-gray-800">
+                            <img src="assets/images/photo-1580489944761-15a19d654956.jpg" alt="WIM Elena Petrova" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" style="object-position: center 38%;">
+                            <div class="absolute top-3 left-3">
+                                <span class="badge text-[10px] font-sans">♕ WIM</span>
+                            </div>
+                        </div>
+                        <div class="p-5 flex-1 flex flex-col justify-between">
+                            <div class="flex-1 flex flex-col">
+                                <h3 class="font-serif font-bold text-base text-neutral-dark dark:text-white leading-snug">WIM Elena Petrova</h3>
+                                <p class="text-[11px] opacity-70 font-sans mb-3 mt-0.5 min-h-[1.25rem] flex items-center">Attacking Play</p>
+                                <div class="flex items-center justify-between text-[11px] mb-4 mt-auto">
+                                    <span class="flex items-center gap-1.5 opacity-80"><i class="fas fa-star text-gift-accent"></i> 4.9</span>
+                                    <span class="font-bold text-gift-slate dark:text-gift-slate-bright">$85/hr</span>
+                                </div>
+                            </div>
+                            <a href="#contact-form" class="btn-frosted justify-center w-full !text-[11px] !py-2.5 mt-auto">
+                                <i class="fas fa-calendar-check"></i>
+                                <span>Check Availability</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="coaches.html" class="btn-frosted inline-flex">
+                    <i class="fas fa-users"></i>
+                    <span>View All Coaches</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FAQ SECTION ========== -->
+    <section class="py-16 sm:py-24 lg:py-28 bg-bg-warm dark:bg-dark-bg transition-colors duration-400">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-14">
+                <span class="text-gift-slate dark:text-gift-slate-bright font-bold text-xs tracking-[0.25em] uppercase">Before You Reach Out</span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-neutral-dark dark:text-white mt-3">Contact <span class="board-gradient-text italic font-serif">FAQ</span></h2>
+                <div class="premium-line mx-auto !my-4"></div>
+                <p class="text-base opacity-80 font-sans font-light">Quick answers to the most common questions we receive.</p>
+            </div>
+
+            <div class="max-w-3xl mx-auto space-y-4">
+                <!-- FAQ 1 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How quickly will I get a response?</span>
+                        <i class="fas fa-chevron-down text-sm"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We aim to respond to all inquiries within 4 business hours. Messages sent outside of operating hours (Mon–Sat, 9AM–8PM EST) will be answered the next business morning. WhatsApp inquiries typically get a response within 1–2 hours during operating hours.</p>
+                    </div>
+                </div>
+                <!-- FAQ 2 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Is the trial lesson really free?</span>
+                        <i class="fas fa-chevron-down text-sm"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes. Every new student is entitled to one complimentary 45-minute trial lesson with a coach matched to their level. This includes a skill assessment and a personalized recommendation for which program fits best. No payment information is required to book.</p>
+                    </div>
+                </div>
+                <!-- FAQ 3 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I visit the academy before enrolling?</span>
+                        <i class="fas fa-chevron-down text-sm"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely. We welcome walk-in tours during operating hours — no appointment necessary. You can observe an ongoing class, meet the coaches, and see the training facilities. For a more personalized tour, we recommend calling ahead at +1 (800) 555-0199.</p>
+                    </div>
+                </div>
+                <!-- FAQ 4 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you offer online lessons for remote students?</span>
+                        <i class="fas fa-chevron-down text-sm"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes. All our coaches offer online lessons via our interactive platform with shared boards, video, and live analysis. Online students receive the same curriculum, game analysis, and student portal access as in-person students. Private lessons are especially popular with remote learners.</p>
+                    </div>
+                </div>
+                <!-- FAQ 5 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What ages do you accept?</span>
+                        <i class="fas fa-chevron-down text-sm"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We welcome students from age 5 through adult. Our Beginner program has dedicated junior groups (ages 5–12) and adult groups. Intermediate, Advanced, and Private programs are open to all ages based on skill level. Many of our adult students started as complete beginners.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CTA — STILL HAVE QUESTIONS ========== -->
+    <section class="cta-chess-banner py-20 sm:py-24 text-white relative overflow-hidden border-b border-gift-slate/20">
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gift-slate-light/25 via-transparent to-transparent pointer-events-none"></div>
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <span class="text-white/80 font-bold text-xs tracking-[0.25em] uppercase">We're Here to Help</span>
+            <h2 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold mb-6 mt-3">Still Have Questions?</h2>
+            <p class="text-lg sm:text-xl opacity-90 max-w-2xl mx-auto font-sans font-light leading-relaxed mb-10">Call us directly, drop by the academy, or send a WhatsApp message — we love talking chess.</p>
+            <div class="flex flex-wrap justify-center gap-5">
+                <a href="tel:+18005550199" class="bg-white text-neutral-dark dark:bg-gift-slate-bright dark:text-dark-bg px-8 py-4 rounded-full font-bold text-xs font-sans uppercase tracking-widest hover:shadow-2xl transition duration-300 flex items-center justify-center gap-2">
+                    <i class="fas fa-phone"></i> Call +1 (800) 555-0199
+                </a>
+                <a href="https://wa.me/18005550199" target="_blank" class="border-2 border-white/60 dark:border-gift-slate-bright/60 text-white dark:text-gift-slate-bright px-8 py-4 rounded-full font-bold text-xs font-sans uppercase tracking-widest hover:bg-white/10 dark:hover:bg-gift-slate-bright/10 transition duration-300 flex items-center justify-center gap-2">
+                    <i class="fab fa-whatsapp"></i> WhatsApp Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER (exact copy) ========== -->
+    <footer class="py-20 bg-white dark:bg-[#0C0F12] transition-colors duration-400">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <div class="text-center md:text-start">
+                    <a href="index.html" class="flex items-center justify-center md:justify-start gap-3 mb-5 group shrink-0" dir="ltr">
+                        <div class="w-10 h-10 bg-gradient-to-br from-gift-slate-light to-gift-slate rounded-2xl flex items-center justify-center flex-shrink-0 shadow-md group-hover:rotate-6 transition duration-300">
+                            <i class="fas fa-chess-knight text-white dark:text-dark-bg text-lg"></i>
+                        </div>
+                        <div>
+                            <span class="text-lg md:text-2xl font-serif font-bold tracking-wide text-neutral-dark dark:text-white">
+                                Chess <span class="board-gradient-text">Academy</span>
+                            </span>
+                        </div>
+                    </a>
+                    <p class="text-sm text-neutral-dark/90 dark:text-gray-300 mb-6 leading-relaxed font-sans">Elite chess coaching, structured programs, and tournament support for players of all levels. Master the board with FIDE-certified coaches.</p>
+                    <div class="flex justify-center md:justify-start gap-4">
+                        <a href="#" class="social-icon text-sm" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon text-sm" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-icon text-sm" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+                <div class="text-center md:text-start">
+                    <h3 class="text-neutral-dark dark:text-white text-lg font-serif font-bold mb-6">Quick Navigation</h3>
+                    <ul class="space-y-3.5 text-sm font-sans font-medium text-neutral-dark/90 dark:text-gray-300">
+                        <li><a href="index.html" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">Home</a></li>
+                        <li><a href="about.html" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">About Us</a></li>
+                        <li><a href="programs.html" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">Programs</a></li>
+                        <li><a href="coaches.html" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">Coaches</a></li>
+                        <li><a href="tournaments.html" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">Tournaments</a></li>
+                        <li><a href="contact.html" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition font-bold text-gift-slate dark:text-gift-slate-bright">Contact & Booking</a></li>
+                    </ul>
+                </div>
+                <div class="text-center md:text-start">
+                    <h3 class="text-neutral-dark dark:text-white text-lg font-serif font-bold mb-6">Programs</h3>
+                    <ul class="space-y-3.5 text-sm font-sans font-medium text-neutral-dark/90 dark:text-gray-300">
+                        <li><a href="programs.html#beginner" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">Beginner (Under 1200)</a></li>
+                        <li><a href="programs.html#intermediate" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">Intermediate (1200–2000)</a></li>
+                        <li><a href="programs.html#advanced" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">Advanced (2000+)</a></li>
+                        <li><a href="tournaments.html" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">Tournament Training</a></li>
+                        <li><a href="programs.html#private" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">Private Lessons</a></li>
+                    </ul>
+                </div>
+                <div class="text-center md:text-start">
+                    <h3 class="text-neutral-dark dark:text-white text-lg font-serif font-bold mb-6">Academy Location</h3>
+                    <ul class="space-y-3 text-sm mb-6 font-sans font-medium text-neutral-dark/90 dark:text-gray-300">
+                        <li class="flex items-center justify-center md:justify-start gap-3">
+                            <i class="fas fa-map-marker-alt text-gift-slate dark:text-gift-slate-bright w-4"></i>
+                            <span dir="ltr">42 Strategy Lane, NYC 10001</span>
+                        </li>
+                        <li class="flex items-center justify-center md:justify-start gap-3">
+                            <i class="fas fa-phone text-gift-slate dark:text-gift-slate-bright w-4"></i>
+                            <span dir="ltr">+1 (800) 555-0199</span>
+                        </li>
+                        <li class="flex items-center justify-center md:justify-start gap-3">
+                            <i class="fas fa-envelope text-gift-slate dark:text-gift-slate-bright w-4"></i>
+                            <span dir="ltr">hello@chessacademy.com</span>
+                        </li>
+                        <li class="flex items-center justify-center md:justify-start gap-3">
+                            <i class="fas fa-clock text-gift-slate dark:text-gift-slate-bright w-4"></i>
+                            <span dir="ltr">Mon-Sat: 9AM - 8PM EST</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gift-slate/15 dark:border-gift-slate-bright/15 mt-14 pt-8 text-center">
+                <p class="text-sm font-medium font-sans text-neutral-dark dark:text-gray-200" dir="ltr">© 2026 Chess Academy & Coaching Center. All rights reserved.</p>
+                <p class="text-sm sm:text-base font-serif italic font-bold tracking-widest text-gift-slate dark:text-gift-slate-bright mt-2.5">Strategy • Discipline • Mastery</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript (header/footer logic + contact form interactions) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.documentElement.setAttribute('data-theme', 'knight-noir');
+
+            // Theme Toggle
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeIcon = themeToggle?.querySelector('.fa-moon');
+            const themeIconSun = themeToggle?.querySelector('.fa-sun');
+            const mobileThemeToggle = document.getElementById('theme-toggle-mobile');
+            const mobileThemeIcon = mobileThemeToggle?.querySelector('.fa-moon');
+            const mobileThemeIconSun = mobileThemeToggle?.querySelector('.fa-sun');
+
+            function setTheme(isDark) {
+                if (isDark) {
+                    document.documentElement.classList.add('dark');
+                    if (themeIcon) themeIcon.classList.add('hidden');
+                    if (themeIconSun) themeIconSun.classList.remove('hidden');
+                    if (themeToggle) themeToggle.classList.add('active');
+                    if (mobileThemeIcon) mobileThemeIcon.classList.add('hidden');
+                    if (mobileThemeIconSun) mobileThemeIconSun.classList.remove('hidden');
+                    if (mobileThemeToggle) mobileThemeToggle.classList.add('active');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    if (themeIcon) themeIcon.classList.remove('hidden');
+                    if (themeIconSun) themeIconSun.classList.add('hidden');
+                    if (themeToggle) themeToggle.classList.remove('active');
+                    if (mobileThemeIcon) mobileThemeIcon.classList.remove('hidden');
+                    if (mobileThemeIconSun) mobileThemeIconSun.classList.add('hidden');
+                    if (mobileThemeToggle) mobileThemeToggle.classList.remove('active');
+                    localStorage.setItem('theme', 'light');
+                }
+            }
+
+            function toggleTheme() { setTheme(!document.documentElement.classList.contains('dark')); }
+            if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
+            if (mobileThemeToggle) mobileThemeToggle.addEventListener('click', toggleTheme);
+            setTheme(localStorage.getItem('theme') === 'dark');
+
+            // RTL Toggle
+            const rtlToggle = document.getElementById('rtl-toggle');
+            const mobileRtlToggle = document.getElementById('rtl-toggle-mobile');
+
+            function toggleRTL() {
+                if (document.documentElement.dir === 'rtl') {
+                    document.documentElement.dir = 'ltr';
+                    document.documentElement.lang = 'en';
+                    if (rtlToggle) { rtlToggle.textContent = '⇄'; rtlToggle.classList.remove('active'); }
+                    if (mobileRtlToggle) { mobileRtlToggle.textContent = '⇄'; mobileRtlToggle.classList.remove('active'); }
+                    localStorage.setItem('dir', 'ltr');
+                } else {
+                    document.documentElement.dir = 'rtl';
+                    document.documentElement.lang = 'ar';
+                    if (rtlToggle) { rtlToggle.textContent = '⇄'; rtlToggle.classList.add('active'); }
+                    if (mobileRtlToggle) { mobileRtlToggle.textContent = '⇄'; mobileRtlToggle.classList.add('active'); }
+                    localStorage.setItem('dir', 'rtl');
+                }
+            }
+
+            if (rtlToggle) rtlToggle.addEventListener('click', toggleRTL);
+            if (mobileRtlToggle) mobileRtlToggle.addEventListener('click', toggleRTL);
+            if (localStorage.getItem('dir') === 'rtl') {
+                document.documentElement.dir = 'rtl';
+                document.documentElement.lang = 'ar';
+                if (rtlToggle) { rtlToggle.textContent = '⇄'; rtlToggle.classList.add('active'); }
+                if (mobileRtlToggle) { mobileRtlToggle.textContent = '⇄'; mobileRtlToggle.classList.add('active'); }
+            }
+
+            // Mobile Menu
+            const mobileToggle = document.getElementById('mobile-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileToggleIcon = document.querySelector('#mobile-toggle i');
+
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', () => {
+                    const isOpening = !mobileMenu.classList.contains('open');
+                    if (isOpening) {
+                        mobileMenu.classList.add('open');
+                        mobileToggleIcon.classList.remove('fa-bars');
+                        mobileToggleIcon.classList.add('fa-times');
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        mobileMenu.classList.remove('open');
+                        mobileToggleIcon.classList.remove('fa-times');
+                        mobileToggleIcon.classList.add('fa-bars');
+                        document.body.style.overflow = '';
+                        document.querySelectorAll('.mobile-dropdown-content').forEach(c => c.classList.remove('show'));
+                    }
+                });
+            }
+
+            document.querySelectorAll('.mobile-dropdown-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const dropdown = e.target.closest('.mobile-dropdown');
+                    const content = dropdown.querySelector('.mobile-dropdown-content');
+                    const icon = dropdown.querySelector('.fa-chevron-down');
+                    const isOpening = !content.classList.contains('show');
+                    content.classList.toggle('show');
+                    icon.style.transform = content.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
+                    if (isOpening) {
+                        document.querySelectorAll('.mobile-dropdown-content').forEach(other => {
+                            if (other !== content) {
+                                other.classList.remove('show');
+                                const otherIcon = other.parentElement.querySelector('.fa-chevron-down');
+                                if (otherIcon) otherIcon.style.transform = 'rotate(0deg)';
+                            }
+                        });
+                    }
+                });
+            });
+
+            // Subject Chips
+            const subjectChips = document.querySelectorAll('.subject-chip');
+            subjectChips.forEach(chip => {
+                chip.addEventListener('click', () => {
+                    subjectChips.forEach(c => c.classList.remove('active'));
+                    chip.classList.add('active');
+                });
+            });
+
+            // FAQ Accordion
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                const answer = item.querySelector('.faq-answer');
+                question.addEventListener('click', () => {
+                    const isOpen = answer.classList.contains('open');
+                    faqItems.forEach(other => {
+                        other.querySelector('.faq-answer').classList.remove('open');
+                        other.classList.remove('open');
+                    });
+                    if (!isOpen) {
+                        answer.classList.add('open');
+                        item.classList.add('open');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth" data-theme="knight-noir">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Academy Admin | Chess Academy & Coaching Center</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="alternate icon" href="assets/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+    <!-- Tailwind CSS with Local & CDN Fallback -->
+    <script src="tailwind.js"></script>
+    <script>
+        if (typeof tailwind === 'undefined') {
+            document.write('<script src="https://cdn.tailwindcss.com"><\/script>');
+        }
+    </script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'gift-slate': 'rgba(var(--color-rgb-primary), <alpha-value>)',
+                        'gift-slate-light': 'rgba(var(--color-rgb-light), <alpha-value>)',
+                        'gift-slate-dark': 'rgba(var(--color-rgb-dark), <alpha-value>)',
+                        'gift-slate-bright': 'rgba(var(--color-rgb-bright), <alpha-value>)',
+                        'gift-accent': 'rgba(var(--color-rgb-accent), <alpha-value>)',
+                        'bg-warm': 'var(--color-bg-warm)',
+                        'neutral-dark': 'var(--color-text-dark)',
+                        'neutral-light': '#E8E2D9',
+                        'dark-bg': '#0C0F12',
+                        'dark-card': '#141A1F',
+                        'dark-surface': '#1C242B',
+                    },
+                    fontFamily: {
+                        'sans': ['Plus Jakarta Sans', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+                        'serif': ['Cormorant Garamond', 'serif'],
+                        'display': ['Outfit', 'Plus Jakarta Sans', 'sans-serif'],
+                        'premium': ['Outfit', 'Plus Jakarta Sans', 'sans-serif'],
+                        'alt': ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'fade-in': 'fadeIn 0.3s ease-out',
+                        'pulse-glow': 'pulseGlow 3s infinite',
+                        'float-slow': 'floatSlow 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        slideUp: { '0%': { transform: 'translateY(30px)', opacity: '0' }, '100%': { transform: 'translateY(0)', opacity: '1' } },
+                        fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+                        pulseGlow: { '0%, 100%': { opacity: '0.6' }, '50%': { opacity: '1' } },
+                        floatSlow: { '0%,100%': { transform: 'translateY(0px)' }, '50%': { transform: 'translateY(-8px)' } },
+                    }
+                }
+            }
+        };
+    </script>
+    <script>
+        if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark');
+        if (localStorage.getItem('dir') === 'rtl') { document.documentElement.dir = 'rtl'; document.documentElement.lang = 'ar'; }
+    </script>
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root,
+        [data-theme="knight-noir"],
+        [data-theme="classic-wood"] {
+            --color-primary: #1E3A5F;
+            --color-primary-light: #3B5F8A;
+            --color-primary-dark: #0F2440;
+            --color-primary-bright: #5B8FC9;
+            --color-accent: #C9A44C;
+            --color-bg-warm: #F7F5F0;
+            --color-text-dark: #0C1926;
+            --color-rgb-primary: 30, 58, 95;
+            --color-rgb-light: 59, 95, 138;
+            --color-rgb-dark: 15, 36, 64;
+            --color-rgb-bright: 91, 143, 201;
+            --color-rgb-accent: 201, 164, 76;
+        }
+
+        [data-theme="emerald-board"] {
+            --color-primary: #1B4D3E;
+            --color-primary-light: #2D7A5F;
+            --color-primary-dark: #0E2E24;
+            --color-primary-bright: #5CB88A;
+            --color-accent: #D4AF37;
+            --color-bg-warm: #F0F7F3;
+            --color-text-dark: #0A1F18;
+            --color-rgb-primary: 27, 77, 62;
+            --color-rgb-light: 45, 122, 95;
+            --color-rgb-dark: 14, 46, 36;
+            --color-rgb-bright: 92, 184, 138;
+            --color-rgb-accent: 212, 175, 55;
+        }
+
+        [data-theme="crimson-gambit"] {
+            --color-primary: #8B1A2B;
+            --color-primary-light: #B83045;
+            --color-primary-dark: #5C0E1B;
+            --color-primary-bright: #E05A70;
+            --color-accent: #C9A44C;
+            --color-bg-warm: #FDF5F5;
+            --color-text-dark: #2B0A0F;
+            --color-rgb-primary: 139, 26, 43;
+            --color-rgb-light: 184, 48, 69;
+            --color-rgb-dark: 92, 14, 27;
+            --color-rgb-bright: 224, 90, 112;
+            --color-rgb-accent: 201, 164, 76;
+        }
+
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--color-bg-warm); color: var(--color-text-dark); transition: background-color 0.4s ease, color 0.4s ease; }
+        .dark body { background-color: #0C0F12; color: #E3E8ED; }
+        h1,h2,h3,h4,h5,h6 { font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif; font-weight: 700; letter-spacing: -0.02em; }
+        .board-gradient-text {
+            background: linear-gradient(135deg, var(--color-primary-bright) 0%, var(--color-primary) 50%, var(--color-primary-dark) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .dark .text-gift-slate { color: var(--color-primary-bright) !important; }
+        .dark .border-gift-slate { border-color: var(--color-primary-bright) !important; }
+        .dark .bg-gift-slate { background-color: var(--color-primary-bright) !important; }
+        body::-webkit-scrollbar { display: none; }
+        body { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            left: 0; top: 0; height: 100vh;
+            width: 280px;
+            background: #FFFFFF;
+            border-right: 1px solid rgba(var(--color-rgb-primary), 0.12);
+            transition: transform 0.3s ease;
+            z-index: 100;
+            overflow-y: auto;
+        }
+        .dark .sidebar { background: #0C0F12; border-right-color: rgba(var(--color-rgb-bright), 0.15); }
+        @media (max-width: 768px) { .sidebar { transform: translateX(-100%); } .sidebar.open { transform: translateX(0); } }
+        .sidebar-overlay { position: fixed; top:0;left:0;right:0;bottom:0; background: rgba(0,0,0,0.5); z-index:99; display:none; }
+        .sidebar-overlay.open { display:block; }
+
+        .sidebar-item {
+            display: flex; align-items: center; gap: 0.75rem;
+            padding: 0.85rem 1.5rem; margin: 0.25rem 0.75rem;
+            border-radius: 12px; color: var(--color-text-dark);
+            transition: all 0.2s; cursor: pointer;
+            font-weight: 500; font-size: 0.92rem;
+        }
+        .dark .sidebar-item { color: #E3E8ED; }
+        .sidebar-item:hover { background: rgba(var(--color-rgb-primary), 0.08); color: var(--color-primary); }
+        .dark .sidebar-item:hover { background: rgba(var(--color-rgb-bright), 0.12); color: var(--color-primary-bright); }
+        .sidebar-item.active { background: var(--color-primary); color: #FFFFFF; }
+        .dark .sidebar-item.active { background: var(--color-primary-bright); color: #0C0F12; }
+        .sidebar-item i { width: 24px; font-size: 1.1rem; }
+
+        .main-content { margin-left: 280px; padding: 1.5rem; min-height: 100vh; }
+        @media (max-width: 768px) { .main-content { margin-left: 0; padding-top: 70px; } }
+        @media (max-width: 640px) { .main-content { padding: 4.5rem 0.75rem 1.5rem; } }
+
+        .mobile-header {
+            display: none; position: fixed; top:0;left:0;right:0;
+            background: #FFFFFF; padding: 0.75rem 1rem;
+            border-bottom: 1px solid rgba(var(--color-rgb-primary), 0.12);
+            z-index: 50; align-items: center; justify-content: space-between;
+        }
+        .dark .mobile-header { background: #0C0F12; border-bottom-color: rgba(var(--color-rgb-bright), 0.15); }
+        @media (max-width: 768px) { .mobile-header { display: flex; } }
+
+        .toggle-btn {
+            width: 36px; height: 36px; border-radius: 10px;
+            background: rgba(var(--color-rgb-primary), 0.08);
+            color: var(--color-text-dark); display: inline-flex;
+            align-items: center; justify-content: center; cursor: pointer;
+            transition: all 0.2s; border: none;
+        }
+        .dark .toggle-btn { background: rgba(var(--color-rgb-bright), 0.12); color: #E3E8ED; }
+        .toggle-btn:hover { background: var(--color-primary); color: #FFFFFF; }
+        .dark .toggle-btn:hover { background: var(--color-primary-bright); color: #0C0F12; }
+
+        .card-design {
+            background: #FFFFFF; border-radius: 28px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(var(--color-rgb-primary), 0.12);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+        }
+        .dark .card-design { background: #141A1F; border-color: rgba(var(--color-rgb-bright), 0.15); }
+        .card-design:hover { border-color: var(--color-primary); }
+
+        .btn-primary-design {
+            background: var(--color-primary); color: #FFFFFF;
+            font-weight: 700; border-radius: 60px; transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(var(--color-rgb-primary), 0.3);
+            white-space: nowrap; border: none;
+            display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; vertical-align: middle;
+            cursor: pointer;
+        }
+        .btn-primary-design:hover { background: var(--color-primary-dark); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(var(--color-rgb-primary), 0.4); color: #FFFFFF; }
+        .dark .btn-primary-design { background: var(--color-primary-bright); color: #0C0F12; }
+        .dark .btn-primary-design:hover { background: var(--color-primary); color: #FFFFFF; }
+
+        .btn-outline-design {
+            border: 1.5px solid var(--color-primary); color: var(--color-primary);
+            background: transparent; border-radius: 60px; font-weight: 600;
+            transition: all 0.3s; white-space: nowrap;
+            display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; vertical-align: middle;
+            cursor: pointer;
+        }
+        .btn-outline-design:hover { background: var(--color-primary); color: #FFFFFF; transform: translateY(-2px); }
+        .dark .btn-outline-design { border-color: var(--color-primary-bright); color: var(--color-primary-bright); }
+        .dark .btn-outline-design:hover { background: var(--color-primary-bright); color: #0C0F12; }
+
+        .stat-card {
+            background: #FFFFFF; border-radius: 20px; padding: 1.2rem;
+            border: 1px solid rgba(var(--color-rgb-primary), 0.12);
+            transition: all 0.3s;
+            display: flex; flex-direction: column; justify-content: space-between; height: 100%;
+        }
+        .dark .stat-card { background: #141A1F; border-color: rgba(var(--color-rgb-bright), 0.15); }
+        .stat-card:hover { transform: translateY(-3px); border-color: var(--color-primary); }
+
+        .status-badge {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 0.25rem 0.75rem; border-radius: 40px; font-size: 0.7rem;
+            font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase;
+            white-space: nowrap; flex-shrink: 0; line-height: 1.2;
+        }
+        .status-active { background: #E8F5E9; color: #1B5E20; }
+        .status-confirmed { background: #E8F5E9; color: #1B5E20; }
+        .status-pending { background: #FFF3E0; color: #E65100; }
+        .status-completed { background: #E3F2FD; color: #0D47A1; }
+        .status-registered { background: #F3E5F5; color: #6A1B9A; }
+        .status-waitlist { background: #FFEBEE; color: #B71C1C; }
+        .status-paid { background: #E8F5E9; color: #1B5E20; }
+        .status-overdue { background: #FFEBEE; color: #C62828; }
+        .status-installment { background: #FFF3E0; color: #E65100; }
+        .dark .status-active { background: #1B5E20; color: #A5D6A7; }
+        .dark .status-confirmed { background: #1B5E20; color: #A5D6A7; }
+        .dark .status-pending { background: #E65100; color: #FFCC80; }
+        .dark .status-completed { background: #0D47A1; color: #90CAF9; }
+        .dark .status-registered { background: #4A148C; color: #CE93D8; }
+        .dark .status-waitlist { background: #B71C1C; color: #FFCDD2; }
+        .dark .status-paid { background: #1B5E20; color: #A5D6A7; }
+        .dark .status-overdue { background: #B71C1C; color: #EF9A9A; }
+        .dark .status-installment { background: #E65100; color: #FFCC80; }
+
+        .form-input {
+            width: 100%; padding: 0.75rem 1rem;
+            border-radius: 16px; border: 1.5px solid rgba(var(--color-rgb-primary), 0.2);
+            background: #FFFFFF; transition: all 0.3s;
+            color: var(--color-text-dark); font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .dark .form-input { background: #0C0F12; border-color: rgba(var(--color-rgb-bright), 0.2); color: #E3E8ED; }
+        .form-input:focus { outline: none; border-color: var(--color-primary); box-shadow: 0 0 0 4px rgba(var(--color-rgb-primary), 0.15); }
+        .form-label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 0.4rem; color: var(--color-text-dark); }
+        .dark .form-label { color: #E3E8ED; }
+
+        input[type="date"], input[type="time"] { color-scheme: light; }
+        input[type="date"]::-webkit-calendar-picker-indicator,
+        input[type="time"]::-webkit-calendar-picker-indicator { cursor: pointer; opacity: 0.85; transition: opacity 0.2s ease; }
+        input[type="date"]::-webkit-calendar-picker-indicator:hover,
+        input[type="time"]::-webkit-calendar-picker-indicator:hover { opacity: 1; }
+        .dark input[type="date"], .dark input[type="time"] { color-scheme: dark !important; }
+        .dark input[type="date"]::-webkit-calendar-picker-indicator,
+        .dark input[type="time"]::-webkit-calendar-picker-indicator { filter: none !important; opacity: 1 !important; }
+
+        .progress-bar { height: 8px; background: rgba(var(--color-rgb-primary), 0.12); border-radius: 10px; overflow: hidden; }
+        .dark .progress-bar { background: rgba(var(--color-rgb-bright), 0.15); }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light)); border-radius: 10px; transition: width 0.6s ease; }
+        .dark .progress-fill { background: linear-gradient(90deg, var(--color-primary-bright), var(--color-primary)); }
+
+        .page-content.hidden { display: none; }
+        .client-card { transition: all 0.3s; cursor: pointer; }
+        .client-card:hover { transform: translateY(-2px); border-color: var(--color-primary); }
+
+        /* Table */
+        .admin-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+        .admin-table th {
+            text-align: left; padding: 0.75rem 0.5rem; font-weight: 700;
+            font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.06em;
+            color: var(--color-primary); border-bottom: 2px solid rgba(var(--color-rgb-primary), 0.15);
+        }
+        .dark .admin-table th { color: var(--color-primary-bright); border-bottom-color: rgba(var(--color-rgb-bright), 0.2); }
+        .admin-table td {
+            padding: 0.85rem 0.5rem; border-bottom: 1px solid rgba(var(--color-rgb-primary), 0.08);
+            color: var(--color-text-dark);
+        }
+        .dark .admin-table td { border-bottom-color: rgba(var(--color-rgb-bright), 0.1); color: #E3E8ED; }
+        .admin-table tr:hover td { background: rgba(var(--color-rgb-primary), 0.04); }
+        .dark .admin-table tr:hover td { background: rgba(var(--color-rgb-bright), 0.06); }
+
+        /* RTL support */
+        [dir="rtl"] .sidebar { left: auto; right: 0; border-right: none; border-left: 1px solid rgba(var(--color-rgb-primary), 0.12); }
+        [dir="rtl"] .main-content { margin-left: 0; margin-right: 280px; }
+        [dir="rtl"] .sidebar-item i { margin-right: 0; margin-left: 0.75rem; }
+        [dir="rtl"] .admin-table th, [dir="rtl"] .admin-table td { text-align: right; }
+        @media (max-width: 768px) {
+            [dir="rtl"] .sidebar { transform: translateX(100%); }
+            [dir="rtl"] .sidebar.open { transform: translateX(0); }
+            [dir="rtl"] .main-content { margin-right: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Mobile Header -->
+    <div class="mobile-header">
+        <div class="flex items-center gap-3">
+            <button id="menuToggle" class="toggle-btn"><i class="fas fa-bars"></i></button>
+            <a href="index.html" class="flex items-center gap-2 group shrink-0" dir="ltr">
+                <div class="w-8 h-8 bg-gradient-to-br from-gift-slate-light to-gift-slate rounded-xl flex items-center justify-center">
+                    <i class="fas fa-chess-knight text-white dark:text-dark-bg text-sm"></i>
+                </div>
+                <span class="text-lg font-serif font-bold text-neutral-dark dark:text-white tracking-wide">Chess <span class="board-gradient-text">Academy</span></span>
+            </a>
+        </div>
+        <div class="flex gap-2">
+            <button id="theme-toggle-mobile" class="toggle-btn"><i class="fas fa-moon dark:hidden"></i><i class="fas fa-sun hidden dark:inline"></i></button>
+            <button id="rtl-toggle-mobile" class="toggle-btn"><i class="fas fa-exchange-alt"></i></button>
+        </div>
+    </div>
+
+    <div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="p-5 border-b border-[rgba(var(--color-rgb-primary),0.12)] dark:border-[rgba(var(--color-rgb-bright),0.15)]">
+            <a href="index.html" class="flex items-center gap-3 group" dir="ltr">
+                <div class="w-10 h-10 bg-gradient-to-br from-gift-slate-light to-gift-slate rounded-xl flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-chess-knight text-white dark:text-dark-bg text-lg"></i>
+                </div>
+                <div>
+                    <span class="text-xl font-serif font-bold text-neutral-dark dark:text-white tracking-wide">Chess <span class="board-gradient-text">Academy</span></span>
+                    <p class="text-[10px] uppercase tracking-widest text-neutral-dark/60 dark:text-gray-400 font-sans mt-0.5">Academy Admin</p>
+                </div>
+            </a>
+        </div>
+        <nav class="py-4">
+            <div class="sidebar-item active" data-page="dashboard"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></div>
+            <div class="sidebar-item" data-page="students"><i class="fas fa-user-graduate"></i><span>Students</span></div>
+            <div class="sidebar-item" data-page="batches"><i class="fas fa-layer-group"></i><span>Batches</span></div>
+            <div class="sidebar-item" data-page="coaches"><i class="fas fa-user-tie"></i><span>Coaches</span></div>
+            <div class="sidebar-item" data-page="tournaments"><i class="fas fa-trophy"></i><span>Tournaments</span></div>
+            <div class="sidebar-item" data-page="payments"><i class="fas fa-credit-card"></i><span>Payments</span></div>
+            <div class="sidebar-item" data-page="messages"><i class="fas fa-comments"></i><span>Messages</span></div>
+        </nav>
+        <div class="absolute bottom-0 left-0 right-0 p-4 border-t border-[rgba(var(--color-rgb-primary),0.12)] dark:border-[rgba(var(--color-rgb-bright),0.15)]">
+            <a href="login.html" class="flex items-center justify-center gap-2 w-full p-2.5 rounded-xl bg-[rgba(var(--color-rgb-primary),0.08)] hover:bg-gift-slate transition font-semibold text-sm text-neutral-dark dark:text-gray-200 hover:text-white">
+                <i class="fas fa-sign-out-alt"></i><span>Sign Out</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="card-design p-4 md:p-6 flex justify-between items-center flex-wrap gap-3 mb-6">
+            <div>
+                <h1 class="text-2xl font-serif font-bold" id="page-title">Dashboard</h1>
+                <p class="text-sm text-neutral-dark/60 dark:text-gray-400" id="page-subtitle">Welcome back, Director</p>
+            </div>
+            <div class="hidden lg:flex items-center gap-4">
+                <button id="theme-toggle" class="toggle-btn"><i class="fas fa-moon dark:hidden"></i><i class="fas fa-sun hidden dark:inline"></i></button>
+                <button id="rtl-toggle" class="toggle-btn"><i class="fas fa-exchange-alt"></i></button>
+                <div class="flex items-center gap-3 border-l border-[rgba(var(--color-rgb-primary),0.12)] dark:border-[rgba(var(--color-rgb-bright),0.15)] pl-4">
+                    <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-gift-slate shadow-sm shrink-0">
+                        <img src="assets/images/photo-1507003211169-0a1dd7228f2d.jpg" alt="Academy Director" class="w-full h-full object-cover">
+                    </div>
+                    <div class="text-left hidden lg:block">
+                        <p class="text-sm font-bold text-neutral-dark dark:text-white leading-tight">Academy Director</p>
+                        <p class="text-[10px] text-neutral-dark/60 dark:text-gray-400 uppercase tracking-wider">Head of Operations</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== DASHBOARD ========== -->
+        <div id="page-dashboard" class="page-content">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6 items-stretch">
+                <div class="stat-card">
+                    <div class="flex items-center justify-between gap-3 mb-3 min-h-[40px]">
+                        <p class="text-xs text-neutral-dark/60 dark:text-gray-400 font-medium">Total Students</p>
+                        <div class="w-10 h-10 bg-[rgba(var(--color-rgb-primary),0.08)] dark:bg-[rgba(var(--color-rgb-bright),0.12)] rounded-full flex items-center justify-center shrink-0"><i class="fas fa-user-graduate text-gift-slate dark:text-gift-slate-bright text-base"></i></div>
+                    </div>
+                    <div class="mt-auto">
+                        <p class="text-2xl font-bold text-neutral-dark dark:text-white font-serif leading-tight">1,248</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="flex items-center justify-between gap-3 mb-3 min-h-[40px]">
+                        <p class="text-xs text-neutral-dark/60 dark:text-gray-400 font-medium">Active Batches</p>
+                        <div class="w-10 h-10 bg-[rgba(var(--color-rgb-primary),0.08)] dark:bg-[rgba(var(--color-rgb-bright),0.12)] rounded-full flex items-center justify-center shrink-0"><i class="fas fa-layer-group text-gift-slate dark:text-gift-slate-bright text-base"></i></div>
+                    </div>
+                    <div class="mt-auto">
+                        <p class="text-2xl font-bold text-neutral-dark dark:text-white font-serif leading-tight">18</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="flex items-center justify-between gap-3 mb-3 min-h-[40px]">
+                        <p class="text-xs text-neutral-dark/60 dark:text-gray-400 font-medium">Upcoming Tournaments</p>
+                        <div class="w-10 h-10 bg-[rgba(var(--color-rgb-primary),0.08)] dark:bg-[rgba(var(--color-rgb-bright),0.12)] rounded-full flex items-center justify-center shrink-0"><i class="fas fa-trophy text-gift-slate dark:text-gift-slate-bright text-base"></i></div>
+                    </div>
+                    <div class="mt-auto">
+                        <p class="text-2xl font-bold text-neutral-dark dark:text-white font-serif leading-tight">6</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="flex items-center justify-between gap-3 mb-3 min-h-[40px]">
+                        <p class="text-xs text-neutral-dark/60 dark:text-gray-400 font-medium">Monthly Revenue</p>
+                        <div class="w-10 h-10 bg-[rgba(var(--color-rgb-primary),0.08)] dark:bg-[rgba(var(--color-rgb-bright),0.12)] rounded-full flex items-center justify-center shrink-0"><i class="fas fa-dollar-sign text-gift-slate dark:text-gift-slate-bright text-base"></i></div>
+                    </div>
+                    <div class="mt-auto">
+                        <p class="text-2xl font-bold text-neutral-dark dark:text-white font-serif leading-tight">$86,400</p>
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div class="card-design p-4 sm:p-6">
+                    <h3 class="font-serif font-bold text-xl mb-4">Recent Enrollments</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between gap-3 pb-3 border-b border-[rgba(var(--color-rgb-primary),0.08)] dark:border-[rgba(var(--color-rgb-bright),0.1)]">
+                            <div class="flex items-start gap-3 min-w-0 flex-1">
+                                <i class="fas fa-user-plus text-gift-slate mt-1 shrink-0"></i>
+                                <div class="min-w-0 flex-1">
+                                    <p class="text-sm font-semibold truncate">Arjun Mehta · Intermediate Program</p>
+                                    <p class="text-xs text-neutral-dark/60 dark:text-gray-400 truncate">Enrolled Apr 14 · Batch B · Coach Rivera</p>
+                                </div>
+                            </div>
+                            <span class="status-badge status-active text-xs">Active</span>
+                        </div>
+                        <div class="flex items-center justify-between gap-3 pb-3 border-b border-[rgba(var(--color-rgb-primary),0.08)] dark:border-[rgba(var(--color-rgb-bright),0.1)]">
+                            <div class="flex items-start gap-3 min-w-0 flex-1">
+                                <i class="fas fa-user-plus text-gift-slate mt-1 shrink-0"></i>
+                                <div class="min-w-0 flex-1">
+                                    <p class="text-sm font-semibold truncate">Priya Sharma · Beginner Program</p>
+                                    <p class="text-xs text-neutral-dark/60 dark:text-gray-400 truncate">Enrolled Apr 13 · Batch A · Coach Rivera</p>
+                                </div>
+                            </div>
+                            <span class="status-badge status-active text-xs">Active</span>
+                        </div>
+                        <div class="flex items-center justify-between gap-3">
+                            <div class="flex items-start gap-3 min-w-0 flex-1">
+                                <i class="fas fa-user-plus text-gift-slate mt-1 shrink-0"></i>
+                                <div class="min-w-0 flex-1">
+                                    <p class="text-sm font-semibold truncate">Liam Chen · Advanced Program</p>
+                                    <p class="text-xs text-neutral-dark/60 dark:text-gray-400 truncate">Enrolled Apr 12 · Batch C · Coach GM Volkov</p>
+                                </div>
+                            </div>
+                            <span class="status-badge status-pending text-xs">Pending</span>
+                        </div>
+                    </div>
+                    <button data-nav="students" class="btn-outline-design w-full mt-4 py-2 text-sm">View All Students</button>
+                </div>
+                <div class="card-design p-4 sm:p-6">
+                    <h3 class="font-serif font-bold text-xl mb-4">Quick Actions</h3>
+                    <div class="space-y-3">
+                        <button data-nav="students" class="w-full text-left px-4 py-3 bg-[rgba(var(--color-rgb-primary),0.08)] dark:bg-[rgba(var(--color-rgb-bright),0.1)] text-neutral-dark dark:text-white rounded-xl hover:bg-[rgba(var(--color-rgb-primary),0.2)] transition flex items-center gap-3">
+                            <i class="fas fa-user-plus text-gift-slate"></i><span>Enroll New Student</span>
+                        </button>
+                        <button data-nav="batches" class="w-full text-left px-4 py-3 bg-[rgba(var(--color-rgb-primary),0.08)] dark:bg-[rgba(var(--color-rgb-bright),0.1)] text-neutral-dark dark:text-white rounded-xl hover:bg-[rgba(var(--color-rgb-primary),0.2)] transition flex items-center gap-3">
+                            <i class="fas fa-layer-group text-gift-slate"></i><span>Create New Batch</span>
+                        </button>
+                        <button data-nav="tournaments" class="w-full text-left px-4 py-3 bg-[rgba(var(--color-rgb-primary),0.08)] dark:bg-[rgba(var(--color-rgb-bright),0.1)] text-neutral-dark dark:text-white rounded-xl hover:bg-[rgba(var(--color-rgb-primary),0.2)] transition flex items-center gap-3">
+                            <i class="fas fa-trophy text-gift-slate"></i><span>Host Tournament</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== STUDENTS ========== -->
+        <div id="page-students" class="page-content hidden">
+            <div class="card-design p-4 sm:p-6">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
+                    <h3 class="font-serif font-bold text-xl sm:text-2xl">Students</h3>
+                    <button class="btn-primary-design px-4 py-2 text-sm w-full sm:w-auto text-center shrink-0"><i class="fas fa-plus mr-1"></i> Add Student</button>
+                </div>
+                <p class="text-sm text-neutral-dark/60 dark:text-gray-400 mb-6">Manage all student profiles, batch assignments, and ratings.</p>
+                <div class="overflow-x-auto">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Student</th>
+                                <th>Batch</th>
+                                <th>Rating</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-9 h-9 rounded-full overflow-hidden border-2 border-gift-slate shrink-0">
+                                            <img src="assets/images/photo-1500648767791-00dcc994a43e.jpg" alt="Arjun Mehta" class="w-full h-full object-cover">
+                                        </div>
+                                        <div>
+                                            <p class="font-bold">Arjun Mehta</p>
+                                            <p class="text-xs text-neutral-dark/60 dark:text-gray-400">arjun@email.com</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Intermediate · Batch B</td>
+                                <td class="font-bold">1540</td>
+                                <td><span class="status-badge status-active">Active</span></td>
+                                <td>
+                                    <div class="flex gap-2">
+                                        <button class="text-gift-slate hover:text-gift-slate-dark"><i class="fas fa-eye"></i></button>
+                                        <button class="text-gift-slate hover:text-gift-slate-dark"><i class="fas fa-edit"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-9 h-9 rounded-full overflow-hidden border-2 border-gift-slate shrink-0">
+                                            <img src="assets/images/photo-1534528741775-53994a69daeb.jpg" alt="Priya Sharma" class="w-full h-full object-cover">
+                                        </div>
+                                        <div>
+                                            <p class="font-bold">Priya Sharma</p>
+                                            <p class="text-xs text-neutral-dark/60 dark:text-gray-400">priya@email.com</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Beginner · Batch A</td>
+                                <td class="font-bold">890</td>
+                                <td><span class="status-badge status-active">Active</span></td>
+                                <td>
+                                    <div class="flex gap-2">
+                                        <button class="text-gift-slate hover:text-gift-slate-dark"><i class="fas fa-eye"></i></button>
+                                        <button class="text-gift-slate hover:text-gift-slate-dark"><i class="fas fa-edit"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-9 h-9 rounded-full overflow-hidden border-2 border-gift-slate shrink-0">
+                                            <img src="assets/images/photo-1539571696357-5a69c17a67c6.jpg" alt="Liam Chen" class="w-full h-full object-cover">
+                                        </div>
+                                        <div>
+                                            <p class="font-bold">Liam Chen</p>
+                                            <p class="text-xs text-neutral-dark/60 dark:text-gray-400">liam@email.com</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>Advanced · Batch C</td>
+                                <td class="font-bold">2120</td>
+                                <td><span class="status-badge status-pending">Pending</span></td>
+                                <td>
+                                    <div class="flex gap-2">
+                                        <button class="text-gift-slate hover:text-gift-slate-dark"><i class="fas fa-eye"></i></button>
+                                        <button class="text-gift-slate hover:text-gift-slate-dark"><i class="fas fa-edit"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== BATCHES ========== -->
+        <div id="page-batches" class="page-content hidden">
+            <div class="card-design p-4 sm:p-6">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
+                    <h3 class="font-serif font-bold text-xl sm:text-2xl">Training Batches</h3>
+                    <button class="btn-primary-design px-4 py-2 text-sm w-full sm:w-auto text-center shrink-0"><i class="fas fa-plus mr-1"></i> Create Batch</button>
+                </div>
+                <p class="text-sm text-neutral-dark/60 dark:text-gray-400 mb-6">Manage all active training batches, schedules, and coach assignments.</p>
+                <div class="space-y-4">
+                    <div class="p-4 sm:p-5 bg-[rgba(var(--color-rgb-primary),0.04)] dark:bg-[rgba(var(--color-rgb-bright),0.05)] rounded-2xl border border-[rgba(var(--color-rgb-primary),0.08)]">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3 sm:gap-4">
+                            <div class="min-w-0 flex-1">
+                                <p class="font-bold text-base sm:text-lg font-serif">Beginner Program — Batch A</p>
+                                <p class="text-xs sm:text-sm text-neutral-dark/60 dark:text-gray-400">12 students · Coach FM Marcus Rivera · Mon/Wed 6:00 PM</p>
+                                <div class="flex items-center gap-3 mt-2">
+                                    <span class="status-badge status-active">Active</span>
+                                    <span class="text-xs text-neutral-dark/60 dark:text-gray-400">8/12 capacity</span>
+                                </div>
+                            </div>
+                            <div class="flex gap-2 w-full sm:w-auto pt-1 sm:pt-0 shrink-0">
+                                <button class="btn-outline-design text-xs px-4 py-1.5 flex-1 sm:flex-none text-center"><i class="fas fa-users mr-1"></i>Roster</button>
+                                <button class="btn-primary-design text-xs px-4 py-1.5 flex-1 sm:flex-none text-center"><i class="fas fa-edit mr-1"></i>Manage</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 sm:p-5 bg-[rgba(var(--color-rgb-primary),0.04)] dark:bg-[rgba(var(--color-rgb-bright),0.05)] rounded-2xl border border-[rgba(var(--color-rgb-primary),0.08)]">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3 sm:gap-4">
+                            <div class="min-w-0 flex-1">
+                                <p class="font-bold text-base sm:text-lg font-serif">Intermediate Program — Batch B</p>
+                                <p class="text-xs sm:text-sm text-neutral-dark/60 dark:text-gray-400">10 students · Coach IM Sarah Chen · Tue/Thu 6:00 PM</p>
+                                <div class="flex items-center gap-3 mt-2">
+                                    <span class="status-badge status-active">Active</span>
+                                    <span class="text-xs text-neutral-dark/60 dark:text-gray-400">10/10 capacity · Waitlist open</span>
+                                </div>
+                            </div>
+                            <div class="flex gap-2 w-full sm:w-auto pt-1 sm:pt-0 shrink-0">
+                                <button class="btn-outline-design text-xs px-4 py-1.5 flex-1 sm:flex-none text-center"><i class="fas fa-users mr-1"></i>Roster</button>
+                                <button class="btn-primary-design text-xs px-4 py-1.5 flex-1 sm:flex-none text-center"><i class="fas fa-edit mr-1"></i>Manage</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 sm:p-5 bg-[rgba(var(--color-rgb-primary),0.04)] dark:bg-[rgba(var(--color-rgb-bright),0.05)] rounded-2xl border border-[rgba(var(--color-rgb-primary),0.08)]">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-3 sm:gap-4">
+                            <div class="min-w-0 flex-1">
+                                <p class="font-bold text-base sm:text-lg font-serif">Advanced Program — Batch C</p>
+                                <p class="text-xs sm:text-sm text-neutral-dark/60 dark:text-gray-400">6 students · Coach GM Alexei Volkov · Sat 10:00 AM</p>
+                                <div class="flex items-center gap-3 mt-2">
+                                    <span class="status-badge status-active">Active</span>
+                                    <span class="text-xs text-neutral-dark/60 dark:text-gray-400">6/6 capacity · Full</span>
+                                </div>
+                            </div>
+                            <div class="flex gap-2 w-full sm:w-auto pt-1 sm:pt-0 shrink-0">
+                                <button class="btn-outline-design text-xs px-4 py-1.5 flex-1 sm:flex-none text-center"><i class="fas fa-users mr-1"></i>Roster</button>
+                                <button class="btn-primary-design text-xs px-4 py-1.5 flex-1 sm:flex-none text-center"><i class="fas fa-edit mr-1"></i>Manage</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== COACHES ========== -->
+        <div id="page-coaches" class="page-content hidden">
+            <div class="card-design p-4 sm:p-6">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
+                    <h3 class="font-serif font-bold text-xl sm:text-2xl">Coaches</h3>
+                    <button class="btn-primary-design px-4 py-2 text-sm w-full sm:w-auto text-center shrink-0"><i class="fas fa-plus mr-1"></i> Add Coach</button>
+                </div>
+                <p class="text-sm text-neutral-dark/60 dark:text-gray-400 mb-6">Manage your coaching team, assignments, and availability.</p>
+                <div class="space-y-3">
+                    <div class="client-card card-design p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div class="flex items-center gap-3 min-w-0">
+                            <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-gift-slate shrink-0">
+                                <img src="assets/images/photo-1560250097-0b93528c311a.jpg" alt="GM Alexei Volkov" class="w-full h-full object-cover">
+                            </div>
+                            <div class="min-w-0">
+                                <p class="font-bold">GM Alexei Volkov</p>
+                                <p class="text-xs text-neutral-dark/60 dark:text-gray-400 truncate">Head Coach · FIDE 2680 · 2 batches</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between sm:justify-end gap-4 w-full sm:w-auto pt-1 sm:pt-0">
+                            <span class="status-badge status-active">Active</span>
+                            <button class="text-sm font-semibold text-gift-slate hover:text-gift-slate-dark">Manage</button>
+                        </div>
+                    </div>
+                    <div class="client-card card-design p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div class="flex items-center gap-3 min-w-0">
+                            <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-gift-slate shrink-0">
+                                <img src="assets/images/photo-1573496359142-b8d87734a5a2.jpg" alt="IM Sarah Chen" class="w-full h-full object-cover">
+                            </div>
+                            <div class="min-w-0">
+                                <p class="font-bold">IM Sarah Chen</p>
+                                <p class="text-xs text-neutral-dark/60 dark:text-gray-400 truncate">Senior Coach · FIDE 2450 · 3 batches</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between sm:justify-end gap-4 w-full sm:w-auto pt-1 sm:pt-0">
+                            <span class="status-badge status-active">Active</span>
+                            <button class="text-sm font-semibold text-gift-slate hover:text-gift-slate-dark">Manage</button>
+                        </div>
+                    </div>
+                    <div class="client-card card-design p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <div class="flex items-center gap-3 min-w-0">
+                            <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-gift-slate shrink-0">
+                                <img src="assets/images/photo-1472099645785-5658abf4ff4e.jpg" alt="FM Marcus Rivera" class="w-full h-full object-cover">
+                            </div>
+                            <div class="min-w-0">
+                                <p class="font-bold">FM Marcus Rivera</p>
+                                <p class="text-xs text-neutral-dark/60 dark:text-gray-400 truncate">Junior Coach · FIDE 2320 · 4 batches</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between sm:justify-end gap-4 w-full sm:w-auto pt-1 sm:pt-0">
+                            <span class="status-badge status-active">Active</span>
+                            <button class="text-sm font-semibold text-gift-slate hover:text-gift-slate-dark">Manage</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== TOURNAMENTS ========== -->
+        <div id="page-tournaments" class="page-content hidden">
+            <div class="card-design p-4 sm:p-6">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
+                    <h3 class="font-serif font-bold text-xl sm:text-2xl">Tournaments</h3>
+                    <button class="btn-primary-design px-4 py-2 text-sm w-full sm:w-auto text-center shrink-0"><i class="fas fa-plus mr-1"></i> Create Tournament</button>
+                </div>
+                <p class="text-sm text-neutral-dark/60 dark:text-gray-400 mb-6">Manage upcoming events, registrations, and results.</p>
+                <div class="overflow-x-auto">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Event</th>
+                                <th>Date</th>
+                                <th>Format</th>
+                                <th>Registered</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="font-bold">Annual Master Invitational</td>
+                                <td>Mar 14–22, 2026</td>
+                                <td>9 Rounds Classical</td>
+                                <td>64 / 80</td>
+                                <td><span class="status-badge status-confirmed">Open</span></td>
+                                <td>
+                                    <div class="flex gap-2">
+                                        <button class="text-gift-slate hover:text-gift-slate-dark"><i class="fas fa-eye"></i></button>
+                                        <button class="text-gift-slate hover:text-gift-slate-dark"><i class="fas fa-edit"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold">Junior Spring Championship</td>
+                                <td>Mar 28, 2026</td>
+                                <td>7 Rounds Swiss</td>
+                                <td>32 / 60</td>
+                                <td><span class="status-badge status-confirmed">Open</span></td>
+                                <td>
+                                    <div class="flex gap-2">
+                                        <button class="text-gift-slate hover:text-gift-slate-dark"><i class="fas fa-eye"></i></button>
+                                        <button class="text-gift-slate hover:text-gift-slate-dark"><i class="fas fa-edit"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold">Friday Night Blitz</td>
+                                <td>Apr 4, 2026</td>
+                                <td>9 Rounds Blitz</td>
+                                <td>18 / 40</td>
+                                <td><span class="status-badge status-pending">Registering</span></td>
+                                <td>
+                                    <div class="flex gap-2">
+                                        <button class="text-gift-slate hover:text-gift-slate-dark"><i class="fas fa-eye"></i></button>
+                                        <button class="text-gift-slate hover:text-gift-slate-dark"><i class="fas fa-edit"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== PAYMENTS ========== -->
+        <div id="page-payments" class="page-content hidden">
+            <div class="card-design p-4 sm:p-6 mb-6">
+                <h3 class="font-serif font-bold text-2xl mb-4">Payment Overview</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+                    <div class="p-4 rounded-2xl bg-[rgba(var(--color-rgb-primary),0.06)] dark:bg-[rgba(var(--color-rgb-bright),0.08)] border border-[rgba(var(--color-rgb-primary),0.1)]">
+                        <p class="text-xs text-neutral-dark/60 dark:text-gray-400 mb-1">Total Revenue (Month)</p>
+                        <p class="text-2xl font-bold font-serif text-neutral-dark dark:text-white">$86,400</p>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-[rgba(var(--color-rgb-primary),0.06)] dark:bg-[rgba(var(--color-rgb-bright),0.08)] border border-[rgba(var(--color-rgb-primary),0.1)]">
+                        <p class="text-xs text-neutral-dark/60 dark:text-gray-400 mb-1">Outstanding Balance</p>
+                        <p class="text-2xl font-bold font-serif text-gift-slate">$12,850</p>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-[rgba(var(--color-rgb-primary),0.06)] dark:bg-[rgba(var(--color-rgb-bright),0.08)] border border-[rgba(var(--color-rgb-primary),0.1)]">
+                        <p class="text-xs text-neutral-dark/60 dark:text-gray-400 mb-1">Overdue Payments</p>
+                        <p class="text-2xl font-bold font-serif text-red-600 dark:text-red-400">$2,100</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-design p-4 sm:p-6">
+                <h3 class="font-serif font-bold text-2xl mb-4">Student Payments</h3>
+                <div class="overflow-x-auto">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Student</th>
+                                <th>Program</th>
+                                <th>Total</th>
+                                <th>Paid</th>
+                                <th>Balance</th>
+                                <th>Status</th>
+                                <th>Invoice</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="font-medium">Arjun Mehta</td>
+                                <td>Intermediate Program</td>
+                                <td class="font-bold">$1,200.00</td>
+                                <td class="text-green-600 dark:text-green-400 font-semibold">$600.00</td>
+                                <td class="text-gift-slate font-bold">$600.00</td>
+                                <td><span class="status-badge status-installment">Installment</span></td>
+                                <td><button class="text-gift-slate hover:text-gift-slate-dark"><i class="fas fa-download"></i></button></td>
+                            </tr>
+                            <tr>
+                                <td class="font-medium">Priya Sharma</td>
+                                <td>Beginner Program</td>
+                                <td class="font-bold">$800.00</td>
+                                <td class="text-green-600 dark:text-green-400 font-semibold">$800.00</td>
+                                <td class="font-bold">$0.00</td>
+                                <td><span class="status-badge status-paid">Paid</span></td>
+                                <td><button class="text-gift-slate hover:text-gift-slate-dark"><i class="fas fa-download"></i></button></td>
+                            </tr>
+                            <tr>
+                                <td class="font-medium">Liam Chen</td>
+                                <td>Advanced Program</td>
+                                <td class="font-bold">$1,800.00</td>
+                                <td class="text-green-600 dark:text-green-400 font-semibold">$900.00</td>
+                                <td class="text-red-600 dark:text-red-400 font-bold">$900.00</td>
+                                <td><span class="status-badge status-overdue">Overdue</span></td>
+                                <td><button class="text-gift-slate hover:text-gift-slate-dark"><i class="fas fa-download"></i></button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="mt-6 flex flex-wrap items-center gap-3">
+                    <button class="btn-primary-design px-5 py-2.5 text-sm inline-flex items-center gap-2"><i class="fas fa-file-invoice"></i> Generate Invoices</button>
+                    <button class="btn-outline-design px-5 py-2.5 text-sm inline-flex items-center gap-2"><i class="fas fa-download"></i> Export Payment Report</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== MESSAGES ========== -->
+        <div id="page-messages" class="page-content hidden">
+            <div class="card-design p-4 sm:p-6">
+                <h3 class="font-serif font-bold text-2xl mb-4">Messages</h3>
+                <p class="text-sm text-neutral-dark/60 dark:text-gray-400 mb-6">Communicate with students, parents, and coaches.</p>
+                <div class="space-y-4">
+                    <div class="p-4 bg-[rgba(var(--color-rgb-primary),0.05)] dark:bg-[rgba(var(--color-rgb-bright),0.08)] rounded-xl">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="font-bold">Priya Sharma <span class="text-xs font-normal text-neutral-dark/60">Parent</span></p>
+                                <p class="text-sm mt-1">Can we schedule a parent-coach meeting to discuss my daughter's progress?</p>
+                            </div>
+                            <span class="text-xs text-neutral-dark/60">Today, 10:15 AM</span>
+                        </div>
+                        <div class="mt-2 flex gap-2">
+                            <button class="btn-primary-design px-4 py-1 text-sm">Reply</button>
+                        </div>
+                    </div>
+                    <div class="p-4 bg-white dark:bg-[#0C0F12] rounded-xl border border-[rgba(var(--color-rgb-primary),0.12)] dark:border-[rgba(var(--color-rgb-bright),0.15)]">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="font-bold">Admin <span class="text-xs font-normal text-neutral-dark/60">You</span></p>
+                                <p class="text-sm mt-1">Absolutely! I'll ask Coach Rivera to reach out and set up a time that works for you both.</p>
+                            </div>
+                            <span class="text-xs text-neutral-dark/60">Yesterday, 4:30 PM</span>
+                        </div>
+                    </div>
+                    <div class="p-4 bg-[rgba(var(--color-rgb-primary),0.05)] dark:bg-[rgba(var(--color-rgb-bright),0.08)] rounded-xl">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <p class="font-bold">Coach Marcus Rivera <span class="text-xs font-normal text-neutral-dark/60">Coach</span></p>
+                                <p class="text-sm mt-1">I've updated the Batch A curriculum. New tactics module starts next week.</p>
+                            </div>
+                            <span class="text-xs text-neutral-dark/60">Yesterday, 1:00 PM</span>
+                        </div>
+                        <div class="mt-2 flex gap-2">
+                            <button class="btn-primary-design px-4 py-1 text-sm">Reply</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <label class="form-label">Send a Message</label>
+                    <div class="flex gap-3">
+                        <input type="text" class="form-input flex-1" placeholder="Type your message..." />
+                        <button class="btn-primary-design px-6 py-2"><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // ===== RTL Toggle =====
+            const rtlToggle = document.getElementById('rtl-toggle');
+            const rtlToggleMobile = document.getElementById('rtl-toggle-mobile');
+            function setRTL(isRTL) {
+                document.documentElement.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
+                localStorage.setItem('dir', isRTL ? 'rtl' : 'ltr');
+            }
+            const savedDir = localStorage.getItem('dir');
+            setRTL(savedDir === 'rtl');
+            if (rtlToggle) rtlToggle.addEventListener('click', () => setRTL(document.documentElement.getAttribute('dir') !== 'rtl'));
+            if (rtlToggleMobile) rtlToggleMobile.addEventListener('click', () => setRTL(document.documentElement.getAttribute('dir') !== 'rtl'));
+
+            // ===== Theme Toggle =====
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+            function setTheme(isDark) {
+                if (isDark) document.documentElement.classList.add('dark');
+                else document.documentElement.classList.remove('dark');
+                [themeToggle, themeToggleMobile].forEach(btn => {
+                    if (btn) {
+                        let moon = btn.querySelector('.fa-moon'), sun = btn.querySelector('.fa-sun');
+                        if (isDark) { moon?.classList.add('hidden'); sun?.classList.remove('hidden'); }
+                        else { moon?.classList.remove('hidden'); sun?.classList.add('hidden'); }
+                    }
+                });
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            }
+            const savedTheme = localStorage.getItem('theme');
+            setTheme(savedTheme === 'dark');
+            if (themeToggle) themeToggle.addEventListener('click', () => setTheme(!document.documentElement.classList.contains('dark')));
+            if (themeToggleMobile) themeToggleMobile.addEventListener('click', () => setTheme(!document.documentElement.classList.contains('dark')));
+
+            // ===== Mobile Sidebar =====
+            const menuToggle = document.getElementById('menuToggle');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            function closeSidebar() { sidebar.classList.remove('open'); overlay.classList.remove('open'); }
+            function openSidebar() { sidebar.classList.add('open'); overlay.classList.add('open'); }
+            if (menuToggle) menuToggle.addEventListener('click', (e) => { e.stopPropagation(); sidebar.classList.contains('open') ? closeSidebar() : openSidebar(); });
+            if (overlay) overlay.addEventListener('click', closeSidebar);
+            window.addEventListener('resize', () => { if (window.innerWidth > 768 && sidebar.classList.contains('open')) closeSidebar(); });
+
+            // ===== Page Navigation =====
+            const sidebarItems = document.querySelectorAll('.sidebar-item');
+            const pages = document.querySelectorAll('.page-content');
+            const pageTitle = document.getElementById('page-title');
+            const pageSubtitle = document.getElementById('page-subtitle');
+            const titles = {
+                dashboard: { title: 'Dashboard', subtitle: 'Welcome back, Director' },
+                students: { title: 'Students', subtitle: 'Manage student profiles & enrollments' },
+                batches: { title: 'Batches', subtitle: 'Manage training batches & schedules' },
+                coaches: { title: 'Coaches', subtitle: 'Manage coaching team & assignments' },
+                tournaments: { title: 'Tournaments', subtitle: 'Create and manage events' },
+                payments: { title: 'Payments', subtitle: 'Track revenue & outstanding balances' },
+                messages: { title: 'Messages', subtitle: 'Communicate with students & coaches' }
+            };
+            function navigateTo(page) {
+                sidebarItems.forEach(i => i.classList.remove('active'));
+                document.querySelector(`.sidebar-item[data-page="${page}"]`)?.classList.add('active');
+                pages.forEach(p => p.classList.add('hidden'));
+                document.getElementById(`page-${page}`)?.classList.remove('hidden');
+                if (titles[page]) { pageTitle.textContent = titles[page].title; pageSubtitle.textContent = titles[page].subtitle; }
+                closeSidebar();
+            }
+            sidebarItems.forEach(item => { item.addEventListener('click', () => { navigateTo(item.getAttribute('data-page')); }); });
+            document.querySelectorAll('[data-nav]').forEach(btn => { btn.addEventListener('click', () => { navigateTo(btn.getAttribute('data-nav')); }); });
+
+            // Show dashboard by default
+            navigateTo('dashboard');
+        });
+    </script>
+</body>
+</html>

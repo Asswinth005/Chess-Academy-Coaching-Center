@@ -1,0 +1,1884 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth" data-theme="knight-noir">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tournaments · Chess Academy & Coaching Center</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="alternate icon" href="assets/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+    <meta name="description" content="FIDE-rated tournaments, in-house competitions, and travel support for competitive chess players.">
+    <!-- Tailwind CSS with Local & CDN Fallback -->
+    <script src="tailwind.js"></script>
+    <script>
+        if (typeof tailwind === 'undefined') {
+            document.write('<script src="https://cdn.tailwindcss.com"><\/script>');
+        }
+    </script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'gift-slate': 'rgba(var(--color-rgb-primary), <alpha-value>)',
+                        'gift-slate-light': 'rgba(var(--color-rgb-light), <alpha-value>)',
+                        'gift-slate-dark': 'rgba(var(--color-rgb-dark), <alpha-value>)',
+                        'gift-slate-bright': 'rgba(var(--color-rgb-bright), <alpha-value>)',
+                        'gift-accent': 'rgba(var(--color-rgb-accent), <alpha-value>)',
+                        'bg-warm': 'var(--color-bg-warm)',
+                        'neutral-dark': 'var(--color-text-dark)',
+                        'neutral-light': '#E8E2D9',
+                        'dark-bg': '#0C0F12',
+                        'dark-card': '#141A1F',
+                        'dark-surface': '#1C242B',
+                    },
+                    fontFamily: {
+                        'sans': ['Plus Jakarta Sans', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+                        'serif': ['Cormorant Garamond', 'serif'],
+                        'display': ['Outfit', 'Plus Jakarta Sans', 'sans-serif'],
+                        'premium': ['Outfit', 'Plus Jakarta Sans', 'sans-serif'],
+                        'alt': ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    animation: {
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'fade-in': 'fadeIn 0.3s ease-out',
+                        'pulse-glow': 'pulseGlow 3s infinite',
+                    },
+                    keyframes: {
+                        slideUp: {
+                            '0%': { transform: 'translateY(30px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { opacity: '0.6' },
+                            '50%': { opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <script>
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+        }
+        if (localStorage.getItem('dir') === 'rtl') {
+            document.documentElement.dir = 'rtl';
+            document.documentElement.lang = 'ar';
+        }
+    </script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
+        rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chess Academy Stylesheet (Self-Contained) -->
+    <style>
+        :root,
+        [data-theme="knight-noir"],
+        [data-theme="classic-wood"] {
+            --color-primary: #1E3A5F;
+            --color-primary-light: #3B5F8A;
+            --color-primary-dark: #0F2440;
+            --color-primary-bright: #5B8FC9;
+            --color-accent: #C9A44C;
+            --color-bg-warm: #F7F5F0;
+            --color-text-dark: #0C1926;
+            --color-rgb-primary: 30, 58, 95;
+            --color-rgb-light: 59, 95, 138;
+            --color-rgb-dark: 15, 36, 64;
+            --color-rgb-bright: 91, 143, 201;
+            --color-rgb-accent: 201, 164, 76;
+        }
+
+        [data-theme="emerald-board"] {
+            --color-primary: #1B4D3E;
+            --color-primary-light: #2D7A5F;
+            --color-primary-dark: #0E2E24;
+            --color-primary-bright: #5CB88A;
+            --color-accent: #D4AF37;
+            --color-bg-warm: #F0F7F3;
+            --color-text-dark: #0A1F18;
+            --color-rgb-primary: 27, 77, 62;
+            --color-rgb-light: 45, 122, 95;
+            --color-rgb-dark: 14, 46, 36;
+            --color-rgb-bright: 92, 184, 138;
+            --color-rgb-accent: 212, 175, 55;
+        }
+
+        [data-theme="crimson-gambit"] {
+            --color-primary: #8B1A2B;
+            --color-primary-light: #B83045;
+            --color-primary-dark: #5C0E1B;
+            --color-primary-bright: #E05A70;
+            --color-accent: #C9A44C;
+            --color-bg-warm: #FDF5F5;
+            --color-text-dark: #2B0A0F;
+            --color-rgb-primary: 139, 26, 43;
+            --color-rgb-light: 184, 48, 69;
+            --color-rgb-dark: 92, 14, 27;
+            --color-rgb-bright: 224, 90, 112;
+            --color-rgb-accent: 201, 164, 76;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--color-bg-warm);
+            color: var(--color-text-dark);
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+
+        .dark body {
+            background-color: #0C0F12;
+            color: #E3E8ED;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .board-gradient-text,
+        .chess-gradient-text {
+            background: linear-gradient(135deg, var(--color-primary-bright) 0%, var(--color-primary) 50%, var(--color-primary-dark) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: var(--color-bg-warm); }
+        .dark ::-webkit-scrollbar-track { background: #0C0F12; }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(var(--color-rgb-primary), 0.35);
+            border-radius: 9999px;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+        }
+        ::-webkit-scrollbar-thumb:hover { background: var(--color-primary); }
+        .dark ::-webkit-scrollbar-thumb { background: rgba(var(--color-rgb-bright), 0.35); }
+        .dark ::-webkit-scrollbar-thumb:hover { background: var(--color-primary-bright); }
+        * { scrollbar-width: thin; scrollbar-color: rgba(var(--color-rgb-primary), 0.4) transparent; }
+
+        .dark .text-gift-slate { color: var(--color-primary-bright) !important; }
+        .dark .bg-gift-slate { background-color: var(--color-primary-bright) !important; }
+        .dark .border-gift-slate { border-color: var(--color-primary-bright) !important; }
+
+        .cta-chess-banner {
+            background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 50%, var(--color-primary-dark) 100%) !important;
+        }
+        .dark .cta-chess-banner {
+            background: linear-gradient(135deg, #0C0F12 0%, #141A1F 50%, #0C0F12 100%) !important;
+        }
+        .dark .service-icon {
+            background: rgba(var(--color-rgb-bright), 0.12) !important;
+            color: var(--color-primary-bright) !important;
+            border: 1px solid rgba(var(--color-rgb-bright), 0.25);
+        }
+        .dark .badge {
+            background: rgba(12, 15, 18, 0.85) !important;
+            color: #FFFFFF !important;
+            border: 1px solid rgba(255, 255, 255, 0.35) !important;
+        }
+        .dark .dropdown-item:hover { color: var(--color-primary-bright) !important; }
+        .dark .auth-btn.login:hover { border-color: transparent !important; color: #0C0F12 !important; }
+        .dark .nav-item:hover { color: var(--color-primary-bright) !important; }
+        .dark .nav-item::after { background: var(--color-primary-bright) !important; }
+        .dark .dropdown-item i { color: var(--color-primary-bright) !important; }
+        .dark .premium-line { background: linear-gradient(90deg, var(--color-primary-bright), rgba(var(--color-rgb-bright), 0.1)); }
+
+        /* Premium Navigation */
+        .nav-item {
+            position: relative;
+            padding: 0.5rem 0;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 0.02em;
+            color: var(--color-text-dark);
+            transition: color 0.3s ease;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+        .dark .nav-item { color: #E3E8ED; }
+        .nav-item:hover { color: var(--color-primary); }
+        .dark .nav-item:hover { color: var(--color-primary-bright); }
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light));
+            transition: width 0.3s ease;
+        }
+        .dark .nav-item::after {
+            background: linear-gradient(90deg, var(--color-primary-bright), var(--color-primary-light));
+        }
+        [dir="rtl"] .nav-item::after { left: auto; right: 0; }
+        .nav-item:hover::after, .nav-item.active::after { width: 100%; }
+        .nav-item.active { color: var(--color-primary) !important; font-weight: 700; }
+        .dark .nav-item.active { color: var(--color-primary-bright) !important; }
+
+        .mobile-menu-item.active { color: var(--color-primary) !important; font-weight: 700; }
+        .dark .mobile-menu-item.active { color: var(--color-primary-bright) !important; }
+
+        .dropdown { position: relative; }
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 230px;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 16px;
+            padding: 0.85rem 0;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.18);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(12px);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 1000;
+            border: 1px solid rgba(var(--color-rgb-primary), 0.2);
+            backdrop-filter: blur(12px);
+        }
+        .dark .dropdown-menu {
+            background: rgba(20, 26, 31, 0.98);
+            border-color: rgba(var(--color-rgb-bright), 0.25);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+        }
+        .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: -12px;
+            left: 0;
+            right: 0;
+            height: 12px;
+        }
+        [dir="rtl"] .dropdown-menu { left: auto; right: 0; }
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            padding: 0.8rem 1.6rem;
+            color: var(--color-text-dark);
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .dark .dropdown-item { color: #E3E8ED; }
+        .dropdown-item:hover {
+            background: rgba(var(--color-rgb-primary), 0.1);
+            color: var(--color-primary);
+            padding-left: 1.85rem;
+        }
+        .dark .dropdown-item:hover {
+            background: rgba(var(--color-rgb-bright), 0.15);
+            color: var(--color-primary-bright);
+        }
+        [dir="rtl"] .dropdown-item:hover { padding-left: 1.6rem; padding-right: 1.85rem; }
+        .dropdown-item i {
+            margin-right: 0.85rem;
+            width: 20px;
+            text-align: center;
+            color: var(--color-primary);
+        }
+        [dir="rtl"] .dropdown-item i { margin-right: 0; margin-left: 0.85rem; }
+        .dark .dropdown-item i { color: var(--color-primary-bright); }
+        [dir="rtl"] .desktop-toggle-group { margin-left: 0; margin-right: 1.25rem; }
+
+        .auth-btn {
+            padding: 0.6rem 1.75rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.88rem;
+            letter-spacing: 0.04em;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            white-space: nowrap;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            text-transform: uppercase;
+        }
+        .auth-btn.login {
+            background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+            color: #ffffff !important;
+            box-shadow: 0 4px 15px rgba(var(--color-rgb-primary), 0.35);
+            border: none;
+        }
+        .dark .auth-btn.login {
+            background: linear-gradient(135deg, var(--color-primary-bright) 0%, var(--color-primary) 100%);
+            color: #0C0F12 !important;
+            box-shadow: 0 4px 15px rgba(var(--color-rgb-bright), 0.3);
+            border: none;
+        }
+        .auth-btn.login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(var(--color-rgb-primary), 0.45);
+            color: #ffffff !important;
+        }
+        .dark .auth-btn.login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(var(--color-rgb-bright), 0.45);
+            color: #0C0F12 !important;
+        }
+
+        .toggle-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(var(--color-rgb-primary), 0.12);
+            color: var(--color-primary);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(var(--color-rgb-primary), 0.2);
+            cursor: pointer;
+        }
+        .dark .toggle-btn {
+            background: rgba(var(--color-rgb-bright), 0.12);
+            color: var(--color-primary-bright);
+            border-color: rgba(var(--color-rgb-bright), 0.25);
+        }
+        .toggle-btn:hover {
+            background: var(--color-primary);
+            color: white;
+            transform: scale(1.08);
+        }
+        .dark .toggle-btn:hover {
+            background: var(--color-primary-bright);
+            color: #0C0F12;
+            transform: scale(1.08);
+        }
+        .toggle-btn.active { background: var(--color-primary); color: white; }
+        .dark .toggle-btn.active { background: var(--color-primary-bright); color: #0C0F12; }
+
+        @media (max-width: 1279px) { .desktop-toggle-group { display: none !important; } }
+
+        .mobile-menu {
+            background: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+        .mobile-menu:not(.open) {
+            border: none !important;
+            border-width: 0 !important;
+            margin-top: 0 !important;
+            padding: 0 !important;
+            box-shadow: none !important;
+            pointer-events: none !important;
+        }
+        .dark .mobile-menu {
+            background: #0C0F12;
+            border-color: rgba(var(--color-rgb-bright), 0.2);
+        }
+        .mobile-menu.open { max-height: 85vh; overflow-y: auto; }
+
+        .mobile-menu-item {
+            display: block;
+            padding: 1.1rem 1.75rem;
+            font-weight: 600;
+            color: var(--color-text-dark);
+            border-bottom: 1px solid rgba(var(--color-rgb-primary), 0.1);
+            transition: all 0.2s ease;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            font-size: 0.9rem;
+        }
+        .dark .mobile-menu-item {
+            color: #E3E8ED;
+            border-bottom-color: rgba(var(--color-rgb-bright), 0.15);
+        }
+        .mobile-menu-item:hover {
+            background-color: rgba(var(--color-rgb-primary), 0.06);
+            color: var(--color-primary);
+        }
+        .dark .mobile-menu-item:hover {
+            background-color: rgba(var(--color-rgb-bright), 0.12);
+            color: var(--color-primary-bright);
+        }
+
+        .mobile-dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: rgba(var(--color-rgb-primary), 0.04);
+        }
+        .dark .mobile-dropdown-content { background: rgba(20, 26, 31, 0.8); }
+        .mobile-dropdown-content.show { max-height: 300px; }
+        .mobile-dropdown-item {
+            display: block;
+            padding: 0.85rem 2.75rem;
+            font-size: 0.92rem;
+            color: var(--color-text-dark);
+            transition: all 0.2s ease;
+            border-bottom: 1px solid rgba(var(--color-rgb-primary), 0.08);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .dark .mobile-dropdown-item {
+            color: #C0C8D0;
+            border-bottom-color: rgba(var(--color-rgb-bright), 0.1);
+        }
+        .mobile-dropdown-item:hover {
+            color: var(--color-primary);
+            background-color: rgba(var(--color-rgb-primary), 0.1);
+        }
+        .dark .mobile-dropdown-item:hover {
+            background-color: rgba(var(--color-rgb-bright), 0.15);
+            color: var(--color-primary-bright);
+        }
+
+        .mobile-auth-btn {
+            display: inline-block;
+            padding: 0.85rem 1.75rem;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            text-align: center;
+            margin: 0.25rem;
+            border: 1px solid transparent;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .mobile-auth-btn.login {
+            background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+            color: #ffffff !important;
+            box-shadow: 0 4px 15px rgba(var(--color-rgb-primary), 0.3);
+            border: none;
+        }
+        .dark .mobile-auth-btn.login {
+            background: linear-gradient(135deg, var(--color-primary-bright) 0%, var(--color-primary) 100%);
+            color: #0C0F12 !important;
+            border: none;
+        }
+        .mobile-auth-btn.login:hover { opacity: 0.95; transform: translateY(-1px); }
+        .dark .mobile-auth-btn.login:hover {
+            opacity: 0.95;
+            transform: translateY(-1px);
+            color: #0C0F12 !important;
+        }
+
+        .desktop-nav-container { display: flex; align-items: center; gap: 2rem; }
+
+        .hero-image {
+            border-radius: 28px;
+            box-shadow: 0 30px 60px -15px rgba(var(--color-rgb-primary), 0.3);
+            border: 1px solid rgba(var(--color-rgb-primary), 0.2);
+        }
+        .dark .hero-image {
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8);
+            border-color: rgba(var(--color-rgb-bright), 0.25);
+        }
+
+        .service-icon {
+            width: 84px;
+            height: 84px;
+            background: rgba(var(--color-rgb-primary), 0.12);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+            font-size: 2.2rem;
+            color: var(--color-primary);
+            border: 1px solid rgba(var(--color-rgb-primary), 0.25);
+            box-shadow: 0 10px 20px -5px rgba(var(--color-rgb-primary), 0.15);
+        }
+        .dark .service-icon {
+            background: rgba(var(--color-rgb-bright), 0.12);
+            color: var(--color-primary-bright);
+            border-color: rgba(var(--color-rgb-bright), 0.3);
+        }
+
+        .badge {
+            background: rgba(12, 15, 18, 0.75) !important;
+            color: #FFFFFF !important;
+            padding: 0.35rem 1.1rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.82rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            border: 1px solid rgba(255, 255, 255, 0.3) !important;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        .dark .badge {
+            background: rgba(12, 15, 18, 0.85) !important;
+            color: #FFFFFF !important;
+            border: 1px solid rgba(255, 255, 255, 0.35) !important;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+        }
+
+        footer {
+            background: white;
+            color: var(--color-text-dark);
+            border-top: 1px solid rgba(var(--color-rgb-primary), 0.18);
+        }
+        .dark footer {
+            background: #0C0F12;
+            color: #E3E8ED;
+            border-color: rgba(var(--color-rgb-bright), 0.2);
+        }
+        footer a:hover { color: var(--color-primary); }
+        .dark footer a:hover { color: var(--color-primary-bright); }
+
+        .social-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(var(--color-rgb-primary), 0.1);
+            color: var(--color-primary);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            border: 1px solid rgba(var(--color-rgb-primary), 0.2);
+        }
+        .dark .social-icon {
+            background: rgba(var(--color-rgb-bright), 0.12);
+            color: var(--color-primary-bright);
+            border-color: rgba(var(--color-rgb-bright), 0.25);
+        }
+        .social-icon:hover {
+            background: var(--color-primary);
+            color: white;
+            transform: translateY(-3px) scale(1.05);
+        }
+        .dark .social-icon:hover {
+            background: var(--color-primary-bright);
+            color: #0C0F12;
+        }
+
+        .premium-line {
+            width: 90px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light), transparent);
+            margin: 24px 0;
+            border-radius: 2px;
+        }
+        .dark .premium-line {
+            background: linear-gradient(90deg, var(--color-primary-bright), var(--color-primary-light), transparent);
+        }
+
+        .scrollbar-thin::-webkit-scrollbar { height: 6px; }
+        .scrollbar-thin::-webkit-scrollbar-track { background: transparent; }
+        .scrollbar-thin::-webkit-scrollbar-thumb {
+            background: rgba(var(--color-rgb-primary), 0.4);
+            border-radius: 10px;
+        }
+        .dark .scrollbar-thin::-webkit-scrollbar-thumb {
+            background: rgba(var(--color-rgb-bright), 0.4);
+        }
+
+        .double-bezel-outer {
+            position: relative;
+            border-radius: 2rem;
+            padding: 0.375rem;
+            background: linear-gradient(180deg, rgba(var(--color-rgb-primary), 0.25) 0%, rgba(var(--color-rgb-primary), 0.05) 100%);
+            border: 1px solid rgba(var(--color-rgb-primary), 0.2);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.08);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .dark .double-bezel-outer {
+            background: linear-gradient(180deg, rgba(var(--color-rgb-bright), 0.2) 0%, rgba(255, 255, 255, 0.02) 100%);
+            border-color: rgba(var(--color-rgb-bright), 0.2);
+            box-shadow: 0 25px 50px -15px rgba(0, 0, 0, 0.7);
+        }
+        .double-bezel-outer:hover {
+            transform: translateY(-6px);
+            border-color: rgba(var(--color-rgb-primary), 0.45);
+            box-shadow: 0 30px 60px -15px rgba(var(--color-rgb-primary), 0.25);
+        }
+        .dark .double-bezel-outer:hover {
+            border-color: rgba(var(--color-rgb-bright), 0.45);
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.9);
+        }
+        .double-bezel-inner {
+            border-radius: calc(2rem - 0.375rem);
+            background: #FFFFFF;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8);
+        }
+        .dark .double-bezel-inner {
+            background: #141A1F;
+            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.08);
+        }
+
+        .btn-nested {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.85rem;
+            padding: 0.65rem 0.75rem 0.65rem 1.75rem;
+            border-radius: 9999px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+            color: #FFFFFF !important;
+            box-shadow: 0 10px 25px -5px rgba(var(--color-rgb-primary), 0.35);
+        }
+        .dark .btn-nested {
+            background: linear-gradient(135deg, var(--color-primary-bright) 0%, var(--color-primary) 100%);
+            color: #0C0F12 !important;
+            box-shadow: 0 10px 25px -5px rgba(var(--color-rgb-bright), 0.3);
+        }
+        .btn-nested .icon-circle {
+            width: 2.25rem;
+            height: 2.25rem;
+            border-radius: 9999px;
+            background: rgba(255, 255, 255, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .dark .btn-nested .icon-circle {
+            background: rgba(12, 15, 18, 0.25);
+        }
+        .btn-nested:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 18px 35px -8px rgba(var(--color-rgb-primary), 0.5);
+        }
+        .dark .btn-nested:hover {
+            box-shadow: 0 18px 35px -8px rgba(var(--color-rgb-bright), 0.45);
+        }
+        .btn-nested:hover .icon-circle {
+            transform: translateX(3px) rotate(45deg);
+        }
+        .btn-nested:active {
+            transform: scale(0.98);
+        }
+
+        .btn-frosted {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            padding: 0.85rem 1.75rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 0.88rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            border: 1px solid rgba(var(--color-rgb-primary), 0.3);
+            color: var(--color-text-dark);
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        .dark .btn-frosted {
+            border-color: rgba(var(--color-rgb-bright), 0.3);
+            color: #E3E8ED;
+            background: rgba(25, 30, 35, 0.6);
+        }
+        .btn-frosted:hover {
+            background: rgba(var(--color-rgb-primary), 0.12);
+            border-color: var(--color-primary);
+            transform: translateY(-2px);
+        }
+        .dark .btn-frosted:hover {
+            background: rgba(var(--color-rgb-bright), 0.15);
+            border-color: var(--color-primary-bright);
+        }
+
+        @keyframes shimmerPulse {
+            0%, 100% { opacity: 0.85; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.02); }
+        }
+        .eyebrow-pill {
+            animation: shimmerPulse 4s ease-in-out infinite;
+        }
+
+        .chess-pattern {
+            background-image: 
+                linear-gradient(45deg, rgba(var(--color-rgb-primary), 0.03) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(var(--color-rgb-primary), 0.03) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, rgba(var(--color-rgb-primary), 0.03) 75%),
+                linear-gradient(-45deg, transparent 75%, rgba(var(--color-rgb-primary), 0.03) 75%);
+            background-size: 40px 40px;
+            background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+        }
+        .dark .chess-pattern {
+            background-image: 
+                linear-gradient(45deg, rgba(var(--color-rgb-bright), 0.04) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(var(--color-rgb-bright), 0.04) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, rgba(var(--color-rgb-bright), 0.04) 75%),
+                linear-gradient(-45deg, transparent 75%, rgba(var(--color-rgb-bright), 0.04) 75%);
+        }
+
+        /* --- Tournaments page unique components --- */
+        .event-card {
+            background: white;
+            border-radius: 1.75rem;
+            overflow: hidden;
+            border: 1px solid rgba(var(--color-rgb-primary), 0.15);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            position: relative;
+        }
+        .dark .event-card {
+            background: #141A1F;
+            border-color: rgba(var(--color-rgb-bright), 0.2);
+        }
+        .event-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(var(--color-rgb-primary), 0.45);
+            box-shadow: 0 40px 60px -25px rgba(var(--color-rgb-primary), 0.3);
+        }
+        .dark .event-card:hover {
+            border-color: rgba(var(--color-rgb-bright), 0.5);
+            box-shadow: 0 40px 60px -25px rgba(0, 0, 0, 0.9);
+        }
+        .event-date-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 4.5rem;
+            height: 4.5rem;
+            border-radius: 1.25rem;
+            background: linear-gradient(145deg, var(--color-primary), var(--color-primary-dark));
+            color: white;
+            box-shadow: 0 10px 20px -8px rgba(var(--color-rgb-primary), 0.5);
+            flex-shrink: 0;
+        }
+        .dark .event-date-block {
+            background: linear-gradient(145deg, var(--color-primary-bright), var(--color-primary));
+            color: #0C0F12;
+            box-shadow: 0 10px 20px -8px rgba(var(--color-rgb-bright), 0.5);
+        }
+        .event-date-block .day {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 900;
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+        .event-date-block .month {
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-weight: 700;
+            opacity: 0.9;
+            margin-top: 0.15rem;
+        }
+        .event-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.78rem;
+            padding: 0.35rem 0;
+            color: var(--color-text-dark);
+        }
+        .dark .event-meta {
+            color: #C0C8D0;
+        }
+        .event-meta i {
+            color: var(--color-primary);
+            width: 14px;
+            text-align: center;
+            font-size: 0.7rem;
+            flex-shrink: 0;
+        }
+        .dark .event-meta i {
+            color: var(--color-primary-bright);
+        }
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.3rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.65rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .status-open {
+            background: rgba(92, 184, 138, 0.15);
+            color: #2D7A5F;
+            border: 1px solid rgba(92, 184, 138, 0.35);
+        }
+        .dark .status-open {
+            background: rgba(92, 184, 138, 0.2);
+            color: #7DDBAE;
+            border-color: rgba(92, 184, 138, 0.45);
+        }
+        .status-filling {
+            background: rgba(201, 164, 76, 0.15);
+            color: #9A7B2E;
+            border: 1px solid rgba(201, 164, 76, 0.35);
+        }
+        .dark .status-filling {
+            background: rgba(201, 164, 76, 0.2);
+            color: #E5C36B;
+            border-color: rgba(201, 164, 76, 0.45);
+        }
+        .status-invite {
+            background: rgba(224, 90, 112, 0.15);
+            color: #B83045;
+            border: 1px solid rgba(224, 90, 112, 0.35);
+        }
+        .dark .status-invite {
+            background: rgba(224, 90, 112, 0.2);
+            color: #F08CA0;
+            border-color: rgba(224, 90, 112, 0.45);
+        }
+        .status-completed {
+            background: rgba(var(--color-rgb-primary), 0.12);
+            color: var(--color-primary);
+            border: 1px solid rgba(var(--color-rgb-primary), 0.3);
+        }
+        .dark .status-completed {
+            background: rgba(var(--color-rgb-bright), 0.15);
+            color: var(--color-primary-bright);
+            border-color: rgba(var(--color-rgb-bright), 0.35);
+        }
+        .filter-tab {
+            padding: 0.6rem 1.5rem;
+            border-radius: 9999px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            border: 1px solid rgba(var(--color-rgb-primary), 0.25);
+            color: var(--color-text-dark);
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        .dark .filter-tab {
+            border-color: rgba(var(--color-rgb-bright), 0.3);
+            color: #E3E8ED;
+        }
+        .filter-tab:hover {
+            background: rgba(var(--color-rgb-primary), 0.1);
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+        }
+        .dark .filter-tab:hover {
+            background: rgba(var(--color-rgb-bright), 0.12);
+            border-color: var(--color-primary-bright);
+            color: var(--color-primary-bright);
+        }
+        .filter-tab.active {
+            background: var(--color-primary);
+            color: white;
+            border-color: var(--color-primary);
+            box-shadow: 0 8px 20px -6px rgba(var(--color-rgb-primary), 0.5);
+        }
+        .dark .filter-tab.active {
+            background: var(--color-primary-bright);
+            color: #0C0F12;
+            border-color: var(--color-primary-bright);
+            box-shadow: 0 8px 20px -6px rgba(var(--color-rgb-bright), 0.5);
+        }
+        .result-row {
+            display: grid;
+            grid-template-columns: 3rem 1fr auto;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.9rem 1.25rem;
+            border-bottom: 1px solid rgba(var(--color-rgb-primary), 0.08);
+            transition: background 0.2s ease;
+        }
+        .dark .result-row {
+            border-bottom-color: rgba(var(--color-rgb-bright), 0.08);
+        }
+        .result-row:last-child {
+            border-bottom: none;
+        }
+        .result-row:hover {
+            background: rgba(var(--color-rgb-primary), 0.04);
+        }
+        .dark .result-row:hover {
+            background: rgba(var(--color-rgb-bright), 0.06);
+        }
+        .result-rank {
+            width: 2.25rem;
+            height: 2.25rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 0.85rem;
+            background: rgba(var(--color-rgb-primary), 0.1);
+            color: var(--color-primary);
+            border: 1px solid rgba(var(--color-rgb-primary), 0.2);
+        }
+        .dark .result-rank {
+            background: rgba(var(--color-rgb-bright), 0.12);
+            color: var(--color-primary-bright);
+            border-color: rgba(var(--color-rgb-bright), 0.25);
+        }
+        .result-rank.gold {
+            background: linear-gradient(145deg, #C9A44C, #9A7B2E);
+            color: white;
+            border: none;
+            box-shadow: 0 6px 14px -4px rgba(201, 164, 76, 0.5);
+        }
+        .result-rank.silver {
+            background: linear-gradient(145deg, #B8BFC6, #8E959C);
+            color: white;
+            border: none;
+            box-shadow: 0 6px 14px -4px rgba(142, 149, 156, 0.5);
+        }
+        .result-rank.bronze {
+            background: linear-gradient(145deg, #CD7F32, #A5642A);
+            color: white;
+            border: none;
+            box-shadow: 0 6px 14px -4px rgba(205, 127, 50, 0.5);
+        }
+        .timeline-row {
+            display: flex;
+            gap: 1.5rem;
+            position: relative;
+        }
+        .timeline-row::before {
+            content: '';
+            position: absolute;
+            left: 1.5rem;
+            top: 4rem;
+            bottom: -1.5rem;
+            width: 2px;
+            background: linear-gradient(to bottom, rgba(var(--color-rgb-primary), 0.3), rgba(var(--color-rgb-primary), 0.05));
+        }
+        .dark .timeline-row::before {
+            background: linear-gradient(to bottom, rgba(var(--color-rgb-bright), 0.3), rgba(var(--color-rgb-bright), 0.05));
+        }
+        .timeline-row:last-child::before {
+            display: none;
+        }
+        [dir="rtl"] .timeline-row::before {
+            left: auto;
+            right: 1.5rem;
+        }
+        .timeline-num {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border: 2px solid var(--color-primary);
+            color: var(--color-primary);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 0.95rem;
+            flex-shrink: 0;
+            box-shadow: 0 10px 20px -8px rgba(var(--color-rgb-primary), 0.3);
+            z-index: 2;
+        }
+        .dark .timeline-num {
+            background: #141A1F;
+            border-color: var(--color-primary-bright);
+            color: var(--color-primary-bright);
+            box-shadow: 0 10px 20px -8px rgba(var(--color-rgb-bright), 0.3);
+        }
+        .prize-card {
+            background: linear-gradient(145deg, rgba(var(--color-rgb-primary), 0.04), transparent);
+            border-radius: 1.75rem;
+            border: 1px solid rgba(var(--color-rgb-primary), 0.15);
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .dark .prize-card {
+            background: linear-gradient(145deg, rgba(var(--color-rgb-bright), 0.06), transparent);
+            border-color: rgba(var(--color-rgb-bright), 0.18);
+        }
+        .prize-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(var(--color-rgb-primary), 0.4);
+            box-shadow: 0 30px 50px -20px rgba(var(--color-rgb-primary), 0.25);
+        }
+        .dark .prize-card:hover {
+            border-color: rgba(var(--color-rgb-bright), 0.45);
+            box-shadow: 0 30px 50px -20px rgba(var(--color-rgb-bright), 0.3);
+        }
+    </style>
+</head>
+
+<body class="bg-bg-warm dark:bg-dark-bg text-neutral-dark dark:text-gray-200 transition-colors duration-400">
+
+    <!-- ========== FLOATING ISLAND HEADER (exact copy) ========== -->
+    <header class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 pt-3 sm:pt-4 transition-all duration-300 pointer-events-none">
+        <nav
+            class="max-w-7xl mx-auto pointer-events-auto bg-white/85 dark:bg-[#141A1F]/90 backdrop-blur-xl rounded-full px-5 sm:px-7 py-2.5 sm:py-3 border border-gift-slate/25 dark:border-gift-slate-bright/25 shadow-[0_20px_45px_-15px_rgba(0,0,0,0.1)] dark:shadow-[0_20px_45px_-15px_rgba(0,0,0,0.7)] flex items-center justify-between transition-colors duration-400">
+            <!-- Brand Logo -->
+            <a href="index.html" class="flex items-center gap-3 group shrink-0" dir="ltr">
+                <div class="w-10 h-10 bg-gradient-to-br from-gift-slate-light to-gift-slate rounded-2xl flex items-center justify-center flex-shrink-0 shadow-md group-hover:rotate-6 transition duration-300">
+                    <i class="fas fa-chess-knight text-white dark:text-dark-bg text-lg"></i>
+                </div>
+                <div>
+                    <span class="text-lg md:text-2xl font-serif font-bold tracking-wide text-neutral-dark dark:text-white">
+                        Chess <span class="board-gradient-text">Academy</span>
+                    </span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden xl:flex items-center">
+                <div class="desktop-nav-container">
+                    <div class="flex items-center gap-4 xl:gap-6">
+                        <!-- Home Dropdown -->
+                        <div class="dropdown">
+                            <button class="nav-item flex items-center gap-1.5">
+                                Home <i class="fas fa-chevron-down text-[9px] opacity-70"></i>
+                            </button>
+                            <div class="dropdown-menu">
+                                <a href="index.html" class="dropdown-item">Home 1</a>
+                                <a href="home2.html" class="dropdown-item">Home 2</a>
+                            </div>
+                        </div>
+                        <a href="about.html" class="nav-item">About</a>
+                        <a href="programs.html" class="nav-item">Programs</a>
+                        <a href="coaches.html" class="nav-item">Coaches</a>
+                        <a href="tournaments.html" class="nav-item active"
+                            style="color: var(--color-primary); font-weight: 700;">Tournaments</a>
+                        <a href="contact.html" class="nav-item">Contact</a>
+                        <div class="dropdown">
+                            <button class="nav-item flex items-center gap-1.5">
+                                Portal <i class="fas fa-chevron-down text-[9px] opacity-70"></i>
+                            </button>
+                            <div class="dropdown-menu">
+                                <a href="student-portal.html" class="dropdown-item">Student Dashboard</a>
+                                <a href="admin.html" class="dropdown-item">Academy Admin</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3 ml-2">
+                        <a href="login.html" class="btn-nested !py-2 !px-4 !text-xs group">
+                            <span>Student Login</span>
+                            <span class="icon-circle !w-6 !h-6">
+                                <i class="fas fa-arrow-right text-[10px]"></i>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2 ml-4 desktop-toggle-group">
+                    <button id="theme-toggle" class="toggle-btn !w-9 !h-9" title="Toggle Dark/Light Mode">
+                        <i class="fas fa-moon text-sm"></i>
+                        <i class="fas fa-sun text-sm hidden"></i>
+                    </button>
+                    <button id="rtl-toggle" class="toggle-btn !w-9 !h-9 font-serif font-bold text-xs" title="Toggle RTL/LTR">⇄</button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobile-toggle"
+                class="xl:hidden text-neutral-dark dark:text-gray-300 p-2 focus:outline-none hover:text-gift-slate transition-colors"
+                aria-label="Toggle Navigation Menu">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </nav>
+
+        <!-- Mobile Menu Floating Card -->
+        <div id="mobile-menu" class="mobile-menu xl:hidden max-w-7xl mx-auto mt-2 rounded-3xl border border-gift-slate/20 dark:border-gift-slate-bright/25 shadow-2xl overflow-hidden pointer-events-auto">
+            <div class="mobile-dropdown">
+                <button class="mobile-dropdown-btn flex items-center justify-between w-full mobile-menu-item active"
+                    style="color: var(--color-primary); font-weight: 700;">
+                    <span>Home</span> <i class="fas fa-chevron-down text-xs"></i>
+                </button>
+                <div class="mobile-dropdown-content">
+                    <a href="index.html" class="mobile-dropdown-item">Home 1 </a>
+                    <a href="home2.html" class="mobile-dropdown-item">Home 2 </a>
+                </div>
+            </div>
+            <a href="about.html" class="mobile-menu-item">About</a>
+            <a href="programs.html" class="mobile-menu-item">Programs</a>
+            <a href="coaches.html" class="mobile-menu-item">Coaches</a>
+            <a href="tournaments.html" class="mobile-menu-item active"
+                style="color: var(--color-primary); font-weight: 700;">Tournaments</a>
+            <a href="contact.html" class="mobile-menu-item">Contact</a>
+            <div class="mobile-dropdown">
+                <button class="mobile-dropdown-btn flex items-center justify-between w-full mobile-menu-item">
+                    <span>Portals</span> <i class="fas fa-chevron-down text-xs"></i>
+                </button>
+                <div class="mobile-dropdown-content">
+                    <a href="student-portal.html" class="mobile-dropdown-item">Student Dashboard</a>
+                    <a href="admin.html" class="mobile-dropdown-item">Academy Admin</a>
+                </div>
+            </div>
+            <div class="p-5 flex flex-col gap-3">
+                <a href="login.html" class="btn-nested justify-center !py-3 w-full text-center">
+                    <span>Student Login</span>
+                    <span class="icon-circle !w-7 !h-7"><i class="fas fa-arrow-right text-xs"></i></span>
+                </a>
+            </div>
+            <div class="flex justify-center gap-3 p-4 border-t border-gray-100 dark:border-gray-800">
+                <button id="theme-toggle-mobile" class="toggle-btn"><i class="fas fa-moon"></i><i class="fas fa-sun hidden"></i></button>
+                <button id="rtl-toggle-mobile" class="toggle-btn">⇄</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========== TOURNAMENTS HERO — EDITORIAL ========== -->
+    <section class="relative pt-32 pb-14 sm:pt-36 sm:pb-16 lg:pt-40 lg:pb-20 bg-bg-warm dark:bg-dark-bg chess-pattern overflow-hidden transition-colors duration-400">
+        <div class="absolute -top-20 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-gradient-to-b from-gift-slate/10 via-gift-slate-bright/5 to-transparent rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="eyebrow-pill inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-gift-slate/10 dark:bg-gift-slate-bright/10 border border-gift-slate/25 dark:border-gift-slate-bright/25 mb-6 backdrop-blur-md">
+                    <i class="fas fa-trophy text-gift-slate dark:text-gift-slate-bright text-xs"></i>
+                    <span class="text-[11px] font-bold font-sans dark:text-gift-slate-bright tracking-[0.22em] uppercase">FIDE Rated · In-House · Travel Support</span>
+                </div>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif font-bold text-neutral-dark dark:text-white leading-[1.08] tracking-tight mb-6">
+                    Test Your Skills.<br class="hidden sm:inline">
+                    <span class="board-gradient-text italic font-serif">Claim the Title.</span>
+                </h1>
+                <div class="premium-line mx-auto !my-6"></div>
+                <p class="text-base sm:text-lg lg:text-xl text-neutral-dark/85 dark:text-gray-300 max-w-2xl mx-auto mb-10 font-sans font-light leading-relaxed">
+                    From monthly in-house blitz nights to FIDE-rated classical events — we run the tournaments that shape champions.
+                </p>
+            </div>
+
+            <!-- Quick stats strip -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto mt-12">
+                <div class="double-bezel-outer">
+                    <div class="double-bezel-inner p-5 text-center">
+                        <div class="font-serif text-4xl font-bold board-gradient-text">24</div>
+                        <div class="text-[10px] uppercase tracking-widest opacity-70 mt-1 font-semibold">Events / Year</div>
+                    </div>
+                </div>
+                <div class="double-bezel-outer">
+                    <div class="double-bezel-inner p-5 text-center">
+                        <div class="font-serif text-4xl font-bold board-gradient-text">6</div>
+                        <div class="text-[10px] uppercase tracking-widest opacity-70 mt-1 font-semibold">FIDE Rated</div>
+                    </div>
+                </div>
+                <div class="double-bezel-outer">
+                    <div class="double-bezel-inner p-5 text-center">
+                        <div class="font-serif text-4xl font-bold board-gradient-text">$25K</div>
+                        <div class="text-[10px] uppercase tracking-widest opacity-70 mt-1 font-semibold">Annual Prizes</div>
+                    </div>
+                </div>
+                <div class="double-bezel-outer">
+                    <div class="double-bezel-inner p-5 text-center">
+                        <div class="font-serif text-4xl font-bold board-gradient-text">800+</div>
+                        <div class="text-[10px] uppercase tracking-widest opacity-70 mt-1 font-semibold">Participants</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FEATURED TOURNAMENT SPOTLIGHT ========== -->
+    <section class="py-14 sm:py-20 bg-white dark:bg-dark-card border-y border-neutral-light/50 dark:border-gray-800/60 transition-colors duration-400">
+        <div class="container mx-auto px-6">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center max-w-2xl mx-auto mb-12">
+                    <span class="text-gift-slate dark:text-gift-slate-bright font-bold text-xs tracking-[0.25em] uppercase">Next Major Event</span>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-neutral-dark dark:text-white mt-3">Featured <span class="board-gradient-text italic font-serif">Tournament</span></h2>
+                </div>
+
+                <div class="grid lg:grid-cols-2 gap-0 rounded-[2.5rem] overflow-hidden border border-gift-slate/20 dark:border-gift-slate-bright/20 shadow-2xl">
+                    <!-- Left image -->
+                    <div class="relative h-[380px] lg:h-auto lg:min-h-[520px] overflow-hidden bg-gray-100 dark:bg-gray-800">
+                        <img src="assets/images/photo-1529699211952-734e80c4d42b.jpg" alt="Annual Master Invitational" class="w-full h-full object-cover object-center">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent lg:bg-gradient-to-r"></div>
+                        <div class="absolute top-5 left-5 z-20 flex flex-wrap gap-2">
+                            <span class="badge text-[10px] font-sans">★ FIDE Rated</span>
+                            <span class="bg-white/20 backdrop-blur-md text-white text-[10px] font-sans px-3 py-1 rounded-full uppercase tracking-widest font-semibold border border-white/20">Classical</span>
+                        </div>
+                        <div class="absolute bottom-6 left-6 right-6 text-white lg:hidden">
+                            <div class="text-[10px] uppercase tracking-widest font-semibold opacity-90 mb-1">Annual Master Invitational</div>
+                            <h3 class="text-2xl font-serif font-bold">$10,000 Prize Fund</h3>
+                        </div>
+                    </div>
+
+                    <!-- Right content -->
+                    <div class="p-8 sm:p-10 lg:p-12 bg-bg-warm/60 dark:bg-dark-bg/60 flex flex-col justify-center">
+                        <div class="hidden lg:block mb-4">
+                            <span class="text-gift-slate dark:text-gift-slate-bright font-bold text-xs tracking-[0.25em] uppercase">Annual Master Invitational</span>
+                        </div>
+                        <h3 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-neutral-dark dark:text-white mb-4 leading-tight">$10,000 Prize Fund</h3>
+                        <div class="premium-line !my-4"></div>
+                        <p class="text-sm sm:text-base opacity-85 font-sans leading-relaxed mb-7">
+                            Our flagship annual event brings together the region's strongest players for 9 rounds of classical chess. FIDE rated with norms available, live broadcast, and professional arbiters. Limited to 80 participants.
+                        </p>
+
+                        <!-- Meta grid -->
+                        <div class="grid grid-cols-2 gap-4 mb-8">
+                            <div class="bg-white dark:bg-dark-card p-4 rounded-2xl border border-gift-slate/15">
+                                <div class="text-[10px] uppercase tracking-widest opacity-70 font-semibold mb-1 flex items-center gap-1.5"><i class="fas fa-calendar-alt text-gift-slate dark:text-gift-slate-bright"></i> Dates</div>
+                                <div class="text-sm font-bold text-neutral-dark dark:text-white">Mar 14 – 22, 2026</div>
+                            </div>
+                            <div class="bg-white dark:bg-dark-card p-4 rounded-2xl border border-gift-slate/15">
+                                <div class="text-[10px] uppercase tracking-widest opacity-70 font-semibold mb-1 flex items-center gap-1.5"><i class="fas fa-map-marker-alt text-gift-slate dark:text-gift-slate-bright"></i> Venue</div>
+                                <div class="text-sm font-bold text-neutral-dark dark:text-white">Academy Grand Hall</div>
+                            </div>
+                            <div class="bg-white dark:bg-dark-card p-4 rounded-2xl border border-gift-slate/15">
+                                <div class="text-[10px] uppercase tracking-widest opacity-70 font-semibold mb-1 flex items-center gap-1.5"><i class="fas fa-clock text-gift-slate dark:text-gift-slate-bright"></i> Format</div>
+                                <div class="text-sm font-bold text-neutral-dark dark:text-white">9 Rounds · 90+30</div>
+                            </div>
+                            <div class="bg-white dark:bg-dark-card p-4 rounded-2xl border border-gift-slate/15">
+                                <div class="text-[10px] uppercase tracking-widest opacity-70 font-semibold mb-1 flex items-center gap-1.5"><i class="fas fa-users text-gift-slate dark:text-gift-slate-bright"></i> Capacity</div>
+                                <div class="text-sm font-bold text-neutral-dark dark:text-white">64 / 80 Filled</div>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap gap-4 items-center">
+                            <a href="contact.html" class="btn-nested group">
+                                <span>Register Now</span>
+                                <span class="icon-circle"><i class="fas fa-arrow-right text-xs"></i></span>
+                            </a>
+                            <span class="status-pill status-filling"><i class="fas fa-fire"></i> Filling Fast</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== TOURNAMENT CALENDAR — FILTERABLE GRID ========== -->
+    <section class="py-16 sm:py-24 lg:py-28 bg-bg-warm dark:bg-dark-bg transition-colors duration-400">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-wrap justify-between items-end mb-10 gap-6">
+                <div>
+                    <span class="text-gift-slate dark:text-gift-slate-bright font-bold text-xs tracking-[0.25em] uppercase">Event Calendar</span>
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-neutral-dark dark:text-white mt-3">Upcoming <span class="board-gradient-text italic font-serif">Events</span></h2>
+                </div>
+                <a href="contact.html" class="btn-frosted">
+                    <i class="fas fa-calendar-plus"></i>
+                    <span>Host an Event</span>
+                </a>
+            </div>
+
+            <!-- Filter tabs -->
+            <div class="flex flex-wrap gap-3 mb-10">
+                <button class="filter-tab active" data-filter="all">All Events</button>
+                <button class="filter-tab" data-filter="fide">FIDE Rated</button>
+                <button class="filter-tab" data-filter="inhouse">In-House</button>
+                <button class="filter-tab" data-filter="blitz">Blitz & Rapid</button>
+                <button class="filter-tab" data-filter="junior">Junior</button>
+            </div>
+
+            <!-- Event grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7 max-w-7xl mx-auto">
+
+                <!-- Event 1 -->
+                <div class="event-card" data-category="fide">
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex items-start gap-4 mb-5">
+                            <div class="event-date-block">
+                                <span class="day">14</span>
+                                <span class="month">Mar</span>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex flex-wrap gap-2 mb-2">
+                                    <span class="status-pill status-filling"><i class="fas fa-fire"></i> Filling</span>
+                                </div>
+                                <h3 class="text-lg font-serif font-bold text-neutral-dark dark:text-white leading-tight">Annual Master Invitational</h3>
+                                <p class="text-[11px] opacity-70 font-sans mt-0.5">9 Rounds Classical · FIDE Rated</p>
+                            </div>
+                        </div>
+                        <div class="mb-5">
+                            <div class="event-meta"><i class="fas fa-map-marker-alt"></i><span>Academy Grand Hall</span></div>
+                            <div class="event-meta"><i class="fas fa-users"></i><span>64 / 80 Players</span></div>
+                            <div class="event-meta"><i class="fas fa-coins"></i><span>$10,000 Prize Fund</span></div>
+                        </div>
+                        <a href="contact.html" class="btn-nested justify-center w-full mt-auto">
+                            <span>Register</span>
+                            <span class="icon-circle"><i class="fas fa-arrow-right text-xs"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Event 2 -->
+                <div class="event-card" data-category="junior">
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex items-start gap-4 mb-5">
+                            <div class="event-date-block">
+                                <span class="day">28</span>
+                                <span class="month">Mar</span>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex flex-wrap gap-2 mb-2">
+                                    <span class="status-pill status-open"><i class="fas fa-check-circle"></i> Open</span>
+                                </div>
+                                <h3 class="text-lg font-serif font-bold text-neutral-dark dark:text-white leading-tight">Junior Spring Championship</h3>
+                                <p class="text-[11px] opacity-70 font-sans mt-0.5">Under 14 · 7 Rounds Swiss</p>
+                            </div>
+                        </div>
+                        <div class="mb-5">
+                            <div class="event-meta"><i class="fas fa-map-marker-alt"></i><span>Academy Training Wing</span></div>
+                            <div class="event-meta"><i class="fas fa-users"></i><span>32 / 60 Players</span></div>
+                            <div class="event-meta"><i class="fas fa-coins"></i><span>Trophies & Medals</span></div>
+                        </div>
+                        <a href="contact.html" class="btn-nested justify-center w-full mt-auto">
+                            <span>Register</span>
+                            <span class="icon-circle"><i class="fas fa-arrow-right text-xs"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Event 3 -->
+                <div class="event-card" data-category="blitz">
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex items-start gap-4 mb-5">
+                            <div class="event-date-block">
+                                <span class="day">04</span>
+                                <span class="month">Apr</span>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex flex-wrap gap-2 mb-2">
+                                    <span class="status-pill status-open"><i class="fas fa-check-circle"></i> Open</span>
+                                </div>
+                                <h3 class="text-lg font-serif font-bold text-neutral-dark dark:text-white leading-tight">Friday Night Blitz</h3>
+                                <p class="text-[11px] opacity-70 font-sans mt-0.5">9 Rounds · 3+2 Blitz</p>
+                            </div>
+                        </div>
+                        <div class="mb-5">
+                            <div class="event-meta"><i class="fas fa-map-marker-alt"></i><span>Academy Main Hall</span></div>
+                            <div class="event-meta"><i class="fas fa-users"></i><span>18 / 40 Players</span></div>
+                            <div class="event-meta"><i class="fas fa-coins"></i><span>$500 Prize Fund</span></div>
+                        </div>
+                        <a href="contact.html" class="btn-nested justify-center w-full mt-auto">
+                            <span>Register</span>
+                            <span class="icon-circle"><i class="fas fa-arrow-right text-xs"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Event 4 -->
+                <div class="event-card" data-category="inhouse">
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex items-start gap-4 mb-5">
+                            <div class="event-date-block">
+                                <span class="day">12</span>
+                                <span class="month">Apr</span>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex flex-wrap gap-2 mb-2">
+                                    <span class="status-pill status-open"><i class="fas fa-check-circle"></i> Open</span>
+                                </div>
+                                <h3 class="text-lg font-serif font-bold text-neutral-dark dark:text-white leading-tight">Monthly Club Rapid</h3>
+                                <p class="text-[11px] opacity-70 font-sans mt-0.5">6 Rounds · 15+10 Rapid</p>
+                            </div>
+                        </div>
+                        <div class="mb-5">
+                            <div class="event-meta"><i class="fas fa-map-marker-alt"></i><span>Academy Main Hall</span></div>
+                            <div class="event-meta"><i class="fas fa-users"></i><span>24 / 50 Players</span></div>
+                            <div class="event-meta"><i class="fas fa-coins"></i><span>Trophies & Rating Prizes</span></div>
+                        </div>
+                        <a href="contact.html" class="btn-nested justify-center w-full mt-auto">
+                            <span>Register</span>
+                            <span class="icon-circle"><i class="fas fa-arrow-right text-xs"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Event 5 -->
+                <div class="event-card" data-category="fide">
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex items-start gap-4 mb-5">
+                            <div class="event-date-block">
+                                <span class="day">26</span>
+                                <span class="month">Apr</span>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex flex-wrap gap-2 mb-2">
+                                    <span class="status-pill status-invite"><i class="fas fa-envelope"></i> Invite Only</span>
+                                </div>
+                                <h3 class="text-lg font-serif font-bold text-neutral-dark dark:text-white leading-tight">Regional FIDE Open</h3>
+                                <p class="text-[11px] opacity-70 font-sans mt-0.5">7 Rounds Classical · FIDE Rated</p>
+                            </div>
+                        </div>
+                        <div class="mb-5">
+                            <div class="event-meta"><i class="fas fa-map-marker-alt"></i><span>City Convention Center</span></div>
+                            <div class="event-meta"><i class="fas fa-users"></i><span>120 / 120 Players</span></div>
+                            <div class="event-meta"><i class="fas fa-coins"></i><span>$5,000 Prize Fund</span></div>
+                        </div>
+                        <a href="contact.html" class="btn-nested justify-center w-full mt-auto">
+                            <span>Join Waitlist</span>
+                            <span class="icon-circle"><i class="fas fa-arrow-right text-xs"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Event 6 -->
+                <div class="event-card" data-category="junior">
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex items-start gap-4 mb-5">
+                            <div class="event-date-block">
+                                <span class="day">09</span>
+                                <span class="month">May</span>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex flex-wrap gap-2 mb-2">
+                                    <span class="status-pill status-open"><i class="fas fa-check-circle"></i> Open</span>
+                                </div>
+                                <h3 class="text-lg font-serif font-bold text-neutral-dark dark:text-white leading-tight">Kids Beginner Cup</h3>
+                                <p class="text-[11px] opacity-70 font-sans mt-0.5">Under 10 · 5 Rounds Swiss</p>
+                            </div>
+                        </div>
+                        <div class="mb-5">
+                            <div class="event-meta"><i class="fas fa-map-marker-alt"></i><span>Academy Training Wing</span></div>
+                            <div class="event-meta"><i class="fas fa-users"></i><span>14 / 40 Players</span></div>
+                            <div class="event-meta"><i class="fas fa-coins"></i><span>Medals for All</span></div>
+                        </div>
+                        <a href="contact.html" class="btn-nested justify-center w-full mt-auto">
+                            <span>Register</span>
+                            <span class="icon-circle"><i class="fas fa-arrow-right text-xs"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== RECENT RESULTS ========== -->
+    <section class="py-16 sm:py-24 lg:py-28 bg-white dark:bg-dark-card border-y border-neutral-light/50 dark:border-gray-800/60 transition-colors duration-400">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-14">
+                <span class="text-gift-slate dark:text-gift-slate-bright font-bold text-xs tracking-[0.25em] uppercase">Recent Results</span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-neutral-dark dark:text-white mt-3">Academy <span class="board-gradient-text italic font-serif">Wins</span></h2>
+                <div class="premium-line mx-auto !my-4"></div>
+                <p class="text-base opacity-80 font-sans font-light">A snapshot of recent tournament victories by our students and coaches.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                <!-- Result card 1 -->
+                <div class="rounded-3xl overflow-hidden border border-gift-slate/15 dark:border-gift-slate-bright/15 bg-bg-warm/50 dark:bg-dark-bg/40">
+                    <div class="px-6 py-5 border-b border-gift-slate/15 dark:border-gift-slate-bright/15 flex items-center justify-between bg-white dark:bg-dark-card">
+                        <div>
+                            <h3 class="text-lg font-serif font-bold text-neutral-dark dark:text-white">Winter Open Championship</h3>
+                            <p class="text-[11px] opacity-70 font-sans mt-0.5">Feb 2026 · FIDE Rated · 78 Players</p>
+                        </div>
+                        <span class="status-pill status-completed"><i class="fas fa-flag-checkered"></i> Final</span>
+                    </div>
+                    <div>
+                        <div class="result-row">
+                            <div class="result-rank gold">1</div>
+                            <div>
+                                <div class="text-sm font-bold text-neutral-dark dark:text-white">GM Alexei Volkov</div>
+                                <div class="text-[11px] opacity-70 font-sans">7.5 / 9 · Performance 2712</div>
+                            </div>
+                            <div class="text-sm font-bold text-gift-slate dark:text-gift-slate-bright">+12 ELO</div>
+                        </div>
+                        <div class="result-row">
+                            <div class="result-rank silver">2</div>
+                            <div>
+                                <div class="text-sm font-bold text-neutral-dark dark:text-white">IM Sarah Chen</div>
+                                <div class="text-[11px] opacity-70 font-sans">7.0 / 9 · Performance 2588</div>
+                            </div>
+                            <div class="text-sm font-bold text-gift-slate dark:text-gift-slate-bright">+8 ELO</div>
+                        </div>
+                        <div class="result-row">
+                            <div class="result-rank bronze">3</div>
+                            <div>
+                                <div class="text-sm font-bold text-neutral-dark dark:text-white">Student: James D.</div>
+                                <div class="text-[11px] opacity-70 font-sans">6.5 / 9 · Performance 2310</div>
+                            </div>
+                            <div class="text-sm font-bold text-gift-slate dark:text-gift-slate-bright">+45 ELO</div>
+                        </div>
+                        <div class="result-row">
+                            <div class="result-rank">5</div>
+                            <div>
+                                <div class="text-sm font-bold text-neutral-dark dark:text-white">Student: Aisha R.</div>
+                                <div class="text-[11px] opacity-70 font-sans">6.0 / 9 · Performance 2185</div>
+                            </div>
+                            <div class="text-sm font-bold text-gift-slate dark:text-gift-slate-bright">+38 ELO</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Result card 2 -->
+                <div class="rounded-3xl overflow-hidden border border-gift-slate/15 dark:border-gift-slate-bright/15 bg-bg-warm/50 dark:bg-dark-bg/40">
+                    <div class="px-6 py-5 border-b border-gift-slate/15 dark:border-gift-slate-bright/15 flex items-center justify-between bg-white dark:bg-dark-card">
+                        <div>
+                            <h3 class="text-lg font-serif font-bold text-neutral-dark dark:text-white">Junior National Championship</h3>
+                            <p class="text-[11px] opacity-70 font-sans mt-0.5">Jan 2026 · U-14 · 96 Players</p>
+                        </div>
+                        <span class="status-pill status-completed"><i class="fas fa-flag-checkered"></i> Final</span>
+                    </div>
+                    <div>
+                        <div class="result-row">
+                            <div class="result-rank gold">1</div>
+                            <div>
+                                <div class="text-sm font-bold text-neutral-dark dark:text-white">Student: Maya K.</div>
+                                <div class="text-[11px] opacity-70 font-sans">8.0 / 9 · National Champion</div>
+                            </div>
+                            <div class="text-sm font-bold text-gift-slate dark:text-gift-slate-bright">+62 ELO</div>
+                        </div>
+                        <div class="result-row">
+                            <div class="result-rank silver">2</div>
+                            <div>
+                                <div class="text-sm font-bold text-neutral-dark dark:text-white">Student: Rohan P.</div>
+                                <div class="text-[11px] opacity-70 font-sans">7.5 / 9 · Silver Medal</div>
+                            </div>
+                            <div class="text-sm font-bold text-gift-slate dark:text-gift-slate-bright">+54 ELO</div>
+                        </div>
+                        <div class="result-row">
+                            <div class="result-rank">4</div>
+                            <div>
+                                <div class="text-sm font-bold text-neutral-dark dark:text-white">Student: Liam T.</div>
+                                <div class="text-[11px] opacity-70 font-sans">7.0 / 9 · Top 5 Finish</div>
+                            </div>
+                            <div class="text-sm font-bold text-gift-slate dark:text-gift-slate-bright">+41 ELO</div>
+                        </div>
+                        <div class="result-row">
+                            <div class="result-rank">7</div>
+                            <div>
+                                <div class="text-sm font-bold text-neutral-dark dark:text-white">Student: Sofia V.</div>
+                                <div class="text-[11px] opacity-70 font-sans">6.5 / 9 · Top 10 Finish</div>
+                            </div>
+                            <div class="text-sm font-bold text-gift-slate dark:text-gift-slate-bright">+33 ELO</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== HOW TOURNAMENTS WORK — TIMELINE ========== -->
+    <section class="py-16 sm:py-24 lg:py-28 bg-bg-warm dark:bg-dark-bg transition-colors duration-400">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-14">
+                <span class="text-gift-slate dark:text-gift-slate-bright font-bold text-xs tracking-[0.25em] uppercase">The Process</span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-neutral-dark dark:text-white mt-3">How Our <span class="board-gradient-text italic font-serif">Tournaments</span> Work</h2>
+                <div class="premium-line mx-auto !my-4"></div>
+                <p class="text-base opacity-80 font-sans font-light">From registration to trophy — a clear, professional experience every time.</p>
+            </div>
+
+            <div class="max-w-3xl mx-auto space-y-10">
+                <!-- Step 1 -->
+                <div class="timeline-row">
+                    <div class="timeline-num">01</div>
+                    <div class="pt-1">
+                        <h3 class="text-xl font-serif font-bold text-neutral-dark dark:text-white mb-2">Register & Confirm</h3>
+                        <p class="text-sm opacity-80 font-sans leading-relaxed max-w-xl">Register online through our student portal or contact the front desk. Entry fees are collected at registration, and you'll receive a confirmation email with all event details.</p>
+                    </div>
+                </div>
+                <!-- Step 2 -->
+                <div class="timeline-row">
+                    <div class="timeline-num">02</div>
+                    <div class="pt-1">
+                        <h3 class="text-xl font-serif font-bold text-neutral-dark dark:text-white mb-2">Pre-Tournament Prep</h3>
+                        <p class="text-sm opacity-80 font-sans leading-relaxed max-w-xl">For FIDE-rated events, students receive dedicated preparation sessions covering opening lines, opponent tendencies, and time management strategy. Coaches are available for individual consultations.</p>
+                    </div>
+                </div>
+                <!-- Step 3 -->
+                <div class="timeline-row">
+                    <div class="timeline-num">03</div>
+                    <div class="pt-1">
+                        <h3 class="text-xl font-serif font-bold text-neutral-dark dark:text-white mb-2">Play & Compete</h3>
+                        <p class="text-sm opacity-80 font-sans leading-relaxed max-w-xl">Tournaments are run by certified arbiters with proper pairing systems. Live boards broadcast top games, and refreshments are provided throughout the event. Coaches are on-site for support.</p>
+                    </div>
+                </div>
+                <!-- Step 4 -->
+                <div class="timeline-row">
+                    <div class="timeline-num">04</div>
+                    <div class="pt-1">
+                        <h3 class="text-xl font-serif font-bold text-neutral-dark dark:text-white mb-2">Post-Game Analysis</h3>
+                        <p class="text-sm opacity-80 font-sans leading-relaxed max-w-xl">Every game is reviewed with your coach within a week. We identify key moments, missed opportunities, and patterns to work on — turning every tournament into a learning experience.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PRIZE & AWARDS ========== -->
+    <section class="py-16 sm:py-24 lg:py-28 bg-white dark:bg-dark-card border-y border-neutral-light/50 dark:border-gray-800/60 transition-colors duration-400">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-14">
+                <span class="text-gift-slate dark:text-gift-slate-bright font-bold text-xs tracking-[0.25em] uppercase">Rewards</span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-neutral-dark dark:text-white mt-3">Prizes & <span class="board-gradient-text italic font-serif">Recognition</span></h2>
+                <div class="premium-line mx-auto !my-4"></div>
+                <p class="text-base opacity-80 font-sans font-light">We reward performance, effort, and improvement across all levels.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+                <div class="prize-card">
+                    <div class="service-icon mx-auto !w-14 !h-14 !text-xl mb-4"><i class="fas fa-trophy"></i></div>
+                    <h3 class="text-lg font-serif font-bold text-neutral-dark dark:text-white mb-2">Cash Prizes</h3>
+                    <p class="text-xs opacity-80 font-sans leading-relaxed">Top finishers in major events share a guaranteed prize fund, distributed by placement and rating category.</p>
+                </div>
+                <div class="prize-card">
+                    <div class="service-icon mx-auto !w-14 !h-14 !text-xl mb-4"><i class="fas fa-medal"></i></div>
+                    <h3 class="text-lg font-serif font-bold text-neutral-dark dark:text-white mb-2">Trophies & Medals</h3>
+                    <p class="text-xs opacity-80 font-sans leading-relaxed">Every in-house event awards custom trophies and medals for top 3 overall and top performers in each rating band.</p>
+                </div>
+                <div class="prize-card">
+                    <div class="service-icon mx-auto !w-14 !h-14 !text-xl mb-4"><i class="fas fa-chart-line"></i></div>
+                    <h3 class="text-lg font-serif font-bold text-neutral-dark dark:text-white mb-2">Rating Improvement</h3>
+                    <p class="text-xs opacity-80 font-sans leading-relaxed">Special awards for students with the largest ELO gain over the season — celebrating growth, not just victory.</p>
+                </div>
+                <div class="prize-card">
+                    <div class="service-icon mx-auto !w-14 !h-14 !text-xl mb-4"><i class="fas fa-plane"></i></div>
+                    <h3 class="text-lg font-serif font-bold text-neutral-dark dark:text-white mb-2">Travel Support</h3>
+                    <p class="text-xs opacity-80 font-sans leading-relaxed">Top students receive subsidized travel and coaching support for national and international FIDE events.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CTA — REGISTER / HOST ========== -->
+    <section class="cta-chess-banner py-20 sm:py-24 text-white relative overflow-hidden border-b border-gift-slate/20">
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gift-slate-light/25 via-transparent to-transparent pointer-events-none"></div>
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <span class="text-white/80 font-bold text-xs tracking-[0.25em] uppercase">Get Involved</span>
+            <h2 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold mb-6 mt-3">Ready to Compete?</h2>
+            <p class="text-lg sm:text-xl opacity-90 max-w-2xl mx-auto font-sans font-light leading-relaxed mb-10">Register for an upcoming event, or reach out if you'd like to host a tournament with us.</p>
+            <div class="flex flex-wrap justify-center gap-5">
+                <a href="contact.html" class="bg-white text-neutral-dark dark:bg-gift-slate-bright dark:text-dark-bg px-8 py-4 rounded-full font-bold text-xs font-sans uppercase tracking-widest hover:shadow-2xl transition duration-300 flex items-center justify-center gap-2">
+                    <i class="fas fa-calendar-check"></i> Register Now
+                </a>
+                <a href="contact.html" class="border-2 border-white/60 dark:border-gift-slate-bright/60 text-white dark:text-gift-slate-bright px-8 py-4 rounded-full font-bold text-xs font-sans uppercase tracking-widest hover:bg-white/10 dark:hover:bg-gift-slate-bright/10 transition duration-300 flex items-center justify-center gap-2">
+                    <i class="fas fa-handshake"></i> Host an Event
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER (exact copy) ========== -->
+    <footer class="py-20 bg-white dark:bg-[#0C0F12] transition-colors duration-400">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <div class="text-center md:text-start">
+                    <a href="index.html" class="flex items-center justify-center md:justify-start gap-3 mb-5 group shrink-0" dir="ltr">
+                        <div class="w-10 h-10 bg-gradient-to-br from-gift-slate-light to-gift-slate rounded-2xl flex items-center justify-center flex-shrink-0 shadow-md group-hover:rotate-6 transition duration-300">
+                            <i class="fas fa-chess-knight text-white dark:text-dark-bg text-lg"></i>
+                        </div>
+                        <div>
+                            <span class="text-lg md:text-2xl font-serif font-bold tracking-wide text-neutral-dark dark:text-white">
+                                Chess <span class="board-gradient-text">Academy</span>
+                            </span>
+                        </div>
+                    </a>
+                    <p class="text-sm text-neutral-dark/90 dark:text-gray-300 mb-6 leading-relaxed font-sans">Elite chess coaching, structured programs, and tournament support for players of all levels. Master the board with FIDE-certified coaches.</p>
+                    <div class="flex justify-center md:justify-start gap-4">
+                        <a href="#" class="social-icon text-sm" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon text-sm" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-icon text-sm" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+                <div class="text-center md:text-start">
+                    <h3 class="text-neutral-dark dark:text-white text-lg font-serif font-bold mb-6">Quick Navigation</h3>
+                    <ul class="space-y-3.5 text-sm font-sans font-medium text-neutral-dark/90 dark:text-gray-300">
+                        <li><a href="index.html" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">Home</a></li>
+                        <li><a href="about.html" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">About Us</a></li>
+                        <li><a href="programs.html" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">Programs</a></li>
+                        <li><a href="coaches.html" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">Coaches</a></li>
+                        <li><a href="tournaments.html" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition font-bold text-gift-slate dark:text-gift-slate-bright">Tournaments</a></li>
+                        <li><a href="contact.html" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">Contact & Booking</a></li>
+                    </ul>
+                </div>
+                <div class="text-center md:text-start">
+                    <h3 class="text-neutral-dark dark:text-white text-lg font-serif font-bold mb-6">Programs</h3>
+                    <ul class="space-y-3.5 text-sm font-sans font-medium text-neutral-dark/90 dark:text-gray-300">
+                        <li><a href="programs.html#beginner" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">Beginner (Under 1200)</a></li>
+                        <li><a href="programs.html#intermediate" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">Intermediate (1200–2000)</a></li>
+                        <li><a href="programs.html#advanced" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">Advanced (2000+)</a></li>
+                        <li><a href="tournaments.html" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">Tournament Training</a></li>
+                        <li><a href="programs.html#private" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">Private Lessons</a></li>
+                    </ul>
+                </div>
+                <div class="text-center md:text-start">
+                    <h3 class="text-neutral-dark dark:text-white text-lg font-serif font-bold mb-6">Academy Location</h3>
+                    <ul class="space-y-3 text-sm mb-6 font-sans font-medium text-neutral-dark/90 dark:text-gray-300">
+                        <li class="flex items-center justify-center md:justify-start gap-3">
+                            <i class="fas fa-map-marker-alt text-gift-slate dark:text-gift-slate-bright w-4"></i>
+                            <span dir="ltr">42 Strategy Lane, NYC 10001</span>
+                        </li>
+                        <li class="flex items-center justify-center md:justify-start gap-3">
+                            <i class="fas fa-phone text-gift-slate dark:text-gift-slate-bright w-4"></i>
+                            <span dir="ltr">+1 (800) 555-0199</span>
+                        </li>
+                        <li class="flex items-center justify-center md:justify-start gap-3">
+                            <i class="fas fa-envelope text-gift-slate dark:text-gift-slate-bright w-4"></i>
+                            <span dir="ltr">hello@chessacademy.com</span>
+                        </li>
+                        <li class="flex items-center justify-center md:justify-start gap-3">
+                            <i class="fas fa-clock text-gift-slate dark:text-gift-slate-bright w-4"></i>
+                            <span dir="ltr">Mon-Sat: 9AM - 8PM EST</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gift-slate/15 dark:border-gift-slate-bright/15 mt-14 pt-8 text-center">
+                <p class="text-sm font-medium font-sans text-neutral-dark dark:text-gray-200" dir="ltr">© 2026 Chess Academy & Coaching Center. All rights reserved.</p>
+                <p class="text-sm sm:text-base font-serif italic font-bold tracking-widest text-gift-slate dark:text-gift-slate-bright mt-2.5">Strategy • Discipline • Mastery</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript (header/footer logic + event filters) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.documentElement.setAttribute('data-theme', 'knight-noir');
+
+            // Theme Toggle
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeIcon = themeToggle?.querySelector('.fa-moon');
+            const themeIconSun = themeToggle?.querySelector('.fa-sun');
+            const mobileThemeToggle = document.getElementById('theme-toggle-mobile');
+            const mobileThemeIcon = mobileThemeToggle?.querySelector('.fa-moon');
+            const mobileThemeIconSun = mobileThemeToggle?.querySelector('.fa-sun');
+
+            function setTheme(isDark) {
+                if (isDark) {
+                    document.documentElement.classList.add('dark');
+                    if (themeIcon) themeIcon.classList.add('hidden');
+                    if (themeIconSun) themeIconSun.classList.remove('hidden');
+                    if (themeToggle) themeToggle.classList.add('active');
+                    if (mobileThemeIcon) mobileThemeIcon.classList.add('hidden');
+                    if (mobileThemeIconSun) mobileThemeIconSun.classList.remove('hidden');
+                    if (mobileThemeToggle) mobileThemeToggle.classList.add('active');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    if (themeIcon) themeIcon.classList.remove('hidden');
+                    if (themeIconSun) themeIconSun.classList.add('hidden');
+                    if (themeToggle) themeToggle.classList.remove('active');
+                    if (mobileThemeIcon) mobileThemeIcon.classList.remove('hidden');
+                    if (mobileThemeIconSun) mobileThemeIconSun.classList.add('hidden');
+                    if (mobileThemeToggle) mobileThemeToggle.classList.remove('active');
+                    localStorage.setItem('theme', 'light');
+                }
+            }
+
+            function toggleTheme() { setTheme(!document.documentElement.classList.contains('dark')); }
+            if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
+            if (mobileThemeToggle) mobileThemeToggle.addEventListener('click', toggleTheme);
+            setTheme(localStorage.getItem('theme') === 'dark');
+
+            // RTL Toggle
+            const rtlToggle = document.getElementById('rtl-toggle');
+            const mobileRtlToggle = document.getElementById('rtl-toggle-mobile');
+
+            function toggleRTL() {
+                if (document.documentElement.dir === 'rtl') {
+                    document.documentElement.dir = 'ltr';
+                    document.documentElement.lang = 'en';
+                    if (rtlToggle) { rtlToggle.textContent = '⇄'; rtlToggle.classList.remove('active'); }
+                    if (mobileRtlToggle) { mobileRtlToggle.textContent = '⇄'; mobileRtlToggle.classList.remove('active'); }
+                    localStorage.setItem('dir', 'ltr');
+                } else {
+                    document.documentElement.dir = 'rtl';
+                    document.documentElement.lang = 'ar';
+                    if (rtlToggle) { rtlToggle.textContent = '⇄'; rtlToggle.classList.add('active'); }
+                    if (mobileRtlToggle) { mobileRtlToggle.textContent = '⇄'; mobileRtlToggle.classList.add('active'); }
+                    localStorage.setItem('dir', 'rtl');
+                }
+            }
+
+            if (rtlToggle) rtlToggle.addEventListener('click', toggleRTL);
+            if (mobileRtlToggle) mobileRtlToggle.addEventListener('click', toggleRTL);
+            if (localStorage.getItem('dir') === 'rtl') {
+                document.documentElement.dir = 'rtl';
+                document.documentElement.lang = 'ar';
+                if (rtlToggle) { rtlToggle.textContent = '⇄'; rtlToggle.classList.add('active'); }
+                if (mobileRtlToggle) { mobileRtlToggle.textContent = '⇄'; mobileRtlToggle.classList.add('active'); }
+            }
+
+            // Mobile Menu
+            const mobileToggle = document.getElementById('mobile-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileToggleIcon = document.querySelector('#mobile-toggle i');
+
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', () => {
+                    const isOpening = !mobileMenu.classList.contains('open');
+                    if (isOpening) {
+                        mobileMenu.classList.add('open');
+                        mobileToggleIcon.classList.remove('fa-bars');
+                        mobileToggleIcon.classList.add('fa-times');
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        mobileMenu.classList.remove('open');
+                        mobileToggleIcon.classList.remove('fa-times');
+                        mobileToggleIcon.classList.add('fa-bars');
+                        document.body.style.overflow = '';
+                        document.querySelectorAll('.mobile-dropdown-content').forEach(c => c.classList.remove('show'));
+                    }
+                });
+            }
+
+            document.querySelectorAll('.mobile-dropdown-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const dropdown = e.target.closest('.mobile-dropdown');
+                    const content = dropdown.querySelector('.mobile-dropdown-content');
+                    const icon = dropdown.querySelector('.fa-chevron-down');
+                    const isOpening = !content.classList.contains('show');
+                    content.classList.toggle('show');
+                    icon.style.transform = content.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
+                    if (isOpening) {
+                        document.querySelectorAll('.mobile-dropdown-content').forEach(other => {
+                            if (other !== content) {
+                                other.classList.remove('show');
+                                const otherIcon = other.parentElement.querySelector('.fa-chevron-down');
+                                if (otherIcon) otherIcon.style.transform = 'rotate(0deg)';
+                            }
+                        });
+                    }
+                });
+            });
+
+            // Event Filter Tabs
+            const filterTabs = document.querySelectorAll('.filter-tab');
+            const eventCards = document.querySelectorAll('.event-card');
+
+            filterTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    filterTabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    const filter = tab.dataset.filter;
+
+                    eventCards.forEach(card => {
+                        if (filter === 'all' || card.dataset.category === filter) {
+                            card.style.display = '';
+                            card.style.animation = 'fadeIn 0.4s ease';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
