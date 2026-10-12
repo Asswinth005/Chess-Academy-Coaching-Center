@@ -127,8 +127,17 @@
             font-weight: 700;
             letter-spacing: -0.02em;
         }
-        .board-gradient-text {
+                .board-gradient-text,
+        .chess-gradient-text {
             background: linear-gradient(135deg, var(--color-primary-bright) 0%, var(--color-primary) 50%, var(--color-primary-dark) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .dark .board-gradient-text,
+        .dark .chess-gradient-text {
+            background: linear-gradient(135deg, #FFFFFF 0%, var(--color-primary-bright) 100%);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
