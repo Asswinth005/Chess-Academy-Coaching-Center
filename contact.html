@@ -231,8 +231,82 @@
         .nav-item.active { color: var(--color-primary) !important; font-weight: 700; }
         .dark .nav-item.active { color: var(--color-primary-bright) !important; }
 
-        .mobile-menu-item.active { color: var(--color-primary) !important; font-weight: 700; }
-        .dark .mobile-menu-item.active { color: var(--color-primary-bright) !important; }
+                .mobile-menu-item.active {
+            color: var(--color-primary) !important;
+            font-weight: 700;
+            background: linear-gradient(90deg, rgba(var(--color-rgb-primary), 0.08) 0%, rgba(var(--color-rgb-primary), 0.02) 100%);
+            border-left: 4px solid var(--color-primary);
+            padding-left: calc(1.75rem - 4px);
+        }
+
+        .dark .mobile-menu-item.active {
+            color: var(--color-primary-bright) !important;
+            background: linear-gradient(90deg, rgba(var(--color-rgb-bright), 0.18) 0%, rgba(var(--color-rgb-bright), 0.04) 100%);
+            border-left-color: var(--color-primary-bright);
+        }
+
+        [dir="rtl"] .mobile-menu-item.active {
+            border-left: none;
+            border-right: 4px solid var(--color-primary);
+            padding-left: 1.75rem;
+            padding-right: calc(1.75rem - 4px);
+            background: linear-gradient(270deg, rgba(var(--color-rgb-primary), 0.08) 0%, rgba(var(--color-rgb-primary), 0.02) 100%);
+        }
+
+        [dir="rtl"] .dark .mobile-menu-item.active {
+            border-right-color: var(--color-primary-bright);
+            background: linear-gradient(270deg, rgba(var(--color-rgb-bright), 0.18) 0%, rgba(var(--color-rgb-bright), 0.04) 100%);
+        }
+
+        .dropdown-item.active {
+            color: var(--color-primary) !important;
+            font-weight: 700;
+            background: rgba(var(--color-rgb-primary), 0.08);
+            border-left: 3px solid var(--color-primary);
+            padding-left: calc(1.6rem - 3px);
+        }
+
+        .dark .dropdown-item.active {
+            color: var(--color-primary-bright) !important;
+            background: rgba(var(--color-rgb-bright), 0.15);
+            border-left-color: var(--color-primary-bright);
+        }
+
+        [dir="rtl"] .dropdown-item.active {
+            border-left: none;
+            border-right: 3px solid var(--color-primary);
+            padding-left: 1.6rem;
+            padding-right: calc(1.6rem - 3px);
+        }
+
+        [dir="rtl"] .dark .dropdown-item.active {
+            border-right-color: var(--color-primary-bright);
+        }
+
+        .mobile-dropdown-item.active {
+            color: var(--color-primary) !important;
+            font-weight: 700;
+            background: rgba(var(--color-rgb-primary), 0.09);
+            border-left: 3px solid var(--color-primary);
+            padding-left: calc(2.75rem - 3px);
+        }
+
+        .dark .mobile-dropdown-item.active {
+            color: var(--color-primary-bright) !important;
+            background: rgba(var(--color-rgb-bright), 0.18);
+            border-left-color: var(--color-primary-bright);
+        }
+
+        [dir="rtl"] .mobile-dropdown-item.active {
+            border-left: none;
+            border-right: 3px solid var(--color-primary);
+            padding-left: 2.75rem;
+            padding-right: calc(2.75rem - 3px);
+        }
+
+        [dir="rtl"] .dark .mobile-dropdown-item.active {
+            border-right-color: var(--color-primary-bright);
+        }
 
         .dropdown { position: relative; }
         .dropdown-menu {
@@ -1070,8 +1144,7 @@
                         <a href="programs.html" class="nav-item">Programs</a>
                         <a href="coaches.html" class="nav-item">Coaches</a>
                         <a href="tournaments.html" class="nav-item">Tournaments</a>
-                        <a href="contact.html" class="nav-item active"
-                            style="color: var(--color-primary); font-weight: 700;">Contact</a>
+                        <a href="contact.html" class="nav-item active">Contact</a>
                         <div class="dropdown">
                             <button class="nav-item flex items-center gap-1.5">
                                 Portal <i class="fas fa-chevron-down text-[9px] opacity-70"></i>
@@ -1108,27 +1181,25 @@
             </button>
         </nav>
 
-        <!-- Mobile Menu Floating Card -->
+                <!-- Mobile Menu Floating Card -->
         <div id="mobile-menu" class="mobile-menu xl:hidden max-w-7xl mx-auto mt-2 rounded-3xl border border-gift-slate/20 dark:border-gift-slate-bright/25 shadow-2xl overflow-hidden pointer-events-auto">
             <div class="mobile-dropdown">
-                <button class="mobile-dropdown-btn flex items-center justify-between w-full mobile-menu-item active"
-                    style="color: var(--color-primary); font-weight: 700;">
-                    <span>Home</span> <i class="fas fa-chevron-down text-xs"></i>
+                <button class="mobile-dropdown-btn flex items-center justify-between w-full mobile-menu-item">
+                    <span>Home</span> <i class="fas fa-chevron-down text-xs transition-transform duration-300"></i>
                 </button>
                 <div class="mobile-dropdown-content">
-                    <a href="index.html" class="mobile-dropdown-item">Home 1 </a>
-                    <a href="home2.html" class="mobile-dropdown-item">Home 2 </a>
+                    <a href="index.html" class="mobile-dropdown-item">Home 1</a>
+                    <a href="home2.html" class="mobile-dropdown-item">Home 2</a>
                 </div>
             </div>
             <a href="about.html" class="mobile-menu-item">About</a>
             <a href="programs.html" class="mobile-menu-item">Programs</a>
             <a href="coaches.html" class="mobile-menu-item">Coaches</a>
             <a href="tournaments.html" class="mobile-menu-item">Tournaments</a>
-            <a href="contact.html" class="mobile-menu-item active"
-                style="color: var(--color-primary); font-weight: 700;">Contact</a>
+            <a href="contact.html" class="mobile-menu-item active">Contact</a>
             <div class="mobile-dropdown">
                 <button class="mobile-dropdown-btn flex items-center justify-between w-full mobile-menu-item">
-                    <span>Portals</span> <i class="fas fa-chevron-down text-xs"></i>
+                    <span>Portals</span> <i class="fas fa-chevron-down text-xs transition-transform duration-300"></i>
                 </button>
                 <div class="mobile-dropdown-content">
                     <a href="student-portal.html" class="mobile-dropdown-item">Student Dashboard</a>
@@ -1142,8 +1213,8 @@
                 </a>
             </div>
             <div class="flex justify-center gap-3 p-4 border-t border-gray-100 dark:border-gray-800">
-                <button id="theme-toggle-mobile" class="toggle-btn"><i class="fas fa-moon"></i><i class="fas fa-sun hidden"></i></button>
-                <button id="rtl-toggle-mobile" class="toggle-btn">⇄</button>
+                <button id="theme-toggle-mobile" class="toggle-btn" aria-label="Toggle Theme"><i class="fas fa-moon"></i><i class="fas fa-sun hidden"></i></button>
+                <button id="rtl-toggle-mobile" class="toggle-btn" aria-label="Toggle RTL/LTR">⇄</button>
             </div>
         </div>
     </header>
@@ -1716,12 +1787,22 @@
                         mobileToggleIcon.classList.remove('fa-bars');
                         mobileToggleIcon.classList.add('fa-times');
                         document.body.style.overflow = 'hidden';
+                        // Auto-expand dropdown containing active item
+                        document.querySelectorAll('.mobile-dropdown').forEach(dropdown => {
+                            if (dropdown.querySelector('.mobile-dropdown-item.active')) {
+                                const content = dropdown.querySelector('.mobile-dropdown-content');
+                                const icon = dropdown.querySelector('.fa-chevron-down');
+                                if (content) content.classList.add('show');
+                                if (icon) icon.style.transform = 'rotate(180deg)';
+                            }
+                        });
                     } else {
                         mobileMenu.classList.remove('open');
                         mobileToggleIcon.classList.remove('fa-times');
                         mobileToggleIcon.classList.add('fa-bars');
                         document.body.style.overflow = '';
                         document.querySelectorAll('.mobile-dropdown-content').forEach(c => c.classList.remove('show'));
+                        document.querySelectorAll('.mobile-dropdown .fa-chevron-down').forEach(icon => icon.style.transform = 'rotate(0deg)');
                     }
                 });
             }
