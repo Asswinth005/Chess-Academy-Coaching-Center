@@ -268,10 +268,10 @@
         /* Premium Navigation */
         .nav-item {
             position: relative;
-            padding: 0.5rem 0;
-            font-weight: 600;
-            font-size: 0.85rem;
-            letter-spacing: 0.02em;
+            padding: 0.35rem 0.5rem;
+            font-weight: 700;
+            font-size: 0.76rem;
+            letter-spacing: 0.03em;
             color: var(--color-text-dark);
             transition: color 0.3s ease;
             font-family: 'Plus Jakarta Sans', sans-serif;
@@ -759,7 +759,7 @@
         .desktop-nav-container {
             display: flex;
             align-items: center;
-            gap: 2rem;
+            gap: 1.25rem;
         }
 
         .hero-image {
@@ -1378,23 +1378,23 @@
     <!-- ========== FLOATING ISLAND HEADER (exact copy) ========== -->
     <header class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 pt-3 sm:pt-4 transition-all duration-300 pointer-events-none">
         <nav
-            class="max-w-7xl mx-auto pointer-events-auto bg-white/85 dark:bg-[#141A1F]/90 backdrop-blur-xl rounded-full px-5 sm:px-7 py-2.5 sm:py-3 border border-gift-slate/25 dark:border-gift-slate-bright/25 shadow-[0_20px_45px_-15px_rgba(0,0,0,0.1)] dark:shadow-[0_20px_45px_-15px_rgba(0,0,0,0.7)] flex items-center justify-between transition-colors duration-400">
+            class="max-w-[1400px] mx-auto pointer-events-auto bg-white/90 dark:bg-[#141A1F]/95 backdrop-blur-xl rounded-full px-5 sm:px-6 xl:px-8 py-2 sm:py-2.5 border border-gift-slate/25 dark:border-gift-slate-bright/25 shadow-[0_20px_45px_-15px_rgba(0,0,0,0.1)] dark:shadow-[0_20px_45px_-15px_rgba(0,0,0,0.7)] flex items-center justify-between gap-4 transition-colors duration-400">
             <!-- Brand Logo -->
-            <a href="index.html" class="flex items-center gap-3 group shrink-0" dir="ltr">
-                <div class="w-10 h-10 bg-gradient-to-br from-gift-slate-light to-gift-slate rounded-2xl flex items-center justify-center flex-shrink-0 shadow-md group-hover:rotate-6 transition duration-300">
-                    <i class="fas fa-chess-knight text-white dark:text-dark-bg text-lg"></i>
+            <a href="index.html" class="flex items-center gap-2.5 sm:gap-3 group shrink-0 mr-4 xl:mr-8" dir="ltr">
+                <div class="w-9 h-9 sm:w-10 sm:h-10 bg-gradient-to-br from-gift-slate-light to-gift-slate rounded-2xl flex items-center justify-center flex-shrink-0 shadow-md group-hover:rotate-6 transition duration-300">
+                    <i class="fas fa-chess-knight text-amber-300 text-base sm:text-lg"></i>
                 </div>
                 <div>
-                    <span class="text-lg md:text-2xl font-serif font-bold tracking-wide text-neutral-dark dark:text-white">
+                    <span class="text-base sm:text-xl font-serif font-bold tracking-wide text-neutral-dark dark:text-white">
                         Chess <span class="board-gradient-text">Academy</span>
                     </span>
                 </div>
             </a>
 
             <!-- Desktop Navigation -->
-            <div class="hidden xl:flex items-center">
+            <div class="hidden xl:flex items-center gap-3 xl:gap-5">
                 <div class="desktop-nav-container">
-                    <div class="flex items-center gap-4 xl:gap-6">
+                    <div class="flex items-center gap-2 xl:gap-3 2xl:gap-4">
                         <!-- Home Dropdown -->
                         <div class="dropdown">
                             <button class="nav-item flex items-center gap-1.5">
@@ -1409,6 +1409,7 @@
                         <a href="programs.html" class="nav-item active">Programs</a>
                         <a href="coaches.html" class="nav-item">Coaches</a>
                         <a href="tournaments.html" class="nav-item">Tournaments</a>
+                        <a href="gallery.html" class="nav-item">Gallery</a>
                         <a href="contact.html" class="nav-item">Contact</a>
                         <div class="dropdown">
                             <button class="nav-item flex items-center gap-1.5">
@@ -1461,6 +1462,7 @@
             <a href="programs.html" class="mobile-menu-item active">Programs</a>
             <a href="coaches.html" class="mobile-menu-item">Coaches</a>
             <a href="tournaments.html" class="mobile-menu-item">Tournaments</a>
+            <a href="gallery.html" class="mobile-menu-item">Gallery</a>
             <a href="contact.html" class="mobile-menu-item">Contact</a>
             <div class="mobile-dropdown">
                 <button class="mobile-dropdown-btn flex items-center justify-between w-full mobile-menu-item">
@@ -1485,35 +1487,42 @@
     </header>
 
     <!-- ========== PROGRAMS HERO — EDITORIAL HEADER ========== -->
-    <section class="relative pt-32 pb-14 sm:pt-36 sm:pb-16 lg:pt-40 lg:pb-20 bg-bg-warm dark:bg-dark-bg chess-pattern overflow-hidden transition-colors duration-400">
-        <div class="absolute -top-20 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-gradient-to-b from-gift-slate/10 via-gift-slate-bright/5 to-transparent rounded-full blur-3xl pointer-events-none"></div>
+    <section class="relative pt-32 pb-16 sm:pt-36 sm:pb-20 lg:pt-40 lg:pb-24 bg-bg-warm dark:bg-dark-bg overflow-hidden transition-colors duration-400">
+        <!-- Full-Bleed Hero Background Image with Vignette Overlays -->
+        <div class="absolute inset-0 z-0 pointer-events-none select-none">
+            <img src="assets/images/programs-hero.jpg" alt="Structured Chess Training Pathways"
+                class="w-full h-full object-cover object-center transform scale-105 filter brightness-[0.38] dark:brightness-[0.26] contrast-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-bg-warm/95 via-black/40 to-black/60 dark:from-dark-bg/95 dark:via-black/60 dark:to-black/80"></div>
+            <div class="absolute inset-0 bg-radial-vignette opacity-80"></div>
+        </div>
+        <div class="absolute -top-20 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-gradient-to-b from-gift-slate/20 via-gift-slate-bright/10 to-transparent rounded-full blur-3xl pointer-events-none z-0"></div>
 
         <div class="container mx-auto px-6 relative z-10">
             <div class="max-w-4xl mx-auto text-center">
-                <div class="eyebrow-pill inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-gift-slate/10 dark:bg-gift-slate-bright/10 border border-gift-slate/25 dark:border-gift-slate-bright/25 mb-6 backdrop-blur-md">
-                    <i class="fas fa-chess-board text-gift-slate dark:text-gift-slate-bright text-xs"></i>
-                    <span class="text-[11px] font-bold font-sans dark:text-gift-slate-bright tracking-[0.22em] uppercase">Structured Pathways · All Skill Levels</span>
+                <div class="eyebrow-pill inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/20 dark:bg-white/10 border border-white/30 dark:border-white/20 mb-6 backdrop-blur-md text-amber-300">
+                    <i class="fas fa-chess-board text-amber-400 text-xs"></i>
+                    <span class="text-[11px] font-bold font-sans tracking-[0.22em] uppercase text-white drop-shadow">Structured Pathways · All Skill Levels</span>
                 </div>
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif font-bold text-neutral-dark dark:text-white leading-[1.08] tracking-tight mb-6">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif font-bold text-white drop-shadow-lg leading-[1.08] tracking-tight mb-6">
                     Programs Built for <br class="hidden sm:inline">
-                    <span class="board-gradient-text italic font-serif">Every Player.</span>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-yellow-500 italic font-serif">Every Player.</span>
                 </h1>
                 <div class="premium-line mx-auto !my-6"></div>
-                <p class="text-base sm:text-lg lg:text-xl text-neutral-dark/85 dark:text-gray-300 max-w-2xl mx-auto mb-10 font-sans font-light leading-relaxed">
+                <p class="text-base sm:text-lg lg:text-xl text-gray-200 max-w-2xl mx-auto mb-10 font-sans font-light leading-relaxed drop-shadow">
                     From first move to FIDE-rated tournaments — a clear, structured path for beginners, club players, and competitive masters.
                 </p>
             </div>
 
             <!-- Hero Action Buttons -->
             <div class="flex flex-wrap justify-center items-center gap-4 mt-8">
-                <a href="#program-catalog" class="btn-nested group">
+                <a href="#program-catalog" class="btn-nested group !bg-amber-400 !text-neutral-950 font-bold hover:!bg-amber-300">
                     <span>Explore Pathways</span>
-                    <span class="icon-circle">
+                    <span class="icon-circle !bg-neutral-950 !text-amber-400">
                         <i class="fas fa-arrow-down text-xs"></i>
                     </span>
                 </a>
-                <a href="contact.html" class="btn-frosted inline-flex">
-                    <i class="fas fa-calendar-check"></i>
+                <a href="contact.html" class="btn-frosted inline-flex !bg-white/20 !text-white !border-white/30 backdrop-blur-md hover:!bg-white/30">
+                    <i class="fas fa-calendar-check text-amber-300"></i>
                     <span>Book Free Assessment</span>
                 </a>
             </div>
@@ -1542,16 +1551,16 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 lg:gap-8 max-w-7xl mx-auto">
 
                 <!-- PROGRAM 1: BEGINNER -->
-                <div class="program-card" data-category="beginner">
-                    <div class="relative h-56 overflow-hidden bg-gradient-to-br from-emerald-100 to-emerald-50 dark:from-emerald-900/30 dark:to-emerald-950/20">
-                        <img src="assets/images/photo-1611195974226-a6a9be9dd763.jpg" alt="Beginner Chess Program" class="w-full h-full object-cover opacity-90">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                        <div class="absolute top-4 left-4">
+                <div class="program-card group" data-category="beginner">
+                    <div class="relative h-60 sm:h-64 overflow-hidden">
+                        <img src="assets/images/beginner-program.jpg" alt="Beginner Chess Program - Foundation Track" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/10"></div>
+                        <div class="absolute top-4 left-4 z-10">
                             <span class="level-badge level-beginner"><i class="fas fa-seedling"></i> Beginner</span>
                         </div>
-                        <div class="absolute bottom-4 left-4 text-white">
-                            <div class="text-[10px] uppercase tracking-widest font-semibold opacity-90">Foundation Track</div>
-                            <h3 class="text-xl font-serif font-bold">Under 1200 ELO</h3>
+                        <div class="absolute bottom-4 left-4 right-4 text-white z-10">
+                            <div class="text-[10px] uppercase tracking-widest font-semibold text-emerald-300 drop-shadow">Foundation Track</div>
+                            <h3 class="text-xl sm:text-2xl font-serif font-bold text-white drop-shadow">Under 1200 ELO</h3>
                         </div>
                     </div>
                     <div class="p-6 flex-1 flex flex-col">
@@ -1582,16 +1591,16 @@
                 </div>
 
                 <!-- PROGRAM 2: INTERMEDIATE -->
-                <div class="program-card" data-category="intermediate">
-                    <div class="relative h-56 overflow-hidden bg-gradient-to-br from-amber-100 to-amber-50 dark:from-amber-900/30 dark:to-amber-950/20">
-                        <img src="assets/images/photo-1528819622765-d6bcf132f793.jpg" alt="Intermediate Chess Program" class="w-full h-full object-cover opacity-90" style="object-position: center 33%;">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                        <div class="absolute top-4 left-4">
+                <div class="program-card group" data-category="intermediate">
+                    <div class="relative h-60 sm:h-64 overflow-hidden">
+                        <img src="assets/images/intermediate-program.jpg" alt="Intermediate Chess Program - Club Player Track" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/10"></div>
+                        <div class="absolute top-4 left-4 z-10">
                             <span class="level-badge level-intermediate"><i class="fas fa-chess-pawn"></i> Intermediate</span>
                         </div>
-                        <div class="absolute bottom-4 left-4 text-white">
-                            <div class="text-[10px] uppercase tracking-widest font-semibold opacity-90">Club Player Track</div>
-                            <h3 class="text-xl font-serif font-bold">1200–2000 ELO</h3>
+                        <div class="absolute bottom-4 left-4 right-4 text-white z-10">
+                            <div class="text-[10px] uppercase tracking-widest font-semibold text-amber-300 drop-shadow">Club Player Track</div>
+                            <h3 class="text-xl sm:text-2xl font-serif font-bold text-white drop-shadow">1200–2000 ELO</h3>
                         </div>
                     </div>
                     <div class="p-6 flex-1 flex flex-col">
@@ -1622,19 +1631,21 @@
                 </div>
 
                 <!-- PROGRAM 3: ADVANCED (Featured) -->
-                <div class="program-card program-card-featured md:col-span-2 lg:col-span-1" data-category="advanced">
-                    <div class="absolute top-4 right-4 z-20">
-                        <span class="badge text-[10px] font-sans"><i class="fas fa-crown text-gift-accent mr-1"></i> Most Popular</span>
-                    </div>
-                    <div class="relative h-56 overflow-hidden bg-gradient-to-br from-rose-100 to-rose-50 dark:from-rose-900/30 dark:to-rose-950/20">
-                        <img src="assets/images/photo-1580541832626-2a7131ee809f.jpg" alt="Advanced Chess Program" class="w-full h-full object-cover opacity-90">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                        <div class="absolute top-4 left-4">
+                <div class="program-card program-card-featured md:col-span-2 lg:col-span-1 group" data-category="advanced">
+                    <div class="relative h-60 sm:h-64 overflow-hidden">
+                        <img src="assets/images/advanced-program.jpg" alt="Advanced Chess Program - Elite Tournament Track" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/10"></div>
+                        <div class="absolute top-4 left-4 z-10">
                             <span class="level-badge level-advanced"><i class="fas fa-crown"></i> Advanced</span>
                         </div>
-                        <div class="absolute bottom-4 left-4 text-white">
-                            <div class="text-[10px] uppercase tracking-widest font-semibold opacity-90">Elite Tournament Track</div>
-                            <h3 class="text-xl font-serif font-bold">2000+ ELO</h3>
+                        <div class="absolute top-4 right-4 z-10">
+                            <span class="px-3 py-1 rounded-full bg-black/75 backdrop-blur-md text-amber-300 border border-amber-400/40 text-[10px] font-sans font-bold uppercase tracking-wider shadow-lg flex items-center gap-1.5">
+                                <i class="fas fa-crown text-amber-400"></i> Most Popular
+                            </span>
+                        </div>
+                        <div class="absolute bottom-4 left-4 right-4 text-white z-10">
+                            <div class="text-[10px] uppercase tracking-widest font-semibold text-rose-300 drop-shadow">Elite Tournament Track</div>
+                            <h3 class="text-xl sm:text-2xl font-serif font-bold text-white drop-shadow">2000+ ELO</h3>
                         </div>
                     </div>
                     <div class="p-6 flex-1 flex flex-col">
@@ -1666,30 +1677,30 @@
                 </div>
 
                 <!-- PROGRAM 4: PRIVATE LESSONS -->
-                <div class="program-card md:col-span-2 lg:col-span-3 max-w-3xl mx-auto w-full" data-category="private">
+                <div class="program-card md:col-span-2 lg:col-span-3 max-w-4xl mx-auto w-full group" data-category="private">
                     <div class="grid md:grid-cols-12 gap-0">
-                        <div class="md:col-span-5 relative h-52 sm:h-56 md:h-auto overflow-hidden bg-gradient-to-br from-blue-100 to-blue-50 dark:from-blue-900/30 dark:to-blue-950/20">
-                            <img src="assets/images/photo-1560250097-0b93528c311a.jpg" alt="Private Chess Lessons" class="w-full h-full object-cover object-top" style="object-position: center top;">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent md:bg-gradient-to-r"></div>
-                            <div class="absolute top-3 left-3 sm:top-4 sm:left-4">
-                                <span class="level-badge level-private"><i class="fas fa-user-tie"></i> 1-on-1</span>
+                        <div class="md:col-span-5 relative h-60 sm:h-64 md:h-auto min-h-[240px] overflow-hidden">
+                            <img src="assets/images/private-lessons.jpg" alt="Private 1-on-1 Chess Lessons" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent md:bg-gradient-to-r md:from-black/40 md:via-transparent md:to-transparent"></div>
+                            <div class="absolute top-4 left-4 z-10">
+                                <span class="level-badge level-private"><i class="fas fa-user-tie"></i> 1-on-1 Mentorship</span>
                             </div>
                         </div>
-                        <div class="md:col-span-7 p-5 sm:p-6 flex flex-col justify-center">
-                            <div class="text-[10px] uppercase tracking-widest font-semibold opacity-70 mb-1">Personalized Coaching</div>
-                            <h3 class="text-xl sm:text-2xl font-serif font-bold text-neutral-dark dark:text-white mb-2">Private Lessons</h3>
+                        <div class="md:col-span-7 p-6 sm:p-8 flex flex-col justify-center">
+                            <div class="text-[10px] uppercase tracking-widest font-semibold text-gift-slate dark:text-gift-slate-bright mb-1">Personalized Coaching</div>
+                            <h3 class="text-xl sm:text-2xl font-serif font-bold text-neutral-dark dark:text-white mb-2">Private Master Lessons</h3>
                             <p class="text-xs sm:text-sm opacity-80 font-sans leading-relaxed mb-4">
-                                Fully customized sessions tailored to your specific strengths, weaknesses, and goals. Ideal for players who want rapid improvement or have irregular schedules.
+                                Fully customized sessions tailored to your specific strengths, weaknesses, and goals. Direct private analysis with Grandmasters and International Masters.
                             </p>
                             <div class="flex flex-wrap gap-2 mb-4">
                                 <span class="text-[10px] font-semibold bg-gift-slate/10 dark:bg-gift-slate-bright/10 text-gift-slate dark:text-gift-slate-bright px-2.5 py-1 rounded-full border border-gift-slate/20">Flexible Schedule</span>
-                                <span class="text-[10px] font-semibold bg-gift-slate/10 dark:bg-gift-slate-bright/10 text-gift-slate dark:text-gift-slate-bright px-2.5 py-1 rounded-full border border-gift-slate/20">Custom Curriculum</span>
-                                <span class="text-[10px] font-semibold bg-gift-slate/10 dark:bg-gift-slate-bright/10 text-gift-slate dark:text-gift-slate-bright px-2.5 py-1 rounded-full border border-gift-slate/20">All Levels</span>
+                                <span class="text-[10px] font-semibold bg-gift-slate/10 dark:bg-gift-slate-bright/10 text-gift-slate dark:text-gift-slate-bright px-2.5 py-1 rounded-full border border-gift-slate/20">Custom Repertoire</span>
+                                <span class="text-[10px] font-semibold bg-gift-slate/10 dark:bg-gift-slate-bright/10 text-gift-slate dark:text-gift-slate-bright px-2.5 py-1 rounded-full border border-gift-slate/20">All Rating Levels</span>
                                 <span class="text-[10px] font-semibold bg-gift-slate/10 dark:bg-gift-slate-bright/10 text-gift-slate dark:text-gift-slate-bright px-2.5 py-1 rounded-full border border-gift-slate/20">Online or In-Person</span>
                             </div>
                             <div class="flex flex-wrap gap-4 items-center pt-3 border-t border-gift-slate/10 dark:border-gray-800">
                                 <a href="contact.html" class="btn-nested group !py-2 !px-4 !text-xs">
-                                    <span>Book a Session</span>
+                                    <span>Book Private Session</span>
                                     <span class="icon-circle !w-6 !h-6"><i class="fas fa-arrow-right text-[10px]"></i></span>
                                 </a>
                                 <span class="text-xs font-semibold opacity-75 font-sans"><i class="fas fa-clock mr-1 text-gift-slate dark:text-gift-slate-bright"></i> From $75/hour</span>
@@ -1946,6 +1957,7 @@
                         <li><a href="programs.html" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition font-bold text-gift-slate dark:text-gift-slate-bright">Programs</a></li>
                         <li><a href="coaches.html" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">Coaches</a></li>
                         <li><a href="tournaments.html" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">Tournaments</a></li>
+                        <li><a href="gallery.html" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">Photo Gallery</a></li>
                         <li><a href="contact.html" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">Contact & Booking</a></li>
                     </ul>
                 </div>

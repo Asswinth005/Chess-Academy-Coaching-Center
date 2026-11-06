@@ -262,10 +262,10 @@
         /* Premium Navigation */
         .nav-item {
             position: relative;
-            padding: 0.5rem 0;
-            font-weight: 600;
-            font-size: 0.85rem;
-            letter-spacing: 0.02em;
+            padding: 0.35rem 0.5rem;
+            font-weight: 700;
+            font-size: 0.76rem;
+            letter-spacing: 0.03em;
             color: var(--color-text-dark);
             transition: color 0.3s ease;
             font-family: 'Plus Jakarta Sans', sans-serif;
@@ -642,7 +642,7 @@
         .desktop-nav-container {
             display: flex;
             align-items: center;
-            gap: 2rem;
+            gap: 1.25rem;
         }
 
         /* Chess Academy Button & Card Components */
@@ -845,23 +845,23 @@
     <!-- ========== FLOATING ISLAND HEADER ========== -->
     <header class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 pt-3 sm:pt-4 transition-all duration-300 pointer-events-none">
         <nav
-            class="max-w-7xl mx-auto pointer-events-auto bg-white/85 dark:bg-[#141A1F]/90 backdrop-blur-xl rounded-full px-5 sm:px-7 py-2.5 sm:py-3 border border-gift-slate/25 dark:border-gift-slate-bright/25 shadow-[0_20px_45px_-15px_rgba(0,0,0,0.1)] dark:shadow-[0_20px_45px_-15px_rgba(0,0,0,0.7)] flex items-center justify-between transition-colors duration-400">
+            class="max-w-[1400px] mx-auto pointer-events-auto bg-white/90 dark:bg-[#141A1F]/95 backdrop-blur-xl rounded-full px-5 sm:px-6 xl:px-8 py-2 sm:py-2.5 border border-gift-slate/25 dark:border-gift-slate-bright/25 shadow-[0_20px_45px_-15px_rgba(0,0,0,0.1)] dark:shadow-[0_20px_45px_-15px_rgba(0,0,0,0.7)] flex items-center justify-between gap-4 transition-colors duration-400">
             <!-- Brand Logo -->
-            <a href="index.html" class="flex items-center gap-3 group shrink-0" dir="ltr">
-                <div class="w-10 h-10 bg-gradient-to-br from-gift-slate-light to-gift-slate rounded-2xl flex items-center justify-center flex-shrink-0 shadow-md group-hover:rotate-6 transition duration-300">
-                    <i class="fas fa-chess-knight text-white dark:text-dark-bg text-lg"></i>
+            <a href="index.html" class="flex items-center gap-2.5 sm:gap-3 group shrink-0 mr-4 xl:mr-8" dir="ltr">
+                <div class="w-9 h-9 sm:w-10 sm:h-10 bg-gradient-to-br from-gift-slate-light to-gift-slate rounded-2xl flex items-center justify-center flex-shrink-0 shadow-md group-hover:rotate-6 transition duration-300">
+                    <i class="fas fa-chess-knight text-amber-300 text-base sm:text-lg"></i>
                 </div>
                 <div>
-                    <span class="text-lg md:text-2xl font-serif font-bold tracking-wide text-neutral-dark dark:text-white">
+                    <span class="text-base sm:text-xl font-serif font-bold tracking-wide text-neutral-dark dark:text-white">
                         Chess <span class="board-gradient-text">Academy</span>
                     </span>
                 </div>
             </a>
 
             <!-- Desktop Navigation -->
-            <div class="hidden xl:flex items-center">
+            <div class="hidden xl:flex items-center gap-3 xl:gap-5">
                 <div class="desktop-nav-container">
-                    <div class="flex items-center gap-4 xl:gap-6">
+                    <div class="flex items-center gap-2 xl:gap-3 2xl:gap-4">
                         <!-- Home Dropdown -->
                         <div class="dropdown">
                             <button class="nav-item flex items-center gap-1.5">
@@ -876,6 +876,7 @@
                         <a href="programs.html" class="nav-item">Programs</a>
                         <a href="coaches.html" class="nav-item">Coaches</a>
                         <a href="tournaments.html" class="nav-item">Tournaments</a>
+                        <a href="gallery.html" class="nav-item">Gallery</a>
                         <a href="contact.html" class="nav-item">Contact</a>
                         <div class="dropdown">
                             <button class="nav-item flex items-center gap-1.5">
@@ -928,6 +929,7 @@
             <a href="programs.html" class="mobile-menu-item">Programs</a>
             <a href="coaches.html" class="mobile-menu-item">Coaches</a>
             <a href="tournaments.html" class="mobile-menu-item">Tournaments</a>
+            <a href="gallery.html" class="mobile-menu-item">Gallery</a>
             <a href="contact.html" class="mobile-menu-item">Contact</a>
             <div class="mobile-dropdown">
                 <button class="mobile-dropdown-btn flex items-center justify-between w-full mobile-menu-item">
@@ -952,43 +954,50 @@
     </header>
 
     <!-- ========== HERO / PAGE HEADER SECTION ========== -->
-    <section class="relative pt-36 pb-20 sm:pt-40 sm:pb-24 lg:pt-44 lg:pb-28 bg-bg-warm dark:bg-dark-bg chess-pattern transition-colors duration-400 overflow-hidden">
+    <section class="relative pt-36 pb-20 sm:pt-40 sm:pb-24 lg:pt-44 lg:pb-28 bg-bg-warm dark:bg-dark-bg transition-colors duration-400 overflow-hidden">
+        <!-- Full-Bleed Hero Background Image with Vignette Overlays -->
+        <div class="absolute inset-0 z-0 pointer-events-none select-none">
+            <img src="assets/images/photo-1580541832626-2a7131ee809f.jpg" alt="Chess Academy Heritage"
+                class="w-full h-full object-cover object-center transform scale-105 filter brightness-[0.38] dark:brightness-[0.25] contrast-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-bg-warm/95 via-black/40 to-black/60 dark:from-dark-bg/95 dark:via-black/60 dark:to-black/80"></div>
+            <div class="absolute inset-0 bg-radial-vignette opacity-80"></div>
+        </div>
         <!-- Radial Ambient Glows -->
-        <div class="absolute -top-32 -left-32 w-96 h-96 bg-gift-slate/15 dark:bg-gift-slate-bright/10 rounded-full blur-3xl pointer-events-none"></div>
-        <div class="absolute top-1/2 -right-32 w-96 h-96 bg-gift-slate-light/15 dark:bg-gift-slate-bright/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -top-32 -left-32 w-96 h-96 bg-gift-slate/20 dark:bg-gift-slate-bright/15 rounded-full blur-3xl pointer-events-none z-0"></div>
+        <div class="absolute top-1/2 -right-32 w-96 h-96 bg-gift-slate-light/20 dark:bg-gift-slate-bright/15 rounded-full blur-3xl pointer-events-none z-0"></div>
 
         <div class="container mx-auto px-6 relative z-10 text-center max-w-4xl">
             <!-- Breadcrumbs -->
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/80 dark:bg-dark-card/80 border border-gift-slate/20 dark:border-gift-slate-bright/20 backdrop-blur-md text-xs font-semibold uppercase tracking-wider text-neutral-dark dark:text-gray-300 mb-6">
-                <a href="index.html" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">Home</a>
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/20 dark:bg-white/10 border border-white/30 dark:border-white/20 backdrop-blur-md text-xs font-semibold uppercase tracking-wider text-white mb-6">
+                <a href="index.html" class="hover:text-amber-300 transition">Home</a>
                 <span class="opacity-40">/</span>
-                <span class="text-gift-slate dark:text-gift-slate-bright font-bold">About Us</span>
+                <span class="text-amber-300 font-bold">About Us</span>
             </div>
 
             <!-- Page Title & Subheading -->
-            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold text-neutral-dark dark:text-white leading-tight mb-6">
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-serif font-bold text-white drop-shadow-lg leading-tight mb-6">
                 The Art of the Mind. <br>
-                <span class="board-gradient-text">The Science of Mastery.</span>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-yellow-500">The Science of Mastery.</span>
             </h1>
-            <p class="text-base sm:text-xl text-neutral-dark/80 dark:text-gray-300 font-sans max-w-2xl mx-auto leading-relaxed mb-10">
+            <p class="text-base sm:text-xl text-gray-200 font-sans max-w-2xl mx-auto leading-relaxed mb-10 drop-shadow">
                 Founded by International Grandmasters, our academy blends century-old classical traditions with cutting-edge analytical tools to mold championship-level thinkers.
             </p>
 
             <!-- Metrics Pill Bar -->
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 pt-4">
-                <div class="p-5 rounded-2xl bg-white/85 dark:bg-dark-card/90 border border-gift-slate/15 dark:border-gift-slate-bright/20 backdrop-blur-sm shadow-sm text-center">
+                <div class="p-5 rounded-2xl bg-white/90 dark:bg-dark-card/95 border border-gift-slate/15 dark:border-gift-slate-bright/20 backdrop-blur-md shadow-lg text-center">
                     <span class="block text-2xl sm:text-3xl font-serif font-bold text-gift-slate dark:text-gift-slate-bright">14+</span>
                     <span class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold mt-1 block">Grandmasters & IMs</span>
                 </div>
-                <div class="p-5 rounded-2xl bg-white/85 dark:bg-dark-card/90 border border-gift-slate/15 dark:border-gift-slate-bright/20 backdrop-blur-sm shadow-sm text-center">
+                <div class="p-5 rounded-2xl bg-white/90 dark:bg-dark-card/95 border border-gift-slate/15 dark:border-gift-slate-bright/20 backdrop-blur-md shadow-lg text-center">
                     <span class="block text-2xl sm:text-3xl font-serif font-bold text-gift-slate dark:text-gift-slate-bright">1,200+</span>
                     <span class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold mt-1 block">Trained Students</span>
                 </div>
-                <div class="p-5 rounded-2xl bg-white/85 dark:bg-dark-card/90 border border-gift-slate/15 dark:border-gift-slate-bright/20 backdrop-blur-sm shadow-sm text-center">
+                <div class="p-5 rounded-2xl bg-white/90 dark:bg-dark-card/95 border border-gift-slate/15 dark:border-gift-slate-bright/20 backdrop-blur-md shadow-lg text-center">
                     <span class="block text-2xl sm:text-3xl font-serif font-bold text-gift-slate dark:text-gift-slate-bright">48</span>
                     <span class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold mt-1 block">National Titles</span>
                 </div>
-                <div class="p-5 rounded-2xl bg-white/85 dark:bg-dark-card/90 border border-gift-slate/15 dark:border-gift-slate-bright/20 backdrop-blur-sm shadow-sm text-center">
+                <div class="p-5 rounded-2xl bg-white/90 dark:bg-dark-card/95 border border-gift-slate/15 dark:border-gift-slate-bright/20 backdrop-blur-md shadow-lg text-center">
                     <span class="block text-2xl sm:text-3xl font-serif font-bold text-gift-slate dark:text-gift-slate-bright">98%</span>
                     <span class="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold mt-1 block">Rating Growth</span>
                 </div>
@@ -1461,6 +1470,7 @@
                         <li><a href="programs.html" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">Programs</a></li>
                         <li><a href="coaches.html" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">Coaches</a></li>
                         <li><a href="tournaments.html" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">Tournaments</a></li>
+                        <li><a href="gallery.html" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">Photo Gallery</a></li>
                         <li><a href="contact.html" class="hover:text-gift-slate dark:hover:text-gift-slate-bright transition">Contact & Booking</a></li>
                     </ul>
                 </div>
