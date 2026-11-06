@@ -80,7 +80,7 @@
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
         rel="stylesheet">
     <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <!-- Chess Academy Stylesheet (Self-Contained) -->
     <style>
         :root,
@@ -343,6 +343,36 @@
         .dark .dropdown-item.active {
             background: rgba(var(--color-rgb-bright), 0.15);
             color: #FFFFFF;
+        }
+
+        .social-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(var(--color-rgb-primary), 0.1);
+            color: var(--color-primary);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            border: 1px solid rgba(var(--color-rgb-primary), 0.2);
+        }
+
+        .dark .social-icon {
+            background: rgba(var(--color-rgb-bright), 0.12);
+            color: var(--color-primary-bright);
+            border-color: rgba(var(--color-rgb-bright), 0.25);
+        }
+
+        .social-icon:hover {
+            background: var(--color-primary);
+            color: white;
+            transform: translateY(-3px) scale(1.05);
+        }
+
+        .dark .social-icon:hover {
+            background: var(--color-primary-bright);
+            color: #0C0F12;
         }
 
         .toggle-btn {
@@ -908,10 +938,10 @@
                         Fostering strategic minds and grandmaster-level critical thinking through time-tested classical pedagogy and contemporary AI tools.
                     </p>
                     <div class="flex gap-4">
-                        <a href="#" class="w-9 h-9 rounded-full bg-gift-slate/10 dark:bg-dark-card flex items-center justify-center text-gift-slate dark:text-gift-slate-bright hover:bg-gift-slate hover:text-white transition duration-300" aria-label="Facebook"><i class="fab fa-facebook-f text-sm"></i></a>
-                        <a href="#" class="w-9 h-9 rounded-full bg-gift-slate/10 dark:bg-dark-card flex items-center justify-center text-gift-slate dark:text-gift-slate-bright hover:bg-gift-slate hover:text-white transition duration-300" aria-label="Twitter"><i class="fab fa-twitter text-sm"></i></a>
-                        <a href="#" class="w-9 h-9 rounded-full bg-gift-slate/10 dark:bg-dark-card flex items-center justify-center text-gift-slate dark:text-gift-slate-bright hover:bg-gift-slate hover:text-white transition duration-300" aria-label="Instagram"><i class="fab fa-instagram text-sm"></i></a>
-                        <a href="#" class="w-9 h-9 rounded-full bg-gift-slate/10 dark:bg-dark-card flex items-center justify-center text-gift-slate dark:text-gift-slate-bright hover:bg-gift-slate hover:text-white transition duration-300" aria-label="YouTube"><i class="fab fa-youtube text-sm"></i></a>
+                        <a href="#" class="social-icon text-sm" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#" class="social-icon text-sm" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon text-sm" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-icon text-sm" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                     </div>
                 </div>
 
