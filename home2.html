@@ -1239,7 +1239,7 @@
             <!-- Brand Logo -->
             <a href="index.html" class="flex items-center gap-3 group shrink-0" dir="ltr">
                 <div class="w-10 h-10 bg-gradient-to-br from-gift-slate-light to-gift-slate rounded-2xl flex items-center justify-center flex-shrink-0 shadow-md group-hover:rotate-6 transition duration-300">
-                    <i class="fas fa-chess-knight text-white dark:text-dark-bg text-lg"></i>
+                    <i class="fas fa-chess-knight text-amber-300 text-lg"></i>
                 </div>
                 <div>
                     <span class="text-lg md:text-2xl font-serif font-bold tracking-wide text-neutral-dark dark:text-white">
@@ -1344,61 +1344,102 @@
     </header>
 
     <!-- ========== HOME2 HERO — SPLIT VERTICAL / MINIMAL ASYMMETRY ========== -->
-    <section class="relative min-h-[85vh] flex items-center pt-32 pb-16 sm:pt-36 sm:pb-20 lg:pt-40 lg:pb-24 bg-bg-warm dark:bg-dark-bg chess-pattern overflow-hidden transition-colors duration-400">
-        <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-gift-slate/5 via-transparent to-gift-slate-bright/5 dark:from-gift-slate-bright/5 dark:to-transparent pointer-events-none"></div>
+    <section class="relative min-h-[85vh] flex items-center pt-32 pb-16 sm:pt-36 sm:pb-20 lg:pt-40 lg:pb-24 bg-dark-bg overflow-hidden transition-colors duration-400">
+        
+        <!-- Large Attractive Background Image with Cinematic Overlays -->
+        <div class="hero-bg-container absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
+            <img src="assets/images/photo-1580541832626-2a7131ee809f.jpg"
+                alt="Grandmaster Chess Atmosphere"
+                class="w-full h-full object-cover object-center filter brightness-[0.52] contrast-[1.15] transition-all duration-700">
+            <!-- Sleek Dark Vignette and Gradient Scrims for Readability -->
+            <div class="absolute inset-0 bg-black/50"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-dark-bg via-transparent to-dark-bg/85"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_20%,_rgba(0,0,0,0.7)_100%)]"></div>
+            <!-- Subtle Radial Gold Ambience -->
+            <div class="absolute top-1/3 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-gradient-to-br from-gift-slate/20 via-gift-accent/15 to-transparent rounded-full blur-3xl pointer-events-none"></div>
+        </div>
 
-        <div class="container mx-auto px-4 sm:px-6 relative z-10">
-            <div class="grid lg:grid-cols-2 gap-10 lg:gap-20 items-center">
-                <!-- Left column - big typography -->
-                <div class="animate-slide-up">
+        <div class="max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 relative z-10 w-full">
+            <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                <!-- Left column - big typography (7 cols) -->
+                <div class="lg:col-span-7 animate-slide-up">
                     <div class="flex items-center gap-3 mb-6">
-                        <span class="w-12 h-[2px] bg-gift-slate dark:bg-gift-slate-bright"></span>
-                        <span class="text-[11px] font-bold tracking-[0.3em] uppercase text-gift-slate dark:text-gift-slate-bright">The Grandmaster Path</span>
+                        <span class="w-12 h-[2px] bg-amber-400"></span>
+                        <span class="text-[11px] font-bold tracking-[0.3em] uppercase text-amber-300">The Grandmaster Path</span>
                     </div>
-                    <h1 class="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-serif font-bold text-neutral-dark dark:text-white leading-[1] sm:leading-[0.95] tracking-tight mb-6">
+                    <h1 class="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-serif font-bold text-white leading-[1] sm:leading-[0.95] tracking-tight mb-6">
                         Think<br>
-                        <span class="board-gradient-text italic font-serif">Deeper.</span><br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-yellow-100 to-amber-300 italic font-serif">Deeper.</span><br>
                         Play Better.
                     </h1>
-                    <p class="text-base sm:text-lg text-neutral-dark/80 dark:text-gray-300 max-w-lg mb-8 font-sans font-light leading-relaxed">
+                    <p class="text-base sm:text-lg text-gray-200 max-w-xl mb-8 font-sans font-light leading-relaxed">
                         We don't just teach openings and endings. We build complete players — strategic, resilient, and fearless at the board. From first move to master level.
                     </p>
-                    <div class="flex flex-wrap gap-4 sm:gap-5 items-center">
-                        <a href="programs.html" class="btn-nested group">
+                    <!-- High Visibility CTA Buttons -->
+                    <div class="flex flex-wrap gap-4 sm:gap-5 items-center mb-8">
+                        <a href="programs.html"
+                            class="inline-flex items-center gap-3 px-8 py-4 rounded-full font-bold text-xs sm:text-sm font-sans uppercase tracking-wider text-neutral-950 bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-400 hover:from-amber-300 hover:to-yellow-300 shadow-[0_12px_32px_rgba(245,158,11,0.45)] hover:shadow-[0_18px_40px_rgba(245,158,11,0.65)] hover:-translate-y-0.5 transition-all duration-300 ring-2 ring-amber-300/70 group">
                             <span>Find Your Program</span>
-                            <span class="icon-circle"><i class="fas fa-arrow-right text-xs"></i></span>
+                            <span class="w-8 h-8 rounded-full bg-neutral-950 text-amber-400 flex items-center justify-center group-hover:translate-x-1 group-hover:rotate-45 transition-transform duration-300 shadow-md">
+                                <i class="fas fa-arrow-right text-xs"></i>
+                            </span>
                         </a>
-                        <a href="coaches.html" class="btn-frosted">
-                            <i class="fas fa-user-tie"></i>
+                        <a href="coaches.html"
+                            class="inline-flex items-center gap-2.5 px-7 py-4 rounded-full font-semibold text-xs sm:text-sm font-sans uppercase tracking-wider text-white bg-white/10 hover:bg-white/20 border border-white/25 backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 shadow-lg group">
+                            <i class="fas fa-user-tie text-amber-300 group-hover:scale-110 transition-transform"></i>
                             <span>Meet Coaches</span>
                         </a>
                     </div>
+                    <!-- Trust Micro-Bar -->
+                    <div class="flex items-center gap-6 sm:gap-8 text-xs sm:text-sm font-medium text-gray-300 font-sans flex-wrap border-t border-white/15 pt-6 max-w-xl">
+                        <span class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-amber-400 text-xs"></i>
+                            1200+ Students Coached
+                        </span>
+                        <span class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-amber-400 text-xs"></i>
+                            40+ FIDE Rated Players
+                        </span>
+                        <span class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-amber-400 text-xs"></i>
+                            Tournament Travel
+                        </span>
+                    </div>
                 </div>
 
-                <!-- Right column - abstract chess piece visual -->
-                <div class="relative flex justify-center lg:justify-end mt-8 lg:mt-0">
-                    <div class="relative w-full max-w-[340px] sm:max-w-[420px] h-[370px] sm:h-auto sm:aspect-square flex items-center justify-center">
-                        <!-- big knight silhouette -->
-                        <div class="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
-                            <i class="fas fa-chess-knight text-[15rem] sm:text-[22rem] lg:text-[26rem] text-gift-slate/10 dark:text-gift-slate-bright/10 select-none"></i>
+                <!-- Right column - centered showcase frame (5 cols) -->
+                <div class="lg:col-span-5 relative flex justify-center items-center mt-10 lg:mt-0">
+                    <div class="relative w-full max-w-[440px] sm:max-w-[480px] h-[390px] sm:h-[430px] flex items-center justify-center">
+                        <!-- Luminous Central Knight Logo Graphic -->
+                        <div class="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden z-0">
+                            <!-- Soft Radiant Backlight -->
+                            <div class="absolute w-64 h-64 sm:w-80 sm:h-80 rounded-full bg-gradient-to-tr from-amber-400/20 via-gift-slate-bright/15 to-transparent blur-3xl pointer-events-none"></div>
+                            <!-- Clearly Visible Stylized Knight Emblem -->
+                            <i class="fas fa-chess-knight text-[15rem] sm:text-[22rem] lg:text-[25rem] text-transparent bg-clip-text bg-gradient-to-b from-amber-200/50 via-amber-400/30 to-amber-600/15 filter drop-shadow-[0_10px_25px_rgba(0,0,0,0.6)] select-none"></i>
                         </div>
 
                         <!-- Card 1: Positional Mastery -->
-                        <div class="absolute top-2 left-0 sm:top-4 sm:left-2 lg:top-6 lg:left-4 bg-white/95 dark:bg-dark-card/95 backdrop-blur-xl rounded-2xl p-3.5 sm:p-5 shadow-xl border border-gift-slate/20 dark:border-gift-slate-bright/20 w-[180px] sm:w-56 hover:-translate-y-1 transition-transform duration-300">
-                            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gift-slate/10 dark:bg-gift-slate-bright/10 flex items-center justify-center text-gift-slate dark:text-gift-slate-bright text-base sm:text-lg mb-2 sm:mb-3">
+                        <div class="absolute top-2 left-0 sm:top-4 sm:-left-2 lg:top-4 lg:-left-2 z-20 bg-[#141A1F] rounded-2xl p-4 sm:p-5 shadow-[0_20px_50px_rgba(0,0,0,0.85)] border border-amber-400/30 w-[190px] sm:w-60 hover:-translate-y-1 transition-transform duration-300">
+                            <div class="w-10 h-10 rounded-xl bg-amber-400/20 border border-amber-400/30 flex items-center justify-center text-amber-300 text-base sm:text-lg mb-3 shadow-inner">
                                 <i class="fas fa-chess-queen"></i>
                             </div>
-                            <div class="text-xs sm:text-base font-bold font-serif text-neutral-dark dark:text-white leading-snug">Positional Mastery</div>
-                            <div class="text-[11px] sm:text-xs opacity-75 font-sans mt-0.5 sm:mt-1">Pawn structures & space advantage</div>
+                            <div class="text-sm sm:text-base font-bold font-serif text-white leading-snug">Positional Mastery</div>
+                            <div class="text-[11px] sm:text-xs text-gray-300 font-sans mt-1 leading-normal">Pawn structures & space advantage</div>
+                        </div>
+
+                        <!-- Center Accolade Chip -->
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 px-3.5 py-1.5 rounded-full bg-[#141A1F]/90 backdrop-blur-md border border-amber-400/40 text-amber-300 font-sans text-[11px] font-bold uppercase tracking-wider flex items-center gap-2 shadow-2xl pointer-events-none whitespace-nowrap">
+                            <i class="fas fa-crown text-[10px] text-amber-400"></i>
+                            <span>FIDE Accredited</span>
                         </div>
 
                         <!-- Card 2: Tournament Ready -->
-                        <div class="absolute bottom-2 right-0 sm:bottom-4 sm:right-2 lg:bottom-6 lg:right-4 bg-white/95 dark:bg-dark-card/95 backdrop-blur-xl rounded-2xl p-3.5 sm:p-5 shadow-xl border border-gift-slate/20 dark:border-gift-slate-bright/20 w-[180px] sm:w-56 hover:-translate-y-1 transition-transform duration-300">
-                            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gift-slate/10 dark:bg-gift-slate-bright/10 flex items-center justify-center text-gift-slate dark:text-gift-slate-bright text-base sm:text-lg mb-2 sm:mb-3">
+                        <div class="absolute bottom-2 right-0 sm:bottom-4 sm:-right-2 lg:bottom-4 lg:-right-2 z-20 bg-[#141A1F] rounded-2xl p-4 sm:p-5 shadow-[0_20px_50px_rgba(0,0,0,0.85)] border border-amber-400/30 w-[190px] sm:w-60 hover:-translate-y-1 transition-transform duration-300">
+                            <div class="w-10 h-10 rounded-xl bg-gift-slate-bright/20 border border-gift-slate-bright/30 flex items-center justify-center text-gift-slate-bright text-base sm:text-lg mb-3 shadow-inner">
                                 <i class="fas fa-chess-board"></i>
                             </div>
-                            <div class="text-xs sm:text-base font-bold font-serif text-neutral-dark dark:text-white leading-snug">Tournament Ready</div>
-                            <div class="text-[11px] sm:text-xs opacity-75 font-sans mt-0.5 sm:mt-1">FIDE-rated event preparation</div>
+                            <div class="text-sm sm:text-base font-bold font-serif text-white leading-snug">Tournament Ready</div>
+                            <div class="text-[11px] sm:text-xs text-gray-300 font-sans mt-1 leading-normal">FIDE-rated event preparation</div>
                         </div>
                     </div>
                 </div>

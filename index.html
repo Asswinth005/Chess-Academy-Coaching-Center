@@ -1226,7 +1226,7 @@
             <!-- Brand Logo -->
             <a href="index.html" class="flex items-center gap-3 group shrink-0" dir="ltr">
                 <div class="w-10 h-10 bg-gradient-to-br from-gift-slate-light to-gift-slate rounded-2xl flex items-center justify-center flex-shrink-0 shadow-md group-hover:rotate-6 transition duration-300">
-                    <i class="fas fa-chess-knight text-white dark:text-dark-bg text-lg"></i>
+                    <i class="fas fa-chess-knight text-amber-300 text-lg"></i>
                 </div>
                 <div>
                     <span class="text-lg md:text-2xl font-serif font-bold tracking-wide text-neutral-dark dark:text-white">
@@ -1330,114 +1330,82 @@
         </div>
     </header>
 
-    <!-- ========== SECTION 1: HERO – STRATEGIC EDITORIAL SHOWCASE ========== -->
+    <!-- ========== SECTION 1: HERO – CENTERED CINEMATIC SHOWCASE ========== -->
     <section
-        class="min-h-[auto] lg:min-h-[92vh] flex items-center pt-28 pb-12 sm:pt-32 sm:pb-14 lg:pt-32 lg:pb-14 bg-bg-warm dark:bg-dark-bg overflow-hidden transition-colors duration-400 relative chess-pattern">
-        <!-- Ambient Radial Glows -->
-        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-gradient-to-br from-gift-slate/15 via-gift-slate-bright/10 to-transparent rounded-full blur-3xl pointer-events-none -z-0"></div>
-        <div class="absolute -top-24 right-0 w-96 h-96 bg-gift-slate/10 dark:bg-gift-slate-bright/10 rounded-full blur-3xl pointer-events-none"></div>
+        class="min-h-[auto] lg:min-h-[92vh] flex items-center justify-center pt-32 pb-16 sm:pt-36 sm:pb-20 lg:pt-36 lg:pb-20 bg-dark-bg overflow-hidden transition-colors duration-400 relative">
+        
+        <!-- Large Attractive Background Image (Natural Depth, No White Contrast Wash) -->
+        <div class="hero-bg-container absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
+            <img src="assets/images/photo-1529699211952-734e80c4d42b.jpg"
+                alt="Grandmaster Chess Board"
+                class="w-full h-full object-cover object-center filter brightness-[0.52] contrast-[1.12] transition-all duration-700">
+            <!-- Sleek Dark Vignette and Clean Overlays - No Milky White Films -->
+            <div class="absolute inset-0 bg-black/45"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-dark-bg via-transparent to-dark-bg/80"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_20%,_rgba(0,0,0,0.65)_100%)]"></div>
+            <!-- Subtle Radial Gold/Blue Ambience -->
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-gradient-to-tr from-gift-slate/20 via-gift-accent/10 to-transparent rounded-full blur-3xl pointer-events-none"></div>
+        </div>
 
         <div class="container mx-auto px-6 relative z-10 w-full">
-            <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 xl:gap-16 items-center">
-                <!-- Left Editorial Copy (7 cols) -->
-                <div class="lg:col-span-7 animate-slide-up text-center lg:text-left">
-                    <div
-                        class="eyebrow-pill inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-gift-slate/10 dark:bg-gift-slate-bright/10 border border-gift-slate/25 dark:border-gift-slate-bright/25 mb-6 backdrop-blur-md">
-                        <i class="fas fa-crown text-gift-slate dark:text-gift-slate-bright text-xs"></i>
-                        <span
-                            class="text-[11px] font-bold font-sans dark:text-gift-slate-bright tracking-[0.22em] uppercase">FIDE CERTIFIED COACHES • ALL AGES & LEVELS</span>
-                    </div>
-
-                    <h1
-                        class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif font-bold text-neutral-dark dark:text-white leading-[1.08] tracking-tight mb-6">
-                        Master the Board. <br class="hidden sm:inline">
-                        <span class="board-gradient-text italic font-serif">Command the Game.</span>
-                    </h1>
-
-                    <div class="premium-line mx-auto lg:mx-0 !my-5"></div>
-
-                    <p
-                        class="text-base sm:text-lg lg:text-xl text-neutral-dark/85 dark:text-gray-300 max-w-xl mx-auto lg:mx-0 mb-8 font-sans font-light leading-relaxed">
-                        Elite chess coaching for beginners through tournament masters. Structured programs by skill level, FIDE-rated tournaments, and personalized training portals.
-                    </p>
-
-                    <!-- Nested Button Architecture -->
-                    <div class="flex flex-wrap gap-4 mb-10 justify-center lg:justify-start items-center">
-                        <a href="contact.html" class="btn-nested group">
-                            <span>Book Trial Lesson</span>
-                            <span class="icon-circle">
-                                <i class="fas fa-arrow-right text-xs"></i>
-                            </span>
-                        </a>
-                        <a href="programs.html" class="btn-frosted group">
-                            <i class="fas fa-chess-board text-gift-slate dark:text-gift-slate-bright group-hover:scale-110 transition-transform"></i>
-                            <span>Explore Programs</span>
-                        </a>
-                    </div>
-
-                    <!-- Trust Pillars Micro-Bar -->
-                    <div
-                        class="flex items-center justify-center lg:justify-start gap-6 sm:gap-8 text-xs sm:text-sm font-medium text-neutral-dark/80 dark:text-gray-400 font-sans flex-wrap border-t border-gift-slate/15 dark:border-gift-slate-bright/15 pt-6">
-                        <span class="flex items-center gap-2">
-                            <i class="fas fa-check-circle text-gift-slate dark:text-gift-slate-bright text-xs"></i>
-                            1200+ Students Coached
-                        </span>
-                        <span class="flex items-center gap-2">
-                            <i class="fas fa-check-circle text-gift-slate dark:text-gift-slate-bright text-xs"></i>
-                            40+ FIDE Rated Players
-                        </span>
-                        <span class="flex items-center gap-2">
-                            <i class="fas fa-check-circle text-gift-slate dark:text-gift-slate-bright text-xs"></i>
-                            Tournament Travel Support
-                        </span>
-                    </div>
+            <div class="max-w-4xl mx-auto text-center flex flex-col items-center animate-slide-up">
+                
+                <!-- Eyebrow Pill -->
+                <div
+                    class="eyebrow-pill inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 mb-6 backdrop-blur-md shadow-lg">
+                    <i class="fas fa-crown text-gift-accent text-xs"></i>
+                    <span
+                        class="text-[11px] font-bold font-sans text-white tracking-[0.22em] uppercase">FIDE CERTIFIED COACHES • ALL AGES & LEVELS</span>
                 </div>
 
-                <!-- Right Double-Bezel Showcase Frame (5 cols) -->
-                <div class="lg:col-span-5 flex justify-center items-center">
-                    <div class="relative w-full max-w-[310px] sm:max-w-[340px] lg:max-w-[360px] xl:max-w-[380px]">
-                        <!-- Double-Bezel Outer Shell -->
-                        <div
-                            class="p-2 sm:p-2 rounded-[2.25rem] bg-gradient-to-b from-gift-slate/35 via-gift-slate/15 to-transparent border border-gift-slate/30 dark:border-gift-slate-bright/35 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.25)] dark:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.85)] relative">
-                            <!-- Inner Core Container -->
-                            <div class="rounded-[calc(2.25rem-0.5rem)] overflow-hidden relative shadow-inner aspect-[4/5] max-h-[460px] lg:max-h-[490px] bg-gray-100 dark:bg-dark-card">
-                                <img src="assets/images/photo-1529699211952-734e80c4d42b.jpg" alt="Chess Coach Teaching Strategy"
-                                    class="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-700 ease-out">
+                <!-- Main Title -->
+                <h1
+                    class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif font-bold text-white leading-[1.08] tracking-tight mb-6 text-center">
+                    Master the Board. <br class="hidden sm:inline">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-yellow-100 to-amber-300 italic font-serif">Command the Game.</span>
+                </h1>
 
-                                <!-- Editorial Overlay Vignette -->
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 pointer-events-none"></div>
+                <!-- Premium Gold Divider -->
+                <div class="premium-line mx-auto !my-5 !bg-gradient-to-r !from-transparent !via-amber-400/80 !to-transparent"></div>
 
-                                <!-- Floating Top Accolade Pill -->
-                                <div
-                                    class="absolute top-3 left-3 right-3 flex justify-between items-center z-20">
-                                    <span
-                                        class="bg-white/90 dark:bg-dark-card/90 backdrop-blur-md px-2.5 py-1 rounded-full text-[9px] font-bold font-sans tracking-widest text-neutral-dark dark:text-white uppercase flex items-center gap-1 border border-gift-slate/25 shadow-lg">
-                                        <i class="fas fa-trophy text-gift-accent text-[10px]"></i> NATIONAL CHAMPIONS
-                                    </span>
-                                    <span
-                                        class="bg-white/80 dark:bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-full text-[9px] font-bold font-sans text-neutral-dark dark:text-gray-200">
-                                        EST. 2012
-                                    </span>
-                                </div>
+                <!-- Subtitle Description -->
+                <p
+                    class="text-base sm:text-lg lg:text-xl text-gray-200 max-w-2xl mx-auto mb-8 font-sans font-light leading-relaxed text-center">
+                    Elite chess coaching for beginners through tournament masters. Structured programs by skill level, FIDE-rated tournaments, and personalized training portals.
+                </p>
 
-                                <!-- Floating Bottom Glass Card -->
-                                <div
-                                    class="absolute bottom-3 left-3 right-3 bg-white/95 dark:bg-dark-card/95 backdrop-blur-xl p-3 sm:p-3.5 rounded-xl sm:rounded-2xl shadow-2xl border border-gift-slate/25 dark:border-gift-slate-bright/30 z-20 flex items-center justify-between">
-                                    <div class="flex items-center gap-2.5">
-                                        <div class="w-8 h-8 rounded-full bg-gift-slate/20 dark:bg-gift-slate-bright/20 flex items-center justify-center text-gift-slate dark:text-gift-slate-bright font-serif font-bold text-base">
-                                            ♞
-                                        </div>
-                                        <div>
-                                            <div class="text-[11px] font-bold font-sans text-neutral-dark dark:text-white uppercase tracking-wider">GM-Level Coaching</div>
-                                            <div class="text-[10px] text-neutral-dark/70 dark:text-gray-400 font-sans">1-on-1 & small group sessions</div>
-                                        </div>
-                                    </div>
-                                    <span class="text-[11px] font-bold text-gift-slate dark:text-gift-slate-bright uppercase tracking-wider">4.9 ★</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <!-- Centered Buttons -->
+                <div class="flex flex-wrap gap-4 mb-10 justify-center items-center">
+                    <a href="contact.html" class="btn-nested group">
+                        <span>Book Trial Lesson</span>
+                        <span class="icon-circle">
+                            <i class="fas fa-arrow-right text-xs"></i>
+                        </span>
+                    </a>
+                    <a href="programs.html"
+                        class="inline-flex items-center gap-2.5 px-7 py-3 rounded-full font-semibold text-xs sm:text-sm font-sans uppercase tracking-wider text-white bg-white/10 hover:bg-white/20 border border-white/25 backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 shadow-lg group">
+                        <i class="fas fa-chess-board text-amber-300 group-hover:scale-110 transition-transform"></i>
+                        <span>Explore Programs</span>
+                    </a>
                 </div>
+
+                <!-- Centered Trust Micro-Bar -->
+                <div
+                    class="flex items-center justify-center gap-6 sm:gap-8 text-xs sm:text-sm font-medium text-gray-300 font-sans flex-wrap border-t border-white/15 pt-6 w-full max-w-2xl">
+                    <span class="flex items-center gap-2">
+                        <i class="fas fa-check-circle text-gift-accent text-xs"></i>
+                        1200+ Students Coached
+                    </span>
+                    <span class="flex items-center gap-2">
+                        <i class="fas fa-check-circle text-gift-accent text-xs"></i>
+                        40+ FIDE Rated Players
+                    </span>
+                    <span class="flex items-center gap-2">
+                        <i class="fas fa-check-circle text-gift-accent text-xs"></i>
+                        Tournament Travel Support
+                    </span>
+                </div>
+
             </div>
         </div>
     </section>
@@ -1780,21 +1748,28 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 sm:gap-6 lg:gap-7 max-w-7xl mx-auto">
                 <!-- Pillar 01: FIDE Certified Coaches -->
                 <div class="double-bezel-outer group hover:-translate-y-1.5 transition-transform duration-500">
-                    <div class="double-bezel-inner p-5 sm:p-6 lg:p-7 flex flex-col justify-between h-full bg-white dark:bg-[#141A1F] relative">
-                        <div class="absolute top-4 right-5 sm:top-5 sm:right-6 font-serif text-3xl sm:text-4xl font-bold text-gift-slate/25 dark:text-gift-slate-bright/25 select-none pointer-events-none tracking-tight leading-none">
-                            01
-                        </div>
+                    <div class="double-bezel-inner p-4 sm:p-5 flex flex-col justify-between h-full bg-white dark:bg-[#141A1F] relative">
                         <div>
-                            <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-gift-slate/20 to-gift-slate/5 dark:from-gift-slate-bright/20 dark:to-transparent text-gift-slate dark:text-gift-slate-bright flex items-center justify-center text-lg sm:text-xl mb-5 border border-gift-slate/25 shadow-sm group-hover:scale-105 group-hover:bg-gift-slate group-hover:text-white transition-all duration-300">
-                                <i class="fas fa-certificate"></i>
+                            <!-- Relevant Image replacing icon -->
+                            <div class="relative h-44 sm:h-48 rounded-xl sm:rounded-2xl overflow-hidden mb-4 border border-gift-slate/15 dark:border-gift-slate-bright/20 shadow-inner bg-gray-100 dark:bg-dark-card">
+                                <img src="assets/images/coach-alexei-volkov.jpg" alt="FIDE Certified Coaches"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                                    style="object-position: center 20%;">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none"></div>
+                                <div class="absolute top-3 left-3">
+                                    <span class="badge text-[9px] font-sans uppercase tracking-widest font-bold">Credentials</span>
+                                </div>
+                                <div class="absolute bottom-2.5 right-3 font-serif text-2xl font-bold text-white/90 drop-shadow-md select-none pointer-events-none">
+                                    01
+                                </div>
                             </div>
-                            <span class="text-[9px] sm:text-[10px] uppercase font-bold tracking-widest text-gift-slate dark:text-gift-slate-bright block mb-1">Credentials</span>
-                            <h3 class="text-lg sm:text-xl font-serif font-bold mb-2.5 text-neutral-dark dark:text-white leading-snug">FIDE Certified Coaches</h3>
-                            <p class="text-xs opacity-80 leading-relaxed font-sans mb-5">
+                            <span class="text-[9px] sm:text-[10px] uppercase font-bold tracking-widest text-gift-slate dark:text-gift-slate-bright block mb-1">Grandmaster Faculty</span>
+                            <h3 class="text-lg sm:text-xl font-serif font-bold mb-2 text-neutral-dark dark:text-white leading-snug">FIDE Certified Coaches</h3>
+                            <p class="text-xs opacity-80 leading-relaxed font-sans mb-4">
                                 Every instructor holds FIDE titles (GM, IM, FM, WIM) and has verified tournament experience.
                             </p>
                         </div>
-                        <ul class="border-t border-gift-slate/15 dark:border-gray-800 pt-4 space-y-2 text-[11px] font-sans opacity-85 font-medium">
+                        <ul class="border-t border-gift-slate/15 dark:border-gray-800 pt-3.5 space-y-1.5 text-[11px] font-sans opacity-85 font-medium">
                             <li class="flex items-center gap-2"><i class="fas fa-check-circle text-gift-slate dark:text-gift-slate-bright text-xs"></i> <span>Verified Title Holders</span></li>
                             <li class="flex items-center gap-2"><i class="fas fa-check-circle text-gift-slate dark:text-gift-slate-bright text-xs"></i> <span>Background Checked</span></li>
                         </ul>
@@ -1803,21 +1778,28 @@
 
                 <!-- Pillar 02: Skill-Level Programs -->
                 <div class="double-bezel-outer group hover:-translate-y-1.5 transition-transform duration-500">
-                    <div class="double-bezel-inner p-5 sm:p-6 lg:p-7 flex flex-col justify-between h-full bg-white dark:bg-[#141A1F] relative">
-                        <div class="absolute top-4 right-5 sm:top-5 sm:right-6 font-serif text-3xl sm:text-4xl font-bold text-gift-slate/25 dark:text-gift-slate-bright/25 select-none pointer-events-none tracking-tight leading-none">
-                            02
-                        </div>
+                    <div class="double-bezel-inner p-4 sm:p-5 flex flex-col justify-between h-full bg-white dark:bg-[#141A1F] relative">
                         <div>
-                            <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-gift-slate/20 to-gift-slate/5 dark:from-gift-slate-bright/20 dark:to-transparent text-gift-slate dark:text-gift-slate-bright flex items-center justify-center text-lg sm:text-xl mb-5 border border-gift-slate/25 shadow-sm group-hover:scale-105 group-hover:bg-gift-slate group-hover:text-white transition-all duration-300">
-                                <i class="fas fa-layer-group"></i>
+                            <!-- Relevant Image replacing icon -->
+                            <div class="relative h-44 sm:h-48 rounded-xl sm:rounded-2xl overflow-hidden mb-4 border border-gift-slate/15 dark:border-gift-slate-bright/20 shadow-inner bg-gray-100 dark:bg-dark-card">
+                                <img src="assets/images/program-intermediate.jpg" alt="Skill-Level Programs"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                                    style="object-position: center 33%;">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none"></div>
+                                <div class="absolute top-3 left-3">
+                                    <span class="badge text-[9px] font-sans uppercase tracking-widest font-bold">Curriculum</span>
+                                </div>
+                                <div class="absolute bottom-2.5 right-3 font-serif text-2xl font-bold text-white/90 drop-shadow-md select-none pointer-events-none">
+                                    02
+                                </div>
                             </div>
-                            <span class="text-[9px] sm:text-[10px] uppercase font-bold tracking-widest text-gift-slate dark:text-gift-slate-bright block mb-1">Curriculum</span>
-                            <h3 class="text-lg sm:text-xl font-serif font-bold mb-2.5 text-neutral-dark dark:text-white leading-snug">Skill-Level Programs</h3>
-                            <p class="text-xs opacity-80 leading-relaxed font-sans mb-5">
+                            <span class="text-[9px] sm:text-[10px] uppercase font-bold tracking-widest text-gift-slate dark:text-gift-slate-bright block mb-1">Tailored Pathways</span>
+                            <h3 class="text-lg sm:text-xl font-serif font-bold mb-2 text-neutral-dark dark:text-white leading-snug">Skill-Level Programs</h3>
+                            <p class="text-xs opacity-80 leading-relaxed font-sans mb-4">
                                 Beginner, Intermediate, and Advanced tracks ensure every student learns at the right pace.
                             </p>
                         </div>
-                        <ul class="border-t border-gift-slate/15 dark:border-gray-800 pt-4 space-y-2 text-[11px] font-sans opacity-85 font-medium">
+                        <ul class="border-t border-gift-slate/15 dark:border-gray-800 pt-3.5 space-y-1.5 text-[11px] font-sans opacity-85 font-medium">
                             <li class="flex items-center gap-2"><i class="fas fa-check-circle text-gift-slate dark:text-gift-slate-bright text-xs"></i> <span>Structured Curriculum</span></li>
                             <li class="flex items-center gap-2"><i class="fas fa-check-circle text-gift-slate dark:text-gift-slate-bright text-xs"></i> <span>Progress Tracking</span></li>
                         </ul>
@@ -1826,21 +1808,28 @@
 
                 <!-- Pillar 03: Tournament Access -->
                 <div class="double-bezel-outer group hover:-translate-y-1.5 transition-transform duration-500">
-                    <div class="double-bezel-inner p-5 sm:p-6 lg:p-7 flex flex-col justify-between h-full bg-white dark:bg-[#141A1F] relative">
-                        <div class="absolute top-4 right-5 sm:top-5 sm:right-6 font-serif text-3xl sm:text-4xl font-bold text-gift-slate/25 dark:text-gift-slate-bright/25 select-none pointer-events-none tracking-tight leading-none">
-                            03
-                        </div>
+                    <div class="double-bezel-inner p-4 sm:p-5 flex flex-col justify-between h-full bg-white dark:bg-[#141A1F] relative">
                         <div>
-                            <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-gift-slate/20 to-gift-slate/5 dark:from-gift-slate-bright/20 dark:to-transparent text-gift-slate dark:text-gift-slate-bright flex items-center justify-center text-lg sm:text-xl mb-5 border border-gift-slate/25 shadow-sm group-hover:scale-105 group-hover:bg-gift-slate group-hover:text-white transition-all duration-300">
-                                <i class="fas fa-trophy"></i>
+                            <!-- Relevant Image replacing icon -->
+                            <div class="relative h-44 sm:h-48 rounded-xl sm:rounded-2xl overflow-hidden mb-4 border border-gift-slate/15 dark:border-gift-slate-bright/20 shadow-inner bg-gray-100 dark:bg-dark-card">
+                                <img src="assets/images/tournament-invitational.jpg" alt="Tournament Access"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                                    style="object-position: center;">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none"></div>
+                                <div class="absolute top-3 left-3">
+                                    <span class="badge text-[9px] font-sans uppercase tracking-widest font-bold">Competition</span>
+                                </div>
+                                <div class="absolute bottom-2.5 right-3 font-serif text-2xl font-bold text-white/90 drop-shadow-md select-none pointer-events-none">
+                                    03
+                                </div>
                             </div>
-                            <span class="text-[9px] sm:text-[10px] uppercase font-bold tracking-widest text-gift-slate dark:text-gift-slate-bright block mb-1">Competition</span>
-                            <h3 class="text-lg sm:text-xl font-serif font-bold mb-2.5 text-neutral-dark dark:text-white leading-snug">Tournament Access</h3>
-                            <p class="text-xs opacity-80 leading-relaxed font-sans mb-5">
+                            <span class="text-[9px] sm:text-[10px] uppercase font-bold tracking-widest text-gift-slate dark:text-gift-slate-bright block mb-1">Rated Events</span>
+                            <h3 class="text-lg sm:text-xl font-serif font-bold mb-2 text-neutral-dark dark:text-white leading-snug">Tournament Access</h3>
+                            <p class="text-xs opacity-80 leading-relaxed font-sans mb-4">
                                 Monthly in-house tournaments, FIDE-rated events, and travel support for national competitions.
                             </p>
                         </div>
-                        <ul class="border-t border-gift-slate/15 dark:border-gray-800 pt-4 space-y-2 text-[11px] font-sans opacity-85 font-medium">
+                        <ul class="border-t border-gift-slate/15 dark:border-gray-800 pt-3.5 space-y-1.5 text-[11px] font-sans opacity-85 font-medium">
                             <li class="flex items-center gap-2"><i class="fas fa-check-circle text-gift-slate dark:text-gift-slate-bright text-xs"></i> <span>Monthly Tournaments</span></li>
                             <li class="flex items-center gap-2"><i class="fas fa-check-circle text-gift-slate dark:text-gift-slate-bright text-xs"></i> <span>FIDE Rated Events</span></li>
                         </ul>
@@ -1849,21 +1838,28 @@
 
                 <!-- Pillar 04: Student Portal -->
                 <div class="double-bezel-outer group hover:-translate-y-1.5 transition-transform duration-500">
-                    <div class="double-bezel-inner p-5 sm:p-6 lg:p-7 flex flex-col justify-between h-full bg-white dark:bg-[#141A1F] relative">
-                        <div class="absolute top-4 right-5 sm:top-5 sm:right-6 font-serif text-3xl sm:text-4xl font-bold text-gift-slate/25 dark:text-gift-slate-bright/25 select-none pointer-events-none tracking-tight leading-none">
-                            04
-                        </div>
+                    <div class="double-bezel-inner p-4 sm:p-5 flex flex-col justify-between h-full bg-white dark:bg-[#141A1F] relative">
                         <div>
-                            <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-gift-slate/20 to-gift-slate/5 dark:from-gift-slate-bright/20 dark:to-transparent text-gift-slate dark:text-gift-slate-bright flex items-center justify-center text-lg sm:text-xl mb-5 border border-gift-slate/25 shadow-sm group-hover:scale-105 group-hover:bg-gift-slate group-hover:text-white transition-all duration-300">
-                                <i class="fas fa-laptop"></i>
+                            <!-- Relevant Image replacing icon -->
+                            <div class="relative h-44 sm:h-48 rounded-xl sm:rounded-2xl overflow-hidden mb-4 border border-gift-slate/15 dark:border-gift-slate-bright/20 shadow-inner bg-gray-100 dark:bg-dark-card">
+                                <img src="assets/images/student-arjun-mehta.jpg" alt="Student Portal"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                                    style="object-position: center 20%;">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none"></div>
+                                <div class="absolute top-3 left-3">
+                                    <span class="badge text-[9px] font-sans uppercase tracking-widest font-bold">Digital Learning</span>
+                                </div>
+                                <div class="absolute bottom-2.5 right-3 font-serif text-2xl font-bold text-white/90 drop-shadow-md select-none pointer-events-none">
+                                    04
+                                </div>
                             </div>
-                            <span class="text-[9px] sm:text-[10px] uppercase font-bold tracking-widest text-gift-slate dark:text-gift-slate-bright block mb-1">Digital Learning</span>
-                            <h3 class="text-lg sm:text-xl font-serif font-bold mb-2.5 text-neutral-dark dark:text-white leading-snug">Student Portal</h3>
-                            <p class="text-xs opacity-80 leading-relaxed font-sans mb-5">
+                            <span class="text-[9px] sm:text-[10px] uppercase font-bold tracking-widest text-gift-slate dark:text-gift-slate-bright block mb-1">Anytime Practice</span>
+                            <h3 class="text-lg sm:text-xl font-serif font-bold mb-2 text-neutral-dark dark:text-white leading-snug">Student Portal</h3>
+                            <p class="text-xs opacity-80 leading-relaxed font-sans mb-4">
                                 Access lesson notes, puzzle assignments, game analysis, and progress reports anytime.
                             </p>
                         </div>
-                        <ul class="border-t border-gift-slate/15 dark:border-gray-800 pt-4 space-y-2 text-[11px] font-sans opacity-85 font-medium">
+                        <ul class="border-t border-gift-slate/15 dark:border-gray-800 pt-3.5 space-y-1.5 text-[11px] font-sans opacity-85 font-medium">
                             <li class="flex items-center gap-2"><i class="fas fa-check-circle text-gift-slate dark:text-gift-slate-bright text-xs"></i> <span>24/7 Access</span></li>
                             <li class="flex items-center gap-2"><i class="fas fa-check-circle text-gift-slate dark:text-gift-slate-bright text-xs"></i> <span>Progress Analytics</span></li>
                         </ul>
