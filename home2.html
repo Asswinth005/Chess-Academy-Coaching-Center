@@ -1522,8 +1522,263 @@
         </div>
     </section>
 
-    <!-- ========== SECTION 3: 4 PILLARS (home2 alternative feature cards) ========== -->
-    <section class="py-16 sm:py-24 lg:py-28 bg-bg-warm dark:bg-dark-bg transition-colors duration-400 relative">
+    <!-- ========== SECTION 3: VISUAL SHOWCASE — THE ACADEMY IN ACTION ========== -->
+    <section class="py-16 sm:py-24 lg:py-28 bg-bg-warm dark:bg-dark-bg transition-colors duration-400 relative overflow-hidden">
+        <!-- Ambient Radial Glows -->
+        <div class="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-to-r from-gift-slate/10 via-gift-accent/10 to-transparent rounded-full blur-3xl pointer-events-none -z-0"></div>
+
+        <div class="container mx-auto px-4 sm:px-6 relative z-10">
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+                <span class="eyebrow-pill inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gift-slate/10 dark:bg-gift-slate-bright/10 border border-gift-slate/25 dark:border-gift-slate-bright/25 mb-4 backdrop-blur-md">
+                    <i class="fas fa-eye text-gift-slate dark:text-gift-slate-bright text-xs"></i>
+                    <span class="text-[10px] sm:text-[11px] font-bold font-sans tracking-[0.25em] uppercase text-gift-slate dark:text-gift-slate-bright">VISUAL ACADEMY EXPERIENCE</span>
+                </span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-neutral-dark dark:text-white mt-1 leading-tight">
+                    Inside the Arena: Where Strategy <span class="board-gradient-text italic font-serif">Comes to Life</span>
+                </h2>
+                <div class="premium-line mx-auto !my-4"></div>
+                <p class="text-xs sm:text-sm md:text-base opacity-80 font-sans font-light max-w-xl mx-auto leading-relaxed px-2">
+                    Explore our high-performance training ecosystem: live interactive tactics, FIDE championship arenas, and dedicated grandmaster analysis labs.
+                </p>
+            </div>
+
+            <!-- Bento Visual Showcase Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 max-w-7xl mx-auto items-stretch">
+                
+                <!-- Feature 1: Interactive Tactical Board Visualizer (7 cols) -->
+                <div class="lg:col-span-7 double-bezel-outer group">
+                    <div class="double-bezel-inner p-6 sm:p-7 flex flex-col justify-between h-full bg-white dark:bg-[#141A1F]">
+                        <!-- Card Header -->
+                        <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
+                            <div>
+                                <span class="badge text-[10px] font-sans uppercase tracking-widest font-bold">Interactive Tactics</span>
+                                <h3 class="text-xl sm:text-2xl font-serif font-bold text-neutral-dark dark:text-white mt-1" id="tactic-title">Mikhail Tal's Knight Sacrifice</h3>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-sans text-xs font-bold">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                                    <span id="tactic-eval">+4.2 White Adv.</span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Tactic Tabs -->
+                        <div class="flex flex-wrap gap-2 mb-5">
+                            <button onclick="setTactic('tal')" id="tab-tal" class="tactic-tab active px-3.5 py-1.5 rounded-full text-xs font-bold font-sans transition-all duration-300 bg-gift-slate text-white dark:bg-gift-slate-bright dark:text-dark-bg shadow-sm">
+                                1. Knight Sacrifice (Nxf7+)
+                            </button>
+                            <button onclick="setTactic('queen')" id="tab-queen" class="tactic-tab px-3.5 py-1.5 rounded-full text-xs font-medium font-sans transition-all duration-300 bg-gray-100 dark:bg-gray-800 text-neutral-dark dark:text-gray-300 hover:bg-gray-200">
+                                2. Queen Deflection (Qh5+)
+                            </button>
+                            <button onclick="setTactic('mate')" id="tab-mate" class="tactic-tab px-3.5 py-1.5 rounded-full text-xs font-medium font-sans transition-all duration-300 bg-gray-100 dark:bg-gray-800 text-neutral-dark dark:text-gray-300 hover:bg-gray-200">
+                                3. Smothered Mate (Nf7#)
+                            </button>
+                        </div>
+
+                        <!-- 8x8 Visual Chessboard Representation -->
+                        <div class="flex flex-col sm:flex-row gap-6 items-center bg-bg-warm/60 dark:bg-[#0C0F12]/80 p-4 sm:p-5 rounded-2xl border border-gift-slate/15 dark:border-gray-800 mb-5">
+                            <!-- Graphical Board Grid -->
+                            <div class="relative w-[260px] h-[260px] sm:w-[280px] sm:h-[280px] rounded-lg overflow-hidden shadow-2xl border-4 border-amber-900/40 dark:border-amber-950 shrink-0 select-none">
+                                <div class="grid grid-cols-8 grid-rows-8 w-full h-full text-lg sm:text-xl font-serif font-bold">
+                                    <!-- Row 8 (Black back rank) -->
+                                    <div class="bg-[#E2D6B5] flex items-center justify-center text-neutral-900">♜</div>
+                                    <div class="bg-[#B88B4A] flex items-center justify-center text-neutral-900">♞</div>
+                                    <div class="bg-[#E2D6B5] flex items-center justify-center text-neutral-900">♝</div>
+                                    <div class="bg-[#B88B4A] flex items-center justify-center text-neutral-900">♛</div>
+                                    <div class="bg-[#E2D6B5] flex items-center justify-center text-neutral-900">♚</div>
+                                    <div class="bg-[#B88B4A] flex items-center justify-center text-neutral-900">♝</div>
+                                    <div class="bg-[#E2D6B5] flex items-center justify-center text-neutral-900">♞</div>
+                                    <div class="bg-[#B88B4A] flex items-center justify-center text-neutral-900">♜</div>
+                                    <!-- Row 7 -->
+                                    <div class="bg-[#B88B4A] flex items-center justify-center text-neutral-900">♟</div>
+                                    <div class="bg-[#E2D6B5] flex items-center justify-center text-neutral-900">♟</div>
+                                    <div class="bg-[#B88B4A] flex items-center justify-center text-neutral-900">♟</div>
+                                    <div class="bg-[#E2D6B5] flex items-center justify-center text-neutral-900"></div>
+                                    <div class="bg-[#B88B4A] flex items-center justify-center text-neutral-900">♟</div>
+                                    <div class="bg-[#E2D6B5] flex items-center justify-center text-amber-950 ring-4 ring-amber-400 bg-amber-200/90 font-extrabold animate-pulse" id="cell-f7">♟</div>
+                                    <div class="bg-[#B88B4A] flex items-center justify-center text-neutral-900">♟</div>
+                                    <div class="bg-[#E2D6B5] flex items-center justify-center text-neutral-900">♟</div>
+                                    <!-- Row 6 -->
+                                    <div class="bg-[#E2D6B5]"></div><div class="bg-[#B88B4A]"></div><div class="bg-[#E2D6B5]"></div><div class="bg-[#B88B4A] flex items-center justify-center text-neutral-900">♟</div>
+                                    <div class="bg-[#E2D6B5]"></div><div class="bg-[#B88B4A]"></div><div class="bg-[#E2D6B5]"></div><div class="bg-[#B88B4A]"></div>
+                                    <!-- Row 5 -->
+                                    <div class="bg-[#B88B4A]"></div><div class="bg-[#E2D6B5]"></div><div class="bg-[#B88B4A] flex items-center justify-center text-amber-600 font-extrabold ring-2 ring-amber-400/80" id="cell-attack">♘</div>
+                                    <div class="bg-[#E2D6B5] flex items-center justify-center text-blue-900">♙</div>
+                                    <div class="bg-[#B88B4A]"></div><div class="bg-[#E2D6B5]"></div><div class="bg-[#B88B4A]"></div><div class="bg-[#E2D6B5]"></div>
+                                    <!-- Row 4 -->
+                                    <div class="bg-[#E2D6B5]"></div><div class="bg-[#B88B4A]"></div><div class="bg-[#E2D6B5]"></div><div class="bg-[#B88B4A] flex items-center justify-center text-blue-900">♙</div>
+                                    <div class="bg-[#E2D6B5]"></div><div class="bg-[#B88B4A]"></div><div class="bg-[#E2D6B5]"></div><div class="bg-[#B88B4A]"></div>
+                                    <!-- Row 3 -->
+                                    <div class="bg-[#B88B4A]"></div><div class="bg-[#E2D6B5]"></div><div class="bg-[#B88B4A]"></div><div class="bg-[#E2D6B5]"></div>
+                                    <div class="bg-[#B88B4A]"></div><div class="bg-[#E2D6B5] flex items-center justify-center text-blue-900 font-extrabold" id="cell-f3">♘</div>
+                                    <div class="bg-[#B88B4A]"></div><div class="bg-[#E2D6B5]"></div>
+                                    <!-- Row 2 (White pawns) -->
+                                    <div class="bg-[#E2D6B5] flex items-center justify-center text-blue-900">♙</div>
+                                    <div class="bg-[#B88B4A] flex items-center justify-center text-blue-900">♙</div>
+                                    <div class="bg-[#E2D6B5] flex items-center justify-center text-blue-900">♙</div>
+                                    <div class="bg-[#B88B4A]"></div>
+                                    <div class="bg-[#E2D6B5]"></div>
+                                    <div class="bg-[#B88B4A] flex items-center justify-center text-blue-900">♙</div>
+                                    <div class="bg-[#E2D6B5] flex items-center justify-center text-blue-900">♙</div>
+                                    <div class="bg-[#B88B4A] flex items-center justify-center text-blue-900">♙</div>
+                                    <!-- Row 1 (White back rank) -->
+                                    <div class="bg-[#B88B4A] flex items-center justify-center text-blue-900">♖</div>
+                                    <div class="bg-[#E2D6B5]"></div>
+                                    <div class="bg-[#B88B4A] flex items-center justify-center text-blue-900">♗</div>
+                                    <div class="bg-[#E2D6B5] flex items-center justify-center text-blue-900 font-bold" id="cell-queen">♕</div>
+                                    <div class="bg-[#B88B4A] flex items-center justify-center text-blue-900">♔</div>
+                                    <div class="bg-[#E2D6B5] flex items-center justify-center text-blue-900">♗</div>
+                                    <div class="bg-[#B88B4A]"></div>
+                                    <div class="bg-[#E2D6B5] flex items-center justify-center text-blue-900">♖</div>
+                                </div>
+                            </div>
+
+                            <!-- Tactical Move Annotations & Evaluation Gauge -->
+                            <div class="flex-1 space-y-3 text-xs font-sans">
+                                <div>
+                                    <span class="text-[10px] uppercase font-bold tracking-wider opacity-60 block">Tactical Objective</span>
+                                    <p class="font-medium text-neutral-dark dark:text-gray-200 mt-0.5" id="tactic-desc">
+                                        Sacrifice the knight on f7 to dismantle black's kingside shelter and expose the uncastled king to a devastating double attack.
+                                    </p>
+                                </div>
+                                <div class="p-3 rounded-xl bg-white dark:bg-dark-card border border-gift-slate/15 dark:border-gray-800">
+                                    <div class="flex items-center justify-between text-[11px] font-bold mb-1.5">
+                                        <span>Engine Win Probability</span>
+                                        <span class="text-emerald-500 font-serif text-sm">94% White</span>
+                                    </div>
+                                    <div class="w-full bg-gray-200 dark:bg-gray-700 h-2 rounded-full overflow-hidden">
+                                        <div class="bg-gradient-to-r from-amber-400 to-emerald-500 h-full w-[94%] rounded-full transition-all duration-700" id="tactic-bar"></div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-2 text-[11px] opacity-75">
+                                    <i class="fas fa-check-double text-gift-slate dark:text-gift-slate-bright"></i>
+                                    <span id="tactic-keymove">Key Move: 1. Nxf7! Kxf7 2. Qf3+ Ke8</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card Footer -->
+                        <div class="flex items-center justify-between pt-3 border-t border-gift-slate/15 dark:border-gray-800 text-xs font-bold text-gift-slate dark:text-gift-slate-bright">
+                            <span class="flex items-center gap-2"><i class="fas fa-brain text-amber-500"></i> FIDE Master Tactical Problem</span>
+                            <a href="programs.html" class="hover:underline flex items-center gap-1 group-hover:translate-x-1 transition-transform">Solve in Student Portal →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature 2: High-Stakes Championship Tournament Arena (5 cols) -->
+                <div class="lg:col-span-5 double-bezel-outer group">
+                    <div class="double-bezel-inner relative overflow-hidden h-full min-h-[360px] flex flex-col justify-end p-6 sm:p-7">
+                        <img src="assets/images/tournament-invitational.jpg" alt="Championship Tournament Arena"
+                            class="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/20"></div>
+
+                        <!-- Top Accolade Pill -->
+                        <div class="absolute top-5 left-5 right-5 flex items-center justify-between z-10">
+                            <span class="badge text-[10px] font-sans uppercase tracking-widest font-bold !bg-amber-400 !text-neutral-950 border-none shadow-lg">
+                                ✦ Live Tournament Arena
+                            </span>
+                            <span class="px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-white text-[10px] font-sans font-bold uppercase tracking-wider border border-white/20">
+                                FIDE Rated
+                            </span>
+                        </div>
+
+                        <!-- Bottom Content -->
+                        <div class="relative z-10 text-white">
+                            <span class="text-xs uppercase tracking-widest font-bold text-amber-300 font-sans block mb-1.5 drop-shadow">Championship Circuit</span>
+                            <h3 class="text-2xl sm:text-3xl font-serif font-bold leading-tight mb-3">Annual Masters Invitational</h3>
+                            <p class="text-xs sm:text-sm text-gray-200 font-sans font-light leading-relaxed mb-4">
+                                Experience official FIDE-rated round-robin tournaments, digital DGT boards, and live grandmaster commentary broadcast worldwide.
+                            </p>
+                            <!-- Mini Live Stats Strip -->
+                            <div class="grid grid-cols-3 gap-2 pt-3 border-t border-white/20 text-center">
+                                <div class="bg-black/40 backdrop-blur-md p-2 rounded-xl border border-white/10">
+                                    <div class="text-base font-serif font-bold text-amber-300">16 GMs</div>
+                                    <div class="text-[9px] uppercase tracking-wider text-gray-300 font-sans">Competing</div>
+                                </div>
+                                <div class="bg-black/40 backdrop-blur-md p-2 rounded-xl border border-white/10">
+                                    <div class="text-base font-serif font-bold text-white">$25,000</div>
+                                    <div class="text-[9px] uppercase tracking-wider text-gray-300 font-sans">Prize Fund</div>
+                                </div>
+                                <div class="bg-black/40 backdrop-blur-md p-2 rounded-xl border border-white/10">
+                                    <div class="text-base font-serif font-bold text-white">90m + 30s</div>
+                                    <div class="text-[9px] uppercase tracking-wider text-gray-300 font-sans">Control</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature 3: Personal Grandmaster Mentorship (4 cols) -->
+                <div class="lg:col-span-4 double-bezel-outer group">
+                    <div class="double-bezel-inner relative overflow-hidden h-72 sm:h-80 flex flex-col justify-end p-5 sm:p-6">
+                        <img src="assets/images/coach-alexei-volkov.jpg" alt="Grandmaster Coaching Session"
+                            class="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
+                            style="object-position: center 15%;">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent"></div>
+                        <div class="absolute top-4 left-4 z-10">
+                            <span class="badge text-[9px] font-sans uppercase tracking-widest font-bold">1-on-1 Faculty</span>
+                        </div>
+                        <div class="relative z-10 text-white">
+                            <h4 class="text-xl font-serif font-bold mb-1">Grandmaster Mentorship</h4>
+                            <p class="text-xs text-gray-200 font-sans font-light leading-relaxed mb-3">
+                                Direct analysis of your tournament games with GM Alexei Volkov and international masters.
+                            </p>
+                            <a href="coaches.html" class="text-[11px] font-semibold text-amber-300 flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                                Book Master Session →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature 4: Stockfish 17 Engine Lab (4 cols) -->
+                <div class="lg:col-span-4 double-bezel-outer group">
+                    <div class="double-bezel-inner relative overflow-hidden h-72 sm:h-80 flex flex-col justify-end p-5 sm:p-6">
+                        <img src="assets/images/program-advanced.jpg" alt="Advanced Engine Lab"
+                            class="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent"></div>
+                        <div class="absolute top-4 left-4 z-10">
+                            <span class="badge text-[9px] font-sans uppercase tracking-widest font-bold">Cloud Analytics</span>
+                        </div>
+                        <div class="relative z-10 text-white">
+                            <h4 class="text-xl font-serif font-bold mb-1">Deep Opening Repertoire</h4>
+                            <p class="text-xs text-gray-200 font-sans font-light leading-relaxed mb-3">
+                                Stockfish 17 NNUE evaluations at depth 50+ to build personalized, bulletproof repertoires.
+                            </p>
+                            <a href="programs.html#advanced" class="text-[11px] font-semibold text-amber-300 flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                                Explore Repertoires →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature 5: Scholastic & Junior Academy (4 cols) -->
+                <div class="lg:col-span-4 double-bezel-outer group">
+                    <div class="double-bezel-inner relative overflow-hidden h-72 sm:h-80 flex flex-col justify-end p-5 sm:p-6">
+                        <img src="assets/images/program-beginner.jpg" alt="Scholastic Junior Academy"
+                            class="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent"></div>
+                        <div class="absolute top-4 left-4 z-10">
+                            <span class="badge text-[9px] font-sans uppercase tracking-widest font-bold">Youth Champions</span>
+                        </div>
+                        <div class="relative z-10 text-white">
+                            <h4 class="text-xl font-serif font-bold mb-1">Scholastic Grand Prix</h4>
+                            <p class="text-xs text-gray-200 font-sans font-light leading-relaxed mb-3">
+                                Ranked junior competitions for ages 6–18, fostering critical calculation and sportsmanship.
+                            </p>
+                            <a href="programs.html#beginner" class="text-[11px] font-semibold text-amber-300 flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                                View Junior Circuit →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SECTION 4: 4 PILLARS (home2 alternative feature cards) ========== -->
+    <section class="py-16 sm:py-24 lg:py-28 bg-white dark:bg-dark-card border-y border-neutral-light/50 dark:border-gray-800/60 transition-colors duration-400 relative">
         <div class="container mx-auto px-6">
             <div class="text-center max-w-2xl mx-auto mb-14">
                 <span class="text-gift-slate dark:text-gift-slate-bright font-bold text-xs tracking-[0.25em] uppercase">Why Chess Academy</span>
@@ -1848,6 +2103,77 @@
                 });
             });
         });
+
+        // Visual Showcase Interactive Tactics Handler
+        function setTactic(type) {
+            const tactics = {
+                tal: {
+                    title: "Mikhail Tal's Knight Sacrifice",
+                    eval: "+4.2 White Adv.",
+                    desc: "Sacrifice the knight on f7 to dismantle black's kingside shelter and expose the uncastled king to a devastating double attack.",
+                    winBar: "94%",
+                    keymove: "Key Move: 1. Nxf7! Kxf7 2. Qf3+ Ke8",
+                    f7Piece: "♟",
+                    attackPiece: "♘",
+                    attackClass: "text-amber-600 font-extrabold ring-2 ring-amber-400/80"
+                },
+                queen: {
+                    title: "Morphy's Queen Deflection",
+                    eval: "+6.8 White Adv.",
+                    desc: "Deflect the defending pieces away from the back rank through a forcing queen infiltration, collapsing the defense in 2 moves.",
+                    winBar: "98%",
+                    keymove: "Key Move: 1. Qb8+! Nxb8 2. Rd8#",
+                    f7Piece: "♟",
+                    attackPiece: "♕",
+                    attackClass: "text-amber-500 font-extrabold ring-2 ring-yellow-400/80"
+                },
+                mate: {
+                    title: "Philidor's Smothered Mate",
+                    eval: "# Mate in 2",
+                    desc: "The knight leaps into f7 delivering checkmate while the enemy king is completely suffocated and immobilized by its own defenders.",
+                    winBar: "100%",
+                    keymove: "Key Move: 1. Qg8+! Rxg8 2. Nf7#",
+                    f7Piece: "♘",
+                    attackPiece: "",
+                    attackClass: ""
+                }
+            };
+
+            const data = tactics[type];
+            if (!data) return;
+
+            const titleEl = document.getElementById('tactic-title');
+            const evalEl = document.getElementById('tactic-eval');
+            const descEl = document.getElementById('tactic-desc');
+            const barEl = document.getElementById('tactic-bar');
+            const keyEl = document.getElementById('tactic-keymove');
+            const f7El = document.getElementById('cell-f7');
+            const attackEl = document.getElementById('cell-attack');
+
+            if (titleEl) titleEl.textContent = data.title;
+            if (evalEl) evalEl.textContent = data.eval;
+            if (descEl) descEl.textContent = data.desc;
+            if (barEl) barEl.style.width = data.winBar;
+            if (keyEl) keyEl.textContent = data.keymove;
+            if (f7El) f7El.textContent = data.f7Piece;
+            if (attackEl) {
+                attackEl.textContent = data.attackPiece;
+                attackEl.className = 'bg-[#B88B4A] flex items-center justify-center ' + data.attackClass;
+            }
+
+            // Update tab button styles
+            const tabs = ['tal', 'queen', 'mate'];
+            tabs.forEach(t => {
+                const tabBtn = document.getElementById('tab-' + t);
+                if (tabBtn) {
+                    if (t === type) {
+                        tabBtn.className = 'tactic-tab active px-3.5 py-1.5 rounded-full text-xs font-bold font-sans transition-all duration-300 bg-gift-slate text-white dark:bg-gift-slate-bright dark:text-dark-bg shadow-sm';
+                    } else {
+                        tabBtn.className = 'tactic-tab px-3.5 py-1.5 rounded-full text-xs font-medium font-sans transition-all duration-300 bg-gray-100 dark:bg-gray-800 text-neutral-dark dark:text-gray-300 hover:bg-gray-200';
+                    }
+                }
+            });
+        }
     </script>
 </body>
 
